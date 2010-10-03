@@ -2,7 +2,7 @@
 \usepackage{graphics,graphicx}
 \usepackage{hyperref}
 \usepackage{fullpage}
-\usepackage{lscape}
+\usepackage{pdflscape}
 \usepackage{tikz}
 \usepackage{gantt}
 \usepackage{setspace}
@@ -11,8 +11,9 @@
 
 \begin{document}
 \bibliographystyle{IEEE}
-\title{Interactive Graduate Student Information Database} 
-\author{Kartik Thakore\\kthakore\@uwo.ca \and Parth Champaneri\\pchampan@uwo.ca}
+\title{Interactive Graduate Student Information Database}
+\subtitle{Proposal} 
+\author{Kartik Thakore\\kthakore@uwo.ca \and Parth Champaneri\\pchampan@uwo.ca}
 \maketitle
 
 \begin{abstract}
@@ -29,8 +30,9 @@ The existing system is no longer scalable to the demands and the complexity of m
 
 In our understanding of the problem, we would like to explore the concept of treating each student as a task. Where various rules and milestones are
 applied on the task (student). Application of the rules and milestones would conceptually define a process. Techniques of process engineering and management 
-have been applied to student monitoring and tracking with some success and challenges \cite{flex}.  The system can also help reduce administrative
-burdens on students \cite{adv}.  
+have been applied to student monitoring and tracking. Similar projects in the past have been met with some success and challenges \cite{flex}. 
+Moreover an electronic system to manage administration can reduce burdens on students \cite{adv}. Prior solutions will help us avoid problems and follow best practices. 
+Electronic systems to track and store data is a mature technology, and can be successfully applied to this problem. 
 
 \section{Objectives}
 
@@ -84,16 +86,38 @@ Additional Advantages included:
 
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[width=12cm]{images/Methodology} \caption{ The proposed feature driven development } \label{fig:methods}
+\includegraphics[width=18cm]{images/Methodology} \caption{ The proposed feature driven development } \label{fig:methods}
 
 \end{center}
 \end{figure}
 
 \section{Project Tasks and Resources}
 
-\subsection{ Software Components: Kartik Thakore }
+\subsection{ Collaborative Tasks }
 
-\subsection{ Electrical Components: Parth Champaneri }
+Several components will require collaborative work between both of us:
+
+\begin{itemize}
+\item Graphical User Interface
+\item Database  Design
+\item Process Workflow Design
+\end{itemize}
+
+\subsection{ Software Tasks: Kartik Thakore }
+
+\subsubsection{Reporting Software}
+
+Reporting Software will be used to calculate and generate data reports as needed. Statistical Software (R Language) will be explored as an alternative.
+
+\subsubsection{Rule Engine and Feedback Gathering System}
+
+The system will need to follow business rules and send triggers to gather feedbacks. This system will be built on existing technology such as: Email, SMS etc. 
+
+\subsubsection{Core Framework and Interface}
+
+A core framework will be used to talk to databases and provide a graphical user interface to the user. Moreover several interfaces will be required to mesh with Radio Frequency Identification (RFID) and E-Signature technology. 
+
+\subsection{ Electrical Tasks: Parth Champaneri }
 
 \subsubsection{Network Design and Encryption:}
 
@@ -101,11 +125,11 @@ We will be using an iterative process to determine the most efficient design top
 
 \subsubsection{Smart Access Applications:} Smart access applications will be used to enhance the experience of the end user and provide useful data for processing. Some of the applications, which will be explored, are:
 
-Radio-frequency identification (RFID) applications will be explored to enhance and automate the system. Some of the identified uses are implementing an attendance management device, which will record Seminar attendance for graduate students. Further it can also be used for asset management.
+RFID applications will be explored to enhance and automate the system. Some of the identified uses are implementing an attendance management device, which will record Seminar attendance for graduate students. Further it can also be used for asset management.
 
-\subsubsection{e-Signature Pad:} The possibility of integrating a signature pad option for recording signatures after the advisory committee meeting or other processes where signatures need to be captured. This will, in turn eliminate the use of paper and we will be able to align ourselves to eco-sustainability initiatives supported by UWO. All the data will be stored on the server, which can be utilized for planning and analysis.
+\subsubsection{E-Signature Pad:} The possibility of integrating a signature pad option for recording signatures after the advisory committee meeting or other processes where signatures need to be captured. This will, in turn eliminate the use of paper and we will be able to align ourselves to eco-sustainability initiatives supported by UWO. All the data will be stored on the server, which can be utilized for planning and analysis.
 
-Smartphone Applications have revolutionized the way we interact with technology. In order to exploit the power of mobile applications, we will explore the development of a smartphone application that students can access to manage their information as well as administrative personnel. Furthermore, UPC scan codes can be implemented to facilitate student management at the seminars and advisory committees.
+Smart Phone Applications have revolutionized the way we interact with technology. In order to exploit the power of mobile applications, we will explore the development of a smartphone application that students can access to manage their information as well as administrative personnel. Furthermore, UPC scan codes can be implemented to facilitate student management at the seminars and advisory committees.
 
 \subsection{Part Lists} 
 
@@ -118,14 +142,14 @@ Smartphone Applications have revolutionized the way we interact with technology.
 
 \subsubsection{ Software Components }
 \begin{itemize}
-\item{Software Licensing Costs for ERP }
+\item{Software Licensing Costs }
 \item{SmartPhone Application Development Suite (As per manufacturers requirements)}
 \end{itemize}
 
 \section{Deliverables}
 \begin{itemize}
  \item{ Requirements Documentation }
- \item{ Iteration Reports (Perodic Status Reports) }
+ \item{ Iteration Reports (Periodic Status Reports) }
  \item{ Midterm Report}
  \item{ Final Product }
 \end{itemize}
@@ -136,9 +160,12 @@ Ensures that the focus always remains from the end-users perspective. 
 Very tight learning feedback loop allows for quick discovery of optimal solutions
 Each iteration will continue for a duration of three weeks following a one week period to obtain feedback from the stakeholders and the end-users.
 \newpage
+\thispagestyle{empty}
 
 
  \begin{landscape}
+
+
 \subsection{Gantt Chart} 
   \scalebox{0.8}{
   \begin{gantt}[xunitlength=0.65cm,fontsize=\small,titlefontsize=\small,drawledgerline=true]{16}{32}
@@ -189,7 +216,7 @@ Each iteration will continue for a duration of three weeks following a one week 
     \ganttbar{Iteration 5}{19}{3}
     \ganttcon{22}{13}{22}{14}
     \ganttbar{Acceptance Testing}{22}{2}
-    \ganttcon{22}{14}{24}{15}
+    \ganttcon{24}{14}{24}{15}
     \ganttbar{Project Documentation}{24}{4}  
   \end{gantt}
   }
@@ -197,6 +224,17 @@ Each iteration will continue for a duration of three weeks following a one week 
 
 \newpage
 
+\section{Advisor}
+\begin{description}
+\item Hanif Ladak Ph.D., P.Eng.
+\item Associate Professor
+\item hladak\@uwo.ca 519-661-2111 x86551 
+\item MSB 403
+\item Signature: 
+\item Date:
+\end{description}
+
+\newpage
 \bibliography{ref}
 
 \end{document}

@@ -2,27 +2,21 @@
 \usepackage{graphics,graphicx}
 \usepackage{hyperref}
 \usepackage{fullpage}
-\usepackage{pdflscape}
+\usepackage{lscape}
 \usepackage{tikz}
 \usepackage{gantt}
 \usepackage{setspace}
-\onehalfspacing
 
+\onehalfspacing
 
 \begin{document}
 \bibliographystyle{IEEE}
-\title{Interative Graduate Student Information Database} 
-\author{Kartik Thakore | Parth Champaneri}
+\title{Interactive Graduate Student Information Database} 
+\author{Kartik Thakore\\kthakore\@uwo.ca \and Parth Champaneri\\pchampan@uwo.ca}
 \maketitle
 
 \begin{abstract}
-We began the search for our fourth year project at the end of our internship. Dr. Ladak visited us for our internship reviews, 
-and we had several discussions on possible 4th year projects. Eventually Dr. Ladak presented a problem with managing graduate 
-students' information. To acquire a better understanding of the problem, we had meetings with Ms. Wendy Hough, the Graduate Affairs
-Assistant in the Medical BioPhysics Program. While working to define the problem, we have gained an appreciation of the complexity 
-and difficulty in managing graduate student data. In our proposal below we describe the problem, and our objectives during this project. 
-We will also cover the project management aspects in regards to the Agile methodology, project resources and planning. Overall we are 
-excited and enthusiastic about the project and it potential benefits for other graduate programs in the future. 
+We began the search for our fourth year project during our internship. Dr. Ladak visited us for our internship reviews alongside which, we had several discussions on possible 4th year projects.  Dr. Ladak presented a problem with managing graduate students’ information at various faculties across the university. As a past graduate chair of the faculty of Medical BioPhysics, his experience and feedback would be crucial to the success of this project. To acquire a better understanding of the problem, we had meetings with Ms. Wendy Hough, the Graduate Affairs Assistant in the Medical BioPhysics Program. While working to define the problem, we have gained an appreciation of the complexity and difficulty in managing graduate student data. In our proposal below we describe the problem, and our objectives during this project. We will also cover the scope of project management aspects in regards to the Agile methodology, project resource and strategic planning. Overall we are excited and enthusiastic about this initiative and it's potential benefits for other graduate faculties in the future.
 \end{abstract}
 
 \section{Background}
@@ -42,9 +36,9 @@ burdens on students \cite{adv}.
 
 To design and implement an Interactive Student Information Management System (SIMS) database for Graduate students that can track important dates from inception 
 to completion of the program life cycle and help manage information on an efficient basis. Upon completion, this system will be used to manage graduate students 
-in various faculties and provide effective reporting techniques, which will aid in tracking, resource and strategic planning. Features of the program include:
-
+in various faculties and provide effective reporting techniques, which will aid in tracking, resource and strategic planning.
 \subsection{ Goals }
+ Features of the program include:
 \begin{itemize}
  \item{Track various milestones throughout the program including, but not limited to:}
  \begin{itemize}
@@ -71,15 +65,35 @@ The system will be replacing a mission critical system, and thus will need to be
 \section{Methodology}
 
 The success of this project depends heavily on user acceptance. The system will be used heavily and regularly, to read and collect critical data. Moreover the amount of time allocated to implementing and deploying 
-the system is relatively small. Additionally the developers will only be working part time on the project. Due to these reasons and several others we will be proceed with an Agile Development methodology. Specifically
-feature driven development (FDD) will be done. Agile FDD will be performed in several iteration. In each iteration we will collect requirements in the form of user stories. The user stories will be tied with 
-in formal test cases. Then 
+the system is relatively small. The user must be involved in the progress of the project regularly and in all stages. Additionally the developers will only be working part time on the project. Due to these reasons and several others we will be proceed with an Agile Development methodology. Specifically
+feature driven development (FDD) will be done. Agile FDD will be performed in several iteration. 
 
-FDD will place an emphasis of tying the user's stories directly to features. 
+In each iteration we will collect requirements in the form of user stories. During our requirement elicition phase we will be working on creating a preliminary feature list, as a requirements documentation. These requirements will be 
+prioritized and attached to each iteration. During an iteration further analysis, design, implementation and testing will be performed. At the end of each iteration a report will be generated, on which the user can provide feedback. The
+feedback will be used and analyzed for the next iteration with additional requirements.
+
+Additional Advantages included:
+\begin{itemize}
+
+\item{Agile Testing per Iteration}
+\item{Removing Bias from Design}
+\item{Focus on End User Perspective}
+\item{Regular Meetings}
+
+\end{itemize}
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=12cm]{images/Methodology} \caption{ The proposed feature driven development } \label{fig:methods}
+
+\end{center}
+\end{figure}
 
 \section{Project Tasks and Resources}
 
-\subsection{ Electrical Components: Parth Champerneri }
+\subsection{ Software Components: Kartik Thakore }
+
+\subsection{ Electrical Components: Parth Champaneri }
 
 \subsubsection{Network Design and Encryption:}
 
@@ -112,11 +126,8 @@ Smartphone Applications have revolutionized the way we interact with technology.
 \begin{itemize}
  \item{ Requirements Documentation }
  \item{ Iteration Reports (Perodic Status Reports) }
-    \item{ Iteration Test Cases }
-    \item{ Iteration Features  }
-    \item{ Sign Off }
- \item{ Midterm Report/Walkthrough }
- \item{ Final Presentation/Walktrough  }
+ \item{ Midterm Report}
+ \item{ Final Product }
 \end{itemize}
 \section{Project Plan}
 As mentioned before, we will be using Agile project management technique to deliver the solution. As part of the methodology and as we will be delivering five iterations before a final roll-out of the prototype in March. The key advantages of this methodology are:
@@ -124,18 +135,6 @@ Deliver work fast
 Ensures that the focus always remains from the end-users perspective. 
 Very tight learning feedback loop allows for quick discovery of optimal solutions
 Each iteration will continue for a duration of three weeks following a one week period to obtain feedback from the stakeholders and the end-users.
-
-\begin{itemize}
-
-\item{Agile Testing per Iteration}
-
-\item{Removing Bias from Design}
-
-\item{Focus on End User Prespective}
-
-\item{Regular Meetings}
-
-\end{itemize}
 \newpage
 
 
@@ -190,7 +189,8 @@ Each iteration will continue for a duration of three weeks following a one week 
     \ganttbar{Iteration 5}{19}{3}
     \ganttcon{22}{13}{22}{14}
     \ganttbar{Acceptance Testing}{22}{2}
-   
+    \ganttcon{22}{14}{24}{15}
+    \ganttbar{Project Documentation}{24}{4}  
   \end{gantt}
   }
   \end{landscape}

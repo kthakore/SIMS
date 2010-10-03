@@ -1,0 +1,202 @@
+\documentclass{journal}
+\usepackage{graphics,graphicx}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{pdflscape}
+\usepackage{tikz}
+\usepackage{gantt}
+\usepackage{setspace}
+\onehalfspacing
+
+
+\begin{document}
+\bibliographystyle{IEEE}
+\title{Interative Graduate Student Information Database} 
+\author{Kartik Thakore | Parth Champaneri}
+\maketitle
+
+\begin{abstract}
+We began the search for our fourth year project at the end of our internship. Dr. Ladak visited us for our internship reviews, 
+and we had several discussions on possible 4th year projects. Eventually Dr. Ladak presented a problem with managing graduate 
+students' information. To acquire a better understanding of the problem, we had meetings with Ms. Wendy Hough, the Graduate Affairs
+Assistant in the Medical BioPhysics Program. While working to define the problem, we have gained an appreciation of the complexity 
+and difficulty in managing graduate student data. In our proposal below we describe the problem, and our objectives during this project. 
+We will also cover the project management aspects in regards to the Agile methodology, project resources and planning. Overall we are 
+excited and enthusiastic about the project and it potential benefits for other graduate programs in the future. 
+\end{abstract}
+
+\section{Background}
+
+The enrollment of Ontario graduate students is expected double by 2013, since 2005 \cite{con_high}.  Each graduate student requires considerable
+amount of administration to ensure the graduate program milestones are met. Moreover reports are required on the data collected for various users.
+The current system is a large excel sheet and several cabinets of paper copies. The user has an increasingly difficult time in effectively managing 
+the data in. In addition the user needs to do manual calculation of critical dates to prompt graduate students for feedback. 
+The existing system is no longer scalable to the demands and the complexity of milestones and critical dates. 
+
+In our understanding of the problem, we would like to explore the concept of treating each student as a task. Where various rules and milestones are
+applied on the task (student). Application of the rules and milestones would conceptually define a process. Techniques of process engineering and management 
+have been applied to student monitoring and tracking with some success and challenges \cite{flex}.  The system can also help reduce administrative
+burdens on students \cite{adv}.  
+
+\section{Objectives}
+
+To design and implement an Interactive Student Information Management System (SIMS) database for Graduate students that can track important dates from inception 
+to completion of the program life cycle and help manage information on an efficient basis. Upon completion, this system will be used to manage graduate students 
+in various faculties and provide effective reporting techniques, which will aid in tracking, resource and strategic planning. Features of the program include:
+
+\subsection{ Goals }
+\begin{itemize}
+ \item{Track various milestones throughout the program including, but not limited to:}
+ \begin{itemize}
+   \item{ Name and Demographic information }
+   \item{ Program Start-End Dates }
+   \item{ Recording other information (Names of advisory committee members, outcome of an advisory committee meeting etc.) }
+  \end{itemize}
+  \item{ E-mail reminders (Standard text for that milestone and a way of sending that reminder via e-mail) }
+  \item{ RFID and e-applications will be explored (Seminar Attendance Management, e-signatures) }
+  \item{ Intelligent data analysis and management techniques will be implemented to generate reports and trend charts, which will aid in Resource/Strategy and Capacity planning on a departmental level. The framework can be used at the university level or on a provincial/federal level in the future. } 
+  \item{ Custom ERP Reporting Plug ins }
+\end{itemize}
+\subsection{ Constraints }
+\subsubsection{ Budget }
+Since this project will be first be a pilot for one department, the total cost of ownership must be reasonable.
+\subsubsection{Security}
+One of the major requirements and concern is with security of the data that is stored by the system. There are several user roles, and the final solution will have to be aware of the permission sets. 
+\subsubsection{ Ease of Use }
+The system will be used by non technical users so the interface, should accommodate them. Moreover training and help document will need to be written with care to improve adoption. 
+\subsubsection{ Powerful }
+While being easy to use, the user will also have to view lots of data quickly and efficiently. Reports must be engineered to provide users with appropriate slices of data. 
+\subsubsection{ Reliability }
+The system will be replacing a mission critical system, and thus will need to be reliable. Moreover data might be require for 10 to 15 years, therefore data redundancy and archiving will be needed in the solution. 
+\section{Methodology}
+
+The success of this project depends heavily on user acceptance. The system will be used heavily and regularly, to read and collect critical data. Moreover the amount of time allocated to implementing and deploying 
+the system is relatively small. Additionally the developers will only be working part time on the project. Due to these reasons and several others we will be proceed with an Agile Development methodology. Specifically
+feature driven development (FDD) will be done. Agile FDD will be performed in several iteration. In each iteration we will collect requirements in the form of user stories. The user stories will be tied with 
+in formal test cases. Then 
+
+FDD will place an emphasis of tying the user's stories directly to features. 
+
+\section{Project Tasks and Resources}
+
+\subsection{ Electrical Components: Parth Champerneri }
+
+\subsubsection{Network Design and Encryption:}
+
+We will be using an iterative process to determine the most efficient design topology so that the new network meets the need for the end-users. The primary objective of this exercise to optimize the prototype network and have encryption at Application layer, Database level security and the transport level security. Techniques will be implemented to minimize failures and increase protection at the server level. 
+
+\subsubsection{Smart Access Applications:} Smart access applications will be used to enhance the experience of the end user and provide useful data for processing. Some of the applications, which will be explored, are:
+
+Radio-frequency identification (RFID) applications will be explored to enhance and automate the system. Some of the identified uses are implementing an attendance management device, which will record Seminar attendance for graduate students. Further it can also be used for asset management.
+
+\subsubsection{e-Signature Pad:} The possibility of integrating a signature pad option for recording signatures after the advisory committee meeting or other processes where signatures need to be captured. This will, in turn eliminate the use of paper and we will be able to align ourselves to eco-sustainability initiatives supported by UWO. All the data will be stored on the server, which can be utilized for planning and analysis.
+
+Smartphone Applications have revolutionized the way we interact with technology. In order to exploit the power of mobile applications, we will explore the development of a smartphone application that students can access to manage their information as well as administrative personnel. Furthermore, UPC scan codes can be implemented to facilitate student management at the seminars and advisory committees.
+
+\subsection{Part Lists} 
+
+\subsubsection{ Hardware Components }
+\begin{itemize}
+\item{Application / Database Server}
+\item{RFID tag reader}
+\item{E-signature pad prototype}
+\end{itemize}
+
+\subsubsection{ Software Components }
+\begin{itemize}
+\item{Software Licensing Costs for ERP }
+\item{SmartPhone Application Development Suite (As per manufacturers requirements)}
+\end{itemize}
+
+\section{Deliverables}
+\begin{itemize}
+ \item{ Requirements Documentation }
+ \item{ Iteration Reports (Perodic Status Reports) }
+    \item{ Iteration Test Cases }
+    \item{ Iteration Features  }
+    \item{ Sign Off }
+ \item{ Midterm Report/Walkthrough }
+ \item{ Final Presentation/Walktrough  }
+\end{itemize}
+\section{Project Plan}
+As mentioned before, we will be using Agile project management technique to deliver the solution. As part of the methodology and as we will be delivering five iterations before a final roll-out of the prototype in March. The key advantages of this methodology are:
+Deliver work fast
+Ensures that the focus always remains from the end-users perspective. 
+Very tight learning feedback loop allows for quick discovery of optimal solutions
+Each iteration will continue for a duration of three weeks following a one week period to obtain feedback from the stakeholders and the end-users.
+
+\begin{itemize}
+
+\item{Agile Testing per Iteration}
+
+\item{Removing Bias from Design}
+
+\item{Focus on End User Prespective}
+
+\item{Regular Meetings}
+
+\end{itemize}
+\newpage
+
+
+ \begin{landscape}
+\subsection{Gantt Chart} 
+  \scalebox{0.8}{
+  \begin{gantt}[xunitlength=0.65cm,fontsize=\small,titlefontsize=\small,drawledgerline=true]{16}{32}
+    \begin{ganttitle}
+      \titleelement{2010}{16}
+      \titleelement{2011}{16}
+    \end{ganttitle}
+    \begin{ganttitle}
+      \titleelement{Sept}{4}
+      \titleelement{Oct}{4}
+      \titleelement{Nov}{4}
+      \titleelement{Dec}{4}
+      \titleelement{Jan}{4}
+      \titleelement{Feb}{4}
+      \titleelement{Mar}{4}
+      \titleelement{Apr}{4}
+    \end{ganttitle}
+    \begin{ganttitle}
+      \numtitle{1}{1}{4}{1}
+      \numtitle{1}{1}{4}{1}
+      \numtitle{1}{1}{4}{1}
+      \numtitle{1}{1}{4}{1}
+      \numtitle{1}{1}{4}{1}
+      \numtitle{1}{1}{4}{1}
+      \numtitle{1}{1}{4}{1}
+      \numtitle{1}{1}{4}{1}
+    \end{ganttitle}
+    \ganttbar{Problem Definition}{1}{3}
+    \ganttbar{Requirements Engineering}{4}{2}
+    \ganttcon{4}{3}{4}{4}
+    \ganttbar{Iteration 1}{6}{3}
+    \ganttcon{6}{4}{6}{5}
+    \ganttbar{Iteration 1: Feedback }{9}{1}
+    \ganttcon{9}{5}{9}{6}
+    \ganttcon{9}{5}{9}{7}
+    \ganttbar{Iteration 2}{9}{3}
+    \ganttbar{Iteration 2: Feedback }{12}{1}
+    \ganttcon{12}{7}{12}{8}
+    \ganttcon{12}{7}{12}{9}
+    \ganttbar{Iteration 3}{12}{3}
+    \ganttbar{Iteration 3: Feedback }{16}{1}
+    \ganttcon{15}{9}{16}{10}
+    \ganttcon{15}{9}{16}{11}
+    \ganttbar{Iteration 4}{16}{3}
+    \ganttbar{Iteration 4: Feedback }{19}{1}
+    \ganttcon{19}{11}{19}{12}
+    \ganttcon{19}{11}{19}{13}
+    \ganttbar{Iteration 5}{19}{3}
+    \ganttcon{22}{13}{22}{14}
+    \ganttbar{Acceptance Testing}{22}{2}
+   
+  \end{gantt}
+  }
+  \end{landscape}
+
+\newpage
+
+\bibliography{ref}
+
+\end{document}

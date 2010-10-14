@@ -1,0 +1,8 @@
+Functional Requirements
+-> Student Data Overview: All relevant student data should be available in a quick overview
+-> Drilldown on Overview: User can open relevant areas for more information
+-> Date/Semester Calculations: 
+-> Funding Calculations:
+-> Tracking Publications
+-> Manage Milestones
+-> Data Archiving: Archive data for later access

@@ -1,8 +1,62 @@
+
+Graduate Program Site:
+http://uwo.ca/biophysics/documents/grad_program_intro.htm
+
+Current System:
+Excel sheet
+Data inconsistencies
+Manual inputs 
+
 Functional Requirements
--> Student Data Overview: All relevant student data should be available in a quick overview
+
+->Information Gathering Student Data Overview: All relevant student data should be available in a quick overview
 -> Drilldown on Overview: User can open relevant areas for more information
 -> Date/Semester Calculations: 
--> Funding Calculations:
+-> Funding Calculations: Student funded by.
 -> Tracking Publications
 -> Manage Milestones
+	-> Masters, 9513 Scientific Communication Marks
+	-> Low level Comprehensive exam tracking (pass/fail). One time event.		
 -> Data Archiving: Archive data for later access
+-> Track Advisory committee members
+	-> Doctors/Clinical vs Research
+		-> Comment section for feedback.
+	-> Advisory committee takes place once a term. Must track the completion (pass/fail) and ensure that 2 meetings per term are done. If not, warn the student.
+-> Track supervisors
+	-> Co supervisor, Joint supervisor
+-> Multiple ad-hoc accesses, People soft accessibility
+-> Adherence to FIPPA and information privacy laws 
+-> Improve and enhance workflow
+-> Be able to identify weak students
+-> Field and Data validity
+-> Generate excel reports
+-> Track publications (Email out for request)
+-> Thesis and defense tracking.
+-> Archiving mechanism to store the data to ensure that student information material can be accessed until after graduation.
+-> Paperless deployment for advisory committee meetings.
+
+Key users of the system:
+-> Graduate Students
+	-> Not all of it
+-> Graduate Supervisor
+-> Graduate Executive
+-> Faculty Supervisor
+-> Undergrad Assistant (Cover)
+
+
+
+Major Workflow timeline:
+
+1.	Form advisory committee & send names to Wendy Hough by end of 1st term
+2.	Annual seminars 
+3.	Low-level exams for new students
+a.	Organized by department
+b.	Exam usually in late June; informed in early May
+4.	Possible MSc to PhD reclassification
+a.	Discuss with supervisor and advisory committee first
+b.	Reclassification must be completed before end of 5th semester
+5.	Submit and defend MSc thesis if not reclassified
+a.	http://www.uwo.ca/biophysics/grad_program_policies/guidelines_intro.htm
+
+
+

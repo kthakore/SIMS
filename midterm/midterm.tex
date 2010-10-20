@@ -43,16 +43,51 @@ Requirements for SIMS.
 \end{enumerate}
 \end{enumerate}
 \end{enumerate}
-\subsubsection{System feature 2}
-\begin{description}
 
-\item{3.2.1.1} Introduction/Purpose of feature
-\item{3.2.1.2} Stimulus/Response sequence
-\item{3.2.1.3} Associated functional requirements
-\begin{description}
-\item{3.2.1.3.1} Functional requirement 1
-\end{description}
-\end{description}
+
+\subsubsection{User Layers and Collaboration}
+\begin{enumerate}
+\item Purpose: Ensure ad-hoc access for multiple users to facilitate realtime collaboration and ensure up-to date information in the database. Permissions map to prevent unauthorized access and control the scope of data.
+\item Response Sequence: Multiple users will be able to log in simultaneously and information will update in realtime.
+\item Associated Functional Requirements:
+\begin{enumerate}
+\item User Group Permission Map
+\begin{enumerate}
+\item Graduate Students: This group of users will be able to log in and able to edit, update and save their demographic information and other program information including Advisory Committee members, Publications, Thesis etc.
+\item Advisory Committee Members: This group will be able to comment  and provide feedback on a student's advisory committee meeting output. Ideally, other student information will be restricted for changes.
+\item Graduate Executives: This group of users will primarily utilize the generated reports for planning and information purposes. Access will be restricted to viewing information. Will be taken to a Project dashboard where they will have a bird's eye view of reports and information statistics. Read-Only Access.
+\item Graduate Affairs Assistant: Key stakeholder for the system. WIll be able to manage, administer and access all informational program data. Access to change log. Generate reports in Excel, PDF etc.
+\item Technical Administrator: Primarily responsible for system administration, periodic maintenance schedule and providing technical assistance to users. Ability to reset system passwords and create users.
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Security}
+\begin{enumerate}
+\item Purpose: To build a secure system that adheres to local and federal privacy laws (FIPPA)
+\item Response Sequence: Any data inputted into the system will be encrypted and all passwords will be stored using hash.
+\item Associated Functional Requirements:
+\begin{enumerate}
+\item expand here... no clue?
+\begin{enumerate}
+\item Sections: Each student will have multiple sections that can be disabled or enabled.
+\item Expansion: Sections will expand to show summary of addition information.
+\item Link: Sections will link to sections pages for more detailed information.
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Database design}
+\begin{enumerate}
+\item Purpose: Improve Error detection and stability of the system.
+\item Response Sequence: The information will be normalized and 
+\item Associated Functional Requirements:
+\begin{enumerate}
+\item Data Normalization: Systematic way to ensure that the design is free from any undesirable characteristic - insertion, update, and deletion anomalies that could lead to the loss of data integrity.
+\item Data Redundancy to improve error detection
+\end{enumerate}
+\end{enumerate}
+
 
 \subsection{Performance requirements}
 \subsection{Design constraints}
@@ -63,4 +98,7 @@ Requirements for SIMS.
 \bibliography{ref}
 
 \end{document}
+
+
+
 

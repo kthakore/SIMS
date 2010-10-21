@@ -31,77 +31,77 @@ Requirements for SIMS.
 \subsection{System features}
 \subsubsection{Graphical User Interface}
 \begin{enumerate}
-\item purpose: provide a dossier format interface for users to see all relevant data of the student.
-\item response sequence: user will login, and be able to search a student or go through a table of all available users. selecting a student will bring the user onto this interface.
-\item associated functional requirements:
+\item Purpose: Provide a dossier format interface for users to see all relevant data of the student in a centralized location.
+\item Response sequence: User will login, and be able to search a student or go through a table of all available users. selecting a student will bring the user onto this interface.
+\item Associated functional requirements:
 \begin{enumerate}
-\item drill down: functional requirement 1
+\item Drill down: functional requirement 1
 \begin{enumerate}
-\item sections: each student will have multiple sections that can be disabled or enabled.
-\item expansion: sections will expand to show summary of addition information.
-\item link: sections will link to sections pages for more detailed information.
+\item Sections: each student will have multiple sections that can be disabled or enabled.
+\item Expansion: sections will expand to show summary of addition information.
+\item Link: sections will link to sections pages for more detailed information.
 \end{enumerate}
 \end{enumerate}
 \end{enumerate}
 \subsubsection{Term Calculations}
 \begin{enumerate}
-\item purpose: Calculate dates and event times for graduate student programs 
-\item response sequence: When a student profile and program is created the system will make triggers for relevant events to each milestone
-\item associated functional requirements:
+\item Purpose: Calculate dates and event times for graduate student programs 
+\item Response sequence: When a student profile and program is created the system will make triggers for relevant events to each milestone.
+\item Associated functional requirements:
 \begin{enumerate}
 \item Milestones: functional requirement 1
 \begin{enumerate}
-\item Calculate ending Semesters for Graduate Students
+\item Calculate start - end  Semester dates for Graduate Students
 \item Calculate due dates and triggers for milestones
 \end{enumerate}
 \item Funding Calculations: functional requirement 2
 \begin{enumerate}
-\item Track funding availibility for each semester
+\item Track funding availability for each semester and the source of funding
 \item Show next date for major funding applications
 \end{enumerate}
 \end{enumerate}
 \end{enumerate}
 \subsubsection{Tracking}
 \begin{enumerate}
-\item purpose: Track Major Milestones (grants, publications, exams etc) for graduate students through the program.
-\item response sequence: Data is update according to business rules and workflow of the program and the student's progress.
-\item associated functional requirements:
+\item Purpose: Track Major Milestones (grants, publications, exams etc) for graduate students through the program.
+\item Response sequence: Data is updated according to business rules and workflow of the program and the student's progress.
+\item Associated functional requirements:
 \begin{enumerate}
 \item Publications and Grants: functional requirement 1
 \begin{enumerate}
-			\item Track student publications that have been published 
-			\item Track grants that have been recieved by the student
+	\item Track student publications that have been published 
+	\item Track grants that have been received by the student
 \end{enumerate}
 \item Advisory Committee Members: functional requirement 2
 \begin{enumerate}
-			\item Send trigger to student to form an Advisory Committee
-			\item Allow students, and advisory committees to store and track comments and discussions
-			\item Show calendar view of all meetings and results of the meetings
-			\item Allow for single, coperative, or joint supervisors 
-			\item Track electronic submissions of advisory meeting form
+	\item Send trigger to student to form an Advisory Committee
+	\item Allow students, and advisory committees to store and track comments and discussions
+	\item Show calendar view of all meetings and results of the meetings
+	\item Allow for single or joint supervisors 
+	\item Track electronic submissions of advisory meeting form
 \end{enumerate}
 \item Manage Milestones: functional requirement 3
 \begin{enumerate}
     \item handle and process milestones for the Masters program in BioMedical Physics at UWO
     \begin{enumerate}
-			\item Form advisory committee by end of 1st term
-			\item Annual seminars 
-			\item Low-level exams for new students
-			\begin{enumerate}
-			\item Organized by department
-			\item Exam usually in late June; informed in early May
-			\end{enumerate}
-			\item Possible MSc to PhD reclassification
-			\begin{enumerate}
-			\item Discuss with supervisor and advisory committee first
-			\item Reclassification must be completed before end of 5th semester
-			\end{enumerate}
-			\item Submit and defend MSc thesis if not reclassified
-			\begin{enumerate}
-			\item http://www.uwo.ca/biophysics/grad\_program\_policies/guidelines\_intro.htm
-			\end{enumerate}
+	\item Form advisory committee by end of 1st term
+	\item Annual seminars 
+	\item Low-level exams for new students
+	\begin{enumerate}
+	\item Organized by department
+	\item Exam usually in late June; informed in early May
+	\end{enumerate}
+	\item Possible MSc to PhD reclassification
+	\begin{enumerate}
+	\item Discuss with supervisor and advisory committee first
+	\item Reclassification must be completed before end of 5th semester
+	\end{enumerate}
+	\item Submit and defend MSc thesis if not reclassified
+	\begin{enumerate}
+	\item http://www.uwo.ca/biophysics/grad\_program\_policies/guidelines\_intro.htm
+	\end{enumerate}
     \end{enumerate}
-\item Send Triggers and Recieve Responses: functional requirement 4
+\item Send Triggers and Receive Responses: functional requirement 4
 \begin{enumerate}
 \item Process conditional and requested triggers
 \item Allow Faculty Advisor to create and view all triggers
@@ -136,19 +136,15 @@ Requirements for SIMS.
 \item Response Sequence: Any data inputted into the system will be encrypted and all passwords will be stored using hash.
 \item Associated Functional Requirements:
 \begin{enumerate}
-\item expand here... no clue?
-\begin{enumerate}
-\item Sections: Each student will have multiple sections that can be disabled or enabled.
-\item Expansion: Sections will expand to show summary of addition information.
-\item Link: Sections will link to sections pages for more detailed information.
+\item To be defined
 \end{enumerate}
 \end{enumerate}
-\end{enumerate}
+
 
 \subsubsection{Database design}
 \begin{enumerate}
 \item Purpose: Improve Error detection and stability of the system.
-\item Response Sequence: The information will be normalized and 
+\item Response Sequence: The information will be normalized and data redundancy will be introduced
 \item Associated Functional Requirements:
 \begin{enumerate}
 \item Data Normalization: Systematic way to ensure that the design is free from any undesirable characteristic - insertion, update, and deletion anomalies that could lead to the loss of data integrity.
@@ -165,7 +161,6 @@ Requirements for SIMS.
 \bibliography{ref}
 
 \end{document}
-
 
 
 

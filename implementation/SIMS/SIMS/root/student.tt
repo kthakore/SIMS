@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- saved from url=(0040)http://10.211.55.3:8080/browse/UWOGRAD-1 -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">#gview-cmenu {  position: absolute;  border: 1px solid #ccc;  background: #fff;  margin: 0;  padding: 0;  top: 0;  left: 0;  z-index: 10000;  list-style-type: none;  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .5);}#gview-cmenu:focus {  outline: none;}.gview-cmenu-item {  margin: 0;  padding: 5px 7px;  cursor: default;  font-size: 13px;  font-family: arial, san-serif;  color: #000;  -webkit-user-select: none;}.gview-cmenu-item:hover {  background-color: #F0F7F9;}.gview-cmenu-item:first-child {  border-bottom: 1px solid #ddd;}.gview-hidden {  display: none;}</style>
-    <title>[#UWOGRAD-1] Parth Champaneri - The University of Western Ontario (Graduate Program Administration) </title>
+    <title>[#UWOGRAD-1] [% student.name %] - The University of Western Ontario (Graduate Program Administration) </title>
 
     <meta content="general" name="decorator">
     
@@ -71,7 +71,7 @@
         </form>
                 
         <div id="header-details-user" class="aui-dd-parent header-link-container dd-allocated" style="">
-         <a class="lnk" href="http://10.211.55.3:8080/secure/ViewProfile.jspa">Parth Champaneri</a>
+         <a class="lnk" href="/ViewProfile">[% student.name %]</a>
         <span class="drop-wrap">
         <a class="drop aui-dd-link" href="http://10.211.55.3:8080/browse/UWOGRAD-1#"><span>Access more options</span>
         </a>
@@ -213,7 +213,7 @@
     <li class="section"><a id="key-val" href="[% c.uri_for('/static/') %]/Student Page.html">UWOGRAD-1</a></li>
 </ul>
 
-<h2 id="issue_header_summary" class="item-summary"><a href="[% c.uri_for('/static/') %]/Student Page.html">Parth Champaneri</a></h2>
+<h2 id="issue_header_summary" class="item-summary"><a href="[% c.uri_for('/static/') %]/Student Page.html">[% student.name %]</a></h2>
     
     </div>
     
@@ -398,7 +398,7 @@
                             <div class="wrap">
                                 <strong title="Student Full Name" class="name">Student Full Name:</strong>
                                 <div id="customfield_10000-val" class="value type-textfield">
-                                          Parth Champaneri
+                                          [% student.name %]
   
                                 </div>
                             </div>
@@ -587,7 +587,7 @@
          xmlns:dc="http://purl.org/dc/elements/1.1/"
          xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
 <rdf:Description rdf:about="http://10.211.55.3:8080/browse/UWOGRAD-1"
-    dc:title="[#UWOGRAD-1] Parth Champaneri"
+    dc:title="[#UWOGRAD-1] [% student.name %]"
     dc:subject="2009-2010 Graduate Students"
     dc:description="Test 1 - Thesis Proposal"
     dc:date="2010-08-02 14:12:01,750"
@@ -595,7 +595,7 @@
     trackback:ping="http://10.211.55.3:8080/rpc/trackback/UWOGRAD-1"/>
 
 <rdf:Description rdf:about="http://10.211.55.3:8080/secure/ViewIssue.jspa?id=10000"
-    dc:title="[#UWOGRAD-1] Parth Champaneri"
+    dc:title="[#UWOGRAD-1] [% student.name %]"
     dc:subject="2009-2010 Graduate Students"
     dc:description="Test 1 - Thesis Proposal"
     dc:date="2010-08-02 14:12:01,750"
@@ -603,7 +603,7 @@
     trackback:ping="http://10.211.55.3:8080/rpc/trackback/UWOGRAD-1"/>
 
 <rdf:Description rdf:about="http://10.211.55.3:8080/secure/ViewIssue.jspa?key=UWOGRAD-1"
-    dc:title="[#UWOGRAD-1] Parth Champaneri"
+    dc:title="[#UWOGRAD-1] [% student.name %]"
     dc:subject="2009-2010 Graduate Students"
     dc:description="Test 1 - Thesis Proposal"
     dc:date="2010-08-02 14:12:01,750"

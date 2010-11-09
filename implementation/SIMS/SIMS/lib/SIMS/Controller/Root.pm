@@ -53,7 +53,7 @@ Attempt to render a view, if needed.
 
 sub base : Chained('/') CaptureArgs(0) PathPart('') {}
 
-sub student : Chained('base') Args(0) {}
+sub student :Chained('base') Args(1) { my ($self, $c, $id) = @_; $c->stash->{student} = $c->model('DB::Student')->find($id) }
 
 sub end : ActionClass('RenderView') {}
 

@@ -13,30 +13,30 @@
 <meta id="atlassian-token" name="atlassian-token" content="Q2fWmULohx">
 
 
-    <link rel="shortcut icon" href="http://10.211.55.3:8080/s/531/37/_/favicon.ico">
-    <link rel="icon" type="image/png" href="http://10.211.55.3:8080/s/531/37/_/images/icons/favicon.png">
+    <link rel="shortcut icon" href="[% c.uri_for('/static/') %]/favicon.ico">
+    <link rel="icon" type="image/png" href="[% c.uri_for('/static/') %]/favicon.png">
 
     
     <script type="text/javascript">var contextPath = '';</script>
-<link type="text/css" rel="stylesheet" href="./Student Page_files/com.atlassian.auiplugin-ajs.css" media="all">
+<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/com.atlassian.auiplugin-ajs.css" media="all">
 <!--[if IE]>
 <link type="text/css" rel="stylesheet" href="/s/531/37/2.1.3/_/download/batch/com.atlassian.auiplugin:ajs/com.atlassian.auiplugin:ajs.css?ieonly=true" media="all">
 <![endif]-->
-<link type="text/css" rel="stylesheet" href="./Student Page_files/jira.webresources-jquery-fancybox-1-2-6.css" media="all">
-<link type="text/css" rel="stylesheet" href="./Student Page_files/jira.webresources-global-static.css" media="all">
+<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/jira.webresources-jquery-fancybox-1-2-6.css" media="all">
+<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/jira.webresources-global-static.css" media="all">
 <!--[if IE]>
 <link type="text/css" rel="stylesheet" href="/s/531/37/1.0/_/download/batch/jira.webresources:global-static/jira.webresources:global-static.css?ieonly=true" media="all">
 <![endif]-->
-<link type="text/css" rel="stylesheet" href="./Student Page_files/jira.webresources-global-static(1).css" media="print">
-<link type="text/css" rel="stylesheet" href="./Student Page_files/global.css" media="all">
-<script type="text/javascript" src="./Student Page_files/com.atlassian.auiplugin-ajs.js"></script>
-<script type="text/javascript" src="./Student Page_files/jira.webresources-jira-global.js"></script>
-<script type="text/javascript" src="./Student Page_files/jira.webresources-jquery-fancybox-1-2-6.js"></script>
-<script type="text/javascript" src="./Student Page_files/jira.webresources-viewissue.js"></script>
-<script type="text/javascript" src="./Student Page_files/jira.webresources-key-commands.js"></script>
-<script type="text/javascript" src="./Student Page_files/jira.webresources-header.js"></script>
+<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/jira.webresources-global-static(1).css" media="print">
+<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/global.css" media="all">
+<script type="text/javascript" src="[% c.uri_for('/static/') %]/com.atlassian.auiplugin-ajs.js"></script>
+<script type="text/javascript" src="[% c.uri_for('/static/') %]/jira.webresources-jira-global.js"></script>
+<script type="text/javascript" src="[% c.uri_for('/static/') %]/jira.webresources-jquery-fancybox-1-2-6.js"></script>
+<script type="text/javascript" src="[% c.uri_for('/static/') %]/jira.webresources-viewissue.js"></script>
+<script type="text/javascript" src="[% c.uri_for('/static/') %]/jira.webresources-key-commands.js"></script>
+<script type="text/javascript" src="[% c.uri_for('/static/') %]/jira.webresources-header.js"></script>
 
-    <script type="text/javascript" src="./Student Page_files/shortcuts.js"></script>
+    <script type="text/javascript" src="[% c.uri_for('/static/') %]/shortcuts.js"></script>
 </head>
 
 
@@ -63,7 +63,7 @@
 <div id="header" style="">
     <div id="header-top">
         <a id="logo" href="http://10.211.55.3:8080/secure/Dashboard.jspa">
-                        <img class="logo" src="./Student Page_files/image1.tiff" width="800" height="59" border="0" alt="The University of Western Ontario (Graduate Program Administration)">
+                        <img class="logo" src="[% c.uri_for('/static/') %]/image1.tiff" width="800" height="59" border="0" alt="The University of Western Ontario (Graduate Program Administration)">
                     </a>
                 <form id="quicksearch" action="http://10.211.55.3:8080/secure/QuickSearch.jspa" method="post">
             <label for="quickSearchInput" title="Go directly to an issue by typing a valid issue key, or run a free-text search." class="overlabel-apply show">Quick Search</label>
@@ -196,7 +196,7 @@
 
 <h1 class="item-name avatar" style="background-image:url(/secure/projectavatar?pid=10000&amp;avatarId=10000&amp;size=large)">
         
-            <img id="project-avatar" alt="" class="project-avatar-48" height="48" src="./Student Page_files/projectavatar" width="48">
+            <img id="project-avatar" alt="" class="project-avatar-48" height="48" src="[% c.uri_for('/static/') %]/projectavatar" width="48">
         
         <span>2009-2010 Graduate Students</span>
 </h1>
@@ -210,10 +210,10 @@
             2009-2010 Graduate Students</a>
     </li>
     
-    <li class="section"><a id="key-val" href="./Student Page_files/Student Page.html">UWOGRAD-1</a></li>
+    <li class="section"><a id="key-val" href="[% c.uri_for('/static/') %]/Student Page.html">UWOGRAD-1</a></li>
 </ul>
 
-<h2 id="issue_header_summary" class="item-summary"><a href="./Student Page_files/Student Page.html">Parth Champaneri</a></h2>
+<h2 id="issue_header_summary" class="item-summary"><a href="[% c.uri_for('/static/') %]/Student Page.html">Parth Champaneri</a></h2>
     
     </div>
     
@@ -360,7 +360,7 @@
                 <div class="wrap">
                     <strong class="name">Type:</strong>
                     <span id="type-val" class="value">
-                                                                        <img src="./Student Page_files/task.gif" height="16" width="16" border="0" align="absmiddle" alt="New Student" title="New Student - A task that needs to be done.">
+                                                                        <img src="[% c.uri_for('/static/') %]/task.gif" height="16" width="16" border="0" align="absmiddle" alt="New Student" title="New Student - A task that needs to be done.">
              New Student
                     </span>
                 </div>
@@ -369,7 +369,7 @@
                 <div class="wrap">
                     <strong class="name">Status:</strong>
                     <span id="status-val" class="property-list-value">
-                                                                        <img src="./Student Page_files/status_closed.gif" height="16" width="16" border="0" align="absmiddle" alt="Completed - Comprehensive Exam 1" title="Completed - Comprehensive Exam 1 - ">
+                                                                        <img src="[% c.uri_for('/static/') %]/status_closed.gif" height="16" width="16" border="0" align="absmiddle" alt="Completed - Comprehensive Exam 1" title="Completed - Comprehensive Exam 1 - ">
              Completed - Comprehensive Exam 1
                     </span>
                 </div>

@@ -1,0 +1,577 @@
+a {outline: none;}
+li a:hover, li a {cursor:pointer;}
+img {border: none;}
+
+.clear {clear: both;}
+.hidden {display: none;}
+
+/* AUI form.css overrides */
+.gadget form.aui {background: #fff; border: 1px solid #bbb; border-bottom-width: 2px; margin-bottom:0; padding:15px 15px 0px;}
+.gadget form.aui fieldset {margin-bottom:0px; padding-bottom:5px;}
+.gadget form.top-label fieldset {margin: 0 auto; width: 230px;}
+.gadget form.aui .text {width: 225px;}
+.gadget form.aui .list-container label {padding-top: 2px;}
+.gadget form.aui .list-container ul.faux-list {line-height: 1.2; margin: 0 0 0.4em 0;}
+  .gadget form.aui .list-container ul.faux-list li {min-height: 1.4em; overflow: auto;}
+    .gadget form.aui .list-container ul.faux-list li span {display: block; float: left; margin: 0 0.3em 0 0; min-width: 3em; width: auto;}
+    .gadget form.aui .list-container ul.faux-list li a,
+    .gadget form.aui .list-container ul.faux-list li a:link,
+    .gadget form.aui .list-container ul.faux-list li a:visited {background: transparent url('../../resources/com.atlassian.gadgets.dashboard%3Adashboard/css/images/icoblack_delete.png') no-repeat 0 0; display: block; float: left; height: 13px; margin: 0.2em 0 0 0; text-indent: -9999px; width: 13px;}
+    .gadget form.aui .list-container ul.faux-list li a:hover,
+    .gadget form.aui .list-container ul.faux-list li a:active,
+    .gadget form.aui .list-container ul.faux-list li a:focus {background-image: url('../../resources/com.atlassian.gadgets.dashboard%3Adashboard/css/images/ico_delete.png');}
+.gadget form.aui .list-container button.js {padding: 2px 4px 3px 4px;} /* Unnecessary in FF, but Safari wants it explicit */
+.gadget form.aui div.submit {text-align: center;}
+
+/* AUI dropdown.css overrides */
+.aui-dd-parent .aui-dropdown {border-color: #bbb;}
+  .aui-dd-parent .standard li.groupmarker {border-top:1px solid #bbb; padding-top:4px; margin-top:4px;}
+    .aui-dd-parent .aui-dropdown a {text-decoration: none;}
+
+    .aui-dd-parent.active a.aui-dd-trigger {z-index: 2004; position:relative; background-position: -26px 0; border: none; border-bottom:2px solid #fff;}
+    
+
+/* Dashboards Specific */
+.dashboard {clear: both; font-size: 12px; padding:1em; text-align: left; overflow:hidden; position:relative;}
+  .dashboard .dashboard-title {border-bottom: 1px solid #666; font-size: 150%; font-weight: 700;}
+
+  .dashboard #dashboard-header:after {content: "."; display: block; height: 0; clear: both; visibility: hidden;} /* IE */
+
+    .dashboard ul.disabled span { color:#999999; font-size: 1em; font-weight: bold; padding: 0.6em 0.8em 0.6em 0.8em;}
+    .dashboard ul.disabled a { padding: 0;}
+
+  .dashboard .columns {clear: both; margin: 3em 0; padding: 1em 0;}
+
+  .dashboard ul.column {float: left; list-style-type: none; margin: 0 1% -1.5em 1%; padding: 0; width: 47.5%; min-height:200px;} /* has IE CSS */
+  .dashboard ul.empty { position: relative;}
+    .dashboard ul.empty li.empty-text,
+    .dashboard .columns .no-gadgets p,
+    .dashboard .columns .placeholder p {background: transparent; color: #aaa; font-size: 2em; padding: 2em; text-align: center; background: #f5f5f5; border: 2px dashed #bbb; height:200px;}
+
+
+.layout-a ul.column, .layout-a div.gadget  {width: 98%;}
+.layout-a ul.column.second, .layout-a ul.column.third {display:none;}
+  .layout-aa ul.column, .layout-aa div.gadget {width: 47.5%;}
+    .layout-aa ul.third {display:none;}
+  .layout-ba ul.column, .layout-ba div.gadget {width: 68%;}
+    .layout-ba ul.first, .layout-ba div.gadget.first {width: 27%;}
+    .layout-ba ul.third {display:none;}
+  .layout-ab ul.column, .layout-ab div.gadget {width: 27%;}
+    .layout-ab ul.first, .layout-ab div.gadget.first {width: 68%;}
+    .layout-ab ul.third {display:none;}
+  .layout-aaa ul.column, .layout-aaa div.gadget {width: 30.9%;}
+
+  .layout.maximized .column,
+  .layout.maximized .column.maximized li {display: none;}
+  .layout.maximized .column.maximized {display: block; width: 98%;}
+  .layout.maximized .column.maximized li.maximized {display:list-item;}
+  .layout.maximized .column.maximized div.gadget.maximized .minimization {display: none;}
+
+  .dashboard.dragging ul.empty {background: none; border:none;}
+    .dashboard.dragging ul.empty li.empty-text {display: none!important;} /* apologies about the important, I just had to because sortable control applies an inline style. */
+
+    .dashboard ul.column li.gadget {border: 1px solid #fff; border-left: none; border-right: none; margin: 0 0 21px 0; padding: 0 1px 0 1px; position: relative;}
+    .dashboard ul.column li.gadget .gadget-hover {background: #999;}
+
+    .dashboard div.gadget .gadget-container {border: 1px solid #bbb;-moz-border-radius:2px;}
+    .dashboard .gadget-hover {border-color: #999;}
+
+    .dashboard li.placeholder,
+    .dashboard .columns .no-gadgets {background: #f5f5f5; border: 2px dashed #bbb; margin: 0 0 21px 0; min-height: 10em; position: relative;} /* has IE CSS */
+    .dashboard .columns .no-gadgets {min-height: 40em;} /* has IE CSS */
+
+    .dashboard div.gadget .dashboard-item-title {background: #eee; color: #fff; font-size: 12px; font-weight: bold; margin: 0; padding: 4px 4.5em 2px 0.6em; min-height:18px;}
+    .dashboard div.gadget .dashboard-item-title a {color:#fff;text-decoration:none;}
+    .dashboard div.gadget .dashboard-item-title a:hover {color:#fff;text-decoration:underline;}
+    .dashboard.draggable div.gadget .dashboard-item-title {cursor: move;}
+    .dashboard.initializing div.gadget {visibility:hidden;}
+
+      .gadget .gadget-menu {background: transparent; color:#036; display: none; position: absolute; right: 12px; top: 1px;} 
+      .gadget-hover .gadget-menu {display: block;}
+
+      .gadget .gadget-menu ul li.i-move {background-position: 0 0; margin: 3px 0 0 0; width: 13px;}  /* IE */
+
+        .gadget .gadget-menu ul {float: right; margin: 0 0 0 1em; padding: 0; width: auto;}
+          .gadget .gadget-menu ul li {float: left; list-style-type: none; margin: 0 0 0 0.2em; width: auto;}
+            .gadget-menu ul li a,
+            .gadget-menu ul li span {display: block; padding: 0.1em 0.2em 0 0.2em;}
+            .gadget-menu ul .aui-dd-parent a {margin: 4px 0 0 0; padding: 0;}
+              .gadget-menu ul li a:link,
+              .gadget-menu ul li a:visited {}
+              .gadget-menu ul li a:hover,
+              .gadget-menu ul li a:active,
+              .gadget-menu ul li a:focus {}
+
+              .gadget .gadget-menu ul li a.maximize {background-position: -39px 0; margin: 4px 0.2em 0 0.2em; padding: 0;} /* IE */
+              .gadget .maximized .gadget-menu ul li a.maximize {background-position: -52px 0;} /* IE */
+
+        /* IE - .gadget .gadget-menu .aui-dd-parent .aui-dd-trigger */
+        .gadget .gadget-menu .aui-dd-parent .aui-dropdown {border: 1px solid #bbb; float: none; padding: 4px 0 4px 0; margin: 0;}
+
+          .gadget .gadget-menu ul .aui-dd-parent ul li {float: none; margin: 0; padding: 0;}
+            .gadget .gadget-menu ul .aui-dd-parent ul li a {float: none; margin: 0; width: auto; text-decoration: none;}
+
+            .gadget .gadget-menu .aui-dd-parent .gadget-colors {min-width: 136px; overflow: hidden;} /* has IE CSS */
+            .gadget .gadget-menu .aui-dd-parent .gadget-colors ul {float: left; margin: 0; padding: 0.3em 2px 0.3em 6px; width: auto;}
+              .gadget .gadget-menu .aui-dd-parent .gadget-colors li {float: left; margin: 0 4px 4px 0;} /* IE */
+                .gadget .gadget-menu .aui-dd-parent .gadget-colors li a {border: 1px solid #bbb; background: transparent; color: #000; height: 10px; text-indent: 32767px; width: 10px; padding:0;} /* IE */
+
+                  .gadget .aui-dd-parent .aui-dropdown div.gadget-colors li a:link,
+                  .gadget .aui-dd-parent .aui-dropdown div.gadget-colors li a:visited,
+                  .gadget .aui-dd-parent .aui-dropdown div.gadget-colors li a:hover,
+                  .gadget .aui-dd-parent .aui-dropdown div.gadget-colors li a:active,
+                  .gadget .aui-dd-parent .aui-dropdown div.gadget-colors li a:focus {background: transparent; color: #000; padding: 0;} /* IE */
+
+        .gadget .dashboard-item-content {background:#fff;}
+        .gadget .dashboard-item-content.minimization {position:absolute; width:100%; left:-9999px;}
+
+        /* Colored Gadgets */
+        /* color1 - Light Blue */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color1,
+        .dashboard div.color1 .gadget-hover,
+        .dashboard div.color1 .dashboard-item-title {background: #369;} /* IE */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color1 a:hover {border: 1px solid #369;}
+
+        .dashboard div.color1 .gadget-hover,
+        div.color1 .gadget-hover .gadget-menu .aui-dropdown,
+        div.color1 form.aui {border-color: #d3dee9;} /* IE */
+
+        /* color2 - Red */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color2,
+        .dashboard div.color2 .gadget-hover,
+        .dashboard div.color2 .dashboard-item-title {background: #900925;} /* IE */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color2 a:hover {border: 1px solid #900925;}
+
+        .dashboard div.color2 .gadget-hover,
+        div.color2 .gadget-hover .gadget-menu .aui-dropdown,
+        div.color2 form.aui {border-color: #e7cad0;} /* IE */
+
+        /* color3 - Orange */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color3,
+        .dashboard div.color3 .gadget-hover,
+        .dashboard div.color3 .dashboard-item-title {background: #d94625;} /* IE */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color3 a:hover {border: 1px solid #d94625;}
+
+        .dashboard div.color3 .gadget-hover,
+        div.color3 .gadget-hover .gadget-menu .aui-dropdown,
+        div.color3 form.aui {border-color: #f7d7d0;} /* IE */
+
+        /* color4 - Green */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color4,
+        .dashboard div.color4 .gadget-hover,
+        .dashboard div.color4 .dashboard-item-title {background: #346006;} /* IE */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color4 a:hover {border: 1px solid #346006;}
+
+        .dashboard div.color4 .gadget-hover,
+        div.color4 .gadget-hover .gadget-menu .aui-dropdown,
+        div.color4 form.aui {border-color: #d3ddc9;} /* IE */
+
+        /* color5 - Dark Blue */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color5,
+        .dashboard div.color5 .gadget-hover,
+        .dashboard div.color5 .dashboard-item-title {background: #036;} /* IE */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color5 a:hover {border: 1px solid #036;}
+
+        .dashboard div.color5 .gadget-hover,
+        div.color5 .gadget-hover .gadget-menu .aui-dropdown,
+        div.color5 form.aui {border-color: #c8d3de;} /* IE */
+
+        /* color6 - Purple */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color6,
+        .dashboard div.color6 .gadget-hover,
+        .dashboard div.color6 .dashboard-item-title {background: #411e66;} /* IE */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color6 a:hover {border: 1px solid #411e66;}
+
+        .dashboard div.color6 .gadget-hover,
+        div.color6 .gadget-hover .gadget-menu .aui-dropdown,
+        div.color6 form.aui {border-color: #d6cede;} /* IE */
+
+        /* color7 - Light Gray */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color7,
+        .dashboard div.color7 .gadget-hover,
+        .dashboard div.color7 .dashboard-item-title {background: #bbb;} /* IE */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color7 a:hover {border: 1px solid #000;}
+
+        .dashboard div.color7 .gadget-hover,
+        div.color7 .gadget-hover .gadget-menu .aui-dropdown,
+        div.color7 form.aui {border-color: #f0f0f0;} /* IE */
+
+        /* color8 -- Octarine! */
+        .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color8 {background: transparent url('../../resources/com.atlassian.gadgets.dashboard%3Adashboard/css/images/icon_chromeless.gif') no-repeat center;}
+            .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color8 a:hover,
+            .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color8 a:active,
+            .gadget .gadget-menu .aui-dd-parent .gadget-colors li.color8 a:focus {background: transparent url('../../resources/com.atlassian.gadgets.dashboard%3Adashboard/css/images/icon_chromeless.gif') no-repeat center; border: 1px solid #000;}
+           div.color8 .gadget-hover .gadget-menu .aui-dropdown {border: 1px solid #eee;}
+
+        .dashboard div.color8 {background: transparent;}
+        .dashboard div.color8 .gadget-hover {background: #eee;}
+          .dashboard div.color8 .gadget-container {border: 1px solid #fff;}
+          .dashboard div.color8 .gadget-hover {border-color: #eee;}
+
+          .dashboard div.color8 .dashboard-item-content {background: #fff;}
+
+            .dashboard div.color8 .dashboard-item-title {color: #000; visibility: hidden;}
+            .dashboard div.color8 .gadget-hover .dashboard-item-title {visibility: visible;}
+            div.color8 form.aui {border-color: transparent; border-bottom-color: #bbb;}
+
+        .color8 .gadget-menu ul li.i-move {background-position: 0 -13px;}
+
+        .color8 .gadget-menu ul li a.aui-dd-trigger:link,
+        .color8 .gadget-menu ul li a.aui-dd-trigger:visited,
+        .color8 .aui-dd-parent span a.aui-dd-trigger, 
+        .color8 .aui-dd-parent a.aui-dd-trigger {background-position: -13px -13px;}
+        .color8 .gadget-menu ul li a.aui-dd-trigger:hover,
+        .color8 .gadget-menu ul li a.aui-dd-trigger:active,
+        .color8 .gadget-menu ul li a.aui-dd-trigger:focus,
+        .color8 .gadget-menu ul li a.aui-dd-trigger.active {background-position: -26px -13px;}
+
+        .color8 .gadget-menu ul li a.maximize {background-position: -39px -13px;}
+        .color8 .maximized .gadget-menu ul li a.maximize {background-position: -52px -13px;}
+
+  #layout-options {display: none;}
+  #layout-dialog {}
+    #layout-dialog .dialog {border: none;}
+    #layout-dialog h2 a,
+    #layout-dialog h2 a:link,
+    #layout-dialog h2 a:visited,
+    #layout-dialog h2 a:hover,
+    #layout-dialog h2 a:active,
+    #layout-dialog h2 a:focus {background: transparent url('../../resources/com.atlassian.gadgets.dashboard%3Adashboard/images/icons/close.png') no-repeat 0 0; display: block; height: 16px; position: absolute; right: 0.5em; text-indent: -9999px; top: 0.75em; width: 16px;}
+    #layout-dialog .panel-body {padding: 10px 0 10px 16px;}
+
+    #layout-dialog p {margin: 0 0 1em 0; text-align: left;}
+    #layout-dialog ul {margin: 0; padding: 0;}
+      #layout-dialog ul li {list-style-type: none; margin: 0; padding: 0;}
+      #layout-dialog ul li a,
+      #layout-dialog ul li a:link,
+      #layout-dialog ul li a:visited {border: 1px solid #bbb; display: block; float: left; margin: 0 1em 1em 0; outline: none; padding: 0.35em; width: auto;}
+      #layout-dialog ul li a:hover,
+      #layout-dialog ul li a:active,
+      #layout-dialog ul li a:focus {border-color: #666;}
+
+        #layout-dialog ul li a strong {background: #fff url('../../resources/com.atlassian.gadgets.dashboard%3Adashboard/css/images/sprite-layouts.png') no-repeat 0 0; cursor: pointer; display: block; float: left; height: 37px; text-indent: -9999px; width: 68px;}
+        ul li a#layout-a strong {background-position: 0 0;}
+        ul li a#layout-aa strong {background-position: 0 -41px;}
+        ul li a#layout-ba strong {background-position: 0 -82px;}
+        ul li a#layout-ab strong {background-position: 0 -123px;}
+        ul li a#layout-aaa strong {background-position: 0 -163px;}
+
+        .layout-a ul li #layout-a strong,
+        #layout-dialog #layout-a:hover strong,
+        #layout-dialog #layout-a:active strong,
+        #layout-dialog #layout-a:focus strong {background-position: -72px -1px;}
+        .layout-aa ul li #layout-aa strong,
+        #layout-dialog #layout-aa:hover strong,
+        #layout-dialog #layout-aa:active strong,
+        #layout-dialog #layout-aa:focus strong {background-position: -72px -41px;}
+        .layout-ba #layout-ba strong,
+        #layout-dialog #layout-ba:hover strong,
+        #layout-dialog #layout-ba:active strong,
+        #layout-dialog #layout-ba:focus strong {background-position: -72px -82px;}
+        .layout-ab #layout-ab strong,
+        #layout-dialog #layout-ab:hover strong,
+        #layout-dialog #layout-ab:active strong,
+        #layout-dialog #layout-ab:focus strong {background-position: -72px -122px;}
+        .layout-aaa #layout-aaa strong,
+        #layout-dialog #layout-aaa:hover strong,
+        #layout-dialog #layout-aaa:active strong,
+        #layout-dialog #layout-aaa:focus strong {background-position: -72px -163px;}
+
+        .layout-a ul li a#layout-a,
+        .layout-aa ul li a#layout-aa,
+        .layout-ba ul li a#layout-ba,
+        .layout-ab ul li a#layout-ab,
+        .layout-aaa ul li a#layout-aaa {background-color: #eee; border-color: #666;}
+
+
+      /* Macro shizzle from CONF */
+
+      .dialog .page-menu {
+          margin: 0;
+      }
+      .dialog .button-panel button {
+          margin-right: 10px;
+      }
+      .dialog .button-panel button.left {
+          margin: 2px 0 0 10px
+      }
+      ul.page-menu button {
+          cursor: pointer;
+      }
+      ol.macro-list {
+          list-style: none;
+          padding: 0;
+          margin: -10px;
+          float: left;
+          width: auto;
+      }
+      .macro-list-item {
+          background: url(../../resources/com.atlassian.gadgets.dashboard%3Adashboard/css/images/bg-gadget-default.png) no-repeat 10px 10px;
+          float: left;
+          padding: 0 20px 0 142px;
+          width: 152px;
+          margin: 0;
+          border: 2px white;
+          height: 142px;
+          font-size: .77em;
+          overflow: hidden;
+      }
+      .macro-list-item .macro-desc {
+          height: 81px;
+          margin-top: 2px;
+          position: relative;
+          overflow: hidden;
+      } /* IE */
+      .macro-list-item h3 {
+          margin: 11px 0 0;
+          padding: 0;
+      }
+      .macro-list-item img {
+          border:1px solid #999;
+          margin: 10px 0 0 -132px;
+          float: left;
+      }
+      .macro-list-item:hover {
+          background-color: #eee;
+      }
+      .macro-list-item .add-button {
+          margin: 81px 0 0 -131px;
+          float:left;
+          width: auto;
+      } /* IE */
+
+      .selected-macro:hover,
+      .selected-macro {
+          background-color: #fff3c5;
+      }
+      .dialog .panel-body.macro-input-panel {
+          padding: 0;
+          margin: 0;
+          overflow: hidden;
+      }
+      .dialog-panel {
+          overflow: auto;
+      }
+      .macro-input-fields,
+      .macro-preview-container,
+      .macro-preview,
+      #macro-insert-container,
+      #macro-insert-container iframe {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+      }
+      .macro-preview-container {
+          float: left;
+          width: 531px;
+          border-right: 1px solid #eee;
+      }
+      .macro-preview {
+          padding: 0 10px;
+      }
+      .macro-input-fields {
+          float: left;
+          width: 328px;
+          font-size: 0.8em;
+      }
+      .macro-input-fields .macro-desc {
+          padding-top: 20px;
+      }
+      .macro-input-fields input,
+      .macro-input-fields textarea {
+          width: 280px;
+      }
+      /*For FF2*/
+      .macro-input-fields .boolean-param input {
+          width: auto;
+      }
+      .macro-input-fields .macro-param-div select {
+          min-width: 100px;
+      }
+      #macro-browser-dialog .macro-param-desc {
+          color: #666;
+          padding-top: 3px;
+          padding-bottom: 2px;
+          font-size: 0.9em;
+      }
+      #macro-browser-dialog .macro-desc{
+          color: #333;
+      }
+      #macro-browser-dialog .macro-title {
+          color: #333;
+          font-weight:bold;
+      }
+      .macro-help,
+      .macro-example,
+      .macro-freeform-input,
+      .macro-body-div,
+      .macro-param-div,
+      .macro-input-fields .macro-desc {
+          padding: 10px 10px 0 10px;
+      }
+      .macro-body-div label,
+      .macro-param-div label {
+          color: #000;
+          display: block;
+          font-weight: normal;
+      }
+      .macro-help h3,
+      .macro-example h3 {
+          color: #333;
+          margin: 0;
+          padding: 10px 0;
+      }
+      #macro-browser-preview iframe {
+          width: 100%;
+          border: medium none;
+      }
+      #macro-browser-preview.macro-loading {
+          margin: 140px 0 0 180px;
+      }
+      #macro-browser-search {
+          float: right;
+          margin: 10px 0;
+      }
+
+        #add-by-url-template {
+            background-color:#bbb;
+        }
+
+        #add-by-url-template .aui {
+            text-align:center;
+            margin:auto -10px auto -10px;
+            padding:10px;
+            border:0px solid #eee;
+            background-color:#fff;
+        }
+
+        .macro-input-fields .unknown { color:#bbb; font-style:italic;}
+        .dialog .info { margin:10px 10px; padding:10px; border:1px solid #999999; background-color:#efefef; text-align:left;}
+        .dialog .info p { margin:10px 0px;}
+        .dialog .nobox { border:0px solid #999999; background-color:#fff;}
+
+        .macro-button-remove {display:none;}
+        .macro-button-remove-broken {display:none;}
+
+#add-gadget-disabled {padding-left: 0.8em; padding-right: 0.8em; color: gray; font-weight: bold;}
+
+.dashboard.dragging .hotspot-shim {display:block;}
+.hotspot-shim {position:absolute; z-index:10; display:none;}
+
+.throbber { width:20px; height:25px}
+.throbber.loading {background:transparent url( "../../resources/com.atlassian.gadgets.dashboard%3Adashboard/css/images/wait.gif") 0 5px no-repeat;}
+#dir-throbber { margin:3px 10px 0 0; float:left;}
+
+.centered-form { margin: 15px 0 15px 0; padding: 0 160px 0 160px; text-align: left;}
+.centered-form span.description { font-size: .8em;}
+
+.dashboard-shim {z-index:4; position:absolute; top:0; left:0; height:100%; width:100%; display:none;}
+    .propagation-blocker .dashboard-shim {display:block;}
+
+.layout {clear:both;padding:1em .5em;}
+    .layout:after {content: "."; display: block; height: 0; clear: both; visibility: hidden;} /* IE */
+    .dashboard.initializing .layout * {visibility:hidden;}
+    .layout .placeholder p {background: transparent; color: #aaa; font-size: 2em; padding: 2em; text-align: center;}
+
+div.gadget {z-index:1; position:absolute; margin:0; padding:0;}
+    .propagation-blocker div.gadget {z-index:2;}
+    div.gadget.dragging {z-index:3;}
+    div.gadget.dropdown-active {z-index:5!important;}
+    div.gadget .gadget-container {position:relative;}
+    div.gadget .gadget-container .shadow {left:0; top:0; display:none; margin-left:-16px; position:absolute; width:100%;}
+    div.gadget.dragging .gadget-container .shadow, div.gadget.dropdown-active .gadget-container .shadow {z-index:7;}
+    div.gadget.dropdown-active .gadget-container .shadow {display:block!important;} /* shadow also acts as shim for iframe */
+    div.gadget.dropdown-active .gadget-container .shadow div {visibility:hidden;}
+    div.gadget.dropdown-active .gadget-menu {z-index:8;}
+    div.gadget .gadget-container .submit.loading {background:transparent url( "../../resources/com.atlassian.gadgets.dashboard%3Adashboard/css/images/wait.gif") 100% center no-repeat;}
+
+/* diagnostics warning */
+#diagnostic-warning {background:#FFFFDD none repeat scroll 0 0; border:1px solid #F7DF92; color:#333333; margin:0 0 0.2em; text-align:center; }
+#diagnostic-content {text-align: left;}
+#diagnostic-warning p {margin:0 1em; padding:0.3em;}
+#diagnostic-warning a.close {background: transparent url('../../resources/com.atlassian.gadgets.dashboard%3Adashboard/images/icons/close.png') no-repeat scroll 0 0; cursor: pointer; display: block; float: right; height: 16px; line-height: 12px; text-indent: -9999px; width: 16px;}
+
+/* tabs */
+ul.tabs {list-style-type:none;margin:0;padding:0;z-index:5;}
+ul.tabs li {border:.083em solid #bbb;display:block;margin: -.083em -.083em 0 0 ;padding:0;}
+ul.tabs li:hover {cursor:pointer;}
+ul.tabs li a {background-color:#f0f0f0;color:#535353;display:block;font-weight:700;text-decoration:none;}
+ul.tabs li a:hover {background:#fff none repeat scroll 0 0;color:#535353;}
+ul.tabs li em {display:none;}
+ul.tabs li strong,
+ul.tabs li.tab-title {display:block;overflow:hidden;padding: 0.4em 0.5em 0.2em;white-space:nowrap;}
+ul.tabs li.tab-title {background-color:#fff;border:none;cursor:default;margin:0;}
+ul.tabs li.active {background-color:#fff;}
+ul.tabs li.active strong {background-color:transparent;color:#000;cursor:default;}
+ul.tabs li.active a {background:#fff none repeat scroll 0 0;color:#000;}
+ul.tabs li.active.loading a {background:#fff url("../../resources/com.atlassian.gadgets.dashboard%3Adashboard/css/images/wait.gif") 95% center no-repeat;}
+/* vertical tabs
+- as used on browse projects */
+    ul.vertical {float:left;position:relative;margin-right:-.083em;width:11em;}
+    ul.vertical li {margin:-.083em 0 0;}
+    ul.vertical li.tab-title {border-right:.083em solid #bbb;margin-bottom:.083em;}
+    ul.vertical li.first {margin-top:1em;}
+    ul.vertical li.active {background-color:#fff;border-right:none;margin-left:-0.5em;}
+    .tabwrap ul.vertical {left:0;}
+/* horizontal tabs
+- if the bottom border is required the ul needs to be in a div class="tabwrap" */
+    .tabwrap {border-bottom:.083em solid #bbb;margin:1em 0;padding-left:.5em;position:relative;}
+    ul.horizontal {overflow:hidden;position:relative;top:.083em;}
+    ul.horizontal li {float:left;margin: 0 -.083em 0 0 ;width:auto;white-space:nowrap;}
+    ul.horizontal li strong,
+    ul.horizontal li.tab-title {padding:.2em .5em .1em;}
+    ul.horizontal li.first {margin-left:1em;}
+    ul.horizontal li.active {border-bottom-color:#fff;color:#000;}
+/* end tabs */
+
+
+/* dashboards tabs specific */
+ul.tabs {clear:left;}
+ul.tabs li {position:relative;}
+ul.tabs li.hover a {background: #369; color:#fff;}
+ul.tabs li.inactive {opacity:0.5;} /* IE */
+
+.dashboard.v-tabs {padding-left:12em;}
+.dashboard.v-tabs ul.vertical {float:none;left:1.083em;position:absolute;top:1em;}
+
+/* This needs to be !important because jQuery.ui applies inline styles. */
+.dashboard.hotspot-active li.placeholder {display:none!important;}
+
+.shim {display:none!important;} /* disable aui shim. Will not work in ie, because our z-indexing is a few levels deep. */
+
+
+/* Operation options - generally used at the top right of the page */
+#dash-options {float:right;padding:0.5em 1em 0;z-index:1000;}  
+ul.operations {list-style-type:none;margin:0;}
+ul.operations li {float:left;margin: 0 0 0 4px;position:relative;}
+ul.operations li a.lnk {background-color:transparent;color:#333;float:left;font-size:1.1em;padding: 3px 7px 4px 25px;text-decoration: none;}
+ul.operations li a.lnk:hover,
+ul.operations li.active a.lnk {background-color:#325c82;color:#fff;}
+ul.operations li a.lnk img {position:absolute;top:5px;left:5px;}
+ul.operations li a.lnk.no-icon {padding-left:5px;}
+ul.operations li ul {margin:0;}
+
+  #dashboard-tools-dropdown .lnk span {background: url("../../resources/com.atlassian.gadgets.dashboard%3Adashboard/css/images/menu_indicator_for_light_backgrounds.gif") no-repeat 97% 55%; padding-right:12px;}
+  #dashboard-tools-dropdown .lnk:hover span,
+  #dashboard-tools-dropdown.active .lnk span {background-image: url("../../resources/com.atlassian.gadgets.dashboard%3Adashboard/css/images/ffffff_7x7_arrow_down.gif");}
+
+  /* icons */
+  .icon-add {background:url('../../resources/com.atlassian.gadgets.dashboard%3Adashboard/images/icons/add_20.png') no-repeat 2px 2px;padding-left:2.2em;}
+  .icon-edit {background:url('../../resources/com.atlassian.gadgets.dashboard%3Adashboard/images/icons/edit_20.png') no-repeat 2px 2px;padding-left:2.2em;}
+  .icon-tools {background:url('../../resources/com.atlassian.gadgets.dashboard%3Adashboard/images/icons/tools_20.png') no-repeat 2px 2px;padding-left:2.2em;}
+  .icon-restore {background:url('../../resources/com.atlassian.gadgets.dashboard%3Adashboard/images/icons/ico_dash_666_restore.gif') no-repeat 4px 4px;padding-left:2.2em;}
+
+
+#dashboard-content {
+    background-color:#fff;
+    border: 1px solid #bbb;
+    min-height: 600px;
+    position:relative;
+    -moz-border-radius:.4em;
+    -webkit-border-radius:.4em;
+    border-radius:.4em;
+}
+
+.initializing #dashboard-content {height:600px; overflow:hidden;}
+
+

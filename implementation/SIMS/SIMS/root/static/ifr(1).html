@@ -1,0 +1,136 @@
+
+<!-- saved from url=(0665)http://10.211.55.3:8080/plugins/servlet/gadgets/ifr?container=atlassian&mid=10000&country=US&lang=en&view=default&view-params=%7B%22writable%22%3A%22false%22%7D&st=atlassian%3A%2BBoyUtMReKrNw2Cr8GT43wSNfXLvO2fCDJbL%2BDs0kim5js3SUatxC%2FOVkFrUv%2FeXfX1mLzIsFfdpNbX00ZmgMdud8w3fwPT8PIpkBmYlM%2FjOhqFJJUcXWpSDSGnDmrcqjY36RvxXaAGIBvO%2FIRC%2FIoNcG9GOqEaFcFYE%2BmrDQTK2YdfYUp5vGa4Wm3MHg8ySF%2B1cGEp6Uylh2oYkA1kemVsK4j9fJqavy9GIHWhXaWqrulhimlce8yDck9UsGJXP64QN8jZDiGsNmWn3XOJQSTTdJWg%3D&url=http%3A%2F%2F10.211.55.3%3A8080%2Frest%2Fgadgets%2F1.0%2Fg%2Fcom.atlassian.jira.gadgets%3Aintroduction-gadget%2Fgadgets%2Fintroduction-gadget.xml&libs=auth-refresh#rpctoken=4230378 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">body,td,div,span,p{font-family:arial,sans-serif;}a {color:#0000cc;}a:visited {color:#551a8b;}a:active {color:#ff0000;}body{margin: 0px;padding: 0px;background-color:white;}</style><script src="./Login Page_files/auth-refresh.js"></script><script>var gadgets=gadgets||{};
+gadgets.window=gadgets.window||{};
+(function(){gadgets.window.getViewportDimensions=function(){var A,B;
+if(self.innerHeight){A=self.innerWidth;
+B=self.innerHeight
+}else{if(document.documentElement&&document.documentElement.clientHeight){A=document.documentElement.clientWidth;
+B=document.documentElement.clientHeight
+}else{if(document.body){A=document.body.clientWidth;
+B=document.body.clientHeight
+}else{A=0;
+B=0
+}}}return{width:A,height:B}
+}
+})();;
+var gadgets=gadgets||{};
+gadgets.window=gadgets.window||{};
+(function(){var C;
+function A(F,D){var E=window.getComputedStyle(F,"");
+var G=E.getPropertyValue(D);
+G.match(/^([0-9]+)/);
+return parseInt(RegExp.$1,10)
+}function B(){var D=0;
+var G=document.body.childNodes;
+for(var F=0;
+F<G.length;
+F++){if(typeof G[F].offsetTop!=="undefined"&&typeof G[F].scrollHeight!=="undefined"){var E=G[F].offsetTop+G[F].scrollHeight+A(G[F],"margin-bottom");
+D=Math.max(D,E)
+}}return D+A(document.body,"border-bottom")+A(document.body,"margin-bottom")+A(document.body,"padding-bottom")
+}gadgets.window.adjustHeight=function(I){var F=parseInt(I,10);
+var E=false;
+if(isNaN(F)){E=true;
+var K=gadgets.window.getViewportDimensions().height;
+var D=document.body;
+var J=document.documentElement;
+if(document.compatMode==="CSS1Compat"&&J.scrollHeight){F=J.scrollHeight!==K?J.scrollHeight:J.offsetHeight
+}else{if(navigator.userAgent.indexOf("AppleWebKit")>=0){F=B()
+}else{if(D&&J){var G=J.scrollHeight;
+var H=J.offsetHeight;
+if(J.clientHeight!==H){G=D.scrollHeight;
+H=D.offsetHeight
+}if(G>K){F=G>H?G:H
+}else{F=G<H?G:H
+}}}}}if(F!==C&&!isNaN(F)&&!(E&&F===0)){C=F;
+gadgets.rpc.call(null,"resize_iframe",null,F)
+}}
+}());
+var _IG_AdjustIFrameHeight=gadgets.window.adjustHeight;;
+var gadgets=gadgets||{};
+gadgets.window=gadgets.window||{};
+gadgets.window.setTitle=function(A){gadgets.rpc.call(null,"set_title",null,A)
+};
+var _IG_SetTitle=gadgets.window.setTitle;;
+var atlassian = atlassian || {};
+
+atlassian.util = function() {
+
+    var config = config || {};
+
+    function init(configuration) {
+        config = configuration["atlassian.util"];
+    }
+
+    var requiredConfig = {
+        baseUrl: gadgets.config.NonEmptyStringValidator
+    };
+    gadgets.config.register("atlassian.util", requiredConfig, init);
+
+    return {
+      getRendererBaseUrl : function() {
+        return config.baseUrl;  
+      }
+    };
+
+}();;
+gadgets.config.init({"rpc":{"useLegacyProtocol":false,"parentRelayUrl":"/plugins/servlet/gadgets/rpc-relay"},"shindig.auth":{"authToken":"atlassian:l9kQrGq9VMaKqo0Bg62hJ+xBDDjbfW5r52EKaRxSO45KnE8/HTCqPvIR1QN2PxSttxpTbOskxRS2TZkabhyFF8/eOGn0ELLcQl+XUTVcnO45OnV7jTfPiIkpcFSx7poeR+VE+TAaRErEttgyu/+zNZzDhkdaYphhAyILMHzOqoZTgLlFCJUEZ5cRQb3YTfBCyDLWAxQmcvrVuGYj9GnUdDyx6BW+7OFygiHIuSAtDU+zYvY+mdObp7F4o3oM7L22UDywcUod7MipGXWKj/HqyQxcTg8="},"core.util":{"gadget-directory":{"categories":"\n                JIRA\n            "},"dynamic-height":{},"settitle":{},"atlassian.util":{}},"atlassian.util":{"baseUrl":"http://10.211.55.3:8080"},"core.io":{"jsonProxyUrl":"/plugins/servlet/gadgets/makeRequest","proxyUrl":"%rawurl%"}});
+</script><script>gadgets.Prefs.setMessages_({"gadget.common.invalid.period":"Invalid period '{0}' specified","gadget.common.cumulative.description":"Progressively add totals (1.. 2.. 3), or show individual values (1.. 1.. 1).","gadget.common.advanced.search":"Advanced Search","gadget.introduction.description":"An introduction to this installation of JIRA.","gadget.common.categories.all":"All Categories","gadget.common.oauth.approve.button":"Login & approve","gadget.common.issuesresolved":"Issues Resolved","gadget.common.days.description":"Days (including today) to show in the graph.","gadget.introduction.gh101.title":"Introductory guide to GreenHopper","gadget.common.cumulative.label":"Cumulative Totals:","gadget.common.required.query":"No project or filter specified.","gadget.common.columns.to.display.label":"Columns to display","gadget.common.projects.description":"The projects to display information for.","gadget.common.stattype.label":"Statistic Type:","gadget.common.period.daily":"Daily","gadget.common.projects.and.categories.description":"Projects or categories to use as the basis for the graph.","gadget.common.quick.find":"Quick Find","gadget.common.period.hourly":"Hourly","gadget.common.invalid.stat.type":"Invalid Statistics Type ({0})","gadget.common.invalid.jql":"Invalid JQL.","gadget.common.manage.filters":"Manage Filters","gadget.common.invalid.project":"Invalid project","gadget.common.invalid.filter.id":"Invalid filter","gadget.common.filter.description":"Saved filter to use for the query.","gadget.common.period.yearly":"Yearly","gadget.common.period.name.label":"Period:","gadget.common.show.column.headers.description":"Helps to distinguish between similar fields","gadget.common.invalid.filter":"Invalid project or filter","gadget.common.show.column.headers.label":"Show column headers","gadget.introduction.gh101":"The {0}GreenHopper{1} plugin for JIRA provides agile project management and assists with the introduction of agile to your team. Get started with the {2}GreenHopper 101 guide{3}.","gadget.common.container.login":"You must be logged in to view this gadget.","gadget.common.oauth.approve.message":"If you are a registered user of JIRA, there may be more information available to you. You will need to log in to JIRA and approve this gadget's access to your account.","gadget.common.error.500":"An internal server error occurred when requesting resource <a href=\"{0}\" target=\"_parent\">{1}<\/a>.","gadget.common.negative.days":"Days must be greater or equal to zero.","gadget.common.days.overlimit":"Days must not exceed {0}","gadget.common.show.column.headers.true.label":"Yes","gadget.common.filter.label":"Saved Filter:","gadget.common.num.description":"Number of results to display (maximum of 50).","gadget.common.default.columns":"Default Columns","gadget.introduction.gh.website.title":"GreenHopper Homepage","gadget.common.project.edit":"Click here to select/change project.","gadget.common.unknown.legacy.portlet":"Unknown Legacy Portlet","gadget.common.period.name.description":"The length of periods represented on the graph.","gadget.common.indexing.configure":"Please {0}configure indexing{1}.","gadget.common.config.unavailable":"There are problems with the current configuration for this gadget. The errors below may have been caused by the deletion of entities required by the gadget or by changes to your permissions.","gadget.common.unknown.legacy.portlet.description":"Legacy portlet with key '{0}' could not be loaded","gadget.common.projects.and.categories.label":"Projects and Categories:","gadget.common.cancel":"Cancel","gadget.introduction.wheredoistart":"{0}Where do I start?{1}","gadget.common.projects.label":"Projects:","gadget.common.configure":"Edit","gadget.common.projects.all":"All Projects","gadget.common.days.nan":"Days must be a number","gadget.common.error.save.dashboard":"Error rendering save to dashboard form.","gadget.common.num.high":"Number must be less than or equal to 50","gadget.common.no":"No","gadget.common.chart.period":"Period: last {0}{1}{2} days (grouped {3}{4}{5})","gadget.common.save":"Save","gadget.common.period.monthly":"Monthly","gadget.introduction.thanksforchoosing.text":"Welcome to JIRA&mdash;the easy way to help your team track and deliver projects.","gadget.common.issues":"Issues","gadget.common.filter":"Filter:","gadget.common.refresh.never":"Never","gadget.common.projects.and.categories.mixed":"You can not mix categories and projects.","gadget.introduction.userguide":"Learn more about using JIRA with the {0}JIRA User's Guide{1}.","gadget.introduction.createprojects":"You have no projects yet. {0}Create your first project{1}.","gadget.common.num.overlimit":"Number must not exceed {0}","gadget.common.num.negative":"Number must be greater than 0","gadget.common.period.quarterly":"Quarterly","gadget.common.categories":"Categories","gadget.common.add.filter":"Add filter","gadget.common.period.name":"Period","gadget.common.issuesunresolved":"Issues Unresolved","gadget.common.required.project.or.filter":"Please select a filter or project","gadget.common.show.column.headers.false.label":"No","gadget.common.period.weekly":"Weekly","gadget.common.filterid.edit":"Click here to select/change filter or project.","gadget.common.all.projects.and.others":"'All Projects' can not be selected along with other projects","gadget.common.indexing":"Indexing is currently not configured so no issue searching can be performed.","gadget.common.projects":"Projects","gadget.common.columns.to.display.description":"Default columns:","gadget.common.filterid.none.selected":"No Filter/Project selected","gadget.common.refresh.description":"How often you would like this gadget to update","gadget.common.filters":"Filters","gadget.common.filterid.description":"Project or saved filter to use as the basis for the graph.","gadget.common.error.404":"The resource <a href=\"{0}\" target=\"parent\">{1}<\/a>, cannot be found.","gadget.common.days.overlimit.for.period":"Days must not exceed {0} for {1} period","gadget.introduction.jira101":"Learn more about configuring JIRA with the {0}JIRA 101 guide{1}.","gadget.common.error.generation":"Unfortunately, one or more of your preferences are now unavailable. Please update your preferences, or remove gadget by clicking delete from the title bar above.","gadget.common.refresh.minutes":"Every {0} Minutes","gadget.common.num.label":"Number of Results:","gadget.common.all.categories.and.others":"'All Categories' can not be selected along with other categories","gadget.common.project.none.selected":"No project selected","gadget.common.anonymous.is.invalid":"This gadget requires a logged in user.","gadget.common.indexing.admin":"Please contact your administrator to get indexing configured.","gadget.common.project.description":"Project to use as the basis for the graph.","gadget.introduction.thanksforchoosing.title":"{0}Thanks for choosing JIRA.{1}","gadget.common.no.filter.id":"You must specify a filter.","gadget.common.days.label":"Days Previously:","gadget.introduction.agile.management":"{0}Agile project management for JIRA{1}","gadget.common.anonymous.filter":"Anonymous Filter","gadget.common.projects.and.categories.none.selected":"No project/category selected","gadget.common.num.nan":"The value must be an integer greater than 0 and less than or equal to 50","gadget.common.refresh.hours":"Every {0} Hours","gadget.common.project.label":"Project:","gadget.common.invalid.projectOrFilterId":"Invalid project or filter","gadget.common.invalid.projectOrFilterId.query.prefix":"Your query can not start with '*' or '?'","gadget.introduction.title":"Introduction","gadget.common.refresh.label":"Refresh Interval:","gadget.common.stattype.description":"Select which type of statistic to display for this filter.","gadget.common.filterid.label":"Project or Saved Filter:","gadget.common.refresh.hour":"Every {0} Hour","gadget.common.invalid.filter.validationfailed":"The selected filter {0} has an error: {1}.","gadget.common.yes":"Yes","gadget.introduction.editintro":"You can {0}customize this text{1} in the Administration section.","gadget.common.reload":"Refresh","gadget.common.filter.none.selected":"No Filter selected","gadget.common.invalid.projectCategory":"Invalid Project Category"});gadgets.Prefs.setDefaultPrefs_({});gadgets.io.preloaded_={};</script></head><body dir="ltr" class="">
+        
+        
+        <link href="./Login Page_files/com.atlassian.auiplugin-ajs.css" media="all" rel="stylesheet" type="text/css">
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="http://10.211.55.3:8080/s/531/37/2.1.3/_/download/batch/com.atlassian.auiplugin:ajs/com.atlassian.auiplugin:ajs.css?ieonly=true" media="all">
+<![endif]-->
+<link href="./Login Page_files/com.atlassian.jira.gadgets-common.css" media="all" rel="stylesheet" type="text/css">
+<link href="./Login Page_files/global(1).css" media="all" rel="stylesheet" type="text/css">
+<script src="./Login Page_files/com.atlassian.auiplugin-ajs.js" type="text/javascript"></script>
+<script src="./Login Page_files/com.atlassian.jira.gadgets-common.js" type="text/javascript"></script>
+
+        <style type="text/css">
+            .view {padding:.5em 1em;_zoom:1;}
+            .intro {margin-left:66px;position:relative;}
+            .intro .intro-logo {position:absolute;height:64px;left:-71px;top:0;width:64px;}
+            .intro h1 {font-size:1.3em;line-height:1.2;text-align:left;}
+            .intro h2 {font-size:1.2em;text-align:left;}
+            .intro p {margin-bottom:0.5em;}
+        </style>
+
+        <script type="text/javascript">
+            (function () {
+                var gadget = AJS.Gadget({
+                    baseUrl: "http://10.211.55.3:8080",
+                    view: {
+                        enableReload: true,
+                        onResizeReload: true,
+                        template: function (args) {
+                            var gadget = this;
+                            gadget.getView().html(args.intro);
+                            gadgets.window.setTitle("Introduction");
+                            AJS.$("form").attr("target", "_parent");
+                            gadget.resize();
+                        },
+                        args: [
+                            {
+                                key: "intro",
+                                ajaxOptions: function () {
+                                    return {
+                                        url: "/rest/gadget/1.0/intro",
+                                        dataType: "html"
+                                    };
+                                }
+                            }
+                        ]
+                    }
+                });
+            })();
+        </script><div class="gadget"><div class="view"><h2 class="general_items2 style36" style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-weight: bold; margin-top: 0px; margin-right: 8px; margin-bottom: 10px; margin-left: 0px; color: rgb(102, 0, 153); text-align: left; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(102, 0, 153); ">Graduate Student Management Portal</h2>
+<div><br>
+  </div>
+<div>Welcome to the Graduate Student Management Portal. Please login using your personal JIRA User ID. If you have been assigned a JIRA Case #, please request a login from HERE.</div>
+<div><br>
+  </div>
+<div><span class="Apple-style-span" style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; line-height: 18px; "><br>
+    </span></div></div></div>
+        
+    <script>gadgets.util.runOnLoadHandlers();</script><div id="inline-dialog-shadow" style="display: none; "><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div></body></html>

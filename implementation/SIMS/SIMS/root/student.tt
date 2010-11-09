@@ -1,0 +1,896 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0040)http://10.211.55.3:8080/browse/UWOGRAD-1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">#gview-cmenu {  position: absolute;  border: 1px solid #ccc;  background: #fff;  margin: 0;  padding: 0;  top: 0;  left: 0;  z-index: 10000;  list-style-type: none;  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .5);}#gview-cmenu:focus {  outline: none;}.gview-cmenu-item {  margin: 0;  padding: 5px 7px;  cursor: default;  font-size: 13px;  font-family: arial, san-serif;  color: #000;  -webkit-user-select: none;}.gview-cmenu-item:hover {  background-color: #F0F7F9;}.gview-cmenu-item:first-child {  border-bottom: 1px solid #ddd;}.gview-hidden {  display: none;}</style>
+    <title>[#UWOGRAD-1] Parth Champaneri - The University of Western Ontario (Graduate Program Administration) </title>
+
+    <meta content="general" name="decorator">
+    
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    
+
+    
+<meta id="atlassian-token" name="atlassian-token" content="Q2fWmULohx">
+
+
+    <link rel="shortcut icon" href="http://10.211.55.3:8080/s/531/37/_/favicon.ico">
+    <link rel="icon" type="image/png" href="http://10.211.55.3:8080/s/531/37/_/images/icons/favicon.png">
+
+    
+    <script type="text/javascript">var contextPath = '';</script>
+<link type="text/css" rel="stylesheet" href="./Student Page_files/com.atlassian.auiplugin-ajs.css" media="all">
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/531/37/2.1.3/_/download/batch/com.atlassian.auiplugin:ajs/com.atlassian.auiplugin:ajs.css?ieonly=true" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./Student Page_files/jira.webresources-jquery-fancybox-1-2-6.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Student Page_files/jira.webresources-global-static.css" media="all">
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/531/37/1.0/_/download/batch/jira.webresources:global-static/jira.webresources:global-static.css?ieonly=true" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./Student Page_files/jira.webresources-global-static(1).css" media="print">
+<link type="text/css" rel="stylesheet" href="./Student Page_files/global.css" media="all">
+<script type="text/javascript" src="./Student Page_files/com.atlassian.auiplugin-ajs.js"></script>
+<script type="text/javascript" src="./Student Page_files/jira.webresources-jira-global.js"></script>
+<script type="text/javascript" src="./Student Page_files/jira.webresources-jquery-fancybox-1-2-6.js"></script>
+<script type="text/javascript" src="./Student Page_files/jira.webresources-viewissue.js"></script>
+<script type="text/javascript" src="./Student Page_files/jira.webresources-key-commands.js"></script>
+<script type="text/javascript" src="./Student Page_files/jira.webresources-header.js"></script>
+
+    <script type="text/javascript" src="./Student Page_files/shortcuts.js"></script>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body id="jira" class="nl type-ab stalker">
+
+
+<div id="header" style="">
+    <div id="header-top">
+        <a id="logo" href="http://10.211.55.3:8080/secure/Dashboard.jspa">
+                        <img class="logo" src="./Student Page_files/image1.tiff" width="800" height="59" border="0" alt="The University of Western Ontario (Graduate Program Administration)">
+                    </a>
+                <form id="quicksearch" action="http://10.211.55.3:8080/secure/QuickSearch.jspa" method="post">
+            <label for="quickSearchInput" title="Go directly to an issue by typing a valid issue key, or run a free-text search." class="overlabel-apply show">Quick Search</label>
+            <input id="quickSearchInput" class="quickSearchInput" type="text" size="25" title="Go directly to an issue by typing a valid issue key, or run a free-text search. ( Type &#39;/&#39; )" name="searchString" accesskey="q" valign="absmiddle">
+        </form>
+                
+        <div id="header-details-user" class="aui-dd-parent header-link-container dd-allocated" style="">
+         <a class="lnk" href="http://10.211.55.3:8080/secure/ViewProfile.jspa">Parth Champaneri</a>
+        <span class="drop-wrap">
+        <a class="drop aui-dd-link" href="http://10.211.55.3:8080/browse/UWOGRAD-1#"><span>Access more options</span>
+        </a>
+    </span>
+    <div class="aui-shadow" style="right: -7px; width: 196px; height: 162px; top: 25px; display: none; "><div class="tl"></div><div class="tr"></div><div class="l" style="height: 140px; "></div><div class="r" style="height: 140px; "></div><div class="bl"></div><div class="br"></div><div class="b" style="width: 168px; "></div></div><div class="aui-dropdown standard hidden" style="top: 25px; ">
+                                            <ul id="personal" class="  first     ">
+                                            <li class=""><a id="view_profile" class="" title="View and change your details and preferences" href="http://10.211.55.3:8080/secure/ViewProfile.jspa">Profile</a></li>
+                                    </ul>
+                                                <ul id="jira-help" class="    ">
+                                            <li><a id="view_help" class="" title="Goto the online documentation for JIRA" href="http://docs.atlassian.com/jira/docs-041/Home?clicked=jirahelp">Online Help</a></li>
+                                            <li class=""><a id="keyshortscuthelp" class="" title="Get more information about JIRA&#39;s Keyboard Shortcuts" href="http://10.211.55.3:8080/secure/ViewKeyboardShortcuts.jspa">Keyboard Shortcuts</a></li>
+                                            <li><a id="user_history" class="" title="Get more information about JIRA" href="http://www.atlassian.com/software/jira">About JIRA</a></li>
+                                    </ul>
+                                                <ul id="system" class="    last  ">
+                                            <li><a id="log_out" class="" title="Log out and cancel any automatic login." href="http://10.211.55.3:8080/logout?atl_token=Q2fWmULohx">Log Out</a></li>
+                                    </ul>
+                        </div>
+</div>
+        
+    </div>
+    <div id="header-bottom">
+                    <div id="createItem">
+                <a class="lnk ico-add" title="Create a new issue / bug / feature request / etc ( Type &#39;c&#39; )" accesskey="c" id="create_link" href="http://10.211.55.3:8080/secure/CreateIssue!default.jspa">Create Issue</a>
+            </div>
+            <fieldset id="create_link_params" rel="createItem" class="hidden">
+                <input type="hidden" id="createItem_create" value="Create">
+                <input type="hidden" id="createItem_create_desc" value="Create Issue">
+                <input type="hidden" id="createItem_project" value="Project">
+                <input type="hidden" id="createItem_select_project" value="Choose the project...">
+                <input type="hidden" id="createItem_issuetype" value="Issue Type">
+                <input type="hidden" id="createItem_select_type" value="Choose the issue type...">
+                <input type="hidden" id="createItem_cancel" value="Cancel">
+                <input type="hidden" id="createItem_log_in" value="Click here to log in">
+                <input type="hidden" id="createItem_log_in_desc" value="You are not logged in.">
+                <input type="hidden" id="createItem_no_permission" value="You do not have permission to create issues.">
+                <input type="hidden" id="createItem_project_recent" value="Recent Projects">
+                <input type="hidden" id="createItem_project_all" value="All Projects">
+                <input type="hidden" id="createItem_issuetype_invalid" value="Invalid issue type.">
+                <input type="hidden" id="createItem_issuetype_select" value="Please select...">
+            </fieldset>
+                <div id="menu">
+            
+            
+<ul id="main-nav" class="menu-bar">
+                        <li class="aui-dd-parent lazy   dd-allocated">
+                    <a class="lnk" href="http://10.211.55.3:8080/secure/Dashboard.jspa" id="home_link" accesskey="h" title="View your current Dashboard ( Type &#39;g&#39; then &#39;d&#39; )">Dashboards</a>
+
+                    <span class="drop-wrap">
+            <a class="drop aui-dd-link" id="home_link_drop" rel="home_link" accesskey="d" title="Access more options (Ctrl+Alt+d)" href="http://10.211.55.3:8080/browse/UWOGRAD-1#"><span>Access more options (Ctrl+Alt+d)</span></a></span>
+            <div class="aui-dropdown standard hidden"></div>
+                </li>
+                        <li class="aui-dd-parent lazy   dd-allocated">
+                    <a class="lnk" href="http://10.211.55.3:8080/browse/UWOGRAD" id="browse_link" accesskey="b" title="Browse currently active project &#39;2009-2010 Graduate Students&#39; ( Type &#39;g&#39; then &#39;p&#39; )">Projects</a>
+
+                    <span class="drop-wrap">
+            <a class="drop aui-dd-link" id="browse_link_drop" rel="browse_link" accesskey="p" title="Access more options (Ctrl+Alt+p)" href="http://10.211.55.3:8080/browse/UWOGRAD-1#"><span>Access more options (Ctrl+Alt+p)</span></a></span>
+            <div class="aui-dropdown standard hidden"></div>
+                </li>
+                        <li class="aui-dd-parent lazy  selected   dd-allocated">
+                    <a class="lnk" href="http://10.211.55.3:8080/secure/IssueNavigator.jspa" id="find_link" accesskey="f" title="View your current filter ( Type &#39;g&#39; then &#39;i&#39; )">Issues</a>
+
+                    <span class="drop-wrap">
+            <a class="drop aui-dd-link" id="find_link_drop" rel="find_link" accesskey="i" title="Access more options (Ctrl+Alt+i)" href="http://10.211.55.3:8080/browse/UWOGRAD-1#"><span>Access more options (Ctrl+Alt+i)</span></a></span>
+            <div class="aui-dropdown standard hidden"></div>
+                </li>
+                        <li class="aui-dd-parent lazy   dd-allocated">
+                    <a class="lnk" href="http://10.211.55.3:8080/secure/project/ViewProjects.jspa" id="admin_link" title="JIRA Administration">Administration</a>
+
+                    <span class="drop-wrap">
+            <a class="drop aui-dd-link" id="admin_link_drop" rel="admin_link" accesskey="a" title="Access more options (Ctrl+Alt+a)" href="http://10.211.55.3:8080/browse/UWOGRAD-1#"><span>Access more options (Ctrl+Alt+a)</span></a></span>
+            <div class="aui-dropdown standard hidden"></div>
+                </li>
+    </ul>
+
+            
+        </div>
+
+    </div>
+</div>
+
+
+
+ 
+<fieldset class="hidden parameters">
+    <input type="hidden" id="dirtyMessage" value="You have entered new data on this page. If you navigate away from this page without first saving your data, the changes will be lost.">
+    <input type="hidden" id="keyType" value="Type">
+    <input type="hidden" id="keyThen" value="then">
+    <input type="hidden" id="dblClickToExpand" value="Double click to expand">
+</fieldset>
+
+
+
+
+
+
+<fieldset class="hidden parameters">
+    <input type="hidden" id="viewMoreMsg" value="Click to view {0} more">
+    <input type="hidden" id="hideMsg" value="Hide">
+    <input type="hidden" id="errorVoting" value="Error occurred while voting. Please reload this issue and try again.">
+    <input type="hidden" id="errorWatching" value="Error occurred while adding or removing yourself as a watcher. Please reload this issue and try again.">
+    <input type="hidden" id="issueOpTitleUnvote" value="Remove vote for this issue">
+    <input type="hidden" id="issueOpTitleVote" value="Vote for this issue">
+    <input type="hidden" id="issueOpTitleWatch" value="Start watching this issue">
+    <input type="hidden" id="issueOpTitleUnwatch" value="Stop watching this issue">
+    <input type="hidden" id="issueOpUnvote" value="Remove Vote">
+    <input type="hidden" id="issueOpVote" value="Add Vote">
+    <input type="hidden" id="issueOpWatch" value="Watch Issue">
+    <input type="hidden" id="issueOpUnwatch" value="Unwatch Issue">
+</fieldset>
+
+<div class="stalker-placeholder" style="visibility: hidden; height: 114px; "></div><div id="stalker" class="stalker" style="position: fixed; top: 84px; ">
+    <div class="item-header">
+    
+        
+
+
+
+
+
+
+
+
+<h1 class="item-name avatar" style="background-image:url(/secure/projectavatar?pid=10000&amp;avatarId=10000&amp;size=large)">
+        
+            <img id="project-avatar" alt="" class="project-avatar-48" height="48" src="./Student Page_files/projectavatar" width="48">
+        
+        <span>2009-2010 Graduate Students</span>
+</h1>
+
+
+
+
+<ul class="breadcrumbs">
+    <li>
+        <a id="project-name-val" href="http://10.211.55.3:8080/browse/UWOGRAD">
+            2009-2010 Graduate Students</a>
+    </li>
+    
+    <li class="section"><a id="key-val" href="./Student Page_files/Student Page.html">UWOGRAD-1</a></li>
+</ul>
+
+<h2 id="issue_header_summary" class="item-summary"><a href="./Student Page_files/Student Page.html">Parth Champaneri</a></h2>
+    
+    </div>
+    
+
+
+
+
+    <div class="command-bar">
+        <div class="ops-cont">
+            <div class="ops-menus">
+                
+                    <ul id="opsbar-edit" class="first ops">
+                        <li class="last">
+                            <a id="editIssue" title="Edit this issue ( Type &#39;e&#39; )" class="button edit first last" href="http://10.211.55.3:8080/secure/EditIssue!default.jspa?id=10000"><span class="icon butt-edit"><span>Edit - UWOGRAD-1</span></span>Edit</a>
+                        </li>
+                    </ul>
+                
+                
+                
+                    
+                        
+                            <ul id="opsbar-opsbar-operations" class="ops ">
+                                
+                                    <li>
+                                        <a id="assign-issue" title="Assign this issue to someone ( Type &#39;a&#39; )" class="button opsbar-operations first" href="http://10.211.55.3:8080/secure/AssignIssue!default.jspa?id=10000">Assign</a>
+                                    </li>
+                                
+                                    <li>
+                                        <a id="assign-to-me" title="Assign this issue to me" class="button opsbar-operations" href="http://10.211.55.3:8080/secure/AssignIssue.jspa?atl_token=Q2fWmULohx&id=10000&assignee=jiraroot">Assign To Me</a>
+                                    </li>
+                                
+                                    <li>
+                                        <a id="comment-issue" title="Comment on this issue ( Type &#39;m&#39; )" class="button opsbar-operations" href="http://10.211.55.3:8080/secure/AddComment!default.jspa?id=10000">Comment</a>
+                                    </li>
+                                
+                                
+                                    
+                                        <li class="last">
+                                            <div class="aui-dd-parent dd-allocated" style="">
+                                                <a id="opsbar-operations_more" class="button more last drop" href="http://10.211.55.3:8080/browse/UWOGRAD-1#">More Actions<span class="icon drop-menu"><span>More</span></span></a>
+                                                <div class="aui-shadow" style="top: auto; right: -7px; width: 127px; height: 152px; display: none; "><div class="tl"></div><div class="tr"></div><div class="l" style="height: 130px; "></div><div class="r" style="height: 130px; "></div><div class="bl"></div><div class="br"></div><div class="b" style="width: 99px; "></div></div><div class="aui-dropdown standard hidden">
+                                                
+                                                    <ul class="first">
+                                                        
+                                                            <li>
+                                                                <a id="attach-file" title="Attach a file to this issue" class="opsbar-operations" href="http://10.211.55.3:8080/secure/AttachFile!default.jspa?id=10000">Attach File</a>
+                                                            </li>
+                                                        
+                                                            <li>
+                                                                <a id="attach-screenshot" title="Attach a screenshot to this issue" class="opsbar-operations" href="http://10.211.55.3:8080/secure/AttachFile!screenshot.jspa?id=10000">Attach Screenshot</a>
+                                                            </li>
+                                                        
+                                                    </ul>
+                                                
+                                                    <ul class="">
+                                                        
+                                                            <li>
+                                                                <a id="move-issue" title="Move this issue to another project or issue type." class="opsbar-operations" href="http://10.211.55.3:8080/secure/MoveIssue!default.jspa?id=10000">Move</a>
+                                                            </li>
+                                                        
+                                                            <li>
+                                                                <a id="clone-issue" title="Clone this issue" class="opsbar-operations" href="http://10.211.55.3:8080/secure/CloneIssueDetails!default.jspa?id=10000">Clone</a>
+                                                            </li>
+                                                        
+                                                    </ul>
+                                                
+                                                    <ul class=" last">
+                                                        
+                                                            <li>
+                                                                <a id="delete-issue" title="Delete this issue" class="opsbar-operations" href="http://10.211.55.3:8080/secure/DeleteIssue!default.jspa?id=10000">Delete</a>
+                                                            </li>
+                                                        
+                                                    </ul>
+                                                
+                                                </div>
+                                            </div>
+                                        </li>
+                                    
+                                    
+                                
+                            </ul>
+                        
+                    
+                
+                    
+                        
+                    
+                
+                
+                    
+                        <ul class="ops" id="view-drop">
+                            <li>
+                                <div class="aui-dd-parent dd-allocated">
+                                    <a href="http://10.211.55.3:8080/browse/UWOGRAD-1#" title="View this issue in another format" class="drop"><span class="icon icon-view"><span>View this issue in another format</span></span>View<span class="icon drop-menu"><span>View</span></span></a>
+                                    <div class="aui-dropdown standard hidden">
+                                        <ul class="first last">
+                                            
+                                                <li>
+                                                    <a rel="nofollow" href="http://10.211.55.3:8080/si/jira.issueviews:issue-xml/UWOGRAD-1/UWOGRAD-1.xml">XML</a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a rel="nofollow" href="https://docs.google.com/viewer?url=http%3A%2F%2F10.211.55.3%3A8080%2Fsi%2Fjira.issueviews%3Aissue-word%2FUWOGRAD-1%2FUWOGRAD-1.doc">Word</a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a rel="nofollow" href="http://10.211.55.3:8080/si/jira.issueviews:issue-html/UWOGRAD-1/UWOGRAD-1.html">Printable</a>
+                                                </li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    
+                
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="btm"></div>
+</div>
+<div id="main-content">
+    <div class="active-area">
+        <div class="column" id="primary">
+            <div class="content">
+                
+
+
+                
+                
+                
+                
+
+                    <div class="module reduced">
+    <div class="mod-header">
+        <h3>Details</h3>
+    </div>
+    <div class="mod-content">
+        <ul id="issuedetails" class="property-list two-cols">
+            <li class="item">
+                <div class="wrap">
+                    <strong class="name">Type:</strong>
+                    <span id="type-val" class="value">
+                                                                        <img src="./Student Page_files/task.gif" height="16" width="16" border="0" align="absmiddle" alt="New Student" title="New Student - A task that needs to be done.">
+             New Student
+                    </span>
+                </div>
+            </li>
+            <li class="item item-right">
+                <div class="wrap">
+                    <strong class="name">Status:</strong>
+                    <span id="status-val" class="property-list-value">
+                                                                        <img src="./Student Page_files/status_closed.gif" height="16" width="16" border="0" align="absmiddle" alt="Completed - Comprehensive Exam 1" title="Completed - Comprehensive Exam 1 - ">
+             Completed - Comprehensive Exam 1
+                    </span>
+                </div>
+            </li>
+                                                                                </ul>
+    </div>
+</div>
+
+                    
+                        
+
+<div id="customfieldmodule" class="module reduced">
+    <div class="mod-content">
+        
+
+        
+        
+        
+        <ul id="tab1" class="property-list">
+            
+            
+                
+                    
+                    
+                        <li id="rowForcustomfield_10000" class="item">
+                            <div class="wrap">
+                                <strong title="Student Full Name" class="name">Student Full Name:</strong>
+                                <div id="customfield_10000-val" class="value type-textfield">
+                                          Parth Champaneri
+  
+                                </div>
+                            </div>
+                        </li>
+                    
+                
+            
+                
+                    
+                    
+                        <li id="rowForcustomfield_10001" class="item">
+                            <div class="wrap">
+                                <strong title="UWO Student Number" class="name">UWO Student Number:</strong>
+                                <div id="customfield_10001-val" class="value type-float">
+                                        250,367,669
+
+                                </div>
+                            </div>
+                        </li>
+                    
+                
+            
+                
+                    
+                    
+                        <li id="rowForcustomfield_10002" class="item">
+                            <div class="wrap">
+                                <strong title="UWO E-mail address" class="name">UWO E-mail address:</strong>
+                                <div id="customfield_10002-val" class="value type-textfield">
+                                          <a href="mailto:pchampan@uwo.ca">pchampan@uwo.ca</a>
+  
+                                </div>
+                            </div>
+                        </li>
+                    
+                
+            
+                
+                    
+                    
+                        <li id="rowForcustomfield_10003" class="item">
+                            <div class="wrap">
+                                <strong title="Address Line 1" class="name">Address Line 1:</strong>
+                                <div id="customfield_10003-val" class="value type-textfield">
+                                          21 Lascelles Blvd
+  
+                                </div>
+                            </div>
+                        </li>
+                    
+                
+            
+                
+                    
+                    
+                        <li id="rowForcustomfield_10004" class="item">
+                            <div class="wrap">
+                                <strong title="Address Line 2" class="name">Address Line 2:</strong>
+                                <div id="customfield_10004-val" class="value type-textfield">
+                                          Apt 301
+  
+                                </div>
+                            </div>
+                        </li>
+                    
+                
+            
+                
+                    
+                    
+                        <li id="rowForcustomfield_10005" class="item">
+                            <div class="wrap">
+                                <strong title="City, Province" class="name">City, Province:</strong>
+                                <div id="customfield_10005-val" class="value type-textfield">
+                                          Toronto, ON
+  
+                                </div>
+                            </div>
+                        </li>
+                    
+                
+            
+                
+                    
+                    
+                        <li id="rowForcustomfield_10006" class="item">
+                            <div class="wrap">
+                                <strong title="Postal Code" class="name">Postal Code:</strong>
+                                <div id="customfield_10006-val" class="value type-textfield">
+                                          M4V 2B8
+  
+                                </div>
+                            </div>
+                        </li>
+                    
+                
+            
+                
+                    
+                    
+                        <li id="rowForcustomfield_10009" class="item">
+                            <div class="wrap">
+                                <strong title="Program" class="name">Program:</strong>
+                                <div id="customfield_10009-val" class="value type-textfield">
+                                          Masters in Biomedical Engineering
+  
+                                </div>
+                            </div>
+                        </li>
+                    
+                
+            
+        </ul>
+        
+    </div>
+</div>
+
+                    
+
+                    
+
+
+
+
+<div id="detailsmodule" class="module">
+    <div id="issue-description" class="mod-content twixi-block expanded">
+        <ul class="item-details">
+            <li>
+                <dl>
+                    <dt>Description:</dt>
+                    
+                    
+                        <dd id="description-full">
+                            Test 1 - Thesis Proposal
+                        </dd>
+                    
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+                    
+                        
+                    
+
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    
+
+
+
+
+
+
+
+
+
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description rdf:about="http://10.211.55.3:8080/browse/UWOGRAD-1"
+    dc:title="[#UWOGRAD-1] Parth Champaneri"
+    dc:subject="2009-2010 Graduate Students"
+    dc:description="Test 1 - Thesis Proposal"
+    dc:date="2010-08-02 14:12:01,750"
+    dc:identifier="http://10.211.55.3:8080/browse/UWOGRAD-1"
+    trackback:ping="http://10.211.55.3:8080/rpc/trackback/UWOGRAD-1"/>
+
+<rdf:Description rdf:about="http://10.211.55.3:8080/secure/ViewIssue.jspa?id=10000"
+    dc:title="[#UWOGRAD-1] Parth Champaneri"
+    dc:subject="2009-2010 Graduate Students"
+    dc:description="Test 1 - Thesis Proposal"
+    dc:date="2010-08-02 14:12:01,750"
+    dc:identifier="http://10.211.55.3:8080/secure/ViewIssue.jspa?id=10000"
+    trackback:ping="http://10.211.55.3:8080/rpc/trackback/UWOGRAD-1"/>
+
+<rdf:Description rdf:about="http://10.211.55.3:8080/secure/ViewIssue.jspa?key=UWOGRAD-1"
+    dc:title="[#UWOGRAD-1] Parth Champaneri"
+    dc:subject="2009-2010 Graduate Students"
+    dc:description="Test 1 - Thesis Proposal"
+    dc:date="2010-08-02 14:12:01,750"
+    dc:identifier="http://10.211.55.3:8080/secure/ViewIssue.jspa?key=UWOGRAD-1"
+    trackback:ping="http://10.211.55.3:8080/rpc/trackback/UWOGRAD-1"/>
+</rdf:RDF>-->
+
+
+
+                
+
+
+                <div id="activitymodule" class="module">
+                    <div class="mod-header">
+                        <h3>Activity</h3>
+                    </div>
+                    <div class="mod-content">
+                        
+
+
+
+    <div class="tabwrap tabs2">
+        
+            <div class="sortwrap">
+                
+                    <a class="icon icon-sort-down" rel="nofollow" href="http://10.211.55.3:8080/browse/UWOGRAD-1?actionOrder=desc#issue-tabs" title="Ascending order - Click to sort in descending order"><span>Ascending order - Click to sort in descending order</span></a>
+                
+                
+            </div>
+        
+        <ul id="issue-tabs" class="tabs horizontal">
+        
+            
+            
+                <li><a id="all-tabpanel" href="http://10.211.55.3:8080/browse/UWOGRAD-1?page=com.atlassian.jira.plugin.system.issuetabpanels%3Aall-tabpanel#issue-tabs"><strong>All</strong></a></li>
+            
+        
+            
+                <li id="comment-tabpanel" class="active"><strong>Comments</strong></li>
+            
+            
+        
+            
+            
+                <li><a id="changehistory-tabpanel" href="http://10.211.55.3:8080/browse/UWOGRAD-1?page=com.atlassian.jira.plugin.system.issuetabpanels%3Achangehistory-tabpanel#issue-tabs"><strong>History</strong></a></li>
+            
+        
+            
+            
+                <li><a id="activity-stream-issue-tab" href="http://10.211.55.3:8080/browse/UWOGRAD-1?page=com.atlassian.streams.streams-jira-plugin%3Aactivity-stream-issue-tab#issue-tabs"><strong>Activity</strong></a></li>
+            
+        
+        </ul>
+    </div>
+    
+        <div class="issuePanelContainer" id="issue_actions_container">
+        
+            
+                
+                <div class="actionContainer">
+    <table cellpadding="2" cellspacing="0" border="0" width="100%">
+        <tbody><tr>
+            <td>There are no comments yet on this issue.
+            </td>
+        </tr>
+    </tbody></table>
+</div>
+                
+            
+        
+        
+        </div>
+    
+
+                    </div>
+                </div>
+
+                
+                 <div id="addcomment" class="module">
+                    <div class="mod-content">
+                            
+
+
+
+
+
+
+
+
+<form id="add_comment" action="http://10.211.55.3:8080/secure/AddComment.jspa?atl_token=Q2fWmULohx" class="aui top-label add_comment" method="post" name="jiraform">
+
+    
+
+    
+
+    <div class="noHeader">
+        <label for="comment">Comment
+        </label>
+    
+            <textarea name="comment" id="comment" rows="10" wrap="virtual" cols="9999" class="textarea">
+</textarea>
+
+
+
+                                </div>
+    
+                                    <div>
+        <label for="commentLevel">Viewable By
+        </label>
+                <select name="commentLevel" id="commentLevel">
+        <option value="">All Users</option>
+                    <optgroup label="Project Roles">
+                                    <option value="role:10002">Administrators</option>
+                                     <option value="role:10001">Developers</option>
+                                     <option value="role:10000">Users</option>
+                             </optgroup>
+                    </select>
+                            </div>
+            
+
+                                    <input type="hidden" name="id" value="10000">
+    
+
+
+<input type="hidden" id="atl_token" name="atl_token" value="Q2fWmULohx">
+
+
+    <div class="submit">
+        
+            <input type="submit" class="submit_btn" name="Add " accesskey="s" title="Press Ctrl+Alt+s to submit form" value="Add " id="add_comment_submit">
+        
+        
+            <a id="add_comment_cancel" class="cancel" accesskey="`" title="Cancel (Ctrl+Alt + `)" value="Cancel" href="http://10.211.55.3:8080/browse/UWOGRAD-1#">Cancel</a>
+        
+    </div>
+
+</form>
+
+                    </div>
+                    <div class="mod-footer">
+                        <ul class="ops">
+                            <li><a href="http://10.211.55.3:8080/browse/UWOGRAD-1#" id="footer-comment-button" class="first last button">Comment</a></li>
+                        </ul>
+                    </div>
+                 </div>
+                
+                
+            </div>
+        </div>
+        <div class="column" id="secondary">
+            <div class="content">
+                
+                   
+                       <div id="peoplemodule" class="module">
+    <div class="mod-header">
+        <h3>People</h3>
+    </div>
+    <div class="mod-content">
+        <ul class="item-details" id="peopledetails">
+            <li class="people-details">
+                                <dl>
+                    <dt>Assignee:</dt>
+                    <dd id="assignee-val">
+                                <a id="issue_summary_assignee_gradadmin" href="http://10.211.55.3:8080/secure/ViewProfile.jspa?name=gradadmin">Graduate Program JIRA Admin</a>
+                    </dd>
+                </dl>
+                                                <dl>
+                    <dt>Reporter:</dt>
+                    <dd id="reporter-val">
+                                <a id="issue_summary_reporter_gradadmin" href="http://10.211.55.3:8080/secure/ViewProfile.jspa?name=gradadmin">Graduate Program JIRA Admin</a>
+                    </dd>
+                </dl>
+                                            </li>
+            <li class="people-operations section">
+                                            </li>
+        </ul>
+    </div>
+</div>
+                       
+<div id="datesmodule" class="module">
+    <div class="mod-header">
+        <h3>Dates</h3>
+    </div>
+    <div class="mod-content">
+        <ul class="item-details">
+            <li>
+            
+                <dl class="dates">
+                    <dt>Created:</dt>
+                    <dd id="create-date" class="date">02/Aug/10 2:12 PM</dd>
+                </dl>
+                <dl class="dates">
+                    <dt>Updated:</dt>
+                    <dd id="updated-date" class="date">02/Aug/10 4:27 PM</dd>
+                </dl>
+            
+            
+                
+                    <dl class="dates">
+                        <dt title="Program Start Date">Program Start Date:</dt>
+                        <dd id="customfield_10007-val" class="date">
+                                      08/Sep/06
+    
+                        </dd>
+                    </dl>
+                
+            
+                
+                    <dl class="dates">
+                        <dt title="Program Completion Date (Tentative)">Program Completion Date (Tentative):</dt>
+                        <dd id="customfield_10008-val" class="date">
+                                      08/Jun/11
+    
+                        </dd>
+                    </dl>
+                
+            
+                
+                    <dl class="dates">
+                        <dt title="Comprehensive Exam 1 Enrollment Date">Comprehensive Exam 1 Enrollment Date:</dt>
+                        <dd id="customfield_10011-val" class="date">
+                                      25/Aug/10
+    
+                        </dd>
+                    </dl>
+                
+            
+                
+                    <dl class="dates">
+                        <dt title="Comprehensive Exam 1 Date">Comprehensive Exam 1 Date:</dt>
+                        <dd id="customfield_10010-val" class="date">
+                                      18/Aug/10
+    
+                        </dd>
+                    </dl>
+                
+            
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+                       
+
+                   
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="footer">
+<div class="poweredbymessage">
+        <a href="http://www.atlassian.com/software/jira" class="smalltext">Atlassian JIRA</a>
+        <span id="footer-build-information" style="color: #666666;">(v4.1.2#531)</span>        | <a href="http://support.atlassian.com/secure/CreateIssue.jspa?issuetype=1&pid=10000">Report a problem</a>
+        | <a href="http://jira.atlassian.com/secure/CreateIssue.jspa?pid=10240&issuetype=2">Request a feature</a>
+        | <a href="http://10.211.55.3:8080/secure/Administrators.jspa">Contact administrators</a>
+    </div>
+            <div class="licensemessagered">
+                    Powered by a free Atlassian <a href="http://www.atlassian.com/software/jira">JIRA evaluation license</a>. Please consider <a href="https://www.atlassian.com/ex/Buy.jspa?product=JIRA&version=4.1.2&build=531&edition=enterprise&sid=B64T-QAW0-SJEA-FBDA&ref=prod">purchasing it</a> today.
+
+                </div>
+    </div>
+
+
+
+<!--
+	                 REQUEST ID : 701x154x1
+	          REQUEST TIMESTAMP : [08/Oct/2010:11:41:23 -0400]
+	               REQUEST TIME : 3.0150
+	                 ASESSIONID : snfhy9
+	        CONCURRENT REQUESTS : 1
+-->
+
+
+
+
+<div id="inline-dialog-shadow" style="display: none; "><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div><div class="shadow" style="margin-top: -100px; margin-left: -216px; width: 432px; height: 229px; display: none; "><div class="tl"></div><div class="tr"></div><div class="l" style="height: 183px; "></div><div class="r" style="height: 183px; "></div><div class="bl"></div><div class="br"></div><div class="b" style="width: 374px; "></div></div><div class="popup" id="delete-dshboard" style="margin-top: -100px; margin-left: -200px; width: 400px; height: 200px; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); display: none; background-position: initial initial; background-repeat: initial initial; "></div><div id="fancy_overlay"></div><div id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg" id="fancy_bg_n"></div><div class="fancy_bg" id="fancy_bg_ne"></div><div class="fancy_bg" id="fancy_bg_e"></div><div class="fancy_bg" id="fancy_bg_se"></div><div class="fancy_bg" id="fancy_bg_s"></div><div class="fancy_bg" id="fancy_bg_sw"></div><div class="fancy_bg" id="fancy_bg_w"></div><div class="fancy_bg" id="fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div></div></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></tr></tbody></table></div><div id="inline-dialog-create_issue_popup" class="aui-inline-dialog"><div class="contents" style="width: 250px; "></div><div id="arrow-create_issue_popup" class="arrow"></div></div><ul id="gview-cmenu" class="gview-hidden" tabindex="9999"><li class="gview-cmenu-item">Open Link in New Tab</li><li class="gview-cmenu-item">Download</li></ul></body></html>

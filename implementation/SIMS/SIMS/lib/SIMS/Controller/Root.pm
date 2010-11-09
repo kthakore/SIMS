@@ -51,6 +51,10 @@ Attempt to render a view, if needed.
 
 =cut
 
+sub base : Chained('/') CaptureArgs(0) PathPart('') {}
+
+sub student : Chained('base') Args(0) {}
+
 sub end : ActionClass('RenderView') {}
 
 =head1 AUTHOR

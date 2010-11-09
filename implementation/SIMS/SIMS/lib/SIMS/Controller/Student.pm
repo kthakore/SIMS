@@ -27,13 +27,13 @@ sub collection :Chained('/base') PathPart('student') CaptureArgs(0) { my($self, 
 
 sub view_collection :Chained('collection') Args(0) PathPart('') {}
 
-sub view :Chained('/base') Args(1) { 
-
-my ($self, $c, $id) = @_; 
-
+sub object		:Chained('collection')  CaptureArgs(1) { 
+ my($self, $c, $id) = @_;
 $c->stash->{student} = $c->model('DB::Student')->find($id);
 
 } 
+
+sub view :Chained('object') Args(0) { }
 
 =head1 AUTHOR
 

@@ -40,13 +40,6 @@ CREATE TABLE Term (
 
 );
 
-CREATE TABLE Plan(
-
-    ID  INT NOT NULL UNIQUE PRIMARY KEY,
-    name TEXT
-
-);
-
 CREATE TABLE TermFunding (
 
     TermID INT NOT NULL CONSTRAINT fk_tf_term_id

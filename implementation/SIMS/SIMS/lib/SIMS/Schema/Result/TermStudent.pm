@@ -23,6 +23,11 @@ __PACKAGE__->table("TermStudent");
 
 =head1 ACCESSORS
 
+=head2 id
+
+  data_type: 'int'
+  is_nullable: 0
+
 =head2 termid
 
   data_type: 'int'
@@ -38,11 +43,14 @@ __PACKAGE__->table("TermStudent");
 =cut
 
 __PACKAGE__->add_columns(
+  "id",
+  { data_type => "int", is_nullable => 0 },
   "termid",
   { data_type => "int", is_foreign_key => 1, is_nullable => 0 },
   "studentid",
   { data_type => "int", is_foreign_key => 1, is_nullable => 0 },
 );
+__PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
@@ -77,8 +85,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-11-09 08:02:37
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:MFxYvpqTKKdqmWYqQdoAvw
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-11-09 08:11:07
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:pfnwv36eUpNTIm4aTe3NAg
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

@@ -42,6 +42,7 @@ CREATE TABLE Term (
 
 CREATE TABLE TermFunding (
 
+    ID INT NOT NULL UNIQUE PRIMARY KEY,
     TermID INT NOT NULL CONSTRAINT fk_tf_term_id
                                           REFERENCES Term(ID)
                                           ON DELETE CASCADE,
@@ -53,6 +54,8 @@ CREATE TABLE TermFunding (
 
 CREATE TABLE TermStudent (
 
+
+    ID INT NOT NULL UNIQUE PRIMARY KEY,
     TermID INT NOT NULL CONSTRAINT fk_ts_term_id
                                           REFERENCES Term(ID)
                                           ON DELETE CASCADE,
@@ -63,6 +66,8 @@ CREATE TABLE TermStudent (
 
 CREATE TABLE PlanStudent (
 
+
+    ID INT NOT NULL UNIQUE PRIMARY KEY,
     PlanID INT NOT NULL CONSTRAINT fk_ps_plan_id
                                           REFERENCES PLAN(ID)
                                           ON DELETE CASCADE,
@@ -73,6 +78,7 @@ CREATE TABLE PlanStudent (
 
 CREATE TABLE StudentSupervisor (
 
+    ID INT NOT NULL UNIQUE PRIMARY KEY,
     StudentID INT NOT NULL CONSTRAINT fk_ps_student_id
                                           REFERENCES Student(ID)
                                           ON DELETE CASCADE,

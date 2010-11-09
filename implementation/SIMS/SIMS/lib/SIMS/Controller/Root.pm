@@ -26,13 +26,6 @@ The root page (/)
 
 =cut
 
-sub index :Path :Args(0) {
-    my ( $self, $c ) = @_;
-
-    # Hello World
-    $c->response->body( $c->welcome_message );
-}
-
 =head2 default
 
 Standard 404 error page
@@ -52,8 +45,6 @@ Attempt to render a view, if needed.
 =cut
 
 sub base : Chained('/') CaptureArgs(0) PathPart('') {}
-
-sub student :Chained('base') Args(1) { my ($self, $c, $id) = @_; $c->stash->{student} = $c->model('DB::Student')->find($id) }
 
 sub end : ActionClass('RenderView') {}
 

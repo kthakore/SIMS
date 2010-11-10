@@ -26,6 +26,10 @@ The root page (/)
 
 =cut
 
+sub index :Path :Args(0) {
+    my ( $self, $c ) = @_;
+}
+
 =head2 default
 
 Standard 404 error page

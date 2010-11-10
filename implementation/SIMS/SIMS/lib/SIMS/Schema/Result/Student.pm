@@ -33,6 +33,46 @@ __PACKAGE__->table("Student");
   data_type: 'text'
   is_nullable: 1
 
+=head2 type
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 address
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 address2
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 city
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 province
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 postalcode
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 phone
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 email
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 location
 
   data_type: 'text'
@@ -44,6 +84,22 @@ __PACKAGE__->add_columns(
   "id",
   { data_type => "int", is_nullable => 0 },
   "name",
+  { data_type => "text", is_nullable => 1 },
+  "type",
+  { data_type => "text", is_nullable => 1 },
+  "address",
+  { data_type => "text", is_nullable => 1 },
+  "address2",
+  { data_type => "text", is_nullable => 1 },
+  "city",
+  { data_type => "text", is_nullable => 1 },
+  "province",
+  { data_type => "text", is_nullable => 1 },
+  "postalcode",
+  { data_type => "text", is_nullable => 1 },
+  "phone",
+  { data_type => "text", is_nullable => 1 },
+  "email",
   { data_type => "text", is_nullable => 1 },
   "location",
   { data_type => "text", is_nullable => 1 },
@@ -98,8 +154,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-11-09 08:02:37
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Xo5iJykdlqBJiB9qtAyp1g
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-11-09 19:29:35
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Uq/8NyRcNYG2kKvIYPfiUQ
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

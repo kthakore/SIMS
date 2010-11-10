@@ -3,6 +3,14 @@ CREATE TABLE Student (
 
     ID INT NOT NULL UNIQUE PRIMARY KEY,
     name TEXT,
+	type TEXT,
+	address TEXT,
+	address2 TEXT,
+	city	TEXT,
+	province TEXT,
+	postalcode TEXT,
+	phone	 TEXT,
+	email	 TEXT,
     location TEXT
 
 );

@@ -2,7 +2,7 @@ package SIMS::Controller::Student;
 use Moose;
 use namespace::autoclean;
 
-BEGIN {extends 'Catalyst::Controller'; }
+BEGIN { extends 'Catalyst::Controller'; }
 
 =head1 NAME
 
@@ -16,24 +16,34 @@ Catalyst Controller.
 
 =cut
 
-
 =head2 Collection
 
 Show all students in the current DB
 
 =cut
 
-sub collection :Chained('/base') PathPart('student') CaptureArgs(0) { my($self, $c) = @_; $c->stash->{collection} = $c->model('DB::Student') };
+sub collection : Chained('/base') PathPart('student') CaptureArgs(0) {
+    my ( $self, $c ) = @_;
+    $c->stash->{collection} = $c->model('DB::Student');
+}
 
-sub view_collection :Chained('collection') Args(0) PathPart('') {}
+sub view_collection : Chained('collection') Args(0) PathPart('') {
+}
 
-sub object		:Chained('collection')  CaptureArgs(1) { 
- my($self, $c, $id) = @_;
-$c->stash->{student} = $c->model('DB::Student')->find($id);
+=head2 Object 
 
-} 
+Operations on a single student by id 
 
-sub view :Chained('object') Args(0) { }
+=cut 
+
+sub object : Chained('collection') PathPart('') CaptureArgs(1) {
+    my ( $self, $c, $id ) = @_;
+    $c->stash->{student} = $c->model('DB::Student')->find($id);
+
+}
+
+sub view : Chained('object') Args(0) {
+}
 
 =head1 AUTHOR
 

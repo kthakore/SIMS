@@ -45,6 +45,10 @@ sub object : Chained('collection') PathPart('') CaptureArgs(1) {
 sub view : Chained('object') Args(0) {
 }
 
+sub report : Chained('object') Args(0) {
+
+}
+
 =head1 AUTHOR
 
 Kartik Thakore,,,

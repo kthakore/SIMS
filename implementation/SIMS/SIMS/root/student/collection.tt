@@ -1,1 +1,1 @@
-[%FOREACH student IN collection.all %][% student.name %][% END %]
+[%FOREACH student IN collection.all %][% student.name %]<br />[% END %]

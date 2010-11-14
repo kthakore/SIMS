@@ -6,6 +6,7 @@
 \usepackage{tikz}
 \usepackage{gantt}
 \usepackage{setspace}
+\usepackage{enumitem}
 
 \onehalfspacing
 
@@ -23,14 +24,19 @@ This report aims to provide preliminary elicited requirements for the Interactiv
 
 \section{Specific requirements}
 \subsection{External interface requirements}
-\subsubsection{User interfaces}
 \subsubsection{Hardware interfaces}
+\begin{description}[style=multiline,leftmargin=3cm,font=\normalfont]
+\item[Electronic Signature Pad]
+\end{description}
 \subsubsection{Software interfaces}
-\begin{description}
+\begin{description}[style=multiline,leftmargin=3cm,font=\normalfont]
 \item[Web Interface]
 The web interface will be responsible for providing users with access, and the overall functionality of the systems. That is to say users will only be able to access the interface via the web interface. In addition, the web interface will require a specific web browser to be used. The constraint on the browser will prevent any problems with compatibility issues across the various devices used by the client. 
 \end{description}
 \subsubsection{Communications interfaces}
+\begin{description}[style=multiline,leftmargin=3cm,font=\normalfont] 
+\item[Network]
+The network interface will provide security to the database, so as to prevent access from unknown devices. Additionally any transfer of data between the user and the system must be placed in a secure channel/protocol.  
 \subsection{System features}
 \subsubsection{Graphical User Interface}
 \begin{enumerate}

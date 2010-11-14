@@ -3,3 +3,5 @@ sqlite3 sims.db < sims.sql
 cpan Catalyst::Helper::Model::DBIC::Schema
 script/sims_create.pl model DB DBIC::Schema SIMS::Schema \
 create=static 'dbi:SQLite:dbname=sims.db' '' ''
+Catalyst::View::TT
+Catalyst::Model::DBIC::Schema

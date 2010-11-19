@@ -19,7 +19,7 @@ SIMS::Schema::Result::User
 
 =cut
 
-__PACKAGE__->table("user");
+__PACKAGE__->table("User");
 
 =head1 ACCESSORS
 
@@ -69,8 +69,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-11-15 15:26:47
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZkQPnjx+MJMVzpbuXQ4zRw
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-11-19 09:05:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3ssBWaZUND8QjLBHeriUfw
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

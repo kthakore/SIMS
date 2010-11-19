@@ -19,7 +19,7 @@ SIMS::Schema::Result::UserRole
 
 =cut
 
-__PACKAGE__->table("user_role");
+__PACKAGE__->table("UserRole");
 
 =head1 ACCESSORS
 
@@ -78,8 +78,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-11-15 15:26:47
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Nj8jrIS9vqWFlpMN//Yycw
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-11-19 09:05:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:cMFUivYJPjyOozy94C5sAw
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

@@ -96,20 +96,20 @@ CREATE TABLE StudentSupervisor (
 
 		);
 
-CREATE TABLE user (
+CREATE TABLE User (
 		id       INTEGER PRIMARY KEY,
-		username TEXT,
+		Username TEXT,
 		password TEXT
 		);
 
-CREATE TABLE role (
+CREATE TABLE Role (
 		id   INTEGER PRIMARY KEY,
-		role TEXT
+		Role TEXT
 		);
 
-CREATE TABLE user_role (
-		user INTEGER REFERENCES user,
-		role INTEGER REFERENCES role,
-		PRIMARY KEY (user, role)
+CREATE TABLE UserRole (
+		User INTEGER REFERENCES User,
+		Role INTEGER REFERENCES Role,
+		PRIMARY KEY (User, Role)
 		);
 

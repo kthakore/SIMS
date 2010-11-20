@@ -1,0 +1,46 @@
+format 76
+
+deploymentnodecanvas 128002 deploymentnode_ref 128258 // AppServer
+  xyzwh 240.407 46.6041 2000 273 357
+end
+componentcanvas 128130 component_ref 128258 // HTTPS Server
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  xyzwh 283.157 128.829 2005 167 171
+end
+deploymentnodecanvas 128258 deploymentnode_ref 128386 // ServicesServer
+  xyzwh 575.938 79.6041 2000 245 291
+end
+componentcanvas 128386 component_ref 128002 // SIMS Database
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  xyzwh 629.663 145.828 2005 155 57
+end
+componentcanvas 128514 component_ref 128130 // ScheduledServices
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  xyzwh 629.663 229.93 2005 155 57
+end
+deploymentnodecanvas 128642 deploymentnode_ref 128002 // Client
+  xyzwh 14.5018 136.504 2000 177 171
+end
+deploymentnodecanvas 128770 deploymentnode_ref 128130 // Tablet
+  xyzwh 79.702 351.207 2000 55 33
+end
+componentcanvas 129154 component_ref 128386 // VPN Provider
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  xyzwh 294.782 321.231 2005 155 57
+end
+artifactcanvas 129410 artifact_ref 128002 // SIMSApp
+  xyz 299.582 198.654 2010
+end
+artifactcanvas 129538 artifact_ref 128130 // TabletClient
+  xyz 32.4018 240.705 3005
+end
+artifactcanvas 129666 artifact_ref 128258 // WebBrowser
+  xyz 30.3517 175.579 3010
+end
+line 128898 ----
+  from ref 128642 z 2001 label "TCP/IP" xyz 198 204.5 3000 to ref 128002
+line 129026 ----
+  from ref 128002 z 2001 label "TCP/IP" xyz 523.5 208 3000 to ref 128258
+line 129282 ---- decenter_begin 381
+  from ref 128770 z 2001 label "USB 2.0 Protocol" xyz 105 323 3000 to ref 128642
+end

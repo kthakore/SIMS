@@ -1,0 +1,13 @@
+window_sizes 1800 945 450 1344 746 120
+diagrams
+  active  deploymentdiagram_ref 128002 // SystemOverview
+    1075 596 126 4 0 0
+end
+show_stereotypes
+selected deploymentdiagram_ref 128002 // SystemOverview
+open
+  deploymentview_ref 128002 // SystemOverview
+  componentview_ref 128002 // ServicesServer
+  componentview_ref 128130 // AppServer
+end
+end

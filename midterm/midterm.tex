@@ -23,8 +23,35 @@
 The purpose of this report is to document preliminary elicited requirements for the Interactive Graduate Student Information System (SIMS). Additionally, in accordance with the Agile project management methodology, a walk through of the first iteration is documented. Our first iteration includes two system critical features which will be used for iterative system development of the system. Database schemas and operational logic for user authentication and calculations for graduate student funding were accomplished.  A database schematic was designed after performing extensive analysis based on our specifications, data flow requirements and approved system critical assumptions. Data normalization was performed and a Representational State Transfer (REST) framework was implemented to combine components. Furthermore, unit and integration testing were performed with the preliminary implementation in place. For preparation of future iterations, a sign-off from end users and client is required. However, we have started the rapid prototyping of the e-signature component for the advisory meeting tracking feature. 
 \end{abstract}
 
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=522px]{diagrams/SystemOverview} \caption{ The proposed system } \label{fig:sysOver}
+
+\end{center}
+\end{figure}
+
+\clearpage
+
 \section{System Overview}
-The SIMS system is primarily a web application designed for the department of Medical BioPhysics (MSc) , which will be used to can track important dates from inception to completion of the program lifecycle and help manage information on an efficient basis. The system will provide effective reporting techniques including custom reminders, tracking and gathering input from the graduate students. 
+
+-What SIMS is?
+SIMS 
+-What is the point of building this?
+	Primary and Secondary
+	Meet the Business Rules 
+- What it will do.
+
+
+\subsection{High Level Model}
+
+Figure \ref{fig:sysOver} shows the overview of the required system. The user will access the system via the Client and Tablet devices. The data from the tablet will be processed in the client and sent via the TCP/IP protocol to the Application Server (AppServer). The responsibility of the AppServer is to provide secure access, and host the application. The AppServer will communicate with the Services Server to add triggers and use the database. The AppServer and the ServicesServer will be located on a local network which is accessed via a Virtual Private Network (VPN).
+
+
+\subsection{Technical Environment}
+
+SIMS will be built on the Linux Server platform for the Database and Application Server. The client will be limited to a Linux Operating System with the Firefox 3.6 web browser.  
+
 
 \section{Specific requirements}
 \subsection{External interface requirements}

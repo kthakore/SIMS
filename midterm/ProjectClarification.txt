@@ -1,0 +1,44 @@
+Dr. L. Capretz,
+
+The purpose of this email is to clarify the scope of the project for Graduate Tracking for SE4450. I feel that the proposal was not clear enough in our responsibilities, partly due to differences in the courses (ECE4416/SE4450) and the expertise of my advisor (Prof. Ladak). Since the project involved several software components we have consulted Professors to get a clearer understanding of the requirements and analysis.  With this clarity we were able to organize our responsibilities in a more logical manner.
+ 
+In the time since you have commented on the proposal, I have been working with my partner (Parth) and other advisors to clarify the scope on our project. First we talked to Prof. Ladak and Ms. Hough and elicited the business rules required for the project itself.  Then we talked to Prof. Samarabandu in regards to his undergraduate tracking system, this has helped us to define the scope of our database system to Prof. Ladak. Additionally I have consulted Prof. Ouda in regards to the networking and security considerations of our projects. After the analysis we were able to clarify our responsibilities in the project further ans we wish to share them across the interested parties. 
+
+############################
+#####ECE4416 Component######
+############################
+
+Business Requirement Elicitation:
+
+Parth will be responsible for gathering the business rules for each component from Ladak and Ms.Hough . As it stands many of the components have been covered, however in the future Parth will be responsible to discuss 
+
+Designing the Business Rules:
+
+Parth will use the Business Requirements to analyze and design a Business Rule solution for the BioMedical Physics masters program. This will allow us to freeze the scope for the rest of the project.
+
+Implementation of the Interfaces: 
+
+Based on the Business Requirements and the workflow of the Graphical User Interface (GUI) and the Electrical Device Interface (EDI)  will be implemented for the core system to drive. 
+
+##########################
+#####SE450 Component######
+##########################
+
+Technical Rules Elicitation:
+
+Based on the interfaces provided (GUI and EDI) I will create the technical requirements which will be elicited from Parth, Prof. Ladak and Ms. Hough. The technical requirements will cover the data flow, data processes, security and reporting concepts. The elicited business rules will be used to clarify the functional requirements of the Database, MVC system and the interface drivers. 
+
+
+Designing a Graduate Software Tracking System:
+
+My design will focus on making a Tracking system that can be extended to several departments with a pilot on the Business Rules of the BioMedical Physics program. 
+
+
+Implementation of the Database Design, Framework, and Security Schemes:
+I will be responsible for implementing the MVC framework, database schema and the network security schemes.
+
+
+Hopefully this covers the concerns and questions you asked me in my proposal feedback. 
+
+Regards,
+Kartik Thakore 

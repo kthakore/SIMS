@@ -23,8 +23,39 @@
 The purpose of this report is to document preliminary elicited requirements for the Interactive Graduate Student Information System (SIMS). Additionally, in accordance with the Agile project management methodology, a walk through of the first iteration is documented. Our first iteration includes two system critical features which will be used for iterative system development of the system. Database schemas and operational logic for user authentication and calculations for graduate student funding were accomplished.  A database schematic was designed after performing extensive analysis based on our specifications, data flow requirements and approved system critical assumptions. Data normalization was performed and a Representational State Transfer (REST) framework was implemented to combine components. Furthermore, unit and integration testing were performed with the preliminary implementation in place. For preparation of future iterations, a sign-off from end users and client is required. However, we have started the rapid prototyping of the e-signature component for the advisory meeting tracking feature. 
 \end{abstract}
 
+
+
 \section{System Overview}
-The SIMS system is primarily a web application designed for the department of Medical BioPhysics (MSc) , which will be used to can track important dates from inception to completion of the program lifecycle and help manage information on an efficient basis. The system will provide effective reporting techniques including custom reminders, tracking and gathering input from the graduate students. 
+
+The SIMS core is a secure application that aims to be flexible to handle business rules of varying graduate student programs. In the scope of this project however, focus will be placed on the Graduate Student Program at the BioMedical Physics program at University of Western Ontario. At the very least SIMS will hold graduate student, funding and advisory meeting data. Additionally SIMS will allow the program administrator to organize collected data into reports and to send automatic request for data to students. Also advisors and other faculty users will be able to see student data, progress and any advisory meetings they have attended. SIMS will also place an emphasis on providing security of student personal data and faculty identifications. Overall SIMS, will be replacing the current manual system of tracking students and their progress through graduate programs.
+
+\subsection{High Level Model}
+
+Figure \ref{fig:sysOver} shows the overview of the required system. The user will access the system via the Client and Tablet devices. The data from the tablet will be processed in the client and sent via the TCP/IP protocol to the Application Server (AppServer). The responsibility of the AppServer is to provide secure access, and host the application. The AppServer will communicate with the Services Server to add triggers and use the database. The AppServer and the ServicesServer will be located on a local network which is accessed via a Virtual Private Network (VPN).
+
+
+Figure \ref{fig:Users} models the users of the SIMS system. The user groups can be broken down into 3 categories, the Student, the Faculty and the Technical Administrator. The technical administrator will have access only to the authentication data. While the student and the faculty will have access only to the tracked data. Additionally the faculty will have more access over the student. The role and operations requirements will be covered more in-depth in the system features.
+ 
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=522px]{diagrams/SystemOverview} \caption{ The proposed system } \label{fig:sysOver}
+
+\end{center}
+\end{figure}
+
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=468px]{diagrams/use_cases/UserHeirachy_uc} \caption{ Users of the SIMS system } \label{fig:Users}
+
+\end{center}
+\end{figure}
+
+
+
+\subsection{Technical Environment}
+
+SIMS will be built on the Linux Server platform for the Database and Application Server. The client will be limited to a Linux Operating System with the Firefox 3.6 web browser.  
 
 \section{Specific requirements}
 \subsection{External interface requirements}

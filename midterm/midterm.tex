@@ -24,14 +24,6 @@ The purpose of this report is to document preliminary elicited requirements for 
 \end{abstract}
 
 
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=522px]{diagrams/SystemOverview} \caption{ The proposed system } \label{fig:sysOver}
-
-\end{center}
-\end{figure}
-
-\clearpage
 
 \section{System Overview}
 
@@ -40,6 +32,25 @@ The SIMS core is a secure application that aims to be flexible to handle busines
 \subsection{High Level Model}
 
 Figure \ref{fig:sysOver} shows the overview of the required system. The user will access the system via the Client and Tablet devices. The data from the tablet will be processed in the client and sent via the TCP/IP protocol to the Application Server (AppServer). The responsibility of the AppServer is to provide secure access, and host the application. The AppServer will communicate with the Services Server to add triggers and use the database. The AppServer and the ServicesServer will be located on a local network which is accessed via a Virtual Private Network (VPN).
+
+
+Figure \ref{fig:Users} models the users of the SIMS system. The user groups can be broken down into 3 categories, the Student, the Faculty and the Technical Administrator. The technical administrator will have access only to the authentication data. While the student and the faculty will have access only to the tracked data. Additionally the faculty will have more access over the student. The role and operations requirements will be covered more in-depth in the system features.
+ 
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=522px]{diagrams/SystemOverview} \caption{ The proposed system } \label{fig:sysOver}
+
+\end{center}
+\end{figure}
+
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=468px]{diagrams/use_cases/UserHeirachy_uc} \caption{ Users of the SIMS system } \label{fig:Users}
+
+\end{center}
+\end{figure}
+
 
 
 \subsection{Technical Environment}

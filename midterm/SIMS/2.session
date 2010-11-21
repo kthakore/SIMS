@@ -7,7 +7,5 @@ show_stereotypes
 selected deploymentdiagram_ref 128002 // SystemOverview
 open
   deploymentview_ref 128002 // SystemOverview
-  componentview_ref 128002 // ServicesServer
-  componentview_ref 128130 // AppServer
 end
 end

@@ -4,9 +4,10 @@ diagrams
     1075 596 126 4 0 0
 end
 show_stereotypes
-selected component_ref 128002 // SIMS Database
+selected component_ref 128386 // VPN Provider
 open
   deploymentnode_ref 128002 // Client
   componentview_ref 128002 // ServicesServer
+  componentview_ref 128130 // AppServer
 end
 end

@@ -184,6 +184,7 @@ Adhere to required constraints.
 \end{figure}
 
 \end{frame}
+\section{Requirements}
 
 \subsection{Technical Requirements}
 
@@ -267,32 +268,46 @@ System Security
 Roles and Operational Access
 \end{itemize}
 \begin{figure}[!h]
-\includegraphics[width180px]{diagrams/use_cases/UserHeirachy_uc} \caption{ Roles of the SIMS system } \label{fig:Users}
+\includegraphics[width=180px]{diagrams/use_cases/UserHeirachy_uc} \caption{ Roles of the SIMS system } \label{fig:Users}
 \end{figure}
 \end{itemize}
 \end{frame}
+\section{Architectural Analysis}
 
 \subsection{Analysis}
 \begin{frame}{Organizing Data}
 \begin{itemize}
 \item
-Seperate Authentication Data from System Data
+Seperate Authentication Data from Critical Data
+\begin{figure}[!h]
+\includegraphics[width=206px]{diagrams/use_cases/seperation_of_data_uc.png} \caption{ 3 general data use cases } \label{fig:Users}
+\end{figure}
+
 \end{itemize}
 \end{frame}
 \begin{frame}{Conceptual Model of the Student}
 \begin{itemize}
 \item
 Student can be treated as a ticket, which needs to go through steps to be completed.
+\begin{figure}[!h]
+\includegraphics[width=319px]{diagrams/state_chart/student_ticket.png} \caption{ The simple steps of Grad School } \label{fig:Users}
+\end{figure}
 \end{itemize}
 \end{frame}
 \begin{frame}{Critical Assumptions}
 \begin{itemize}
+\item Seperation of Data
+\begin{itemize}
+\item
+Student Data is kept around even after student has graduated.
+\end{itemize}
+\item Student as a Bug Ticket
+\begin{itemize}
 \item
 Student will be responsible for their own data.
 \item
-Student Data is kept around even after student has graduated.
-\item
 Student can only be a student if they have a funded term.
+\end{itemize}
 \item
 Data entry will be done manually at this point.
 \end{itemize}
@@ -304,12 +319,16 @@ Data entry will be done manually at this point.
 \item Clients
 \item Application Server
 \item Services Server
+\begin{figure}[!h]
+\includegraphics[width=180px]{diagrams/SystemOverview.png} \caption{ The System Overview } \label{fig:Users}
+\end{figure}
+
 \end{itemize}
 \end{frame}
 \begin{frame}{Software}
 \begin{itemize}
-\item Client E-Signature Capture
-\item OpenVPN
+\item E-Signature Capture Client
+\item OpenVPN Server
 \item Production HTTP server
 \item Database Server
 \item Perl Modules 
@@ -317,7 +336,7 @@ Data entry will be done manually at this point.
 \end{frame}
 \begin{frame}{Network Protocols and Schemes}
 \begin{itemize}
-\item OpenVPN
+\item VPN Login
 \item SSL 
 \item Internal Role Based Security
 \end{itemize}
@@ -326,6 +345,7 @@ Data entry will be done manually at this point.
 \end{frame}
 \begin{frame}{Perl Batch Services}
 \end{frame}
+\section{Iterative Design}
 
 \subsection{Iteration 1}
 \begin{frame}{System Features}

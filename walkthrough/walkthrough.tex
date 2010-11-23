@@ -177,7 +177,7 @@ Adhere to required constraints.
 
 
 \end{frame}
-\begin{frame}{Scope}
+\begin{frame}{Proposal}
 
 \begin{figure}
 \includegraphics[width=261px]{images/scope} \caption{ The proposed system }
@@ -185,16 +185,44 @@ Adhere to required constraints.
 
 \end{frame}
 
-\subsection{Requirements}
+\subsection{Technical Requirements}
 
 \begin{frame}{Interfaces}
+\begin{itemize}
+\item 
+Graphical User Interface:
+\begin{itemize}
+\item 
+The implementation of the Business Rules defined as HTML pages. 
+\end{itemize}
+\item 
+Electrical User Interface:
+	\begin{itemize}
+	\item 
+	Collect signatures from a Wacom \copyright Tablet and store securely in the DataBase.
+	\end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Graphical User Interface}
+Specific requirements for the view of the Web Pages:
+\begin{itemize}
+\item 
+Set of HTML pages that are to be the template of the system.
+\begin{figure}
+\includegraphics[width=180px]{ht/LogIn.png} \caption{ Sample GUI provided }
+\end{figure}
+\end{itemize}
 \end{frame}
 
 
 \begin{frame}{Electrical Device Interface}
+\item
+Provide an interface for the User to sign on the screen.
+\item
+On the client side acquire a bitmap of the signature and encrypt the bitmap data.
+\item 
+The image should be viewable only by the user who signed and the graduate admin.
 \end{frame}
 
 \begin{frame}{System Features}

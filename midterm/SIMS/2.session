@@ -4,8 +4,9 @@ diagrams
     1075 596 126 4 0 0
 end
 show_stereotypes
-selected deploymentdiagram_ref 128002 // SystemOverview
+selected component_ref 128002 // SIMS Database
 open
-  deploymentview_ref 128002 // SystemOverview
+  deploymentnode_ref 128002 // Client
+  componentview_ref 128002 // ServicesServer
 end
 end

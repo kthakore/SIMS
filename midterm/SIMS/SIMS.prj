@@ -1,6 +1,6 @@
 format 76
 "SIMS"
-  revision 1
+  revision 2
   modified_by 2 "kthakore"
 
 
@@ -70,6 +70,12 @@ format 76
 
     artifact 128258 "WebBrowser"
     end
+
+    deploymentdiagram 134530 "ScopeDiagram"
+      package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+      draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+      size A4
+    end
   end
 
   componentview 128002 "ServicesServer"
@@ -93,4 +99,5 @@ format 76
     component 128386 "VPN Provider"
     end
   end
+
 end

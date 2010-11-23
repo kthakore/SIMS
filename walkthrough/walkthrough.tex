@@ -228,27 +228,101 @@ The image should be viewable only by the user who signed and the graduate admin.
 \end{frame}
 
 \begin{frame}{System Features}
+\begin{itemize}
+\item
+User Administration
+\item
+Tracking Data
+\begin{itemize}
+\item
+Student Data
+\item
+Student Term and Funding Data
+\item 
+Student Program Data
+\item 
+Student Advisory Commitee Meeting 
+\end{itemize}
+\item 
+Reporting
+\begin{itemize}
+\item
+Customized Queries
+\item 
+Student Output Reports
+\end{itemize}
+\item
+Triggering System 
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Constraints}
+\begin{itemize}
+\item 
+Security 
+\begin{itemize}
+\item 
+System Security
+\item
+Roles and Operational Access
+\end{itemize}
+\begin{figure}[!h]
+\includegraphics[width180px]{diagrams/use_cases/UserHeirachy_uc} \caption{ Roles of the SIMS system } \label{fig:Users}
+\end{figure}
+\end{itemize}
 \end{frame}
 
 \subsection{Analysis}
-\begin{frame}{Oranizing Data}
+\begin{frame}{Organizing Data}
+\begin{itemize}
+\item
+Seperate Authentication Data from System Data
+\end{itemize}
 \end{frame}
 \begin{frame}{Conceptual Model of the Student}
+\begin{itemize}
+\item
+Student can be treated as a ticket, which needs to go through steps to be completed.
+\end{itemize}
 \end{frame}
 \begin{frame}{Critical Assumptions}
+\begin{itemize}
+\item
+Student will be responsible for their own data.
+\item
+Student Data is kept around even after student has graduated.
+\item
+Student can only be a student if they have a funded term.
+\item
+Data entry will be done manually at this point.
+\end{itemize}
 \end{frame}
 
 \subsection{Architecture}
 \begin{frame}{Hardware}
+\begin{itemize}
+\item Clients
+\item Application Server
+\item Services Server
+\end{itemize}
 \end{frame}
 \begin{frame}{Software}
+\begin{itemize}
+\item Client E-Signature Capture
+\item OpenVPN
+\item Production HTTP server
+\item Database Server
+\item Perl Modules 
+\end{itemize}
 \end{frame}
 \begin{frame}{Network Protocols and Schemes}
+\begin{itemize}
+\item OpenVPN
+\item SSL 
+\item Internal Role Based Security
+\end{itemize}
 \end{frame}
-\begin{frame}{ REST Web Applications}
+\begin{frame}{REST Web Applications}
 \end{frame}
 \begin{frame}{Perl Batch Services}
 \end{frame}
@@ -256,7 +330,7 @@ The image should be viewable only by the user who signed and the graduate admin.
 \subsection{Iteration 1}
 \begin{frame}{System Features}
 \end{frame}
-\begin{frame}{Intrinstic Data of a Student}
+\begin{frame}{Intrinsic Data of a Student}
 \end{frame}
 \begin{frame}{Role Based Authentication}
 \end{frame}
@@ -264,7 +338,7 @@ The image should be viewable only by the user who signed and the graduate admin.
 \subsection{Iteration 2}
 \begin{frame}{System Features}
 \end{frame}
-\begin{frame}{E-Signature Clien}
+\begin{frame}{E-Signature Client}
 \end{frame}
 
 \subsection{Test Plans}

@@ -132,37 +132,45 @@
 \item
 Advisor: Dr. Hanif Ladak
 \item
-Concerned with managing students in the graduate program for BioMedical Physics.
+Concerned with managing students in the BioMedical Physics Graduate Student at UWO.
 \item 
-Current system has lots of problems.
+Current system have the following problem:
 \begin{itemize}
 \item 
-Calculations and updates are mostly manual.
+Calculations and updates can only be done by one person
 \item
-Need to keep the paper copies of meetings.
+Need to keep the paper copies of meetings
 \item 
-Takes lots of time to create reports.
+Takes lots of time to create reports
 \item 
-Hard to track when a student must have a requirement done.
+Hard to track when a student must have a requirement done
 \end{itemize}
 \end{itemize}
 \end{frame}
 \begin{frame}{Current System}
 Demo of the Current System.
+\begin{itemize}
+\item Benefits: 
+\begin{itemize}
+\item Faster, less error prone way of tracking graduate program
+\item Possibility of expanding to other department
+\item Credibility to the graduate program 
+\end{itemize}
+\end{itemize}
 \end{frame}
 
 
 \begin{frame}{Project Organization}
 
-Two components of the problem:
+Two components of the project:
 \begin{itemize}
 \item
 (ECE4416) Business rules:
 \begin{itemize}
 \item
-Graduate program milestones and dataflow.
+Graduate program milestones
 \item
-Direct interaction with the User.
+Interface requirements with the user 
 \end{itemize}
 \item 
 (SE4450) Technical requirements:
@@ -171,6 +179,8 @@ Direct interaction with the User.
 Provide the functionality for the User Interfaces.
 \item 
 Adhere to required constraints.
+\item 
+Make a pilot for these Business Requirements with expansion in mind. 
 \end{itemize}
 \end{itemize}
 
@@ -187,6 +197,12 @@ Adhere to required constraints.
 \section{Requirements}
 
 \subsection{Technical Requirements}
+
+\begin{frame}{System Roles}
+\begin{figure}[!h]
+\includegraphics[width=207px]{diagrams/use_cases/UserHeirachy_uc} \caption{ Roles of the SIMS system } \label{fig:Users}
+\end{figure}
+\end{frame}
 
 \begin{frame}{Interfaces}
 \begin{itemize}
@@ -242,7 +258,7 @@ Student Term and Funding Data
 \item 
 Student Program Data
 \item 
-Student Advisory Commitee Meeting 
+Student Advisory Committee Meeting 
 \end{itemize}
 \item 
 Reporting
@@ -259,17 +275,11 @@ Triggering System
 
 \begin{frame}{Constraints}
 \begin{itemize}
-\item 
-Security 
-\begin{itemize}
-\item 
-System Security
-\item
-Roles and Operational Access
-\end{itemize}
-\begin{figure}[!h]
-\includegraphics[width=180px]{diagrams/use_cases/UserHeirachy_uc} \caption{ Roles of the SIMS system } \label{fig:Users}
-\end{figure}
+\item Agile
+\item Flexibility 
+\item Easy to use
+\item Roles and Operational Access
+\item Protocol Security 
 \end{itemize}
 \end{frame}
 \section{Architectural Analysis}
@@ -278,7 +288,7 @@ Roles and Operational Access
 \begin{frame}{Organizing Data}
 \begin{itemize}
 \item
-Seperate Authentication Data from Critical Data
+Separate Authentication Data from Critical Data
 \begin{figure}[!h]
 \includegraphics[width=206px]{diagrams/use_cases/seperation_of_data_uc.png} \caption{ 3 general data use cases } \label{fig:Users}
 \end{figure}
@@ -296,7 +306,7 @@ Student can be treated as a ticket, which needs to go through steps to be comple
 \end{frame}
 \begin{frame}{Critical Assumptions}
 \begin{itemize}
-\item Seperation of Data
+\item Separation of Data
 \begin{itemize}
 \item
 Student Data is kept around even after student has graduated.
@@ -337,10 +347,19 @@ Data entry will be done manually at this point.
 \section{Iterative Design}
 
 \subsection{Iteration 1}
-\begin{frame}{Rapid Protoyping}
+\begin{frame}{Rapid Prototyping}
 \begin{itemize}
 \item Perl Framework
+\begin{itemize}
+\item A glue that abstracts the database, and templates the view
+\item Controllers are defined as routes
+\item Representational State Transfer (REST)
+\end{itemize}
 \item Database Schema
+\begin{itemize}
+\item Intrinsic Student Data
+\item Role Based Authentication
+\end{itemize}
 \item E-Signature client
 \end{itemize}
 \end{frame}
@@ -348,8 +367,11 @@ Data entry will be done manually at this point.
 \begin{frame}{Test Plans}
 \begin{itemize}
 \item Unit Tests
+\begin{itemize}
+\item Demo
+\end{itemize}
 \item Integration Testing
-\item System Integration testing
+\item System Integration Testing
 \end{itemize}
 \end{frame}
 

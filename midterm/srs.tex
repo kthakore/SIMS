@@ -1,0 +1,121 @@
+\documentclass{journal}
+\usepackage{graphics,graphicx}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{pdflscape}
+\usepackage{tikz}
+\usepackage{gantt}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{index}
+\makeindex
+\onehalfspacing
+
+\begin{document}
+
+\bibliographystyle{IEEE}
+\nocite{*}
+\title{Interactive Graduate Student Information Database}
+\subtitle{Midterm Report} 
+\author{Kartik Thakore (250313003)\\kthakore@uwo.ca}
+\maketitle
+
+
+
+1
+Introduction
+1.1
+Purpose
+The purpose of this report is to document preliminary elicited requirements for the Interactive Gradu-
+ate Student Information System (SIMS). Additionally, in accordance with the Agile project management
+methodology, a walk through of the first iteration is documented. Our first iteration includes two system
+critical features which will be used for iterative system development of the system. Database schemas and
+operational logic for user authentication and calculations for graduate student funding were accomplished.
+A database schematic was designed after performing extensive analysis based on our specifications, data flow
+requirements and approved system critical assumptions. Data normalization was performed and a Represen-
+tational State Transfer (REST) framework was implemented to combine components. Furthermore, unit and
+integration testing were performed with the preliminary implementation in place. For preparation of future
+iterations, a sign-off from end users and client is required. However, we have started the rapid prototyping
+of the e-signature component for the advisory meeting tracking feature.
+1.2
+Scope
+The scope of the following requirements is to provide a pilot software back end for the BioMedical Physics
+Graduate program at UWO. First the system will replace the current method of tracking student information
+pictured in 1.
+• The current system provides the following features which directly fall into scope for this product:
+– Storage of Intrinsic Student Value
+– Graphical User Interface for Entering Student Data
+– Saving portable reports for external users
+• The new system will additionally need to address the following concerns:
+– Store data securely and with more redundancy
+– Simply the User Interface for using the system
+– Remove the load of managing data solely on one user
+– Allow faculty members to view data in a meaningful way
+– Allow students to update their information
+– Allow advisory committee members to store and retrieve signatures and comments on the system
+Currently the scope is limited to tackling these core issues. However since the project cycle is iterative,
+the scope can be expanded in a controlled manner, should the situation demand it.
+1.3
+Definitions, acronyms, and abbreviations
+• SIMS: Student Information System
+• UWO: University of Western Ontario
+• REST: Software Architecture for Web Applications
+• VPN: Virtual Private Network
+• SSL: Security Protocol for Web Applications
+2
+Fig. 1: The Current System
+1.4 References
+1.5 Overview
+The SIMS core is a secure application that aims to be flexible to handle business rules of varying graduate
+student programs. In the scope of this project however, focus will be placed on the Graduate Student
+Program at the BioMedical Physics program at University of Western Ontario. At the very least SIMS
+will hold graduate student, funding and advisory meeting data. Additionally SIMS will allow the program
+administrator to organize collected data into reports and to send automatic request for data to students.
+Also advisors and other faculty users will be able to see student data, progress and any advisory meetings
+they have attended. SIMS will also place an emphasis on providing security of student personal data and
+faculty identifications. Overall SIMS, will be replacing the current manual system of tracking students and
+their progress through graduate programs.
+Figure 2 shows the overview of the required system. The user will access the system via the Client and
+Tablet devices. The data from the tablet will be processed in the client and sent via the TCP/IP protocol
+to the Application Server (AppServer). The responsibility of the AppServer is to provide secure access, and
+host the application. The AppServer will communicate with the Services Server to add triggers and use the
+database. The AppServer and the ServicesServer will be located on a local network which is accessed via
+a Virtual Private Network (VPN). Figure 3 models the users of the SIMS system. The user groups can be
+broken down into 3 categories, the Student, the Faculty and the Technical Administrator. The technical
+administrator will have access only to the authentication data. While the student and the faculty will have
+access only to the tracked data. Additionally the faculty will have more access over the student. The role
+and operations requirements will be covered more in-depth in the system features.
+3
+Fig. 2: The proposed system
+Fig. 3: Users of the SIMS system
+4
+2
+Overall Description
+2.1
+Product perspective
+The product will be self contained as it is responsible form User Interface, Application and Data Storage.
+Figure 2 again describes the perspective of the system.
+The product will have the following constraints:
+• User Interface: The specifications of each view of the user interface will be provided for this project.
+• Hardware Interface: The system will be using a Wacom tablet as a hardware to acquire signatures.
+• Software interfaces: The system will have to employ several software interfaces.
+– Application Server: Apache 2.0 will be used to deploy the system with SSL security.
+– VPN Provider: OpenVPN will be used to deploy our system as a self contained virtual private
+network.
+– Database Software: A PostgreSQL RDBMS server will be used to run our Data Storage Compo-
+nent of the Software.
+2.2 Product function
+2.3 User characteristics
+2.4 Constraints
+2.5 Assumptions and dependencies
+3
+Specific Requirements
+3.1 External interface requirements
+3.2 Functional requirements
+3.3 Performance requirements
+3.4 Design constraints
+3.5 Software system attributes
+3.6 Other requirements
+4 Appendixes
+5 Index
+

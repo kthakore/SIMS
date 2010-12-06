@@ -7,6 +7,7 @@
 \usepackage{setspace}
 \usepackage{enumitem}
 \usepackage{index}
+\usepackage{gantt}
 \makeindex
 \onehalfspacing
 
@@ -66,7 +67,7 @@ the scope can be expanded in a controlled manner, should the situation demand it
 \item VPN: Virtual Private Network
 \item SSL: Security Protocol for Web Applications
 \end{itemize}
-\subsection{ References }
+
 \subsection{ Overview }
 The SIMS core is a secure application that aims to be flexible to handle business rules of varying graduate
 student programs. In the scope of this project however, focus will be placed on the Graduate Student
@@ -385,6 +386,109 @@ Contains data regarding to the students contact information including their UWO 
 \end{figure}
 
 \end{itemize}
+
+\chapter{Design}
+\section{Iteration 1}
+
+\section{Future Work}
+\chapter{Walkthrough}
+\section{Concerns}
+\section{Report}
+\section{Follow Up}
+\chapter{Partial Test Plan}
+\chapter{Updated Gantt Chart}
+\begin{landscape}
+	\scalebox{0.8}{
+		\begin{gantt}[xunitlength=0.65cm,fontsize=\small,titlefontsize=\small,drawledgerline=true]{16}{32}
+		\begin{ganttitle}
+		\titleelement{2010}{16}
+		\titleelement{2011}{16}
+		\end{ganttitle}
+		\begin{ganttitle}
+		\titleelement{Sept}{4}
+		\titleelement{Oct}{4}
+		\titleelement{Nov}{4}
+		\titleelement{Dec}{4}
+		\titleelement{Jan}{4}
+		\titleelement{Feb}{4}
+		\titleelement{Mar}{4}
+		\titleelement{Apr}{4}
+		\end{ganttitle}
+		\begin{ganttitle}
+		\numtitle{1}{1}{4}{1}
+		\numtitle{1}{1}{4}{1}
+		\numtitle{1}{1}{4}{1}
+		\numtitle{1}{1}{4}{1}
+		\numtitle{1}{1}{4}{1}
+		\numtitle{1}{1}{4}{1}
+		\numtitle{1}{1}{4}{1}
+		\numtitle{1}{1}{4}{1}
+		\end{ganttitle}
+		\ganttbar{Problem Definition}{1}{3}
+		\ganttbar{Requirements Engineering}{4}{2}
+		\ganttcon{4}{3}{4}{4}
+		\ganttbar{Authentication and Student Funding Feature}{6}{3}
+		\ganttcon{6}{4}{6}{5}
+		\ganttbar{Authentication and Student Funding Feature: Feedback }{10}{1}
+		\ganttcon{9}{5}{10}{6}
+		\ganttcon{9}{5}{9}{7}
+		\ganttbar{Advisory Meetings Feature}{9}{3}
+		\ganttbar{Adivsory Meetings Feature: Feedback }{12}{1}
+		\ganttcon{12}{7}{12}{8}
+		\ganttcon{12}{7}{12}{9}
+		\ganttbar{Iteration 3}{12}{3}
+		\ganttbar{Iteration 3: Feedback }{16}{1}
+		\ganttcon{15}{9}{16}{10}
+		\ganttcon{15}{9}{16}{11}
+		\ganttbar{Iteration 4}{16}{3}
+		\ganttbar{Iteration 4: Feedback }{19}{1}
+		\ganttcon{19}{11}{19}{12}
+		\ganttcon{19}{11}{19}{13}
+		\ganttbar{Iteration 5}{19}{3}
+		\ganttcon{22}{13}{22}{14}
+		\ganttbar{Acceptance Testing}{22}{2}
+		\ganttcon{24}{14}{24}{15}
+		\ganttbar{Project Documentation}{24}{4}  
+		\end{gantt}
+	}
+\end{landscape}
+\chapter{References}
+
+\begin{verbatim}
+Joe Lin, Charley Ho, Wasim Sadiq, and Maria E. Orlowska, “On workflow enabled e-learning 
+services”, Advanced Learning Technologies, IEEE International Conference on,
+vol. 0, pp. 0349, 2001.
+
+Office of the Privacy Commissioner of Canada, "Canada's personal information protection 
+and electronic documents act", http://www.priv.gc.ca/information/guide_e.cfm, 2003, 
+This is an electronic doc- ument. Date of publication: November 20, 2003. 
+Date retrieved: October 4, 2010.
+
+T.G. Zimmerman, G.F. Russell, A. Heilper, B.A. Smith, J. Hu, D. Markman, J.E. Graham, 
+C. Drews "Retail Applications of Signature Verification",
+SPIE Defense and Security Symposium, Biometric Technology for Human Identification
+, Orlando, Florida, April 2004.
+
+Lidstrom, Mattias. "The Input Race: A comparative study between two input modalities." 
+Luleå University of Technology. 28 May 2007. Department of Music and media. 10 Nov. 2010 
+<http://epubl.ltu.se/1402-1552/2007/110/LTU-DUPP-07110-SE.pdf>
+
+Bennett, William E. (Mahopac, NY), Boies, Stephen J. (Mahopac, NY), Davies,
+ Anthony R. (Romsey, GB2), Etzold, Karl-friedrich (Briarcliff Manor, NY), Rodgers, 
+ Todd K. (Chappaqua, NY) 1991 Optical stylus and passive digitizing tablet data 
+ input system United States International Business Machines Corporation (Armonk, NY)	5051736 http://www.freepatentsonline.com/5051736.html
+
+"Council highlights",	http://www.cou.on.ca/News/News---Views/Newsletters/PDFs/ 
+Council-Highlights-2005May.aspx, 2005, 
+This is an electronic document. Date of publication:
+ May 1, 2005. Date retrieved: Sept 29th, 2010.
+
+I.P.W. Fung, "On monitoring study progress with 
+time-based course planning", Advanced Learning Technologies, 2001. Proceedings. 
+IEEE International Conference on, pp. 361 –364, 2001.
+\end{verbatim}
+
+
 \clearpage
 \newpage 
 

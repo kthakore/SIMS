@@ -122,7 +122,7 @@ network.
 \end{itemize}
 \subsection{Product function}
 \subsection{User characteristics}
-Figure \ref{fig:users} describes the relation between the users of the systems, for futher clarification:
+Figure \ref{fig:users} describes the relation between the users of the systems, for further clarification:
 \begin{itemize}
 \item General User: Any user of the system, can login into the system 
 \begin{itemize}
@@ -155,7 +155,7 @@ Data in SIMS is critical and needs to be protected from data losses. A regular b
 
 \subsection{Assumptions and dependencies}
 \subsubsection{Student Data v.s User Data }
-Student Data is seperate from the system, and will not be removed from the system after they graduate. However a user can still be expired from the system. Since archival is needed for a period of atleast 7 years SIMS will need to seperate user access and student data. 
+Student Data is separate from the system, and will not be removed from the system after they graduate. However a user can still be expired from the system. Since archival is needed for a period of atleast 7 years SIMS will need to seperate user access and student data. 
 \subsubsection{Intrinsic Student Data }
 Another assumption required by SIMS's requirement is that Student can only be stored in the system if they have a funded term attached to them. This implies that funding is tied on a term basis, which can help to simply futher calculations. 
 
@@ -165,22 +165,226 @@ Another assumption required by SIMS's requirement is that Student can only be st
 A set of graphical user interfaces defined in HTML will be provided for the system to template. SIMS will show the interfaces as is and add dynamic data to them. 
 \subsubsection{ Hardware Interface }
 SIMS will acquire signatures from client side wacom tablets from a USB 2.0 protocol. Data will be output as a BMP file format. 
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.75]{diagrams/HTMLTemplating/Figure6.png}
+\caption{Signature Interface View}
+\label{fig:signature}
+\end{figure}
+
+\begin{itemize}
+\item Purpose: To provide an interface for recording advisory committee member signatures.
+\item Response Sequence: When the e-signature pad is connected to the device, it will automatically start the e-signature interface which records an individual signature.
+\item Associated Functional Requirements:
+\begin{itemize}
+\item Clear: Ability to clear the signature if the signer does not accept the signature
+\item Sign: Once the output on the screen is satisfactory, the user can “Sign” the document which will save the image in a document on the database.
+\end{itemize}
+\end{itemize}
 \subsection{ Functional requirements }
 \subsubsection{ User Administration }
 
-\subsubsection{ System wide login page }
-\subsubsection{ System Dashboard }
-\subsubsection{ Student Profile }
-\subsubsection{ Graduate Students’ Personal Information }
-\subsubsection{ Graduate Students’ Program Information }
-\subsubsection{ Graduate Students’ Advisory Committee }
-\subsubsection{ Data Reporting }
-\subsubsection{ Automatic Notification Triggering } 
-\subsection{ Performance requirements }
-\subsection{ Design constraints }
-\subsection{ Software system attributes }
-\subsection{ Other requirements }
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure7.png}
+\caption{User Browser}
+\label{fig:UserBrowser}
+\end{figure}
 
+
+\begin{itemize}
+\item Purpose: The user browser lists all the users in the system for technical administration. 
+\item Response Sequence: Login and click on User Browser from the admin. From this page, the administrator can perform the following functions:
+Associated Functional Requirements:
+\begin{itemize}
+\item Create new users: Adding a new user to the system can only be accomplished by the technical administrator after an approval from the Graduate Administrator.
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure8.png}
+\caption{New Users}
+\label{fig:NewUser}
+\end{figure}
+\item Adding new user roles: User roles are primary stakeholder groups for the system. Currently, our primary stakeholders are Advisory Committee Members, Graduate Administrators, Graduate Executives, and Graduate Students.
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure9.png}
+\caption{New Users Roles}
+\label{fig:NewUserRoles}
+\end{figure}
+
+\item Adding Operation to roles: Permissions can be added to the user permission list by clicking on the Add New permission button under User Administration. This can be done by the technical administrator.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure9.png}
+\caption{New Operations}
+\label{fig:NewPermission}
+\end{figure}
+
+
+\end{itemize}
+\end{itemize}
+
+\subsubsection{ System wide login page }
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure1.jpg}
+\caption{System Wide Login Page}
+\label{fig:SystemWideLogin}
+\end{figure}
+
+
+\begin{itemize}
+\item Purpose: Provide a universal log-in page to provide access to the end users of the system
+\item Response Sequence: In order to access the login page, user will have to type the system URL in a supported browser and will be directed to this log in page. 
+\item Associated Functional Requirements: 
+\begin {itemize} 
+\item Introduction widget: This widget will provide a short introduction to the purpose of the management system. It will also feature an Important Links section with a link to the website of Department of Medical BioPhysics. Furthermore, a link to a technical troubleshooting page will be created.
+\item Login window: This is the actual login page where the user will enter their credentials to login. Users cannot sign up for the system individually. The Graduate Administrator facilitates the sign up process and a direct link to request the login credentials will be set up.
+\end{itemize}
+\end{itemize}
+
+
+\subsubsection{ System Dashboard }
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure2.jpg}
+\caption{System Dashboard Page}
+\label{fig:SystemDashBoard}
+\end{figure}
+
+\begin{itemize}
+\item Purpose: Provide a centralized location of all system functions while preserving ease of use and accessibility.
+\item Response sequence: The user will be directed to this page after login.
+\item Associated Functional Requirements:
+\begin{itemize}
+\item Provide various plugins on the dashboard based on different user roles and access for access to student profiles and various system features. Plugins can be RSS feed or activity stream, various preset charts and reports.
+\item Search: Be able to search a students profile from the dashboard.
+\end{itemize}
+\end{itemize}
+
+\subsubsection{ Student Profile }
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure3.png}
+\caption{Student Profile Page}
+\label{fig:StudentProfile}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure4.png}
+\caption{Supervisor Information Page}
+\label{fig:SuperInfo}
+\end{figure}
+
+
+\begin{itemize}
+\item Purpose: Provide an intuitive dossier format interface for users to see the student profile in a centralized location. The key goal is to ensure that all the important system functionality in a centralized location. Note the attached sample HTML page.
+\item Response sequence: In order to access the GUI, the user will be required to login and will be taken to a dashboard which will have options to generate reports and search a student by their assigned id. Once selected the user will be able to see a student profile and be able to perform various functions based on their authentication scope as defined in the access control list.
+\item Associated Functional Requirements:
+\begin{itemize}
+\item Information Tab Section: The profile page will feature information tabs with centralized information about their Personal Information, Program Information, Supervisor Information and Advisory Committee Meeting Information.
+\item Supervisor Information: This tab contains information regarding a students’ direct Supervisor Name and information about the supervisors minimum student contribution along with other logistical information. This information is created with the sample medical biophysics excel sheet provided by the Graduate Administrator user at the department of Medical BioPhysics.	
+
+\item Expansion: Each section can be clicked on to show summary of additional information
+\item Link:  Each information tab will link to another section pages (if applicable)
+\item Grouping: Group dates and People in the same window area for better accessibility
+Export Options: There should be an export option to ensure that a user can export their entire student profile in Word, PDF or in a Printable format
+\item Attachment Options: The dossier should feature an attachment tab that includes all relevant attachments/forms for that student profile.
+\end{itemize}
+\end{itemize}
+
+\subsubsection{ Graduate Students’ Personal Information }
+\begin{itemize}
+\item Graduate Students’ Personal Information:
+Contains data regarding to the students contact information including their UWO e-mail address and their current location. This system feature is to document how personal information is stored and accessed via different user roles. 
+\item Graduate Students: Graduate Students can view their entire profile including their program information, supervisor information, advisory committee information and personal information. Data access is restricted only to their personal profile.
+\item Graduate Administrator: Ability to edit all fields.
+\item Graduate Executives and Advisory Committee members: Read Only access.
+\item Update Personal information
+\begin{itemize}
+\item Visibility: Graduate students only
+\item Restrictions: Only allowed to update contact information and address. 
+\item Usability :Graduate administrator is responsible for inputting student data.
+\end{itemize}
+\end{itemize}
+\subsubsection{ Graduate Students’ Program Information }
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/UpdatePersonalInfoStudent.png}
+\caption{Update Personal Information Student}
+\label{fig:UpdatePIS}
+\end{figure}
+
+\begin{itemize}
+
+\item Contains information related directly to the students program enrollment. Information includes Admission Term and Year, Thesis information, Publications (if any) and a custom field that records if the student has indicated MSc to PhD reclassification.
+\item Update Program Information
+\begin{itemize}
+\item Visibility: Graduate students only
+\item Restrictions: Allowed to update Publications, Thesis (if applicable) and Low-Level exam date if known. 
+\end {itemize} 
+\end {itemize} 
+
+\subsubsection{ Graduate Students’ Advisory Committee }
+\begin{itemize}
+\item Advisory Committee Information tab is a centralized location for all advisory committee information which has taken place for a student. Under this tab, pertaining information such as the list of all advisory meetings, evaluation of a particular advisory meeting whether it was satisfactory or unsatisfactory and any supervisor/member recommendations after the meeting. Advisory committee is a progression requirement which happens for each student atleast once a year. Scheduling is usually done by the student or by the graduate administrator. One of the key requirements is to track and remind students of their advisory meeting output and ensure that a post-meeting report is generated to satisfy their progression requirements.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/UpdateStudentProfileAdmin.png}
+\caption{Update Advisory Committee Information}
+\label{fig:UpdateACI}
+\end{figure}
+
+\item Update Advisory Committee Information
+\begin{itemize}
+\item Visibility: Graduate students and Graduate Administrator
+\item Restrictions: Allowed to update names of supervisor and advisors after a date for the meeting has been formed.
+\end{itemize}
+\item Comment on Advisory Committee Meeting:
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/CommentAdvisory.png}
+\caption{Adding Comments to Advisory meetings}
+\label{fig:UpdateCAM}
+\end{figure}
+
+\begin{itemize}
+\item Visibility: Advisory Committee Members
+\item Restrictions: Cannot access any other data. Members can update progress and output of the meeting. Can also provide recommendations and comments.
+\end{itemize}
+\end{itemize}
+
+\subsubsection{ Data Reporting }
+\begin{itemize}
+\item Queries: Reports can be generated by filtering via various fields or by entering customized queries in the reporting interface.
+\item Queries can be run by the administrator, advisory members and graduate executives.
+\item Sample Student Profile Report (Word): Users can export student profile in a Word document which contains all the information regarding the selected student. The scope of the document generated will be restricted to the roles and permission of the user.
+\item Sample Graduate Student Output Report (SOR) - Excel: Users can export a SOR based on custom queries which are either preset or custom created.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/SOR_Excel.png}
+\caption{Excel Graduate SOR Report}
+\label{fig:ExcelSOR}
+\end{figure}
+
+\item Custom Pie Charts: Pie charts and trend charts can be generated based on the SOR or a custom query.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/PieChart.png}
+\caption{Excel Graduate SOR Pie Chart}
+\label{fig:PieSOR}
+\end{figure}
+
+\end{itemize}
 \clearpage
 \newpage 
 

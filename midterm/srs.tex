@@ -122,13 +122,18 @@ network.
 \end{itemize}
 \subsection{Product function}
 \subsection{User characteristics}
-Figure \ref{users} describes the relation between the users of the systems:
+Figure \ref{fig:users} describes the relation between the users of the systems, for futher clarification:
 \begin{itemize}
-\item General User
+\item General User: Any user of the system, can login into the system 
 \begin{itemize}
-\item Faculty
-\item Technical Administrator
-\item Graduate Student
+\item Faculty: Members of the faculty that can see data of several students who are not student themselves
+\begin{itemize}
+\item Graduate Administrator: Essentially the super user of the system, can access and modify all data 
+\item Advisory Committee Member: Can view attached student data and advisory meeting documents
+\item Graduate Faculty Executives: Can view all student data and view publish reports 	
+\end{itemize}
+\item Technical Administrator: A user that cannot access any data but can manage users 
+\item Graduate Student: A student that can only view their own information and update it
 \end{itemize}
 \end{itemize}
 
@@ -136,7 +141,7 @@ Figure \ref{users} describes the relation between the users of the systems:
 \centering
 \includegraphics[scale=0.40]{diagrams/use_cases/UserHeirachy_uc.png}
 \caption{Users of the System}
-\label{users}
+\label{fig:users}
 \end{figure}
 
 \subsection{Constraints}

@@ -1,10 +1,19 @@
 
-all:
+all: midterm
+
+sds:
+	rubber -d --into=build/ sds.tex
+
+srs:
+	rubber -d --into=build/  srs.tex
+
+midterm:
 	rubber -d --into=build/ midterm.tex
 
 clean:
-	rm build/*_2* build/midterm.aux build/midterm.bbl build/midterm.blg build/midterm.log build/midterm.out build/midterm.pdf
+	rm build/*_2* build/midterm.*
 
 run: all
 	evince build/midterm.pdf &
+	evince build/srs.pdf 
 

@@ -146,11 +146,36 @@ Figure \ref{fig:users} describes the relation between the users of the systems, 
 
 \subsection{Constraints}
 
+\subsubsection{Technical Environment}
+SIMS will be built on the Linux Server platform for the Database and Application Server. The client will be limited to a Linux Operating System with the Firefox 3.6 web browser.  
+\subsubsection{Security}
+UWO has strict guidelines (FIPPA) to handling signatures and student data. For this purpose proven technologies will be used, such as HTTP secure and VPN.
+\subsubsection{Reliability of Data}
+Data in SIMS is critical and needs to be protected from data losses. A regular backup of the database will help to accomplish this. 
+
 \subsection{Assumptions and dependencies}
+\subsubsection{Student Data v.s User Data }
+Student Data is seperate from the system, and will not be removed from the system after they graduate. However a user can still be expired from the system. Since archival is needed for a period of atleast 7 years SIMS will need to seperate user access and student data. 
+\subsubsection{Intrinsic Student Data }
+Another assumption required by SIMS's requirement is that Student can only be stored in the system if they have a funded term attached to them. This implies that funding is tied on a term basis, which can help to simply futher calculations. 
 
 \section{Specific Requirements}
 \subsection{External interface requirements }
+\subsubsection{ Graphical User Interface }
+A set of graphical user interfaces defined in HTML will be provided for the system to template. SIMS will show the interfaces as is and add dynamic data to them. 
+\subsubsection{ Hardware Interface }
+SIMS will acquire signatures from client side wacom tablets from a USB 2.0 protocol. Data will be output as a BMP file format. 
 \subsection{ Functional requirements }
+\subsubsection{ User Administration }
+
+\subsubsection{ System wide login page }
+\subsubsection{ System Dashboard }
+\subsubsection{ Student Profile }
+\subsubsection{ Graduate Students’ Personal Information }
+\subsubsection{ Graduate Students’ Program Information }
+\subsubsection{ Graduate Students’ Advisory Committee }
+\subsubsection{ Data Reporting }
+\subsubsection{ Automatic Notification Triggering } 
 \subsection{ Performance requirements }
 \subsection{ Design constraints }
 \subsection{ Software system attributes }

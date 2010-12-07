@@ -66,6 +66,8 @@ the scope can be expanded in a controlled manner, should the situation demand it
 \item REST: Software Architecture for Web Applications
 \item VPN: Virtual Private Network
 \item SSL: Security Protocol for Web Applications
+\item SRS: Software Specifications Document 
+\item SDS: Software Design Document 
 \end{itemize}
 
 \subsection{ Overview }
@@ -389,13 +391,92 @@ Contains data regarding to the students contact information including their UWO 
 
 \chapter{Design}
 \section{Iteration 1}
+During iteration 1 of the project, the tasked was focused on the 
+\section{Analysis}
+
+\subsection{User Hierarchy}
+As specified in the SRS the user hierarchy is well defined in Figure \ref{fig:users}. Looking at the user interface provided the following use cases can be 
+defined.
+
+\subsection{Use Cases}
+
+\subsubsection{ Generic User }
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.5]{diagrams/use_cases/User_uc.png}
+\caption{User Login and Logout}
+\label{fig:UserLog}
+\end{figure}
+
+
+
+\subsubsection{ User Administration }
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.5]{diagrams/use_cases/TechAdmin_uc.png}
+\caption{User Administration}
+\label{fig:UserAdmin}
+\end{figure}
+
+\subsubsection{ Student Access }
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.5]{diagrams/use_cases/access_uc.png}
+\caption{User Access}
+\label{fig:UserAccess}
+\end{figure}
+
+
+Iteration one focused on two major use cases Figure 
+
+-> Content Analysis 
+Content Relationships and Hierarchy 
+
+-> Interaction diagrams
+	Student State Chart 
+	Use Cases to State Chart 
+
+\section{Design}
+\subsection{Goals}
+
+-> Simplicity
+
+-> Consistency
+
+-> Robustness
+
+-> Ease of Use
+
+\subsection{Component Design}
+Student ER diagrams
+Role Based Authentication
+Perl Framework 
+Client Design 
+\subsection{Architecture Design}
+Using MVC Architecture 
+\section{Implementation}
+
+\subsection{ Catalyst Framework }
+
+\section{Testing and Feedback}
 
 \section{Future Work}
-\chapter{Walkthrough}
+\subsection{HTML Templates}
+\subsection{Server Configuration}
+\subsection{Advisory Committee Meeting}
+\chapter{Walk through}
 \section{Concerns}
-\section{Report}
-\section{Follow Up}
+\subsection{Organization}
+
+\section{Report \& Follow up}
+\subsection{Structure in Design}
+
 \chapter{Partial Test Plan}
+\section{Unit Testing}
+\section{Integration Testing}
+\section{Performance Testing} 
 \chapter{Updated Gantt Chart}
 \begin{landscape}
 	\scalebox{0.8}{

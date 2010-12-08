@@ -1,5 +1,6 @@
 \documentclass[11pt,a4paper]{report}
-\usepackage{graphics,graphicx}
+\usepackage{ifpdf}
+\usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{fullpage}
 \usepackage{pdflscape}
@@ -25,10 +26,11 @@
 \section{Introduction}
 \index{purpose}
 \subsection{Purpose}
-The purpose of this report is to document preliminary elicited requirements for the Interactive Graduate Student Information System (SIMS). Additionally, in accordance with the Agile project management
-methodology, a walk through of the first iteration is included. Our first iteration includes two system
-critical features which will be used for iterative system development of the system. Database schemas and
-operational logic for user authentication and calculations for graduate student funding were accomplished.
+The purpose of this report is to document the Software Requirement Specifications (SRS), preliminary Iteration Report and respond to the 
+for the Interactive Graduate Student Information System (SIMS). 
+Additionally, in accordance with the Agile project management methodology, a walk through of the first iteration is included. 
+The first iteration includes two system critical features which will be used for iterative system development of the system.
+ Database schemas and operational logic for user authentication and calculations for graduate student funding were accomplished.
 A database schematic was designed after performing extensive analysis based on our specifications, data flow
 requirements and approved system critical assumptions. Data normalization was performed and a Representational State Transfer (REST) framework was implemented to combine components. Furthermore, unit and
 integration testing were performed with the preliminary implementation in place. For preparation of future
@@ -405,7 +407,7 @@ defined.
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.5]{diagrams/use_cases/User_uc.png}
-\caption{User Login and Logout}
+\caption{User Login and Logout Use Case}
 \label{fig:UserLog}
 \end{figure}
 
@@ -416,15 +418,33 @@ defined.
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.5]{diagrams/use_cases/TechAdmin_uc.png}
-\caption{User Administration}
+\caption{User Administration Use Case}
 \label{fig:UserAdmin}
 \end{figure}
 
-\subsubsection{Student Access}
+\subsubsection{Student Data Access}
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.5]{diagrams/use_cases/access_uc.png}
-\caption{User Access}
+\caption{Data Access Use Case}
+\label{fig:UserAccess}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.25]{diagrams/use_cases/system_data_uc.png}
+\caption{Data Access Use Case}
+\label{fig:UserAccess}
+\end{figure}
+
+
+
+
+\subsubsection{Triggers and Reporting}
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.5]{diagrams/use_cases/triggers_uc.png}
+\caption{Triggers and Reporting Use Case}
 \label{fig:UserAccess}
 \end{figure}
 

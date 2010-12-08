@@ -32,15 +32,13 @@ Additionally, in accordance with the Agile project management methodology, a wal
 The first iteration includes two system critical features which will be used for iterative system development of the system.
  Database schemas and operational logic for user authentication and calculations for graduate student funding were accomplished.
 A database schematic was designed after performing extensive analysis based on our specifications, data flow
-requirements and approved system critical assumptions. Data normalization was performed and a Representational State Transfer (REST) framework was implemented to combine components. Furthermore, unit and
-integration testing were performed with the preliminary implementation in place. For preparation of future
-iterations, a sign-off from end users and client is required. However, we have started the rapid prototyping
-of the e-signature component for the advisory meeting tracking feature.
+requirements and approved system critical assumptions. Data normalization was performed and a Representational State Transfer (REST) framework was implemented to combine components. Furthermore, unit and integration testing were completed with the preliminary implementation in place. For preparation of future
+iterations, a sign-off from end users and client is required. The rapid prototyping of the e-signature component for the advisory meeting tracking feature has begun.
 \subsection{Scope}
 \index{scope}
 \index{BioMedical Physics}
 The scope of the following requirements is to provide a pilot software back end for the BioMedical Physics
-Graduate program at UWO. First the system will replace the current method of tracking student information
+Graduate Program at UWO. First the system will replace the current method of tracking student information
 pictured in Figure \ref{fig:Curr_Sys}.
 \begin{itemize}
 \item The current system provides the following features which directly fall into scope for this product:
@@ -52,7 +50,7 @@ pictured in Figure \ref{fig:Curr_Sys}.
 \item The new system will additionally need to address the following concerns:
 \begin{itemize} 
 \item Store data securely and with more redundancy
-\item Simply the User Interface for using the system
+\item Simpfly the User Interface for the system
 \item Remove the load of managing data solely on one user
 \item Allow faculty members to view data in a meaningful way
 \item Allow students to update their information
@@ -75,7 +73,7 @@ the scope can be expanded in a controlled manner, should the situation demand it
 \subsection{Overview}
 The SIMS core is a secure application that aims to be flexible to handle business rules of varying graduate
 student programs. In the scope of this project however, focus will be placed on the Graduate Student
-Program at the BioMedical Physics program at University of Western Ontario. At the very least SIMS
+Program for BioMedical Physics Program at University of Western Ontario. At the very least SIMS
 will hold graduate student, funding and advisory meeting data. Additionally SIMS will allow the program
 administrator to organize collected data into reports and to send automatic request for data to students.
 Also advisors and other faculty users will be able to see student data, progress and any advisory meetings
@@ -106,12 +104,10 @@ and operations requirements will be covered more in-depth in the system features
 \label{fig:New_Sys}
 \end{figure}
 
-
-
 \section{Overall Description}
 
 \subsection{Product perspective}
-The product will be self contained as it is responsible form User Interface, Application and Data Storage.
+The product will be self contained as it is responsible for the User Interface, Application and Data Storage.
 Figure \ref{fig:New_Sys} again describes the perspective of the system.
 The product will have the following constraints:
 \begin{itemize}
@@ -125,8 +121,8 @@ network.
 \item Database Software: A PostgreSQL RDBMS server will be used to run our Data Storage Component of the Software.
 \end{itemize}
 \end{itemize}
-\subsection{Product function}
-\subsection{User characteristics}
+\subsection{Product Function}
+\subsection{User Characteristics}
 Figure \ref{fig:users} describes the relation between the users of the systems, for further clarification:
 \begin{itemize}
 \item General User: Any user of the system, can login into the system 
@@ -160,7 +156,7 @@ Data in SIMS is critical and needs to be protected from data losses. A regular b
 
 \subsection{Assumptions and dependencies}
 \subsubsection{Student Data v.s User Data}
-Student Data is separate from the system, and will not be removed from the system after they graduate. However a user can still be expired from the system. Since archival is needed for a period of atleast 7 years SIMS will need to seperate user access and student data. 
+Student Data is separate from the system, and will not be removed from the system after they graduate. However a user can still be expired from the system. Since archival is needed for a period of atleast 7 years SIMS will need to separate user access and student data. 
 \subsubsection{Intrinsic Student Data}
 Another assumption required by SIMS's requirement is that Student can only be stored in the system if they have a funded term attached to them. This implies that funding is tied on a term basis, which can help to simply futher calculations. 
 
@@ -169,7 +165,7 @@ Another assumption required by SIMS's requirement is that Student can only be st
 \subsubsection{Graphical User Interface}
 A set of graphical user interfaces defined in HTML will be provided for the system to template. SIMS will show the interfaces as is and add dynamic data to them. 
 \subsubsection{Hardware Interface}
-SIMS will acquire signatures from client side wacom tablets from a USB 2.0 protocol. Data will be output as a BMP file format. 
+SIMS will acquire signatures from client side wacom tablets from a USB 2.0 protocol. Data will be outputted in a BMP file format. 
 
 \begin{figure}[htp]
 \centering
@@ -200,10 +196,10 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 
 \begin{itemize}
 \item Purpose: The user browser lists all the users in the system for technical administration. 
-\item Response Sequence: Login and click on User Browser from the admin. From this page, the administrator can perform the following functions:
+\item Response Sequence: Login and click on User Browser from the administration dashboard. From this page, the administrator can perform the following functions:
 \item Associated Functional Requirements:
 \begin{itemize}
-\item Create new users: Adding a new user to the system can only be accomplished by the technical administrator after an approval from the Graduate Administrator.
+\item Create new users: Adding a new user to the system can only be accomplished by the Technical Administrator after an approval from the Graduate Administrator. 
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=1]{diagrams/HTMLTemplating/Figure8.png}
@@ -218,7 +214,7 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 \label{fig:NewUserRoles}
 \end{figure}
 
-\item Adding Operation to roles: Permissions can be added to the user permission list by clicking on the Add New permission button under User Administration. This can be done by the technical administrator.
+\item Adding Operation to roles: Permissions can be added to the user permission list by clicking on the Add New permission button under User Administration. This can be done by the Technical Administrator.
 
 \begin{figure}[htp]
 \centering
@@ -231,7 +227,7 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 \end{itemize}
 \end{itemize}
 
-\subsubsection{System wide login page}
+\subsubsection{System Wide Login Page}
 
 \begin{figure}[htp]
 \centering
@@ -243,10 +239,10 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 
 \begin{itemize}
 \item Purpose: Provide a universal log-in page to provide access to the end users of the system
-\item Response Sequence: In order to access the login page, user will have to type the system URL in a supported browser and will be directed to this log in page. 
+\item Response Sequence: In order to access the login page, user will have to type the system URL in a supported browser, which will direct them to this log in page. 
 \item Associated Functional Requirements: 
 \begin {itemize} 
-\item Introduction widget: This widget will provide a short introduction to the purpose of the management system. It will also feature an Important Links section with a link to the website of Department of Medical BioPhysics. Furthermore, a link to a technical troubleshooting page will be created.
+\item Introduction widget: This widget will provide a short introduction to the purpose of the management system. It will also feature an Important Links section with a link to the website of The Department of Medical BioPhysics. Furthermore, a link to a technical troubleshooting page will be created.
 \item Login window: This is the actual login page where the user will enter their credentials to login. Users cannot sign up for the system individually. The Graduate Administrator facilitates the sign up process and a direct link to request the login credentials will be set up.
 \end{itemize}
 \end{itemize}
@@ -265,7 +261,7 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 \item Response sequence: The user will be directed to this page after login.
 \item Associated Functional Requirements:
 \begin{itemize}
-\item Provide various plugins on the dashboard based on different user roles and access for access to student profiles and various system features. Plugins can be RSS feed or activity stream, various preset charts and reports.
+\item Provide various plugins on the dashboard based on different user roles and operation for access to student profiles and various system features. 
 \item Search: Be able to search a students profile from the dashboard.
 \end{itemize}
 \end{itemize}
@@ -287,33 +283,33 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 
 
 \begin{itemize}
-\item Purpose: Provide an intuitive dossier format interface for users to see the student profile in a centralized location. The key goal is to ensure that all the important system functionality in a centralized location. Note the attached sample HTML page.
+\item Purpose: Provide an intuitive dossier format interface for users to see the student profile in a centralized location. The key goal is to ensure that all the important system functionality is in a centralized location. Note the attached sample HTML page.
 \item Response sequence: In order to access the GUI, the user will be required to login and will be taken to a dashboard which will have options to generate reports and search a student by their assigned id. Once selected the user will be able to see a student profile and be able to perform various functions based on their authentication scope as defined in the access control list.
 \item Associated Functional Requirements:
 \begin{itemize}
-\item Information Tab Section: The profile page will feature information tabs with centralized information about their Personal Information, Program Information, Supervisor Information and Advisory Committee Meeting Information.
-\item Supervisor Information: This tab contains information regarding a students’ direct Supervisor Name and information about the supervisors minimum student contribution along with other logistical information. This information is created with the sample medical biophysics excel sheet provided by the Graduate Administrator user at the department of Medical BioPhysics.	
+\item Information Tab Section: The profile page will feature information tabs with centralized information about their Personal Information, Program Information, Supervisor Information and Advisory Committee Meeting Information. 
+\item Supervisor Information: This tab contains information regarding a students' direct Supervisor Name and information about the supervisors minimum student contribution along with other logistical information. This information is created with the sample medical biophysics excel sheet provided by the Graduate Administrator user at the Department of Medical BioPhysics.	
 
 \item Expansion: Each section can be clicked on to show summary of additional information
 \item Link:  Each information tab will link to another section pages (if applicable)
-\item Grouping: Group dates and People in the same window area for better accessibility
-Export Options: There should be an export option to ensure that a user can export their entire student profile in Word, PDF or in a Printable format
+\item Grouping: Group Dates and people in the same window area for better accessibility
+Export Options: There should be an export option to ensure that a user can export their entire student profile in Word, PDF and a printable HTML.
 \item Attachment Options: The dossier should feature an attachment tab that includes all relevant attachments/forms for that student profile.
 \end{itemize}
 \end{itemize}
 
-\subsubsection{Graduate Students’ Personal Information}
+\subsubsection{Graduate Students' Personal Information}
 \begin{itemize}
-\item Graduate Students’ Personal Information:
-Contains data regarding to the students contact information including their UWO e-mail address and their current location. This system feature is to document how personal information is stored and accessed via different user roles. 
-\item Graduate Students: Graduate Students can view their entire profile including their program information, supervisor information, advisory committee information and personal information. Data access is restricted only to their personal profile.
+\item Graduate Students' Personal Information:
+Contains data regarding the students contact information including their UWO e-mail address and their current location. This system feature is to document how personal information is stored and accessed via different user roles. 
+\item Graduate Students: Graduate Students can view their entire profile which includes information on their program, supervisor, advisory committee, as well as any personal records. Data access is restricted only to their personal profile.
 \item Graduate Administrator: Ability to edit all fields.
-\item Graduate Executives and Advisory Committee members: Read Only access.
+\item Graduate Executives and Advisory Committee members: Read only access.
 \item Update Personal information
 \begin{itemize}
 \item Visibility: Graduate students only
 \item Restrictions: Only allowed to update contact information and address. 
-\item Usability :Graduate administrator is responsible for inputting student data.
+\item Usability: Graduate administrator is responsible for inputting student data.
 \end{itemize}
 \end{itemize}
 \subsubsection{Graduate Students’ Program Information}
@@ -335,7 +331,7 @@ Contains data regarding to the students contact information including their UWO 
 \end {itemize} 
 \end {itemize} 
 
-\subsubsection{Graduate Students’ Advisory Committee}
+\subsubsection{Graduate Students' Advisory Committee}
 \begin{itemize}
 \item Advisory Committee Information tab is a centralized location for all advisory committee information which has taken place for a student. Under this tab, pertaining information such as the list of all advisory meetings, evaluation of a particular advisory meeting whether it was satisfactory or unsatisfactory and any supervisor/member recommendations after the meeting. Advisory committee is a progression requirement which happens for each student atleast once a year. Scheduling is usually done by the student or by the graduate administrator. One of the key requirements is to track and remind students of their advisory meeting output and ensure that a post-meeting report is generated to satisfy their progression requirements.
 
@@ -406,9 +402,18 @@ defined.
 
 \begin{figure}[htp]
 \centering
-\includegraphics[scale=0.5]{diagrams/use_cases/User_uc.png}
-\caption{User Login and Logout Use Case}
+\includegraphics[scale=0.25]{diagrams/use_cases/User_uc.png}
+\caption{Generic User Use Case}
 \label{fig:UserLog}
+\end{figure}
+
+\subsubsection{Dashboard}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.25]{diagrams/use_cases/Dashboard_uc.png}
+\caption{Dashboard Use Case}
+\label{fig:Dashboard}
 \end{figure}
 
 
@@ -417,7 +422,7 @@ defined.
 
 \begin{figure}[htp]
 \centering
-\includegraphics[scale=0.5]{diagrams/use_cases/TechAdmin_uc.png}
+\includegraphics[scale=0.25]{diagrams/use_cases/TechAdmin_uc.png}
 \caption{User Administration Use Case}
 \label{fig:UserAdmin}
 \end{figure}
@@ -433,11 +438,9 @@ defined.
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.25]{diagrams/use_cases/system_data_uc.png}
-\caption{Data Access Use Case}
+\caption{System Data Use Case}
 \label{fig:UserAccess}
 \end{figure}
-
-
 
 
 \subsubsection{Triggers and Reporting}
@@ -447,6 +450,16 @@ defined.
 \caption{Triggers and Reporting Use Case}
 \label{fig:UserAccess}
 \end{figure}
+
+\subsection{ Data Flow Considerations }
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.5]{diagrams/data_flow/dataflowdiagram.png}
+\caption{Data Flow of the System}
+\label{fig:DataFlow}
+\end{figure}
+
 
 
 Iteration one focused on two major use cases Figure 

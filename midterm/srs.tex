@@ -70,7 +70,7 @@ the scope can be expanded in a controlled manner, should the situation demand it
 \item SDS: Software Design Document 
 \end{itemize}
 
-\subsection{ Overview }
+\subsection{Overview}
 The SIMS core is a secure application that aims to be flexible to handle business rules of varying graduate
 student programs. In the scope of this project however, focus will be placed on the Graduate Student
 Program at the BioMedical Physics program at University of Western Ontario. At the very least SIMS
@@ -157,16 +157,16 @@ UWO has strict guidelines (FIPPA) to handling signatures and student data. For t
 Data in SIMS is critical and needs to be protected from data losses. A regular backup of the database will help to accomplish this. 
 
 \subsection{Assumptions and dependencies}
-\subsubsection{Student Data v.s User Data }
+\subsubsection{Student Data v.s User Data}
 Student Data is separate from the system, and will not be removed from the system after they graduate. However a user can still be expired from the system. Since archival is needed for a period of atleast 7 years SIMS will need to seperate user access and student data. 
-\subsubsection{Intrinsic Student Data }
+\subsubsection{Intrinsic Student Data}
 Another assumption required by SIMS's requirement is that Student can only be stored in the system if they have a funded term attached to them. This implies that funding is tied on a term basis, which can help to simply futher calculations. 
 
 \section{Specific Requirements}
-\subsection{External interface requirements }
-\subsubsection{ Graphical User Interface }
+\subsection{External interface requirements}
+\subsubsection{Graphical User Interface}
 A set of graphical user interfaces defined in HTML will be provided for the system to template. SIMS will show the interfaces as is and add dynamic data to them. 
-\subsubsection{ Hardware Interface }
+\subsubsection{Hardware Interface}
 SIMS will acquire signatures from client side wacom tablets from a USB 2.0 protocol. Data will be output as a BMP file format. 
 
 \begin{figure}[htp]
@@ -185,8 +185,8 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 \item Sign: Once the output on the screen is satisfactory, the user can “Sign” the document which will save the image in a document on the database.
 \end{itemize}
 \end{itemize}
-\subsection{ Functional requirements }
-\subsubsection{ User Administration }
+\subsection{Functional requirements}
+\subsubsection{User Administration}
 
 \begin{figure}[htp]
 \centering
@@ -229,7 +229,7 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 \end{itemize}
 \end{itemize}
 
-\subsubsection{ System wide login page }
+\subsubsection{System wide login page}
 
 \begin{figure}[htp]
 \centering
@@ -250,7 +250,7 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 \end{itemize}
 
 
-\subsubsection{ System Dashboard }
+\subsubsection{System Dashboard}
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=1]{diagrams/HTMLTemplating/Figure2.jpg}
@@ -268,7 +268,7 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 \end{itemize}
 \end{itemize}
 
-\subsubsection{ Student Profile }
+\subsubsection{Student Profile}
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=1]{diagrams/HTMLTemplating/Figure3.png}
@@ -300,7 +300,7 @@ Export Options: There should be an export option to ensure that a user can expor
 \end{itemize}
 \end{itemize}
 
-\subsubsection{ Graduate Students’ Personal Information }
+\subsubsection{Graduate Students’ Personal Information}
 \begin{itemize}
 \item Graduate Students’ Personal Information:
 Contains data regarding to the students contact information including their UWO e-mail address and their current location. This system feature is to document how personal information is stored and accessed via different user roles. 
@@ -314,7 +314,7 @@ Contains data regarding to the students contact information including their UWO 
 \item Usability :Graduate administrator is responsible for inputting student data.
 \end{itemize}
 \end{itemize}
-\subsubsection{ Graduate Students’ Program Information }
+\subsubsection{Graduate Students’ Program Information}
 
 \begin{figure}[htp]
 \centering
@@ -333,7 +333,7 @@ Contains data regarding to the students contact information including their UWO 
 \end {itemize} 
 \end {itemize} 
 
-\subsubsection{ Graduate Students’ Advisory Committee }
+\subsubsection{Graduate Students’ Advisory Committee}
 \begin{itemize}
 \item Advisory Committee Information tab is a centralized location for all advisory committee information which has taken place for a student. Under this tab, pertaining information such as the list of all advisory meetings, evaluation of a particular advisory meeting whether it was satisfactory or unsatisfactory and any supervisor/member recommendations after the meeting. Advisory committee is a progression requirement which happens for each student atleast once a year. Scheduling is usually done by the student or by the graduate administrator. One of the key requirements is to track and remind students of their advisory meeting output and ensure that a post-meeting report is generated to satisfy their progression requirements.
 
@@ -364,7 +364,7 @@ Contains data regarding to the students contact information including their UWO 
 \end{itemize}
 \end{itemize}
 
-\subsubsection{ Data Reporting }
+\subsubsection{Data Reporting}
 \begin{itemize}
 \item Queries: Reports can be generated by filtering via various fields or by entering customized queries in the reporting interface.
 \item Queries can be run by the administrator, advisory members and graduate executives.
@@ -400,7 +400,7 @@ defined.
 
 \subsection{Use Cases}
 
-\subsubsection{ Generic User }
+\subsubsection{Generic User}
 
 \begin{figure}[htp]
 \centering
@@ -411,7 +411,7 @@ defined.
 
 
 
-\subsubsection{ User Administration }
+\subsubsection{User Administration}
 
 \begin{figure}[htp]
 \centering
@@ -420,7 +420,7 @@ defined.
 \label{fig:UserAdmin}
 \end{figure}
 
-\subsubsection{ Student Access }
+\subsubsection{Student Access}
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.5]{diagrams/use_cases/access_uc.png}
@@ -458,7 +458,7 @@ Client Design
 Using MVC Architecture 
 \section{Implementation}
 
-\subsection{ Catalyst Framework }
+\subsection{Catalyst Framework}
 
 \section{Testing and Feedback}
 
@@ -510,19 +510,19 @@ Using MVC Architecture
 		\ganttcon{4}{3}{4}{4}
 		\ganttbar{Authentication and Student Funding Feature}{6}{3}
 		\ganttcon{6}{4}{6}{5}
-		\ganttbar{Authentication and Student Funding Feature: Feedback }{10}{1}
+		\ganttbar{Authentication and Student Funding Feature: Feedback}{10}{1}
 		\ganttcon{9}{5}{10}{6}
 		\ganttcon{9}{5}{9}{7}
 		\ganttbar{Advisory Meetings Feature}{9}{3}
-		\ganttbar{Adivsory Meetings Feature: Feedback }{12}{1}
+		\ganttbar{Adivsory Meetings Feature: Feedback}{12}{1}
 		\ganttcon{12}{7}{12}{8}
 		\ganttcon{12}{7}{12}{9}
 		\ganttbar{Iteration 3}{12}{3}
-		\ganttbar{Iteration 3: Feedback }{16}{1}
+		\ganttbar{Iteration 3: Feedback}{16}{1}
 		\ganttcon{15}{9}{16}{10}
 		\ganttcon{15}{9}{16}{11}
 		\ganttbar{Iteration 4}{16}{3}
-		\ganttbar{Iteration 4: Feedback }{19}{1}
+		\ganttbar{Iteration 4: Feedback}{19}{1}
 		\ganttcon{19}{11}{19}{12}
 		\ganttcon{19}{11}{19}{13}
 		\ganttbar{Iteration 5}{19}{3}

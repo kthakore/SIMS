@@ -385,11 +385,19 @@ Contains data regarding the students contact information including their UWO e-m
 \label{fig:PieSOR}
 \end{figure}
 
-\end{itemize}
+:\end{itemize}
 
 \chapter{Design}
 \section{Iteration 1}
-During iteration 1 of the project, the tasked was focused on the 
+
+The first iteration focused on completing the analysis of the user use cases, understanding the data flow of the system. Finally based on the analysis a MVC architecture was designed and implementation. The implementation focused on :
+
+\begin{itemize}
+\item Student Data Representation 
+\item Framework to display HTML templates
+\item Authentication Data Representation 
+\end{itemize}
+
 \section{Analysis}
 
 \subsection{User Hierarchy}
@@ -407,6 +415,8 @@ defined.
 \label{fig:UserLog}
 \end{figure}
 
+Figure \ref{fig:UserLog} defines the use cases of any user of the system. The user will be able to login and logut.
+
 \subsubsection{Dashboard}
 
 \begin{figure}[htp]
@@ -416,7 +426,7 @@ defined.
 \label{fig:Dashboard}
 \end{figure}
 
-
+Figure \ref{fig:Dashboard} defines the use cases on the Dashboard features for each user.
 
 \subsubsection{User Administration}
 
@@ -427,6 +437,8 @@ defined.
 \label{fig:UserAdmin}
 \end{figure}
 
+Figure \ref{fig:UserAdmin} defines te use cases to do user administrator. 
+
 \subsubsection{Student Data Access}
 \begin{figure}[htp]
 \centering
@@ -435,21 +447,26 @@ defined.
 \label{fig:UserAccess}
 \end{figure}
 
+Figure \ref{fig:UserAccess} defines the use cases that determines the access level on the student data.
+
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.25]{diagrams/use_cases/system_data_uc.png}
 \caption{System Data Use Case}
-\label{fig:UserAccess}
+\label{fig:SystemData}
 \end{figure}
 
+Figure \ref{fig:SystemData} defines modifications that can be done by the Graduate Administrator. 
 
 \subsubsection{Triggers and Reporting}
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.5]{diagrams/use_cases/triggers_uc.png}
 \caption{Triggers and Reporting Use Case}
-\label{fig:UserAccess}
+\label{fig:Triggers}
 \end{figure}
+
+Figure \ref{fig:Triggers} describe the functionality access for providing triggers and reporting. 
 
 \subsection{ Data Flow Considerations }
 
@@ -460,56 +477,48 @@ defined.
 \label{fig:DataFlow}
 \end{figure}
 
+Figure \ref{fig:DataFlow} describes the data flow analysis of the system. 
 
-
-Iteration one focused on two major use cases Figure 
-
--> Content Analysis 
-Content Relationships and Hierarchy 
-
--> Interaction diagrams
-	Student State Chart 
-	Use Cases to State Chart 
+\begin{figure}[htp]                                                             
+\centering                                                                      
+\includegraphics[scale=0.25]{diagrams/statechart_uc.png}
+\caption{Transitions through the System Interface}                              
+\label{fig:Transitions}   
+\end{figure}                                                                    
+             
+Figure \ref{fig:Transitions} describe the generic user transitions through the systems. 
 
 \section{Design}
-\subsection{Goals}
-
--> Simplicity
-
--> Consistency
-
--> Robustness
-
--> Ease of Use
 
 \subsection{Component Design}
-Student ER diagrams
-Role Based Authentication
-Perl Framework 
-Client Design 
-\subsection{Architecture Design}
-Using MVC Architecture 
-\section{Implementation}
-
-\subsection{Catalyst Framework}
-
-\section{Testing and Feedback}
+In iteration 1 the first component the focus on the student funding described in Figure \ref{fig:DataFlow}. 
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.25]{diagrams/StudentFunding.png}
+\caption{Funding Model}
+\label{fig:DataFlow}
+\end{figure}
+\subsection{Architecture Design} 
+Due to the web nature of this application a Representational State Transfer (REST) architecture was decided on. REST architectures are driven by clients, which requests responses from the server.  The server processes requests as representations of resources. Where any data or function can be considered a resource. The representation of the resource is captured as a document (HTML, XLS or PDF ). The requests and responses are made to transfer the representation, current or otherwise. Figure \ref{fig:REST} show the architecture of the system. 
 
 \section{Future Work}
 \subsection{HTML Templates}
-\subsection{Server Configuration}
+In the next iteration a solidification of the HTML templates and their controllers will be required. Where the HTML template will server as wrappers for REST resources. The HTML templates will be used directly from the SRS given. 
+
 \subsection{Advisory Committee Meeting}
+The next feature to add on would be the capability of documenting Advisory Committee Meetings with signatures and comments. A rapid prototype of the signature client has already been started. 
+
 \chapter{Walk through}
 \section{Concerns}
 \subsection{Organization}
-
-\section{Report \& Follow up}
-\subsection{Structure in Design}
-
+The major concern expressed during the walk through was the organization of the presentation. For the final presentation as more components are designed and solidified a unified organization will appear. 
 \chapter{Partial Test Plan}
 \section{Unit Testing}
+The current implementation of the REST framework contains developer unit test for each resource and request that can be made by a client. For each additional component more tests will be added. 
 \section{Integration Testing}
-\section{Performance Testing} 
+Once another component is ready an integration between two components will be planed. The integration testing will be performed by our end user Ms. Wendy were everyday tasks will be run on the framework. Then these manual tests will be automated to be followed through. 
+\section{System Testing}
+System testing will involve a 3 week pilot period for the end product where it will be run in parallel with the current system. This will help to catch problems in real world situations.
 \chapter{Updated Gantt Chart}
 \begin{landscape}
 	\scalebox{0.8}{

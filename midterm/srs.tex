@@ -115,9 +115,9 @@ The product will have the following constraints:
 \item Software interfaces: The system will have to employ several software interfaces.
 \begin{itemize}
 \item Application Server: Apache 2.0 will be used to deploy the system with SSL security.
-\item VPN Provider: OpenVPN will be used to deploy our system as a self contained virtual private
+\item VPN Provider: OpenVPN will be used to deploy the system as a self contained virtual private
 network.
-\item Database Software: A PostgreSQL RDBMS server will be used to run our Data Storage Component of the Software.
+\item Database Software: A PostgreSQL RDBMS server will be used to run the Data Storage Component of the Software.
 \end{itemize}
 \end{itemize}
 \subsection{Product Function}
@@ -195,7 +195,7 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 
 \begin{itemize}
 \item Purpose: The user browser lists all the users in the system for technical administration. 
-\item Response Sequence: Login and click on User Browser from the administration dashboard. From this page, the administrator can perform the following functions:
+\item Response Sequence: Login and click on User Browser from the administration Dashboard. From this page, the administrator can perform the following functions:
 \item Associated Functional Requirements:
 \begin{itemize}
 \item Create new users: Adding a new user to the system can only be accomplished by the Technical Administrator after an approval from the Graduate Administrator. 
@@ -260,8 +260,8 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 \item Response sequence: The user will be directed to this page after login.
 \item Associated Functional Requirements:
 \begin{itemize}
-\item Provide various plugins on the dashboard based on different user roles and operation for access to student profiles and various system features. 
-\item Search: Be able to search a students profile from the dashboard.
+\item Provide various plugins on the Dashboard based on different user roles and operation for access to student profiles and various system features. 
+\item Search: Be able to search a students profile from the Dashboard.
 \end{itemize}
 \end{itemize}
 
@@ -283,7 +283,7 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 
 \begin{itemize}
 \item Purpose: Provide an intuitive dossier format interface for users to see the student profile in a centralized location. The key goal is to ensure that all the important system functionality is in a centralized location. Note the attached sample HTML page.
-\item Response sequence: In order to access the GUI, the user will be required to login and will be taken to a dashboard which will have options to generate reports and search a student by their assigned id. Once selected the user will be able to see a student profile and be able to perform various functions based on their authentication scope as defined in the access control list.
+\item Response sequence: In order to access the GUI, the user will be required to login and will be taken to a Dashboard which will have options to generate reports and search a student by their assigned id. Once selected the user will be able to see a student profile and be able to perform various functions based on their authentication scope as defined in the access control list.
 \item Associated Functional Requirements:
 \begin{itemize}
 \item Information Tab Section: The profile page will feature information tabs with centralized information about their Personal Information, Program Information, Supervisor Information and Advisory Committee Meeting Information. 
@@ -297,9 +297,9 @@ Export Options: There should be an export option to ensure that a user can expor
 \end{itemize}
 \end{itemize}
 
-\subsubsection{Graduate Students' Personal Information}
+\subsubsection{Graduate Student's Personal Information}
 \begin{itemize}
-\item Graduate Students' Personal Information:
+\item Graduate Student's Personal Information:
 Contains data regarding the students contact information including their UWO e-mail address and their current location. This system feature is to document how personal information is stored and accessed via different user roles. 
 \item Graduate Students: Graduate Students can view their entire profile which includes information on their program, supervisor, advisory committee, as well as any personal records. Data access is restricted only to their personal profile.
 \item Graduate Administrator: Ability to edit all fields.
@@ -498,7 +498,7 @@ In iteration 1 the first component the focus on the student funding described in
 \label{fig:DataFlow}
 \end{figure}
 \subsection{Architecture Design} 
-Due to the web nature of this application a Representational State Transfer (REST) architecture was decided on. REST architectures are driven by clients, which requests responses from the server.  The server processes requests as representations of resources. Where any data or function can be considered a resource. The representation of the resource is captured as a document (HTML, XLS or PDF ). The requests and responses are made to transfer the representation, current or otherwise. Figure \ref{fig:REST} show the architecture of the system. 
+Due to the web nature of this application a Representational State Transfer (REST) architecture was decided on. REST architectures are driven by clients, which requests responses from the server.  The server processes requests as representations of resources. Where any data or function can be considered a resource. The representation of the resource is captured as a document (HTML, XLS or PDF ). The requests and responses are made to transfer the representation, current or otherwise.  
 
 \section{Future Work}
 \subsection{HTML Templates}

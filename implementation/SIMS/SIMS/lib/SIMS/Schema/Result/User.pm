@@ -25,30 +25,58 @@ __PACKAGE__->table("User");
 
 =head2 id
 
-  data_type: 'integer'
-  is_auto_increment: 1
-  is_nullable: 0
+data_type: 'integer'
+is_auto_increment: 1
+is_nullable: 0
 
 =head2 username
 
-  data_type: 'text'
-  is_nullable: 1
+data_type: 'text'
+is_nullable: 1
 
 =head2 password
 
-  data_type: 'text'
-  is_nullable: 1
+data_type: 'text'
+is_nullable: 1
+
+=head2 email_address
+
+data_type: 'text'
+is_nullable: 1
+
+=head2 first_name
+
+data_type: 'text'
+is_nullable: 1
+
+=head2 last_name
+
+data_type: 'text'
+is_nullable: 1
+
+=head2 active
+
+data_type: 'integer'
+is_nullable: 1
 
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-  "username",
-  { data_type => "text", is_nullable => 1 },
-  "password",
-  { data_type => "text", is_nullable => 1 },
-);
+		"id",
+		{ data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
+		"username",
+		{ data_type => "text", is_nullable => 1 },
+		"password",
+		{ data_type => "text", is_nullable => 1 },
+		"email_address",
+		{ data_type => "text", is_nullable => 1 },
+		"first_name",
+		{ data_type => "text", is_nullable => 1 },
+		"last_name",
+		{ data_type => "text", is_nullable => 1 },
+		"active",
+		{ data_type => "integer", is_nullable => 1 },
+		);
 __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
@@ -62,16 +90,23 @@ Related object: L<SIMS::Schema::Result::UserRole>
 =cut
 
 __PACKAGE__->has_many(
-  "user_roles",
-  "SIMS::Schema::Result::UserRole",
-  { "foreign.user" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
+		"user_roles",
+		"SIMS::Schema::Result::UserRole",
+		{ "foreign.user_id" => "self.id" },
+		{ cascade_copy => 0, cascade_delete => 0 },
+		);
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-11-19 09:05:28
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3ssBWaZUND8QjLBHeriUfw
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-12-29 17:04:52
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:uU6otrATSErqzadwp5YDOw
 
+# many_to_many():
+#   args:
+#     1) Name of relationship, DBIC will create accessor with this name
+#     2) Name of has_many() relationship this many_to_many() is shortcut for
+#     3) Name of belongs_to() relationship in model class of has_many() above
+#   You must already have the has_many() defined to use a many_to_many().
+__PACKAGE__->many_to_many(roles => 'UserRoles', 'Role');
 
 # You can replace this text with custom content, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;

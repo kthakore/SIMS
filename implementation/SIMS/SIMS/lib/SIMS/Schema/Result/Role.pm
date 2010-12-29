@@ -57,13 +57,13 @@ Related object: L<SIMS::Schema::Result::UserRole>
 __PACKAGE__->has_many(
   "user_roles",
   "SIMS::Schema::Result::UserRole",
-  { "foreign.role" => "self.id" },
+  { "foreign.role_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-11-19 09:05:28
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Hg6fv9ywcri5Eao2x4hp5A
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-12-29 17:04:52
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:kfVaJZfIHqnr9Z+cMFS41w
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

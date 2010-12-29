@@ -23,13 +23,13 @@ __PACKAGE__->table("UserRole");
 
 =head1 ACCESSORS
 
-=head2 user
+=head2 user_id
 
   data_type: 'integer'
   is_foreign_key: 1
   is_nullable: 0
 
-=head2 role
+=head2 role_id
 
   data_type: 'integer'
   is_foreign_key: 1
@@ -38,12 +38,12 @@ __PACKAGE__->table("UserRole");
 =cut
 
 __PACKAGE__->add_columns(
-  "user",
+  "user_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
-  "role",
+  "role_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
 );
-__PACKAGE__->set_primary_key("user", "role");
+__PACKAGE__->set_primary_key("user_id", "role_id");
 
 =head1 RELATIONS
 
@@ -58,7 +58,7 @@ Related object: L<SIMS::Schema::Result::Role>
 __PACKAGE__->belongs_to(
   "role",
   "SIMS::Schema::Result::Role",
-  { id => "role" },
+  { id => "role_id" },
   { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
@@ -73,13 +73,13 @@ Related object: L<SIMS::Schema::Result::User>
 __PACKAGE__->belongs_to(
   "user",
   "SIMS::Schema::Result::User",
-  { id => "user" },
+  { id => "user_id" },
   { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-11-19 09:05:28
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:cMFUivYJPjyOozy94C5sAw
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-12-29 17:04:52
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:cpnco3KpGGLUZSIcX3vQzA
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

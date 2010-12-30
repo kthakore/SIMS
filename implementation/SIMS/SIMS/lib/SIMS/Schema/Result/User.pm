@@ -11,7 +11,7 @@ use MooseX::NonMoose;
 use namespace::autoclean;
 extends 'DBIx::Class::Core';
 
-__PACKAGE__->load_components("InflateColumn::DateTime");
+__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp", "EncodedColumn");
 
 =head1 NAME
 
@@ -67,7 +67,11 @@ __PACKAGE__->add_columns(
 		"username",
 		{ data_type => "text", is_nullable => 1 },
 		"password",
-		{ data_type => "text", is_nullable => 1 },
+		{              encode_column       => 1,
+            encode_class        => 'Digest',
+            encode_args         => {salt_length => 10},
+            encode_check_method => 'check_password',
+},
 		"email_address",
 		{ data_type => "text", is_nullable => 1 },
 		"first_name",

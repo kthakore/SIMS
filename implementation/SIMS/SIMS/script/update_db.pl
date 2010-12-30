@@ -6,7 +6,7 @@ unlink 'sims.db';
 
 `sqlite3 sims.db <sims.sql`;
 
-`script/sims_create.pl model DB DBIC::Schema SIMS::Schema create=static 'dbi:SQLite:dbname=sims.db' '' ''`;
+`script/sims_create.pl model DB DBIC::Schema SIMS::Schema create=static components=TimeStamp,EncodedColumn 'dbi:SQLite:dbname=sims.db' '' ''`;
 
 my $dbh = DBI->connect( "dbi:SQLite:dbname=sims.db", "", "" );
 $dbh->do( '

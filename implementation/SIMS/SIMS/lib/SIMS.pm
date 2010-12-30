@@ -48,7 +48,7 @@ __PACKAGE__->config->{'Plugin::Authentication'} = {
 		default => {
 			class           => 'SimpleDB',
 			user_model      => 'DB::User',
-			password_type   => 'clear',
+			password_type   => 'self_check',
 		},
 	};
 

@@ -34,8 +34,8 @@ sub index :Path :Args(0) {
             if ($c->authenticate({ username => $username,
                                    password => $password  } )) {
                 # If successful, then let them use the application
-                $c->response->redirect($c->uri_for(
-                    $c->controller('student')->action_for('list')));
+                $c->response->redirect($c->session->{original_URI});
+				$c->log->debug("***Login::Going back ".$c->session->{original_URI} );
                 return;
             } else {
                 # Set an error message

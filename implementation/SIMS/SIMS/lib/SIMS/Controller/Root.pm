@@ -69,6 +69,9 @@ Check if there is a user and, if not, forward to login page
         if (!$c->user_exists) {
             # Dump a log message to the development server debug output
             $c->log->debug('***Root::auto User not found, forwarding to /login');
+			# Save where we care coming from
+			# $c->flash->{came_from} = 
+			$c->session->{original_URI} = $c->request->uri;
             # Redirect the user to the login page
             $c->response->redirect($c->uri_for('/login'));
             # Return 0 to cancel 'post-auto' processing and prevent use of application

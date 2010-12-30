@@ -47,7 +47,7 @@ sub index :Path :Args(0) {
         }
 
         # If either of above don't work out, send to the login page
-        $c->stash(template => 'login.tt2');
+        $c->stash(template => 'login.tt');
 
 
 }

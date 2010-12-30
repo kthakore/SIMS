@@ -2,6 +2,9 @@
 
     <!-- Login form -->
     <form method="post" action="[% c.uri_for('/login') %]">
+	[%IF c.stash.error_msg %]
+	<p> Error: [%c.stash.error_msg%] </p>
+	[%END %]
       <table>
         <tr>
           <td>Username:</td>

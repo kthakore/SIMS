@@ -23,8 +23,7 @@
        # template will only be shown to users who have logged in
     %]
     [% IF c.user_exists %]
-        Please Note: You are already logged in as '[% c.user.username %]'.
-        You can <a href="[% c.uri_for('/logout') %]">logout</a> here.
+	[% c.response.redirect(c.uri_for('/')); %]
     [% ELSE %]
         You need to log in to use this application.
     [% END %]

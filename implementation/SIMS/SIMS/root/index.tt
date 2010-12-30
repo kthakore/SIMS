@@ -4,10 +4,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-<div id="header"></div>
-<div id="content">
-[% c.content() %]
+<div id="header">
+You can <a href="[% c.uri_for('/logout') %]">logout</a> here.
 </div>
+<div id="content">
+
+<p>Hello [% c.user.username %]!</p>
+    <ul>
+      [% # Dump list of roles -%]
+      [% FOR role = c.user.roles %]<li>[% role %]</li>[% END %]
+    </ul>
+
+</div>
+
+
 
 </body>
 </html>

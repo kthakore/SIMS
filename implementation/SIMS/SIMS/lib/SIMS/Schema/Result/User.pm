@@ -110,7 +110,7 @@ __PACKAGE__->has_many(
 #     2) Name of has_many() relationship this many_to_many() is shortcut for
 #     3) Name of belongs_to() relationship in model class of has_many() above
 #   You must already have the has_many() defined to use a many_to_many().
-__PACKAGE__->many_to_many(roles => 'UserRoles', 'Role');
+__PACKAGE__->many_to_many(roles => 'user_roles', 'role');
 
 # You can replace this text with custom content, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;

@@ -27,7 +27,7 @@ sub base :Chained('/') PathPart('techadmin') CaptureArgs(0) {
 
 	$c->session->{original_URI} = $c->request->uri;
 	my @roles = $c->user->roles();
-	$c->response->redirect($c->uri_for('/unauthorized')) unless( @roles ~~ 'techadmin' );
+	$c->response->redirect($c->uri_for('/unauthorized')) unless( grep /admin/, @roles );
 }
 
 =head2 index

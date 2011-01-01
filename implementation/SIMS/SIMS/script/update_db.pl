@@ -14,3 +14,5 @@ $dbh->do( '
 			'
 );
 
+`perl script/encode_pass.pl`
+

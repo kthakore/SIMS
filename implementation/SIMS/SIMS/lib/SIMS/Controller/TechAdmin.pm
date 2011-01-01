@@ -36,7 +36,7 @@ sub base :Chained('/') PathPart('techadmin') CaptureArgs(0) {
 
 =cut
 
-sub index :Chained('base') PathPart('/') Args(0) {
+sub index :Chained('base') PathPart('') Args(0) {
 	my ( $self, $c ) = @_;
 
 	foreach my $role (  $c->user->roles() )

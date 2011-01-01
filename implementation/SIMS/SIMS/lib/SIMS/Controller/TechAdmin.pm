@@ -22,7 +22,7 @@ Check if the user is a tech admin
 
 =cut
 
-sub base :Chained('/') Path('') CaptureArgs(0) {
+sub base :Chained('/') PathPart('techadmin') CaptureArgs(0) {
 	my( $self, $c ) = @_;
 
 	my @roles = $c->user->roles();
@@ -36,7 +36,7 @@ sub base :Chained('/') Path('') CaptureArgs(0) {
 
 =cut
 
-sub index :Chained('base') :Path :Args(0) {
+sub index :Chained('base') PathPart('/') Args(0) {
 	my ( $self, $c ) = @_;
 
 	foreach my $role (  $c->user->roles() )

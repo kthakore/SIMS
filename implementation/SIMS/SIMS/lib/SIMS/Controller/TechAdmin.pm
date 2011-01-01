@@ -25,11 +25,9 @@ Check if the user is a tech admin
 sub base :Chained('/') PathPart('techadmin') CaptureArgs(0) {
 	my( $self, $c ) = @_;
 
+	$c->session->{original_URI} = $c->request->uri;
 	my @roles = $c->user->roles();
-
-	warn "foo";
-	$c->log->debug('***Root::WTF ');
-
+	$c->response->redirect($c->uri_for('/unauthorized')) unless( @roles ~~ 'techadmin' );
 }
 
 =head2 index

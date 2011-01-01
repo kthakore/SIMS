@@ -38,8 +38,15 @@ Standard 404 error page
 
 sub default :Path {
     my ( $self, $c ) = @_;
-    $c->response->body( 'Page not found' );
+    $c->response->body( 'page not found' );
     $c->response->status(404);
+}
+
+sub unauthorized :Path {
+    my ( $self, $c ) = @_;
+    $c->response->body( 'You are not authorized for this page: '.$c->session->{original_URI} );
+    $c->response->status(404);
+
 }
 
 

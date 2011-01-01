@@ -12,21 +12,39 @@ SIMS::Controller::TechAdmin - Catalyst Controller
 
 Catalyst Controller.
 
+
+
 =head1 METHODS
 
 =cut
+=head2 base 
+Check if the user is a tech admin
 
+=cut
+
+sub base :Chained('/') Path('') CaptureArgs(0) {
+	my( $self, $c ) = @_;
+
+	my @roles = $c->user->roles();
+
+	warn "foo";
+	$c->log->debug('***Root::WTF ');
+
+}
 
 =head2 index
 
 =cut
 
-sub index :Path :Args(0) {
-    my ( $self, $c ) = @_;
+sub index :Chained('base') :Path :Args(0) {
+	my ( $self, $c ) = @_;
 
-    $c->response->body('Matched SIMS::Controller::TechAdmin in TechAdmin.');
+	foreach my $role (  $c->user->roles() )
+	{
+		$c->log->debug('***Root::auto User is '.$role);
+	}
+	$c->response->body('Matched SIMS::Controller::TechAdmin in TechAdmin.');
 }
-
 
 =head1 AUTHOR
 
@@ -34,8 +52,8 @@ Kartik Thakore,,,
 
 =head1 LICENSE
 
-This library is free software. You can redistribute it and/or modify
-it under the same terms as Perl itself.
+	   This library is free software. You can redistribute it and/or modify
+	   it under the same terms as Perl itself.
 
 =cut
 

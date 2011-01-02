@@ -17,14 +17,19 @@ Catalyst Controller.
 =cut
 
 
-=head2 index
+sub base :Chained('/') PathPart('graduateadmin') CaptureArgs(0) {
+	my( $self, $c ) = @_;
 
-=cut
+	$c->session->{original_URI} = $c->request->uri;
+	my @roles = $c->user->roles();
 
-sub index :Path :Args(0) {
+	$c->response->redirect($c->uri_for('/unauthorized')) unless( grep /(g_admin)/, @roles );
+}
+
+sub index :Chained('base') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->response->body('Matched SIMS::Controller::GraduateAdmin in GraduateAdmin.');
+    $c->response->body('Dashboard for graduateadmin');
 }
 
 

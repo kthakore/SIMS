@@ -27,7 +27,7 @@ sub base :Chained('/') PathPart('techadmin') CaptureArgs(0) {
 
 	$c->session->{original_URI} = $c->request->uri;
 	my @roles = $c->user->roles();
-	$c->response->redirect($c->uri_for('/unauthorized')) unless( grep /admin/, @roles );
+	$c->response->redirect($c->uri_for('/unauthorized')) unless( grep /^t_admin$/, @roles );
 }
 
 =head2 index
@@ -37,12 +37,15 @@ sub base :Chained('/') PathPart('techadmin') CaptureArgs(0) {
 sub index :Chained('base') PathPart('') Args(0) {
 	my ( $self, $c ) = @_;
 
-	foreach my $role (  $c->user->roles() )
-	{
-		$c->log->debug('***Root::auto User is '.$role);
-	}
 	$c->response->body('Matched SIMS::Controller::TechAdmin in TechAdmin.');
 }
+
+sub user_admin :Chained('base') PathPart('user_admin') Args(0) {
+	my ( $self, $c ) = @_;
+
+	$c->response->body('Matched SIMS::Controller::TechAdmin in UserAdmin.');
+}
+
 
 =head1 AUTHOR
 

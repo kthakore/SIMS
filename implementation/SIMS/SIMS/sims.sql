@@ -125,9 +125,20 @@ CREATE TABLE UserRole (
     INSERT INTO User VALUES (1, 'test01', 'mypass', 't01@na.com', 'Joe',  'Blow', 1);
     INSERT INTO User VALUES (2, 'test02', 'mypass', 't02@na.com', 'Jane', 'Doe',  1);
     INSERT INTO User VALUES (3, 'test03', 'mypass', 't03@na.com', 'No',   'Go',   0);
-    INSERT INTO Role VALUES (1, 'user');
-    INSERT INTO Role VALUES (2, 'admin');
-    INSERT INTO UserRole VALUES (1, 1);
-    INSERT INTO UserRole VALUES (1, 2);
+    INSERT INTO User VALUES (4, 'test04', 'mypass', 't04@na.com', 'Joe',  'Blow', 1);
+    INSERT INTO User VALUES (5, 'test05', 'mypass', 't05@na.com', 'Jane', 'Doe',  1);
+    INSERT INTO User VALUES (6, 'test06', 'mypass', 't06@na.com', 'No',   'Go',   0);
+ 
+    INSERT INTO Role VALUES (0, 'user');
+    INSERT INTO Role VALUES (1, 'g_admin');
+    INSERT INTO Role VALUES (2, 'g_exec');
+    INSERT INTO Role VALUES (3, 'student');
+    INSERT INTO Role VALUES (4, 't_admin');
+    INSERT INTO Role VALUES (5, 'adv_com');
+
+    INSERT INTO UserRole VALUES (1, 0);
     INSERT INTO UserRole VALUES (2, 1);
-    INSERT INTO UserRole VALUES (3, 1);
+    INSERT INTO UserRole VALUES (3, 2);
+    INSERT INTO UserRole VALUES (4, 3);
+    INSERT INTO UserRole VALUES (5, 4);
+    INSERT INTO UserRole VALUES (6, 5);

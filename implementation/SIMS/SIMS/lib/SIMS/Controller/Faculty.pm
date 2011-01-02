@@ -16,15 +16,27 @@ Catalyst Controller.
 
 =cut
 
+sub base :Chained('/') PathPart('faculty') CaptureArgs(0) {
+	my( $self, $c ) = @_;
 
-=head2 index
+	$c->session->{original_URI} = $c->request->uri;
+	my @roles = $c->user->roles();
 
-=cut
+	$c->response->redirect($c->uri_for('/unauthorized')) unless( grep /(g_admin|g_exec|adv_com|fac)/, @roles );
+}
 
-sub index :Path :Args(0) {
+
+sub search_student :Chained('base') PathPart('search_student') Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->response->body('Matched SIMS::Controller::Faculty in Faculty.');
+    $c->response->body('Search for student .');
+}
+
+
+sub view_report :Chained('base') PathPart('view_report') Args(0) {
+    my ( $self, $c ) = @_;
+
+    $c->response->body('View Reports');
 }
 
 

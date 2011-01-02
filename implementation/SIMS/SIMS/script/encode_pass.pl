@@ -11,6 +11,7 @@
     my @users = $schema->resultset('User')->all;
 
     foreach my $user (@users) {
+		warn "Doing ".$user->id;
         $user->password('mypass');
         $user->update;
     }

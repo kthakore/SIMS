@@ -37,13 +37,30 @@ sub base :Chained('/') PathPart('techadmin') CaptureArgs(0) {
 sub index :Chained('base') PathPart('') Args(0) {
 	my ( $self, $c ) = @_;
 
-	$c->response->body('Matched SIMS::Controller::TechAdmin in TechAdmin.');
+	$c->stash->{roles} = $c->model('DB::Role');
+
+#	$c->response->body('Matched SIMS::Controller::TechAdmin in TechAdmin.');
 }
 
-sub user_admin :Chained('base') PathPart('user_admin') Args(0) {
+sub create :Chained('base') PathPart('create') Args(0) {
 	my ( $self, $c ) = @_;
 
-	$c->response->body('Matched SIMS::Controller::TechAdmin in UserAdmin.');
+                                                                                                                                                              
+    my $user = $c->model('DB::User')->create({                                                                                                                
+        username => $c->req->param('username'),
+        password => $c->req->param('password'),
+        email_address => $c->req->param('email_address'),
+        last_name     => $c->req->param('last_name'),
+		first_name    =>  $c->req->param('first_name'),
+		active	=> 1
+		
+    });
+
+#	$user->add_to_user_roles( role_id => $c->req->param('role_id') );
+    $user->create_related( 'user_roles', { role_id => $c->req->param('role_id') }); 
+    $c->flash( message => 'User created successfully!' );                                                                                                     
+    $c->res->redirect( $c->uri_for( $self->action_for('index') ) );                                                                                           
+
 }
 
 

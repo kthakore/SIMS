@@ -16,33 +16,28 @@ Catalyst Controller.
 
 =cut
 
-=head2 Collection
+sub base :Chained('/') PathPart('student') CaptureArgs(0) {
+	my( $self, $c ) = @_;
 
-Show all students in the current DB
+	$c->session->{original_URI} = $c->request->uri;
+	my @roles = $c->user->roles();
+	$c->response->redirect($c->uri_for('/unauthorized')) unless( grep /(student)/, @roles );
 
-=cut
 
-sub collection : Chained('/base') PathPart('student') CaptureArgs(0) {
+	 my $id = $c->user->id; 
+	 $c->stash->{student}   = $c->model('DB::Student')->search({ user_id => $id })->single();
+
+	
+	$c->log->debug("Looking at $id found ".$c->stash->{student} );
+
+}
+sub object : Chained('base') PathPart('') CaptureArgs(0) {
     my ( $self, $c ) = @_;
-    $c->stash->{collection} = $c->model('DB::Student');
-}
-
-sub view_collection : Chained('collection') Args(0) PathPart('') {
-}
-
-=head2 Object 
-
-Operations on a single student by id 
-
-=cut 
-
-sub object : Chained('collection') PathPart('') CaptureArgs(1) {
-    my ( $self, $c, $id ) = @_;
-    $c->stash->{student} = $c->model('DB::Student')->find($id);
-
+   
 }
 
 sub view : Chained('object') Args(0) {
+
 }
 
 sub report : Chained('object') Args(0) {

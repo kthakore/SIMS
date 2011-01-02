@@ -2,6 +2,7 @@
 CREATE TABLE Student (
 
 		ID INT NOT NULL UNIQUE PRIMARY KEY,
+		user_id INTEGER REFERENCES User,
 		name TEXT,
 		type TEXT,
 		address TEXT,
@@ -19,6 +20,7 @@ CREATE TABLE Student (
 CREATE TABLE Supervisor (
 
 		ID INT NOT NULL UNIQUE PRIMARY KEY,
+		user_id INTEGER REFERENCES User,
 		name TEXT,
 		speedCode TEXT
 
@@ -142,3 +144,11 @@ CREATE TABLE UserRole (
     INSERT INTO UserRole VALUES (4, 3);
     INSERT INTO UserRole VALUES (5, 4);
     INSERT INTO UserRole VALUES (6, 5);
+
+---
+--- Initial Student Data
+---
+
+INSERT INTO "Student" VALUES ("1", "4", "Kartik Thakore","New Student","123 Numbers blvd","--","London","ON","L2T2W1","123456789","123@email.com","MSC");
+
+

@@ -53,7 +53,9 @@ sub create :Chained('base') PathPart('create') Args(0) {
 
 	#Validation of the email? 
 
-                                                                                                                                                              
+	my $message = '';
+    try
+	{                                                                                                                                                          
     my $user = $c->model('DB::User')->create({                                                                                                                
         username => $c->req->param('username'),
         password => $c->req->param('password'),
@@ -63,7 +65,27 @@ sub create :Chained('base') PathPart('create') Args(0) {
 
 #	$user->add_to_user_roles( role_id => $c->req->param('role_id') );
     $user->create_related( 'user_roles', { role_id => $c->req->param('role_id') }); 
-    $c->flash( message => 'User created successfully!' );
+
+	$message = 'User '.$user->id.' created';
+
+	my @roles = $user->roles();
+	foreach( @roles )
+	{
+		$_ = $_->role();
+	}
+	if(  grep /^student$/, @roles )	{
+		my $student = $c->model('DB::Student')->create( {
+		user_id => $user->id, 
+		});
+		$message .= '<br /> Student '.$student->id.' created';
+	}
+	}
+	catch
+	{
+		$message = 'Cannot make user: '.$_;
+	};
+	`
+    $c->flash( message => $message );
     $c->res->redirect( $c->uri_for( $self->action_for('index') ) );
 
 }
@@ -72,6 +94,13 @@ sub update_pass :Chained('base') PathPart('update_pass') Args(0) {
 my ( $self, $c ) = @_;
 
 	my $user_id = $c->req->param('id');
+	_create_send_password( @_, $user_id );
+}
+
+
+sub _create_send_password
+{
+	my ( $self, $c , $user_id ) = @_;
 
 	my @password_set = ( ( "a"..."z" ), ( "A"..."Z" ), (0 ... 9) );
 	#Generate a random password
@@ -107,9 +136,9 @@ my ( $self, $c ) = @_;
 	};
      $c->res->redirect( $c->uri_for( $self->action_for('index') ) );
 
+
+
 }
-
-
 =head1 AUTHOR
 
 Kartik Thakore,,,

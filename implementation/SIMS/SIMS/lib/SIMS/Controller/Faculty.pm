@@ -27,6 +27,7 @@ sub base :Chained('/') PathPart('faculty') CaptureArgs(0) {
 
 sub index :Chained('base') PathPart('') Args(0) {
     my ( $self, $c ) = @_;
+
 }
 
 
@@ -37,18 +38,18 @@ sub search_student :Chained('base') PathPart('search_student') Args(0) {
 	my $search_text = $c->req->param('search_text');
 
 	$c->log->debug("**Searching Student on $search_text");
-	my @found = $c->model('DB::Student')->search_like( 
-	
-		name => $search_text, type => $search_text,
-		address => $search_text, address2 => $search_text,
-		city => $search_text, province => $search_text,
-		postalcode => $search_text, phone => $search_text,
-		phone => $search_text, email => $search_text, location => $search_text
+	my @found = $c->model('DB::Student')->search({ name => { like => '%' . $search_text . '%' }});
 
-	 );
+	if($#found > -1)
+	{
+	$c->stash( search_result => \@found );
+	}
+	else
+	{
+	$c->flash( search_message => "No students found ");
+	} 
+	$c->stash( template => 'faculty/index.tt' );
 
-	$c->flash( search_result => \@found );
-	$c->res->redirect( $c->uri_for( $self->action_for('index') ) );
 
 }
 

@@ -55,11 +55,37 @@ sub search_student :Chained('base') PathPart('search_student') Args(0) {
 
 sub view_student :Chained('base') PathPath('view_student') Args(1) {
 	my ($self, $c, $id ) = @_;
-	 $c->stash->{student}   = $c->model('DB::Student')->find($id);
-	 $c->stash( template => 'student/index.tt' );
+
+	 $c->stash( template => 'student/index.tt',
+				student =>  $c->model('DB::Student')->find($id) );
 }
 
+sub edit_student :Chained('base') PathPath('edit_student') Args(1) {
+	my ($self, $c, $id ) = @_;
 
+	 $c->stash(  edit_student_url =>  $c->uri_for('edit_student'), 
+	 			  student =>  $c->model('DB::Student')->find($id), 
+	 			template => 'student/edit.tt' );
+	if( $c->req->param('submit') )
+	{
+		$c->stash->{student}->update(
+		{
+		name => $c->req->param('name'),	
+		type => $c->req->param('type'),
+		address => $c->req->param('address'),
+		address2 => $c->req->param('address2'),
+		city => $c->req->param('city'),
+		province => $c->req->param('province'),
+		postalcode => $c->req->param('postalcode'),
+		phone => $c->req->param('phone'),
+		location => $c->req->param('location'),
+		}
+		);	
+	
+		$c->stash(message => "Updated user!" );
+	}
+
+}
 
 
 sub view_report :Chained('base') PathPart('view_report') Args(0) {

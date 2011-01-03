@@ -99,15 +99,11 @@ CREATE TABLE StudentSupervisor (
 		);
 
 CREATE TABLE User (
-		id       INTEGER PRIMARY KEY,
-		username TEXT,
-		password TEXT,
-		email_address TEXT,
-        first_name    TEXT,
-       	last_name     TEXT,
-        active        INTEGER
-
-		);
+        id       INTEGER PRIMARY KEY,
+        username TEXT NOT NULL UNIQUE,
+        password  TEXT NOT NULL,
+        email_address TEXT NOT NULL UNIQUE 
+        );
 
 CREATE TABLE Role (
 		id   INTEGER PRIMARY KEY,
@@ -124,12 +120,12 @@ CREATE TABLE UserRole (
 --- Initial Role Data
 ---
 
-    INSERT INTO User VALUES (1, 'test01', 'mypass', 't01@na.com', 'Joe',  'Blow', 1);
-    INSERT INTO User VALUES (2, 'test02', 'mypass', 't02@na.com', 'Jane', 'Doe',  1);
-    INSERT INTO User VALUES (3, 'test03', 'mypass', 't03@na.com', 'No',   'Go',   0);
-    INSERT INTO User VALUES (4, 'test04', 'mypass', 't04@na.com', 'Joe',  'Blow', 1);
-    INSERT INTO User VALUES (5, 'test05', 'mypass', 't05@na.com', 'Jane', 'Doe',  1);
-    INSERT INTO User VALUES (6, 'test06', 'mypass', 't06@na.com', 'No',   'Go',   0);
+    INSERT INTO User VALUES (1, 'test01', 'mypass', 't01@na.com');
+    INSERT INTO User VALUES (2, 'test02', 'mypass', 't02@na.com');
+    INSERT INTO User VALUES (3, 'test03', 'mypass', 't03@na.com');
+    INSERT INTO User VALUES (4, 'test04', 'mypass', 't04@na.com');
+    INSERT INTO User VALUES (5, 'test05', 'mypass', 't05@na.com');
+    INSERT INTO User VALUES (6, 'test06', 'mypass', 't06@na.com');
  
     INSERT INTO Role VALUES (0, 'user');
     INSERT INTO Role VALUES (1, 'g_admin');
@@ -149,6 +145,6 @@ CREATE TABLE UserRole (
 --- Initial Student Data
 ---
 
-INSERT INTO "Student" VALUES ("1", "4", "Kartik Thakore","New Student","123 Numbers blvd","--","London","ON","L2T2W1","123456789","123@email.com","MSC");
+	INSERT INTO "Student" VALUES ("1", "4", "Kartik Thakore","New Student","123 Numbers blvd","--","London","ON","L2T2W1","123456789","123@email.com","MSC");
 
 

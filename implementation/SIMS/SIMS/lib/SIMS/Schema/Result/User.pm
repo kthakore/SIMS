@@ -32,32 +32,17 @@ __PACKAGE__->table("User");
 =head2 username
 
   data_type: 'text'
-  is_nullable: 1
+  is_nullable: 0
 
 =head2 password
 
   data_type: 'text'
-  is_nullable: 1
+  is_nullable: 0
 
 =head2 email_address
 
   data_type: 'text'
-  is_nullable: 1
-
-=head2 first_name
-
-  data_type: 'text'
-  is_nullable: 1
-
-=head2 last_name
-
-  data_type: 'text'
-  is_nullable: 1
-
-=head2 active
-
-  data_type: 'integer'
-  is_nullable: 1
+  is_nullable: 0
 
 =cut
 
@@ -65,19 +50,15 @@ __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "username",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "text", is_nullable => 0 },
   "password",
   {encode_column => 1, encode_class => 'Digest', encode_args => {salt_length => 10}, encode_check_method => 'check_password'},
   "email_address",
-  { data_type => "text", is_nullable => 1 },
-  "first_name",
-  { data_type => "text", is_nullable => 1 },
-  "last_name",
-  { data_type => "text", is_nullable => 1 },
-  "active",
-  { data_type => "integer", is_nullable => 1 },
+  { data_type => "text", is_nullable => 0 },
 );
 __PACKAGE__->set_primary_key("id");
+__PACKAGE__->add_unique_constraint("email_address_unique", ["email_address"]);
+__PACKAGE__->add_unique_constraint("username_unique", ["username"]);
 
 =head1 RELATIONS
 
@@ -127,9 +108,10 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-01 20:47:13
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Eq8rIMoDmbkrvv117ukD5g
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-02 21:36:03
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:YDaDcD9UJvQkLW/zvaTw+Q
 __PACKAGE__->many_to_many(roles => 'user_roles', 'role');
+
 
 # You can replace this text with custom content, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;

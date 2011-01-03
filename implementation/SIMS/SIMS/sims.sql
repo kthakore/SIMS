@@ -107,7 +107,8 @@ CREATE TABLE User (
 
 CREATE TABLE Role (
 		id   INTEGER PRIMARY KEY,
-		role TEXT
+		role TEXT,
+		name TEXT
 		);
 
 CREATE TABLE UserRole (
@@ -127,12 +128,12 @@ CREATE TABLE UserRole (
     INSERT INTO User VALUES (5, 'test05', 'mypass', 't05@na.com');
     INSERT INTO User VALUES (6, 'test06', 'mypass', 't06@na.com');
  
-    INSERT INTO Role VALUES (0, 'user');
-    INSERT INTO Role VALUES (1, 'g_admin');
-    INSERT INTO Role VALUES (2, 'g_exec');
-    INSERT INTO Role VALUES (3, 'student');
-    INSERT INTO Role VALUES (4, 't_admin');
-    INSERT INTO Role VALUES (5, 'adv_com');
+    INSERT INTO Role VALUES (0, 'user', 'user');
+    INSERT INTO Role VALUES (1, 'g_admin', 'graduateadmin');
+    INSERT INTO Role VALUES (2, 'g_exec', 'graduateexec');
+    INSERT INTO Role VALUES (3, 'student','student');
+    INSERT INTO Role VALUES (4, 't_admin', 'techadmin');
+    INSERT INTO Role VALUES (5, 'adv_com', 'advcommmember');
 
     INSERT INTO UserRole VALUES (1, 0);
     INSERT INTO UserRole VALUES (2, 1);

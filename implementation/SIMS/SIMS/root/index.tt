@@ -12,7 +12,9 @@ You can <a href="[% c.uri_for('/logout') %]">logout</a> here.
 <p>Hello [% c.user.username %]!</p>
     <ul>
       [% # Dump list of roles -%]
-      [% FOR role = c.user.roles %]<li>[% role %]</li>[% END %]
+      [% FOR role = c.user.roles %]
+		<li> <a href="[% role.name %]" > [% role %]</li>
+	  [% END %]
     </ul>
 
 </div>

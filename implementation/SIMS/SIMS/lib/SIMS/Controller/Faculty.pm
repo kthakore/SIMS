@@ -53,6 +53,14 @@ sub search_student :Chained('base') PathPart('search_student') Args(0) {
 
 }
 
+sub view_student :Chained('base') PathPath('view_student') Args(1) {
+	my ($self, $c, $id ) = @_;
+	 $c->stash->{student}   = $c->model('DB::Student')->find($id);
+	 $c->stash( template => 'student/index.tt' );
+}
+
+
+
 
 sub view_report :Chained('base') PathPart('view_report') Args(0) {
     my ( $self, $c ) = @_;

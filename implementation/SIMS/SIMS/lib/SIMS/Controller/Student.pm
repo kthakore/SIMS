@@ -31,18 +31,14 @@ sub base :Chained('/') PathPart('student') CaptureArgs(0) {
 	$c->log->debug("Looking at $id found ".$c->stash->{student} );
 
 }
-sub object : Chained('base') PathPart('') CaptureArgs(0) {
-    my ( $self, $c ) = @_;
-   
+
+
+sub index : Chained('base') PathPart('') Args(0) {
+	my ( $self, $c ) = @_;
 }
 
-sub view : Chained('object') Args(0) {
 
-}
 
-sub report : Chained('object') Args(0) {
-
-}
 
 =head1 AUTHOR
 

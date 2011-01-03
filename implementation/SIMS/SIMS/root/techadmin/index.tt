@@ -1,27 +1,48 @@
 <html>
 <head></head>
 <body>
+<div id="header">
+You can <a href="[% c.uri_for('/logout') %]">logout</a> here.
+</div>
+<div id="content">
 
  [% IF (message = c.flash.message) %]
   <span class="message">[% message %]</span>
  [% END %]
 
+<h1> Add a User </h1>
   <form id="create" action="[% c.uri_for( 'create' ) %]" method="POST">
    <label>User Name:</label><input name="username" type="text" value="" />
+	<br />
    <label>Password:</label><input name="password" type="password" value="" />
+	<br />
    <label>Email Address:</label><input name="email_address" type="text" value="" />
+	<br />
    <label>First Name:</label><input name="first_name" type="text" value="" />
+	<br />
    <label>Last Name:</label><input name="last_name" type="text" value="" />
+	<br />
    <label>Role :</label><select name="role_id">
 	[% FOREACH role IN roles.all %]
 	<option value="[% role.id %]"> [% role.role %] </option>
 	[% END %]
 	</select>
-
-  <input type="submit" value="CREATE" />
+	<br />
+  <input type="submit" value="Create User" />
   </form>
+</div>
 
-
+<h1> Current Users </h1>
+<br />
+[% FOREACH user IN users.all %] 
+ <label> [% user.id %] </label>
+ <label> [% user.username %] </label>
+ <form id="updateUser" action="[% c.uri_for('update_pass') %]" method="POST">
+ <input name="id" type="hidden" value="[% user.id %]" />
+ <input type="submit" value="Reset User Password" />
+ </form>
+ <br />
+[% END %]
 
 </body>
 </html>

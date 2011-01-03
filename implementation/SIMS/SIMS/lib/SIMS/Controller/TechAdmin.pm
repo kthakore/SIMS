@@ -38,12 +38,15 @@ sub index :Chained('base') PathPart('') Args(0) {
 	my ( $self, $c ) = @_;
 
 	$c->stash->{roles} = $c->model('DB::Role');
+	$c->stash->{users} = $c->model('DB::User');
 
 #	$c->response->body('Matched SIMS::Controller::TechAdmin in TechAdmin.');
 }
 
 sub create :Chained('base') PathPart('create') Args(0) {
 	my ( $self, $c ) = @_;
+
+	#Validation of the email? 
 
                                                                                                                                                               
     my $user = $c->model('DB::User')->create({                                                                                                                
@@ -58,8 +61,31 @@ sub create :Chained('base') PathPart('create') Args(0) {
 
 #	$user->add_to_user_roles( role_id => $c->req->param('role_id') );
     $user->create_related( 'user_roles', { role_id => $c->req->param('role_id') }); 
-    $c->flash( message => 'User created successfully!' );                                                                                                     
-    $c->res->redirect( $c->uri_for( $self->action_for('index') ) );                                                                                           
+    $c->flash( message => 'User created successfully!' );
+    $c->res->redirect( $c->uri_for( $self->action_for('index') ) );
+
+}
+
+sub update_pass :Chained('base') PathPart('update_pass') Args(0) {
+my ( $self, $c ) = @_;
+
+	my $user_id = $c->req->param('id');
+
+	my @password_set = ( ( "a"..."z" ), ( "A"..."Z" ), (0 ... 9) );
+	#Generate a random password
+	my $password = '';
+	   $password .=  $password_set[rand()*$#password_set] foreach( 0...8); 
+
+	#Update the field on the user's account
+	my $user = $c->model('DB::User')->find( $user_id );
+
+	$c->log->debug("***User setting pasword $password ");
+	$user->update( {password => $password } );
+
+	#Email it to the user's email
+
+	 $c->flash( message => "User $user_id password  updated successfully!" );
+     $c->res->redirect( $c->uri_for( $self->action_for('index') ) );
 
 }
 

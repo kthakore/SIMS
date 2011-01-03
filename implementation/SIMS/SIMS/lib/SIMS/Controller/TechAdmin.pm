@@ -1,6 +1,11 @@
 package SIMS::Controller::TechAdmin;
 use Moose;
+use Try::Tiny;
+use Email::Simple::Creator;
+use Email::Sender::Simple qw(sendmail);
+use Email::Sender::Transport::SMTP::TLS;
 use namespace::autoclean;
+
 
 BEGIN {extends 'Catalyst::Controller'; }
 
@@ -53,9 +58,6 @@ sub create :Chained('base') PathPart('create') Args(0) {
         username => $c->req->param('username'),
         password => $c->req->param('password'),
         email_address => $c->req->param('email_address'),
-        last_name     => $c->req->param('last_name'),
-		first_name    =>  $c->req->param('first_name'),
-		active	=> 1
 		
     });
 
@@ -79,12 +81,30 @@ my ( $self, $c ) = @_;
 	#Update the field on the user's account
 	my $user = $c->model('DB::User')->find( $user_id );
 
-	$c->log->debug("***User setting pasword $password ");
-	$user->update( {password => $password } );
-
 	#Email it to the user's email
+	my $transport = Email::Sender::Transport::SMTP::TLS->new(
+		host => 'smtp.gmail.com', port => 587, username => 'western.graduate.sims@gmail.com', password => 'graduateSIMS', helo => 'SIMSdb'
+	);
 
-	 $c->flash( message => "User $user_id password  updated successfully!" );
+	my $message = Email::Simple->create(
+	header => [
+		From => 'western.graduate.sims@gmail.com',
+		To	 => $user->email_address,
+		Subject => 'Email has been changed'
+	],
+	body => "Your new password is $password, for the account ".$user->username()."." 
+	);
+
+	try{
+		sendmail( $message, { transport => $transport } );
+		$c->log->debug("***User setting pasword $password ");
+		$user->update( {password => $password } );
+		 $c->flash( message => "User $user_id password  updated successfully!" );
+	}
+	catch
+	{
+		 $c->flash( message => "Cannot Update Password for user. $_ ");
+	};
      $c->res->redirect( $c->uri_for( $self->action_for('index') ) );
 
 }

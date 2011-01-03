@@ -42,10 +42,10 @@ sub default :Path {
     $c->response->status(404);
 }
 
-sub unauthorized :Path {
+sub unauthorized :Path  {
     my ( $self, $c ) = @_;
     $c->response->body( 'You are not authorized for this page: '.$c->session->{original_URI} );
-    $c->response->status(404);
+#    $c->response->status(404);
 
 }
 

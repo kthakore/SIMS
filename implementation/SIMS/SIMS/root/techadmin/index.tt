@@ -18,10 +18,6 @@ You can <a href="[% c.uri_for('/logout') %]">logout</a> here.
 	<br />
    <label>Email Address:</label><input name="email_address" type="text" value="" />
 	<br />
-   <label>First Name:</label><input name="first_name" type="text" value="" />
-	<br />
-   <label>Last Name:</label><input name="last_name" type="text" value="" />
-	<br />
    <label>Role :</label><select name="role_id">
 	[% FOREACH role IN roles.all %]
 	<option value="[% role.id %]"> [% role.role %] </option>

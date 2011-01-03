@@ -22,6 +22,10 @@ requires 'Catalyst::Plugin::Session::State::Cookie';
 requires 'Catalyst::Authentication::Store::DBIx::Class';
 requires 'DBIx::Class::TimeStamp';
 requires 'DBIx::Class::EncodedColumn';
+requires 'Email::Simple::Creator';
+requires 'Email::Sender::Simple';
+requires 'Email::Sender::Transport::SMTP::TLS';
+requires 'Try::Tiny';
 requires 'Moose';
 requires 'namespace::autoclean';
 requires 'Config::General'; # This should reflect the config file format you've chosen

@@ -52,7 +52,7 @@ __PACKAGE__->add_columns(
   "username",
   { data_type => "text", is_nullable => 0 },
   "password",
-  {encode_column => 1, encode_class => 'Digest', encode_args => {salt_length => 10}, encode_check_method => 'check_password'},
+  { data_type => "text", is_nullable => 0 },
   "email_address",
   { data_type => "text", is_nullable => 0 },
 );
@@ -110,6 +110,17 @@ __PACKAGE__->has_many(
 
 # Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-02 21:36:03
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:YDaDcD9UJvQkLW/zvaTw+Q
+
+__PACKAGE__->add_columns(
+        '+password' => {
+            encode_column       => 1,
+            encode_class        => 'Digest',
+            encode_args         => {salt_length => 10},
+            encode_check_method => 'check_password',
+        },
+    );
+
+
 __PACKAGE__->many_to_many(roles => 'user_roles', 'role');
 
 

@@ -1,9 +1,4 @@
-<html>
-<head></head>
-<body>
-<div id="header">
-You can <a href="[% c.uri_for('/logout') %]">logout</a> here.
-</div>
+[% PROCESS header.tt %]
 <div id="content">
 
  [% IF (message = c.flash.message) %]
@@ -26,7 +21,7 @@ You can <a href="[% c.uri_for('/logout') %]">logout</a> here.
 	<br />
   <input type="submit" value="Create User" />
   </form>
-</div>
+
 
 <h1> Current Users </h1>
 <br />
@@ -39,6 +34,5 @@ You can <a href="[% c.uri_for('/logout') %]">logout</a> here.
  </form>
  <br />
 [% END %]
-
-</body>
-</html>
+</div>
+[% PROCESS footer.tt %]

@@ -27,7 +27,6 @@ sub base :Chained('/') PathPart('advcommmember') CaptureArgs(0) {
 sub index :Chained('base') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->response->body('Options for advcommittee');
 }
 
 

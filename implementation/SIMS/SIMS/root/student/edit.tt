@@ -1,0 +1,36 @@
+<html>
+<head></head>
+<body>
+<div id="header">
+You can <a href="[% c.uri_for('/logout') %]">logout</a> here.
+</div>
+<div id="content">
+
+[% IF message %]
+<p> [% message %] </p>
+[% END %]
+
+   <form id="edit_student" action="[% edit_student_url %]" method="POST">
+   	<label>Name:</label><input name="name" type="text" value="[% student.name %]" />
+	<br />
+   	<label>Type:</label><input name="type" type="text" value="[% student.type %]" />
+	<br />
+    <label>Address:</label><input name="address" type="text" value="[% student.address %]" />
+	<br />
+    <label>Address2:</label><input name="address2" type="text" value="[% student.address2 %]" />
+	<br />
+    <label>City:</label><input name="city" type="text" value="[% student.city %]" />
+	<br />
+ 	<label>Province:</label><input name="province" type="text" value="[% student.province %]" />
+	<br />
+	<label>PostalCode:</label><input name="postalcode" type="text" value="[% student.postalcode %]" />
+	<br />
+	<label>Phone:</label><input name="phone" type="text" value="[% student.phone %]" />
+	<br />
+	<label>Location:</label><input name="location" type="text" value="[% student.location %]" />
+	<br />
+
+  <input name="submit" type="submit" value="Update Student" />
+  </form>
+</body>
+</html>

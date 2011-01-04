@@ -1,0 +1,15 @@
+
+<form id="search" action="[% c.uri_for('search_student') %]" method="POST" >
+<label>Search Student</label> <input name="search_text" type="text" />
+<input name="submit" type="submit" value="search" />
+</form>
+
+<h1> Results </h1>
+[% IF c.flash.search_message %] 
+[% c.flash.search_message %] 
+[% END %]
+[% FOREACH student IN search_result %]
+<label>[% student.name %] </labe> <a href="[% c.uri_for('view_student') %]/[% student.id%]" >View</a> 
+<a href="[% c.uri_for('edit_student') %]/[% student.id%]" >Edit</a> <br />
+
+[% END %] 

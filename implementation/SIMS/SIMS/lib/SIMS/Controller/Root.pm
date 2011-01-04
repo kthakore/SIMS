@@ -28,6 +28,7 @@ The root page (/)
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
+
 }
 
 =head2 default

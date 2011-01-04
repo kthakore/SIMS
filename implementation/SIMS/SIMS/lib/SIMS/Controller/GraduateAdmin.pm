@@ -29,7 +29,6 @@ sub base :Chained('/') PathPart('graduateadmin') CaptureArgs(0) {
 sub index :Chained('base') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->response->body('Dashboard for graduateadmin');
 }
 
 

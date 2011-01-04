@@ -1,0 +1,5 @@
+[% PROCESS header.tt %]
+<div id="content">
+
+</div>
+[% PROCESS footer.tt %]

@@ -1,0 +1,6 @@
+<a href="[% c.uri_for('/logout') %]" > Logout </a>
+<a href="[% c.uri_for('/') %]" > Dashboard </a>
+
+[%FOREACH nav IN navigation %]
+<a href="[% nav.src %]" > [% nav.text %] </a>
+[%END%]

@@ -84,7 +84,7 @@ sub create :Chained('base') PathPart('create') Args(0) {
 	{
 		$message = 'Cannot make user: '.$_;
 	};
-	`
+	
     $c->flash( message => $message );
     $c->res->redirect( $c->uri_for( $self->action_for('index') ) );
 

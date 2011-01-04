@@ -24,6 +24,9 @@ Catalyst Controller.
 sub index :Path :Args(0) {
         my ($self, $c) = @_;
 
+		if(  $c->request->params->{submit} )
+		{
+
         # Get the username and password from form
         my $username = $c->request->params->{username};
         my $password = $c->request->params->{password};
@@ -45,7 +48,7 @@ sub index :Path :Args(0) {
             # Set an error message
             $c->flash(error_msg => "Empty username or password.");
         }
-
+		}
         # If either of above don't work out, send to the login page
         $c->stash(template => 'login.tt');
 

@@ -62,7 +62,7 @@
 
 <div id="header" style="">
     <div id="header-top">
-        <a id="logo" href="http://10.211.55.3:8080/secure/Dashboard.jspa">
+        <a id="logo" href="[% c.uri_for('/') %]">
                         <img class="logo" src="[% c.uri_for('/static/') %]/image1.tiff" width="800" height="59" border="0" alt="The University of Western Ontario (Graduate Program Administration)">
                     </a>
                 <form id="quicksearch" action="http://10.211.55.3:8080/secure/QuickSearch.jspa" method="post">
@@ -117,7 +117,7 @@
             
 <ul id="main-nav" class="menu-bar">
                         <li class="aui-dd-parent lazy   dd-allocated">
-                    <a class="lnk" href="http://10.211.55.3:8080/secure/Dashboard.jspa" id="home_link" accesskey="h" title="View your current Dashboard ( Type &#39;g&#39; then &#39;d&#39; )">Dashboards</a>
+                    <a class="lnk" href="[% c.uri_for('/') %]" id="home_link" accesskey="h" title="View your current Dashboard ( Type &#39;g&#39; then &#39;d&#39; )">Dashboards</a>
 
                     <span class="drop-wrap">
             <a class="drop aui-dd-link" id="home_link_drop" rel="home_link" accesskey="d" title="Access more options (Ctrl+Alt+d)" href="http://10.211.55.3:8080/browse/UWOGRAD-1#"><span>Access more options (Ctrl+Alt+d)</span></a></span>

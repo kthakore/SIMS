@@ -3,14 +3,7 @@
 
 <h1> Dashboard </h1>
 <p>Hello [% c.user.username %]!</p>
-    <ul>
-      [% # Dump list of roles -%]
-      [% FOR user_role = c.user.user_roles %]
-	  [% role = user_role.role %]
-		<li> <a href="[% c.uri_for(role.name) %]" >Operations</li>
-	  [% END %]
-    </ul>
-
+[% PROCESS dashboard.tt %]
 </div>
 [% PROCESS footer.tt %]
 

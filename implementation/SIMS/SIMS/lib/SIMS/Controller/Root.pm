@@ -29,6 +29,14 @@ The root page (/)
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
+	my @roles = $c->user->roles();
+
+	if( grep /(g_admin|g_exec|adv_com|fac)/, @roles )
+	{
+	$c->stash->{dashboard} = [ 
+				{ src => $c->uri_for('faculty'), text => 'Faculty Member Options' }
+				];
+	}
 }
 
 =head2 default
@@ -79,7 +87,7 @@ Check if there is a user and, if not, forward to login page
             $c->log->debug('***Root::auto User not found, forwarding to /login');
 			# Save where we care coming from
 			# $c->flash->{came_from} = 
-			$c->session->{original_URI} = $c->request->uri;
+			$c->session->{original_URI} = $c->request->uri unless( $c->request->uri =~ /static/ );
             # Redirect the user to the login page
             $c->response->redirect($c->uri_for('/login'));
             # Return 0 to cancel 'post-auto' processing and prevent use of application

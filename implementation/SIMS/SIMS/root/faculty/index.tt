@@ -1,3 +1,6 @@
+[% PROCESS header.tt %]
+<div id="content">
+
 
 <form id="search" action="[% c.uri_for('search_student') %]" method="POST" >
 <label>Search Student</label> <input name="search_text" type="text" />
@@ -10,6 +13,11 @@
 [% END %]
 [% FOREACH student IN search_result %]
 <label>[% student.name %] </labe> <a href="[% c.uri_for('view_student') %]/[% student.id%]" >View</a> 
-<a href="[% c.uri_for('edit_student') %]/[% student.id%]" >Edit</a> <br />
-
+[% IF edit_student_url %]
+<a href="[% edit_student_url %]/[% student.id%]" >Edit</a> 
+[% END %]
+<br />
 [% END %] 
+
+</div>
+[% PROCESS footer.tt %]

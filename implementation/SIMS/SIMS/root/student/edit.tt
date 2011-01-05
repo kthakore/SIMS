@@ -1,9 +1,4 @@
-<html>
-<head></head>
-<body>
-<div id="header">
-You can <a href="[% c.uri_for('/logout') %]">logout</a> here.
-</div>
+[% PROCESS header.tt %]
 <div id="content">
 
 [% IF message %]
@@ -32,5 +27,5 @@ You can <a href="[% c.uri_for('/logout') %]">logout</a> here.
 
   <input name="submit" type="submit" value="Update Student" />
   </form>
-</body>
-</html>
+</div>
+[% PROCESS footer.tt %]

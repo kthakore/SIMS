@@ -1,0 +1,10 @@
+<ul>
+[% FOR user_role = c.user.user_roles %]
+[% role = user_role.role %]
+<li> <a href="[% c.uri_for(role.name) %]" >Role Home</li>
+[% END %]
+[%FOREACH dash IN dashboard %]
+<li><a href="[% dash.src %]" > [% dash.text %] </a></li>
+[%END%]
+</ul>
+

@@ -1,4 +1,5 @@
-    [% META title = 'Login' %]
+[% PROCESS header.tt %]
+<div id="content">
 
     <!-- Login form -->
     <form method="post" action="[% c.uri_for('/login') %]">
@@ -38,3 +39,6 @@
        comments.
     %]
     </p>
+
+</div>
+[% PROCESS footer.tt %]

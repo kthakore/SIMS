@@ -50,6 +50,18 @@ CREATE TABLE Term (
 
 		);
 
+CREATE TABLE Event (
+
+		ID INT NOT NULL UNIQUE PRIMARY KEY,
+		ref_ID INT NULL UNIQUE,
+		refers_to TEXT, 
+		type TEXT,
+		timestamp DATETIME NOT NULL,
+		description TEXT
+	);
+
+
+
 CREATE TABLE TermFunding (
 
 		ID INT NOT NULL UNIQUE PRIMARY KEY,

@@ -31,12 +31,14 @@ sub index :Path :Args(0) {
 
 	my @roles = $c->user->roles();
 
+	my $dashboard = [];
+	
 	if( grep /(g_admin|g_exec|adv_com|fac)/, @roles )
 	{
-	$c->stash->{dashboard} = [ 
-				{ src => $c->uri_for('faculty'), text => 'Faculty Member Options' }
-				];
+		push (@{$dashboard}, { src => $c->uri_for('faculty'), text => 'Manage Students' });
 	}
+	$c->stash->{dashboard} = $dashboard;
+
 }
 
 =head2 default

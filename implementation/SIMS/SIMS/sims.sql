@@ -60,7 +60,11 @@ CREATE TABLE Event (
 		description TEXT
 	);
 
+--
+--  Sample Events
+--
 
+INSERT INTO "Event" VALUES ( 0, 1, "Student", "Added", datetime('now'), "Added new student." );
 
 CREATE TABLE TermFunding (
 
@@ -133,12 +137,12 @@ CREATE TABLE UserRole (
 --- Initial Role Data
 ---
 
-    INSERT INTO User VALUES (1, 'test01', 'mypass', 't01@na.com');
-    INSERT INTO User VALUES (2, 'test02', 'mypass', 't02@na.com');
-    INSERT INTO User VALUES (3, 'test03', 'mypass', 't03@na.com');
-    INSERT INTO User VALUES (4, 'test04', 'mypass', 't04@na.com');
-    INSERT INTO User VALUES (5, 'test05', 'mypass', 't05@na.com');
-    INSERT INTO User VALUES (6, 'test06', 'mypass', 't06@na.com');
+    INSERT INTO User VALUES (1, 'user', 'mypass', 'user@mailinator.com');
+    INSERT INTO User VALUES (2, 'gradadmin', 'mypass', 'gradadmin@mailinator.com');
+    INSERT INTO User VALUES (3, 'gradexec', 'mypass', 'gradexec@mailinator.com');
+    INSERT INTO User VALUES (4, 'student', 'mypass', 'student@mailinator.com');
+    INSERT INTO User VALUES (5, 'techadmin', 'mypass', 'techadmin5@mailinator.com');
+    INSERT INTO User VALUES (6, 'advcom', 'mypass', 'adv@mailinator.com');
  
     INSERT INTO Role VALUES (0, 'user', 'user');
     INSERT INTO Role VALUES (1, 'g_admin', 'graduateadmin');

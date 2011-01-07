@@ -1,5 +1,12 @@
 [% PROCESS header.tt %]
 <div id="content">
+<h2> Event Log </h2>
+<ul>
+[% FOREACH event IN events %]
 
+<li> [% event.timestamp %] : [% event.description %]
+
+[% END %]
+</ul>
 </div>
 [% PROCESS footer.tt %]

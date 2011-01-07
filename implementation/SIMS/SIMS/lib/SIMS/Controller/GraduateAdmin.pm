@@ -24,10 +24,20 @@ sub base :Chained('/') PathPart('graduateadmin') CaptureArgs(0) {
 	my @roles = $c->user->roles();
 
 	$c->response->redirect($c->uri_for('/unauthorized')) unless( grep /(g_admin)/, @roles );
+
+	$c->stash( events => $c->model('DB::Event')->search({}, { order_by => { -desc => 'timestamp' }} ));
 }
 
 sub index :Chained('base') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
+
+}
+
+sub assign_student_terms :Chained('/') :PathPart('assign_student') :Args(0) {
+
+}
+
+sub assign_adv_terms :Chained('/') :PathPart('adv_student') :Args(0) {
 
 }
 

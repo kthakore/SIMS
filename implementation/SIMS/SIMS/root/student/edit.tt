@@ -27,5 +27,42 @@
 
   <input name="submit" type="submit" value="Update Student" />
   </form>
+
+<h1> Plans </h1>
+[% FOREACH plan IN student.plan_students %]
+
+	[% plan.name %] <br /> 
+
+[% END %]
+<form id="add_student_plan" action="[% add_plan_url %]" method="POST">
+ <input name="submit" type="submit" value="Add Plan" />
+</form>
+
+<h1> Terms </h1>
+[% FOREACH term IN student.term_students %]
+
+	[% term.termDate %] <br /> 
+	[% term.length %] <br />
+<br />
+
+
+	<h2> Term Funding </h2>
+	[% FOREACH fund IN term.term_fundings %]
+		[% fund.type %] <br />
+	[% END %]
+<br />
+<form id="add_student_funding" action="[% add_funding_url %]/[% term.id %]" method="POST">
+ <input name="submit" type="submit" value="Add Funding to Term" />
+</form>
+[% END %]
+
+<form id="add_student_term" action="[% add_term_url %]" method="POST">
+ <input name="submit" type="submit" value="Add Term" />
+</form>
+
+
+
+
+
 </div>
 [% PROCESS footer.tt %]

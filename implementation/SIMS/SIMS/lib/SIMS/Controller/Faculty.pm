@@ -23,6 +23,9 @@ sub base :Chained('/') PathPart('faculty') CaptureArgs(0) {
 	my @roles = $c->user->roles();
 
 	$c->response->redirect($c->uri_for('/unauthorized')) unless( grep /(g_admin|g_exec|adv_com|fac)/, @roles );
+	
+	$c->stash( edit_student_url => $c->uri_for('edit_student') ) if( 	 grep (/(g_admin)/, @roles) )
+	
 }
 
 sub index :Chained('base') PathPart('') Args(0) {

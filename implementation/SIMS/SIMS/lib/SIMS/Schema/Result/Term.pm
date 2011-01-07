@@ -86,6 +86,9 @@ __PACKAGE__->has_many(
 # Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-02 21:36:03
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:zcnjnThZ79O6484bzkY9vw
 
+__PACKAGE__->many_to_many( students => 'term_students', 'student');
+
+__PACKAGE__->many_to_many( fundings => 'term_fundings', 'fund');
 
 # You can replace this text with custom content, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;

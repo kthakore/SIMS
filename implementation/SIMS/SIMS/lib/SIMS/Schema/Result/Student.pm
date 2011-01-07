@@ -186,6 +186,9 @@ __PACKAGE__->has_many(
 # Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-03 18:28:48
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:M82DgQLQ4eryvpcqjqD9XQ
 
+__PACKAGE__->many_to_many( supervisors => 'student_supervisors', 'supervisor');
+__PACKAGE__->many_to_many( plans => 'plan_students', 'plan');
+__PACKAGE__->many_to_many( terms => 'term_students', 'term');
 
 # You can replace this text with custom content, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;

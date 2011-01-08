@@ -75,6 +75,7 @@ sub create :Chained('base') PathPart('create') Args(0) {
 	}
 	if(  grep /^student$/, @roles )	{
 		my $student = $c->model('DB::Student')->create( {
+		name =>  $c->req->param('username'),
 		user_id => $user->id, 
 		});
 		$message .= '<br /> Student '.$student->id.' created';

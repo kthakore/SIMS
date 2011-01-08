@@ -19,7 +19,6 @@ after 'create' => sub
 	my $h = shift;
 	$self->result_source->schema()->resultset('Event')->create(
 	{
-		id => 23,
 		ref_id => $h->{user_id},
 		refers_to => 'STUDENT',
 		type => 'DB',

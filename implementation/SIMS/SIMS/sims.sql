@@ -1,7 +1,7 @@
 
 CREATE TABLE Student (
 
-		ID INTEGER PRIMARY KEY,
+		id INTEGER PRIMARY KEY,
 		user_id INTEGER REFERENCES User,
 		name TEXT,
 		type TEXT,
@@ -19,7 +19,7 @@ CREATE TABLE Student (
 
 CREATE TABLE Supervisor (
 
-		ID INT NOT NULL UNIQUE PRIMARY KEY,
+		id INTEGER PRIMARY KEY,
 		user_id INTEGER REFERENCES User,
 		name TEXT,
 		speedCode TEXT
@@ -28,14 +28,14 @@ CREATE TABLE Supervisor (
 
 CREATE TABLE Plan (
 
-		ID  INT NOT NULL UNIQUE PRIMARY KEY, 
+		id  INTEGER PRIMARY KEY, 
 		name TEXT
 
 		);
 
 CREATE TABLE Fund (
 
-		ID  INT NOT NULL UNIQUE PRIMARY KEY,
+		id  INTEGER PRIMARY KEY,
 		type TEXT,
 		value FLOAT,
 		start DATE,
@@ -44,7 +44,7 @@ CREATE TABLE Fund (
 
 CREATE TABLE Term (
 
-		ID  INT NOT NULL UNIQUE PRIMARY KEY,
+		id  INTEGER PRIMARY KEY,
 		termDate DATE,
 		length FLOAT
 
@@ -52,8 +52,8 @@ CREATE TABLE Term (
 
 CREATE TABLE Event (
 
-		ID INT UNIQUE PRIMARY KEY,
-		ref_ID INT NULL UNIQUE,
+		id INTEGER PRIMARY KEY,
+		ref_id INT NULL UNIQUE,
 		refers_to TEXT, 
 		type TEXT,
 		timestamp DATETIME NOT NULL,
@@ -68,12 +68,12 @@ INSERT INTO "Event" VALUES ( 0, 1, "Student", "Added", datetime('now'), "Added n
 
 CREATE TABLE TermFunding (
 
-		ID INT NOT NULL UNIQUE PRIMARY KEY,
-		TermID INT NOT NULL CONSTRAINT fk_tf_term_id
-		REFERENCES Term(ID)
+		id INTEGER PRIMARY KEY,
+		Termid INT NOT NULL CONSTRAINT fk_tf_term_id
+		REFERENCES Term(id)
 		ON DELETE CASCADE,
-		FundID INT NOT NULL CONSTRAINT fk_tf_fund_id
-		REFERENCES Fund(ID)
+		Fundid INT NOT NULL CONSTRAINT fk_tf_fund_id
+		REFERENCES Fund(id)
 		ON DELETE CASCADE
 		);
 
@@ -81,35 +81,35 @@ CREATE TABLE TermFunding (
 CREATE TABLE TermStudent (
 
 
-		ID INT NOT NULL UNIQUE PRIMARY KEY,
-		TermID INT NOT NULL CONSTRAINT fk_ts_term_id
-		REFERENCES Term(ID)
+		id INTEGER PRIMARY KEY,
+		Termid INT NOT NULL CONSTRAINT fk_ts_term_id
+		REFERENCES Term(id)
 		ON DELETE CASCADE,
-		StudentID INT NOT NULL CONSTRAINT fk_ts_student_id
-		REFERENCES Student(ID)
+		Studentid INT NOT NULL CONSTRAINT fk_ts_student_id
+		REFERENCES Student(id)
 		ON DELETE CASCADE
 		);
 
 CREATE TABLE PlanStudent (
 
 
-		ID INT NOT NULL UNIQUE PRIMARY KEY,
-		PlanID INT NOT NULL CONSTRAINT fk_ps_plan_id
-		REFERENCES PLAN(ID)
+		id INTEGER PRIMARY KEY,
+		Planid INT NOT NULL CONSTRAINT fk_ps_plan_id
+		REFERENCES PLAN(id)
 		ON DELETE CASCADE,
-		StudentID INT NOT NULL CONSTRAINT fk_ps_student_id
-		REFERENCES Student(ID)
+		Studentid INT NOT NULL CONSTRAINT fk_ps_student_id
+		REFERENCES Student(id)
 		ON DELETE CASCADE
 		);
 
 CREATE TABLE StudentSupervisor (
 
-		ID INT NOT NULL UNIQUE PRIMARY KEY,
-		StudentID INT NOT NULL CONSTRAINT fk_ps_student_id
-		REFERENCES Student(ID)
+		id INTEGER PRIMARY KEY,
+		Studentid INT NOT NULL CONSTRAINT fk_ps_student_id
+		REFERENCES Student(id)
 		ON DELETE CASCADE,
-		SupervisorID INT NOT NULL CONSTRAINT fk_ps_supervisor_id
-		REFERENCES Supervisor(ID)
+		Supervisorid INT NOT NULL CONSTRAINT fk_ps_supervisor_id
+		REFERENCES Supervisor(id)
 		ON DELETE CASCADE
 
 		);

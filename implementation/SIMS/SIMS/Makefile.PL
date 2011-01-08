@@ -28,6 +28,7 @@ requires 'Email::Sender::Transport::SMTP::TLS';
 requires 'Try::Tiny';
 requires 'Moose';
 requires 'namespace::autoclean';
+requires 'Class::Method::Modifiers';
 requires 'Config::General'; # This should reflect the config file format you've chosen
 # See Catalyst::Plugin::ConfigLoader for supported formats
 test_requires 'Test::More' => '0.88';
@@ -36,3 +37,4 @@ catalyst;
 install_script glob('script/*.pl');
 							 auto_install;
 							 WriteAll;
+

@@ -25,7 +25,8 @@ __PACKAGE__->table("Supervisor");
 
 =head2 id
 
-  data_type: 'int'
+  data_type: 'integer'
+  is_auto_increment: 1
   is_nullable: 0
 
 =head2 user_id
@@ -48,7 +49,7 @@ __PACKAGE__->table("Supervisor");
 
 __PACKAGE__->add_columns(
   "id",
-  { data_type => "int", is_nullable => 0 },
+  { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "user_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "name",
@@ -96,8 +97,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-02 21:36:03
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:eRiriqDvoobiFl00hjyxsg
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-07 20:16:32
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Ep7rpzT1oCsU3VafrGL3tg
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

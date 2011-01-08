@@ -25,7 +25,8 @@ __PACKAGE__->table("StudentSupervisor");
 
 =head2 id
 
-  data_type: 'int'
+  data_type: 'integer'
+  is_auto_increment: 1
   is_nullable: 0
 
 =head2 studentid
@@ -44,7 +45,7 @@ __PACKAGE__->table("StudentSupervisor");
 
 __PACKAGE__->add_columns(
   "id",
-  { data_type => "int", is_nullable => 0 },
+  { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "studentid",
   { data_type => "int", is_foreign_key => 1, is_nullable => 0 },
   "supervisorid",
@@ -85,8 +86,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-02 21:36:03
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ggT+miwovJl9aH9vetnAJQ
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-07 20:16:32
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JVt5fgQkMKZ6EaOrzhZbEA
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

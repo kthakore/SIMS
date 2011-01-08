@@ -3,10 +3,9 @@ package SIMS::Schema::ResultSet::Student;
 use strict;
 use warnings;
 
-use Moose;
-use MooseX::NonMoose;
+use Class::Method::Modifiers;
 use namespace::autoclean;
-extends 'DBIx::Class::ResultSet';
+use base 'DBIx::Class::ResultSet';
 
 use DateTime;
 use Data::Dumper;
@@ -28,6 +27,5 @@ after 'create' => sub
 	}
 	);
 };
-
-__PACKAGE__->meta->make_immutable; 
+ 
 1;

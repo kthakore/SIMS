@@ -25,7 +25,8 @@ __PACKAGE__->table("Term");
 
 =head2 id
 
-  data_type: 'int'
+  data_type: 'integer'
+  is_auto_increment: 1
   is_nullable: 0
 
 =head2 termdate
@@ -42,7 +43,7 @@ __PACKAGE__->table("Term");
 
 __PACKAGE__->add_columns(
   "id",
-  { data_type => "int", is_nullable => 0 },
+  { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "termdate",
   { data_type => "date", is_nullable => 1 },
   "length",
@@ -83,8 +84,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-02 21:36:03
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:zcnjnThZ79O6484bzkY9vw
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-07 20:16:32
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:V0eeuFKetMHalJeSMwoJuA
 
 __PACKAGE__->many_to_many( students => 'term_students', 'student');
 

@@ -25,7 +25,8 @@ __PACKAGE__->table("Plan");
 
 =head2 id
 
-  data_type: 'int'
+  data_type: 'integer'
+  is_auto_increment: 1
   is_nullable: 0
 
 =head2 name
@@ -37,15 +38,15 @@ __PACKAGE__->table("Plan");
 
 __PACKAGE__->add_columns(
   "id",
-  { data_type => "int", is_nullable => 0 },
+  { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "name",
   { data_type => "text", is_nullable => 1 },
 );
 __PACKAGE__->set_primary_key("id");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-02 21:36:03
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:V8BlkL7h0yVyeOMEFI/Cgw
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-07 20:16:32
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CICCDucwxyBUEhEY/sY8eg
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

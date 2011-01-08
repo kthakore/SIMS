@@ -25,7 +25,7 @@ sub base : Chained('/') PathPart('faculty') CaptureArgs(0) {
     $c->response->redirect( $c->uri_for('/unauthorized') )
       unless ( grep /(g_admin|g_exec|adv_com|fac)/, @roles );
 
-    $c->stash( edit_student_url => $c->uri_for('edit_student') )
+    $c->stash( edit_student_url => $c->uri_for('/graduateadmin/edit_student') )
       if ( grep ( /(g_admin)/, @roles ) )
 
 }
@@ -87,33 +87,6 @@ sub view_student : Chained('base') PathPath('view_student') Args(1) {
     );
 }
 
-sub edit_student : Chained('base') PathPath('edit_student') Args(1) {
-    my ( $self, $c, $id ) = @_;
-
-    $c->stash(
-        edit_student_url => $c->uri_for('edit_student') . "/$id",
-        student          => $c->model('DB::Student')->find($id),
-        template         => 'student/edit.tt'
-    );
-    if ( $c->req->param('submit') ) {
-        $c->stash->{student}->update(
-            {
-                name       => $c->req->param('name'),
-                type       => $c->req->param('type'),
-                address    => $c->req->param('address'),
-                address2   => $c->req->param('address2'),
-                city       => $c->req->param('city'),
-                province   => $c->req->param('province'),
-                postalcode => $c->req->param('postalcode'),
-                phone      => $c->req->param('phone'),
-                location   => $c->req->param('location'),
-            }
-        );
-
-        $c->stash( message => "Updated user!" );
-    }
-
-}
 
 sub view_report : Chained('base') PathPart('view_report') Args(0) {
     my ( $self, $c ) = @_;

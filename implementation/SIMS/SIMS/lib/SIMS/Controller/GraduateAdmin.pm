@@ -36,6 +36,33 @@ sub index : Chained('base') : PathPart('') : Args(0) {
 
 }
 
+sub edit_student : Chained('base') PathPath('edit_student') Args(1) {
+    my ( $self, $c, $id ) = @_;
+
+    $c->stash(
+        edit_student_url => $c->uri_for('edit_student') . "/$id",
+        student          => $c->model('DB::Student')->find($id),
+        template         => 'student/edit.tt'
+    );
+    if ( $c->req->param('submit') ) {
+        $c->stash->{student}->update(
+            {
+                name       => $c->req->param('name'),
+                type       => $c->req->param('type'),
+                address    => $c->req->param('address'),
+                address2   => $c->req->param('address2'),
+                city       => $c->req->param('city'),
+                province   => $c->req->param('province'),
+                postalcode => $c->req->param('postalcode'),
+                phone      => $c->req->param('phone'),
+                location   => $c->req->param('location'),
+            }
+        );
+
+        $c->stash( message => "Updated user!" );
+    }
+
+}
 sub assign_student_terms : Chained('/') : PathPart('assign_student') : Args(0) {
 
 }

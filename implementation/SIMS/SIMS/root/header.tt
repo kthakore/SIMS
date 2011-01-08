@@ -19,16 +19,8 @@
 <![endif]-->
 <link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/jira.webresources-global-static(1).css" media="print">
 <link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/global.css" media="all">
-<script type="text/javascript" src="[% c.uri_for('/static/') %]/com.atlassian.auiplugin-ajs.js"></script>
-<script type="text/javascript" src="[% c.uri_for('/static/') %]/com.atlassian.gadgets.dashboard-dashboard.js"></script>
-<script type="text/javascript" src="[% c.uri_for('/static/') %]/com.atlassian.gadgets.embedded-gadget-core-resources.js"></script>
-<script type="text/javascript" src="[% c.uri_for('/static/') %]/com.atlassian.gadgets.embedded-gadget-container-resources.js"></script>
-<script type="text/javascript" src="[% c.uri_for('/static/') %]/com.atlassian.gadgets.dashboard-gadget-dashboard-resources.js"></script>
-<script type="text/javascript" src="[% c.uri_for('/static/') %]/jira.webresources-jira-global.js"></script>
-<script type="text/javascript" src="[% c.uri_for('/static/') %]/jira.webresources-key-commands.js"></script>
-<script type="text/javascript" src="[% c.uri_for('/static/') %]/jira.webresources-header.js"></script>
+<script type="text/javascript" src="[% c.uri_for('/static/') %]scripts/jquery-1.4.4.min.js"></script>
 
-<script type="text/javascript" src="[% c.uri_for('/static/') %]/shortcuts.js"></script>
 
 
 </head>

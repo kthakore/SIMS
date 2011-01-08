@@ -34,9 +34,21 @@
 	[% plan.name %] <br /> 
 
 [% END %]
-<form id="add_student_plan" action="[% add_plan_url %]" method="POST">
- <input name="submit" type="submit" value="Add Plan" />
-</form>
+
+<div id="form_plan">
+
+</div>
+
+<script type="application/x-javascript">
+
+function add_plan() {
+
+	var form = $("#form_plan");
+	form.append('<form action="[% add_plan_url %]" >Name: <input type="text" name="plan_name"/> <input type="submit" name="submit_plan" value="submit plan" /></form>' );
+
+}
+</script>
+ <input name="submit_plan" type="submit" value="Add Plan" onclick="add_plan()"/>
 
 <h1> Terms </h1>
 [% FOREACH term IN student.term_students %]

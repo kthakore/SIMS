@@ -5,7 +5,7 @@
 [% FOREACH event IN events %]
 
 <li> [% event.timestamp %] : [% event.description %]
-
+</li>
 [% END %]
 </ul>
 </div>

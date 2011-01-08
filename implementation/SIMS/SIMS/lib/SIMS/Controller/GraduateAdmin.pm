@@ -25,7 +25,8 @@ sub base :Chained('/') PathPart('graduateadmin') CaptureArgs(0) {
 
 	$c->response->redirect($c->uri_for('/unauthorized')) unless( grep /(g_admin)/, @roles );
 
-	$c->stash( events => $c->model('DB::Event')->search({}, { order_by => { -desc => 'timestamp' }} ));
+	my @events = $c->model('DB::Event')->search({ }, { order_by => { -desc => 'timestamp' }});
+	$c->stash( events => \@events );
 }
 
 sub index :Chained('base') :PathPart('') :Args(0) {

@@ -97,7 +97,7 @@ sub view_student :Chained('base') PathPath('view_student') Args(1) {
 sub edit_student :Chained('base') PathPath('edit_student') Args(1) {
 	my ($self, $c, $id ) = @_;
 
-	$c->stash(  edit_student_url =>  $c->uri_for('edit_student'), 
+	$c->stash(  edit_student_url =>  $c->uri_for('edit_student')."/$id", 
 			student =>  $c->model('DB::Student')->find($id), 
 			template => 'student/edit.tt' );
 	if( $c->req->param('submit') )

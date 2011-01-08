@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 use Catalyst::ScriptRunner;
-Catalyst::ScriptRunner->run('SIMS', 'CGI');
+Catalyst::ScriptRunner->run( 'SIMS', 'CGI' );
 
 1;
 

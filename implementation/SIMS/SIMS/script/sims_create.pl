@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Catalyst::ScriptRunner;
-Catalyst::ScriptRunner->run('SIMS', 'Create');
+Catalyst::ScriptRunner->run( 'SIMS', 'Create' );
 
 1;
 

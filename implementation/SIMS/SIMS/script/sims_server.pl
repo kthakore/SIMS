@@ -5,7 +5,7 @@ BEGIN {
 }
 
 use Catalyst::ScriptRunner;
-Catalyst::ScriptRunner->run('SIMS', 'Server');
+Catalyst::ScriptRunner->run( 'SIMS', 'Server' );
 
 1;
 

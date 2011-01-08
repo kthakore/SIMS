@@ -11,21 +11,20 @@ use DateTime;
 use Data::Dumper;
 use SIMS::Schema;
 
-after 'create' => sub
-{
-	my $self = shift;
+after 'create' => sub {
+    my $self = shift;
 
-	my $h = shift;
-	$self->result_source->schema()->resultset('Event')->create(
-	{
-		ref_id => $h->{user_id},
-		refers_to => 'STUDENT',
-		type => 'DB',
-		timestamp => DateTime->now(), 
-		description => "Added new student"
-	
-	}
-	);
+    my $h = shift;
+    $self->result_source->schema()->resultset('Event')->create(
+        {
+            ref_id      => $h->{user_id},
+            refers_to   => 'STUDENT',
+            type        => 'DB',
+            timestamp   => DateTime->now(),
+            description => "Added new student"
+
+        }
+    );
 };
- 
+
 1;

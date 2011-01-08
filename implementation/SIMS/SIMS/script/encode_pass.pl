@@ -2,7 +2,7 @@
 
     use strict;
     use warnings;
-	use lib 'lib';
+    use lib 'lib';
 
     use SIMS::Schema;
 
@@ -11,7 +11,7 @@
     my @users = $schema->resultset('User')->all;
 
     foreach my $user (@users) {
-		warn "Doing ".$user->id;
+        warn "Doing " . $user->id;
         $user->password('mypass');
         $user->update;
     }

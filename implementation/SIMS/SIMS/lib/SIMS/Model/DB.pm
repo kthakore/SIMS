@@ -5,10 +5,10 @@ use base 'Catalyst::Model::DBIC::Schema';
 
 __PACKAGE__->config(
     schema_class => 'SIMS::Schema',
-    
+
     connect_info => {
-        dsn => 'dbi:SQLite:dbname=sims.db',
-        user => '',
+        dsn      => 'dbi:SQLite:dbname=sims.db',
+        user     => '',
         password => '',
     }
 );

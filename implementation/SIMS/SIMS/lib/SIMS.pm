@@ -13,16 +13,16 @@ use Catalyst::Runtime 5.80;
 #                 directory
 
 use Catalyst qw/
-    -Debug
-    ConfigLoader
-    Static::Simple
-	StackTrace
-	Authentication
-	Authorization::Roles
-	Session
-    Session::Store::FastMmap
-    Session::State::Cookie
-/;
+  -Debug
+  ConfigLoader
+  Static::Simple
+  StackTrace
+  Authentication
+  Authorization::Roles
+  Session
+  Session::Store::FastMmap
+  Session::State::Cookie
+  /;
 
 extends 'Catalyst';
 
@@ -40,22 +40,22 @@ $VERSION = eval $VERSION;
 
 __PACKAGE__->config(
     name => 'SIMS',
+
     # Disable deprecated behavior needed by old applications
     disable_component_resolution_regex_fallback => 1,
 );
 
 # Configure the SimpleDB Autentication for Catalyst::Plugin::Authentication
 __PACKAGE__->config->{'Plugin::Authentication'} = {
-		default => {
-			class           => 'SimpleDB',
-			user_model      => 'DB::User',
-			password_type   => 'self_check',
-		},
-	};
+    default => {
+        class         => 'SimpleDB',
+        user_model    => 'DB::User',
+        password_type => 'self_check',
+    },
+};
 
 # Start the application
 __PACKAGE__->setup();
-
 
 =head1 NAME
 

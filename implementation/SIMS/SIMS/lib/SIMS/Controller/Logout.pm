@@ -2,7 +2,7 @@ package SIMS::Controller::Logout;
 use Moose;
 use namespace::autoclean;
 
-BEGIN {extends 'Catalyst::Controller'; }
+BEGIN { extends 'Catalyst::Controller'; }
 
 =head1 NAME
 
@@ -16,22 +16,20 @@ Catalyst Controller.
 
 =cut
 
-
 =head2 index
 
 =cut
 
-sub index :Path :Args(0) {
+sub index : Path : Args(0) {
     my ( $self, $c ) = @_;
 
-	        # Clear the user's state
-        $c->logout;
+    # Clear the user's state
+    $c->logout;
 
-        # Send the user to the starting point
-        $c->response->redirect($c->uri_for('/'));
+    # Send the user to the starting point
+    $c->response->redirect( $c->uri_for('/') );
 
 }
-
 
 =head1 AUTHOR
 

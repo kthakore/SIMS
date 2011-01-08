@@ -2,7 +2,7 @@ package SIMS::Controller::AdvCommMember;
 use Moose;
 use namespace::autoclean;
 
-BEGIN {extends 'Catalyst::Controller'; }
+BEGIN { extends 'Catalyst::Controller'; }
 
 =head1 NAME
 
@@ -15,22 +15,21 @@ Catalyst Controller.
 =head1 METHODS
 
 =cut
-sub base :Chained('/') PathPart('advcommmember') CaptureArgs(0) {
-	my( $self, $c ) = @_;
 
-	$c->session->{original_URI} = $c->request->uri;
-	my @roles = $c->user->roles();
-	$c->log->debug("***".$roles[0]);
-	$c->response->redirect($c->uri_for('/unauthorized')) unless( grep /adv_com/, @roles );
+sub base : Chained('/') PathPart('advcommmember') CaptureArgs(0) {
+    my ( $self, $c ) = @_;
+
+    $c->session->{original_URI} = $c->request->uri;
+    my @roles = $c->user->roles();
+    $c->log->debug( "***" . $roles[0] );
+    $c->response->redirect( $c->uri_for('/unauthorized') )
+      unless ( grep /adv_com/, @roles );
 }
 
-sub index :Chained('base') :PathPart('') :Args(0) {
+sub index : Chained('base') : PathPart('') : Args(0) {
     my ( $self, $c ) = @_;
 
 }
-
-
-
 
 =head1 AUTHOR
 

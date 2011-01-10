@@ -92,13 +92,13 @@ Related object: L<SIMS::Schema::Result::StudentSupervisor>
 __PACKAGE__->has_many(
   "student_supervisors",
   "SIMS::Schema::Result::StudentSupervisor",
-  { "foreign.supervisorid" => "self.id" },
+  { "foreign.supervisor_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-07 20:16:32
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Ep7rpzT1oCsU3VafrGL3tg
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-10 10:54:27
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ixSKMy8KUnjarq4nbe/IRw
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

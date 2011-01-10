@@ -30,6 +30,7 @@ requires 'Try::Tiny';
 requires 'Moose';
 requires 'namespace::autoclean';
 requires 'Class::Method::Modifiers';
+requires 'DateTime::Format::DateParse';
 requires
   'Config::General';  # This should reflect the config file format you've chosen
 

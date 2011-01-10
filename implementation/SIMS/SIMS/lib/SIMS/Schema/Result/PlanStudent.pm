@@ -23,35 +23,27 @@ __PACKAGE__->table("PlanStudent");
 
 =head1 ACCESSORS
 
-=head2 id
-
-  data_type: 'integer'
-  is_auto_increment: 1
-  is_nullable: 0
-
 =head2 plan_id
 
   data_type: 'integer'
   is_foreign_key: 1
-  is_nullable: 1
+  is_nullable: 0
 
 =head2 student_id
 
   data_type: 'integer'
   is_foreign_key: 1
-  is_nullable: 1
+  is_nullable: 0
 
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "plan_id",
-  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "student_id",
-  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
 );
-__PACKAGE__->set_primary_key("id");
+__PACKAGE__->set_primary_key("plan_id", "student_id");
 
 =head1 RELATIONS
 
@@ -67,17 +59,12 @@ __PACKAGE__->belongs_to(
   "student",
   "SIMS::Schema::Result::Student",
   { id => "student_id" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
+  { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-10 10:32:08
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UWQUSNxmWxgKv3a/7MoOSg
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-10 11:02:35
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:KHv1QFvHNQTXEwpTT+xBnA
 
 __PACKAGE__->belongs_to(
   "plan",

@@ -148,7 +148,7 @@ Related object: L<SIMS::Schema::Result::TermStudent>
 __PACKAGE__->has_many(
   "term_students",
   "SIMS::Schema::Result::TermStudent",
-  { "foreign.studentid" => "self.id" },
+  { "foreign.student_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
@@ -178,19 +178,19 @@ Related object: L<SIMS::Schema::Result::StudentSupervisor>
 __PACKAGE__->has_many(
   "student_supervisors",
   "SIMS::Schema::Result::StudentSupervisor",
-  { "foreign.studentid" => "self.id" },
+  { "foreign.student_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-10 10:32:08
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:md2AP+JTk2M+SoZY5JSSIQ
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-10 10:54:27
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:xqCvV3svC7UHdyUADxO6FA
 
 
 
 #__PACKAGE__->many_to_many( supervisors => 'student_supervisors', 'supervisorid');
 __PACKAGE__->many_to_many( plans => 'plan_students', 'plan');
-#__PACKAGE__->many_to_many( terms => 'term_students', 'termid');
+__PACKAGE__->many_to_many( terms => 'term_students', 'term');
 
 # You can replace this text with custom content, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;

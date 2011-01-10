@@ -23,39 +23,31 @@ __PACKAGE__->table("TermStudent");
 
 =head1 ACCESSORS
 
-=head2 id
+=head2 term_id
 
   data_type: 'integer'
-  is_auto_increment: 1
-  is_nullable: 0
-
-=head2 termid
-
-  data_type: 'int'
   is_foreign_key: 1
   is_nullable: 0
 
-=head2 studentid
+=head2 student_id
 
-  data_type: 'int'
+  data_type: 'integer'
   is_foreign_key: 1
   is_nullable: 0
 
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-  "termid",
-  { data_type => "int", is_foreign_key => 1, is_nullable => 0 },
-  "studentid",
-  { data_type => "int", is_foreign_key => 1, is_nullable => 0 },
+  "term_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
+  "student_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
 );
-__PACKAGE__->set_primary_key("id");
+__PACKAGE__->set_primary_key("term_id", "student_id");
 
 =head1 RELATIONS
 
-=head2 studentid
+=head2 student
 
 Type: belongs_to
 
@@ -64,13 +56,13 @@ Related object: L<SIMS::Schema::Result::Student>
 =cut
 
 __PACKAGE__->belongs_to(
-  "studentid",
+  "student",
   "SIMS::Schema::Result::Student",
-  { id => "studentid" },
+  { id => "student_id" },
   { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
-=head2 termid
+=head2 term
 
 Type: belongs_to
 
@@ -79,15 +71,15 @@ Related object: L<SIMS::Schema::Result::Term>
 =cut
 
 __PACKAGE__->belongs_to(
-  "termid",
+  "term",
   "SIMS::Schema::Result::Term",
-  { id => "termid" },
+  { id => "term_id" },
   { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-07 20:16:32
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Nmp/K0juNHXT0UmKAXbqNw
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-10 11:02:35
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4buwBrXToNZjixIlf8e3sg
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

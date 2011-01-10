@@ -78,13 +78,13 @@ Related object: L<SIMS::Schema::Result::TermFunding>
 __PACKAGE__->has_many(
   "term_fundings",
   "SIMS::Schema::Result::TermFunding",
-  { "foreign.fundid" => "self.id" },
+  { "foreign.fund_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-07 20:16:32
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:mRpo0Rf4V+JSuZ9K1z1dUw
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-10 17:24:48
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Qv0IvNfqzH15zg+JA6Q9JQ
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

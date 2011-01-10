@@ -52,30 +52,55 @@ function add_term(form) {
 
 [% END %]
 
+[% IF add_plan_url %]
 <h2> Add a plan </h2>
-<div id="plan_form"></div>
-<input name="submit_plan" type="submit" value="Add Plan" onclick="add_plan($('#plan_form'))"/>
+<form action="[% add_plan_url %]" method="POST" >
+Name: <input type="text" name="plan_name"/> 
+<input type="submit" name="submit_plan" value="Add a Plan" />
+</form>
+<!--<input name="submit_plan" type="submit" value="Add Plan" onclick="add_plan($('#plan_form'))"/>-->
+
+[% END %]
+
 
 <h1> Terms </h1>
-[% FOREACH term IN student.term_students %]
 
-[% term.termDate %] <br /> 
-[% term.length %] <br />
-<br />
-
-<h2> Term Funding </h2>
-[% FOREACH fund IN term.term_fundings %]
-[% fund.type %] <br />
+<table border="1">
+<tr><th>Term Start Date</th><th>Term Length (Semester)</th><th>Funding</th> </tr>
+[% FOREACH term IN student.terms %]
+	<tr>
+	<th> [% term.termdate %] </th>
+	<th>[% term.length %] </th>
+	<th>
+	<ul>
+	[% FOREACH fund IN term.fundings %]
+		<li>[% fund.type %], [% fund.value %], [% fund.start %], [% fund.end %]</li>
+	[% END %]
+	</ul>
+	[% IF add_funding_url %]
+	<form action="[% add_funding_url %]/[% term.id %]" method="POST" >
+		 Type: <input name="f_type" type="text" /> 
+		 Value: <input name="f_value" type="text" /> 
+		 Start: <input name="start" type="text" /> 
+		 End: <input name="end" type="text" /> 
+		 <input name="submit_funding" type="submit" value="Add Funding to Term" />
+	</form>
+	[% END %]
+	
 [% END %]
-<br />
+</th>
+</tr>
+</table>
 
-<input name="submit" type="submit" value="Add Funding to Term" />
-[% END %]
-
+[% IF add_term_url %]
 <h2> Add a term </h2>
-<div id="term_form"></div>
-<input name="submit" type="submit" value="Add Term" onclick="add_term($('#term_form'))" />
-
+<form action="[% add_term_url %]" method="POST" >
+Start Date: <input type="text" name="termdate"/> 
+Length: <input type="text" name="termlength"/> 
+<input type="submit" name="submit_term" value="Add a Term" />
+</form>
+<!--<input name="submit" type="submit" value="Add Term" onclick="add_term($('#term_form'))" />-->
+[% END %]
 
 </div>
 [% PROCESS footer.tt %]

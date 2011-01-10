@@ -67,47 +67,30 @@ CREATE TABLE Event (
 INSERT INTO "Event" VALUES ( 0, 1, "Student", "Added", datetime('now'), "Added new student." );
 
 CREATE TABLE TermFunding (
-
-		id INTEGER PRIMARY KEY,
-		Termid INT NOT NULL CONSTRAINT fk_tf_term_id
-		REFERENCES Term(id)
-		ON DELETE CASCADE,
-		Fundid INT NOT NULL CONSTRAINT fk_tf_fund_id
-		REFERENCES Fund(id)
-		ON DELETE CASCADE
+		term_id INTEGER REFERENCES Term,
+		fund_id INTEGER REFERENCES Fund,
+		PRIMARY KEY(term_id, fund_id)
 		);
 
 
 CREATE TABLE TermStudent (
-
-
-		id INTEGER PRIMARY KEY,
-		Termid INT NOT NULL CONSTRAINT fk_ts_term_id
-		REFERENCES Term(id)
-		ON DELETE CASCADE,
-		Studentid INT NOT NULL CONSTRAINT fk_ts_student_id
-		REFERENCES Student(id)
-		ON DELETE CASCADE
+		term_id INTEGER REFERENCES Term,
+		student_id INTEGER REFERENCES Student,
+		PRIMARY KEY(term_id, student_id)
 		);
 
 CREATE TABLE PlanStudent (
-
-
-		id INTEGER PRIMARY KEY,
 		plan_id INTEGER REFERENCES PLAN,
-		student_id INTEGER REFERENCES Student
+		student_id INTEGER REFERENCES Student,
+		PRIMARY KEY( plan_id, student_id)
+	
 		);
 
 CREATE TABLE StudentSupervisor (
 
-		id INTEGER PRIMARY KEY,
-		Studentid INT NOT NULL CONSTRAINT fk_ps_student_id
-		REFERENCES Student(id)
-		ON DELETE CASCADE,
-		Supervisorid INT NOT NULL CONSTRAINT fk_ps_supervisor_id
-		REFERENCES Supervisor(id)
-		ON DELETE CASCADE
-
+		student_id INTEGER REFERENCES Student,
+		supervisor_id INTEGER REFERENCES Supervisor,
+		PRIMARY KEY( student_id, supervisor_id)
 		);
 
 CREATE TABLE User (

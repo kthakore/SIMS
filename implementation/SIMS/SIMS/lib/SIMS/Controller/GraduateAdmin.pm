@@ -1,5 +1,6 @@
 package SIMS::Controller::GraduateAdmin;
 use Moose;
+use Try::Tiny;
 use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
@@ -36,11 +37,12 @@ sub index : Chained('base') : PathPart('') : Args(0) {
 
 }
 
-sub edit_student : Chained('base') PathPath('edit_student') Args(1) {
+sub edit_student : Chained('base') PathPart('edit_student') Args(1) {
     my ( $self, $c, $id ) = @_;
 
     $c->stash(
         edit_student_url => $c->uri_for('edit_student') . "/$id",
+		add_plan_url	=> $c->uri_for('add_plan')."/$id",
         student          => $c->model('DB::Student')->find($id),
         template         => 'student/edit.tt'
     );
@@ -62,6 +64,31 @@ sub edit_student : Chained('base') PathPath('edit_student') Args(1) {
         $c->stash( message => "Updated user!" );
     }
 
+}
+
+sub add_plan : Chained('base') PathPart('add_plan') Args(1) {
+	my ($self, $c, $id ) = @_;
+
+    $c->stash(
+        edit_student_url => $c->uri_for('edit_student') . "/$id",
+		add_plan_url	=> $c->uri_for('add_plan')."/$id",
+        student          => $c->model('DB::Student')->find($id),
+        template         => 'student/edit.tt'
+    );
+
+	try {
+	my $plan = $c->model('DB::Plan')->create( {
+		name => $c->req->param('plan_name')
+	});
+
+	$c->stash->{student}->create_related( 'plan_students', { plan_id => $plan->id } );
+
+	$c->stash( message => "Plan Added!" );
+	}
+	catch
+	{
+		$c->stash( message => "Problem $_" );
+	};
 }
 sub assign_student_terms : Chained('/') : PathPart('assign_student') : Args(0) {
 

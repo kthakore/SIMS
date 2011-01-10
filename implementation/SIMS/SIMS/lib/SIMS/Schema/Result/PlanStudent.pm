@@ -29,33 +29,33 @@ __PACKAGE__->table("PlanStudent");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 planid
+=head2 plan_id
 
-  data_type: 'int'
+  data_type: 'integer'
   is_foreign_key: 1
-  is_nullable: 0
+  is_nullable: 1
 
-=head2 studentid
+=head2 student_id
 
-  data_type: 'int'
+  data_type: 'integer'
   is_foreign_key: 1
-  is_nullable: 0
+  is_nullable: 1
 
 =cut
 
 __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-  "planid",
-  { data_type => "int", is_foreign_key => 1, is_nullable => 0 },
-  "studentid",
-  { data_type => "int", is_foreign_key => 1, is_nullable => 0 },
+  "plan_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
+  "student_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
 );
 __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
-=head2 studentid
+=head2 student
 
 Type: belongs_to
 
@@ -64,15 +64,31 @@ Related object: L<SIMS::Schema::Result::Student>
 =cut
 
 __PACKAGE__->belongs_to(
-  "studentid",
+  "student",
   "SIMS::Schema::Result::Student",
-  { id => "studentid" },
-  { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
+  { id => "student_id" },
+  {
+    is_deferrable => 1,
+    join_type     => "LEFT",
+    on_delete     => "CASCADE",
+    on_update     => "CASCADE",
+  },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-07 20:16:32
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/0zlHVVVNPk+AveD7BatHw
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-10 10:32:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UWQUSNxmWxgKv3a/7MoOSg
+
+__PACKAGE__->belongs_to(
+  "plan",
+  "SIMS::Schema::Result::Plan",
+  { id => "plan_id" },
+  {
+    is_deferrable => 1,
+    on_delete     => "CASCADE",
+    on_update     => "CASCADE",
+  },
+);
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

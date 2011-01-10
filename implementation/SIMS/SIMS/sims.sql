@@ -94,12 +94,8 @@ CREATE TABLE PlanStudent (
 
 
 		id INTEGER PRIMARY KEY,
-		Planid INT NOT NULL CONSTRAINT fk_ps_plan_id
-		REFERENCES PLAN(id)
-		ON DELETE CASCADE,
-		Studentid INT NOT NULL CONSTRAINT fk_ps_student_id
-		REFERENCES Student(id)
-		ON DELETE CASCADE
+		plan_id INTEGER REFERENCES PLAN,
+		student_id INTEGER REFERENCES Student
 		);
 
 CREATE TABLE StudentSupervisor (

@@ -163,7 +163,7 @@ Related object: L<SIMS::Schema::Result::PlanStudent>
 __PACKAGE__->has_many(
   "plan_students",
   "SIMS::Schema::Result::PlanStudent",
-  { "foreign.studentid" => "self.id" },
+  { "foreign.student_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
@@ -183,13 +183,13 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-03 18:28:48
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:M82DgQLQ4eryvpcqjqD9XQ
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-10 10:32:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:md2AP+JTk2M+SoZY5JSSIQ
 
 
 
 #__PACKAGE__->many_to_many( supervisors => 'student_supervisors', 'supervisorid');
-#__PACKAGE__->many_to_many( plans => 'plan_students', 'planid');
+__PACKAGE__->many_to_many( plans => 'plan_students', 'plan');
 #__PACKAGE__->many_to_many( terms => 'term_students', 'termid');
 
 # You can replace this text with custom content, and it will be preserved on regeneration

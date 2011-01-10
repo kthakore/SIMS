@@ -22,28 +22,29 @@ function add_term(form) {
 <p> [% message %] </p>
 [% END %]
 
+<table>
 <form id="edit_student" action="[% edit_student_url %]" method="POST">
-<label>Name:</label><input name="name" type="text" value="[% student.name %]" />
-<br />
-<label>Type:</label><input name="type" type="text" value="[% student.type %]" />
-<br />
-<label>Address:</label><input name="address" type="text" value="[% student.address %]" />
-<br />
-<label>Address2:</label><input name="address2" type="text" value="[% student.address2 %]" />
-<br />
-<label>City:</label><input name="city" type="text" value="[% student.city %]" />
-<br />
-<label>Province:</label><input name="province" type="text" value="[% student.province %]" />
-<br />
-<label>PostalCode:</label><input name="postalcode" type="text" value="[% student.postalcode %]" />
-<br />
-<label>Phone:</label><input name="phone" type="text" value="[% student.phone %]" />
-<br />
-<label>Location:</label><input name="location" type="text" value="[% student.location %]" />
-<br />
-
-<input name="submit" type="submit" value="Update Student" />
+<tr><th><label>Name:</label></th><th><input name="name" type="text" value="[% student.name %]" /></th>
+</tr>
+<tr><th><label>Type:</label></th><th><input name="type" type="text" value="[% student.type %]" /></th>
+</tr>
+<tr><th><label>Address:</label></th><th><input name="address" type="text" value="[% student.address %]" /></th>
+</tr>
+<tr><th><label>Address2:</label></th><th><input name="address2" type="text" value="[% student.address2 %]" /></th>
+</tr>
+<tr><th><label>City:</label></th><th><input name="city" type="text" value="[% student.city %]" /></th>
+</tr>
+<tr><th><label>Province:</label></th><th><input name="province" type="text" value="[% student.province %]" /></th>
+</tr>
+<tr><th><label>PostalCode:</label></th><th><input name="postalcode" type="text" value="[% student.postalcode %]" /></th>
+</tr>
+<tr><th><label>Phone:</label></th><th><input name="phone" type="text" value="[% student.phone %]" /></th>
+</tr>
+<tr><th><label>Location:</label></th><th><input name="location" type="text" value="[% student.location %]" /></th>
+</tr>
+<tr><th><input name="submit" type="submit" value="Update Student" /></th><th></th></tr>
 </form>
+</table>
 
 <h1> Plans </h1>
 [% FOREACH plan IN student.plans %]

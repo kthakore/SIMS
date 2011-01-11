@@ -182,9 +182,24 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 meetings
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-10 10:54:27
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:xqCvV3svC7UHdyUADxO6FA
+Type: has_many
+
+Related object: L<SIMS::Schema::Result::Meeting>
+
+=cut
+
+__PACKAGE__->has_many(
+  "meetings",
+  "SIMS::Schema::Result::Meeting",
+  { "foreign.student_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-11 00:04:40
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:VC4MsoBbiIvwMBI4Zwsrww
 
 
 

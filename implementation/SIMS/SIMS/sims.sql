@@ -112,6 +112,34 @@ CREATE TABLE UserRole (
 		PRIMARY KEY (user_id, role_id)
 		);
 
+CREATE TABLE Meeting (
+		id INTEGER PRIMARY KEY,
+		student_id INTEGER REFERENCES Student,
+		datetime DATE,
+		description TEXT
+	);
+
+CREATE TABLE MeetingAdvisor (
+		meeting_id INTEGER REFERENCES Meeting,
+		advisor_id INTEGER REFERENCES User,
+		PRIMARY KEY (meeting_id, advisor_id)
+	);
+
+CREATE TABLE MeetingComments (
+		id INTEGER PRIMARY KEY,
+		meeting_id INTEGER REFERENCES Meeting,
+		advisor_id INTEGER REFERENCES User,
+		advisor_sign TEXT,
+		comment TEXT
+	);
+
+CREATE TABLE Report (
+		id INTEGER PRIMARY KEY,
+		name TEXT,
+		query TEXT
+
+	);
+
 ---
 --- Initial Role Data
 ---

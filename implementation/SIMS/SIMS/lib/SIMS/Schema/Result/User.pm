@@ -107,9 +107,39 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 meeting_advisors
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-02 21:36:03
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:YDaDcD9UJvQkLW/zvaTw+Q
+Type: has_many
+
+Related object: L<SIMS::Schema::Result::MeetingAdvisor>
+
+=cut
+
+__PACKAGE__->has_many(
+  "meeting_advisors",
+  "SIMS::Schema::Result::MeetingAdvisor",
+  { "foreign.advisor_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 meeting_comments
+
+Type: has_many
+
+Related object: L<SIMS::Schema::Result::MeetingComment>
+
+=cut
+
+__PACKAGE__->has_many(
+  "meeting_comments",
+  "SIMS::Schema::Result::MeetingComment",
+  { "foreign.advisor_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-11 00:04:40
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:v+NKg/CdKAB7BeoTVCxcNg
 
 __PACKAGE__->add_columns(
         '+password' => {

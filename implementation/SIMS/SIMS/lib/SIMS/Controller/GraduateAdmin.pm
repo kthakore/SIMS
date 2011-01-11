@@ -143,19 +143,24 @@ sub assign_student_terms : Chained('/') : PathPart('assign_student') : Args(0) {
 
 }
 
-sub assign_adv_terms : Chained('/') : PathPart('adv_student') : Args(0) {
+sub assign_supervisor : Chained('/') : PathPart('assign_supervisor') : Args(0) {
 
 }
 
 sub _handle_edit_stash {
 
     my ( $self, $c, $id ) = @_;
-
+	
+	my @users = $c->model('DB::UserRole')->search([{role_id => 1 }, {role_id => 2}, {role_id => 5}]); 
+	my $search = [];
+	push( @$search, {id=> $_->user_id() } ) foreach( @users );
+	my @faculty = $c->model('DB::User')->search($search);
     $c->stash(
         edit_student_url => $c->uri_for('edit_student') . "/$id",
         add_plan_url     => $c->uri_for('add_plan') . "/$id",
 		add_funding_url  => $c->uri_for('add_funding')."/$id",
         add_term_url     => $c->uri_for('add_term') . "/$id",
+		supervisors			 => \@faculty, 
         template         => 'student/edit.tt'
     );
 

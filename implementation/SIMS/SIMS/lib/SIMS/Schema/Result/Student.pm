@@ -188,7 +188,7 @@ __PACKAGE__->has_many(
 
 
 
-#__PACKAGE__->many_to_many( supervisors => 'student_supervisors', 'supervisorid');
+__PACKAGE__->many_to_many( supervisors => 'student_supervisors', 'supervisor');
 __PACKAGE__->many_to_many( plans => 'plan_students', 'plan');
 __PACKAGE__->many_to_many( terms => 'term_students', 'term');
 

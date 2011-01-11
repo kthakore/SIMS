@@ -103,5 +103,19 @@ Length: <input type="text" name="termlength"/>
 <!--<input name="submit" type="submit" value="Add Term" onclick="add_term($('#term_form'))" />-->
 [% END %]
 
+
+<h1> Pick Advisor </h1>
+<form action=[% search_faculty_url %]" method="POST"> 
+<input type="text" name="search_faculty" />
+<input type="submit" name="search_fac" value="Search Advisors" /> 
+</form>
+
+<h2> Add Advisory Committee Member </h2>
+[% FOREACH sup IN supervisors %]
+
+[% sup.username %] <br />
+
+[% END %] 
+
 </div>
 [% PROCESS footer.tt %]

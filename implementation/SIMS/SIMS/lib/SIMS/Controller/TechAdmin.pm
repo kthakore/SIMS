@@ -33,7 +33,7 @@ sub base : Chained('/') PathPart('techadmin') CaptureArgs(0) {
     $c->session->{original_URI} = $c->request->uri;
     my @roles = $c->user->roles();
     $c->response->redirect( $c->uri_for('/unauthorized') )
-      unless ( grep /^t_admin$/, @roles );
+      unless ( grep /^t_admin|g_admin$/, @roles );
 }
 
 =head2 index
@@ -76,14 +76,9 @@ sub create : Chained('base') PathPart('create') Args(0) {
             $_ = $_->role();
         }
         if ( grep /^student$/, @roles ) {
-            my $student = $c->model('DB::Student')->create(
-                {
-                    name    => $c->req->param('username'),
-                    user_id => $user->id,
-                }
-            );
-            $message .= '<br /> Student ' . $student->id . ' created';
+            my($m, $student) = $self->_create_student( $c, $user)
         }
+		
     }
     catch {
         $message = 'Cannot make user: ' . $_;
@@ -145,6 +140,18 @@ sub _create_send_password {
 
 }
 
+sub _create_student {
+my($self, $c, $user) = @_;
+            my $student = $c->model('DB::Student')->create(
+                {
+                    name    => $c->req->param('username'),
+                    user_id => $user->id,
+                }
+            );
+           
+	return ('<br /> Student ' . $student->id . ' created', $student );
+ 
+}
 =head1 AUTHOR
 
 Kartik Thakore,,,

@@ -33,13 +33,22 @@ sub index : Path : Args(0) {
 
     my $dashboard = [];
 
-    if ( grep /(g_admin|g_exec|adv_com|fac)/, @roles ) {
+	my $role = grep /(g_admin|g_exec|adv_com|fac)/, @roles;
+    if ( $role ) {
         push(
             @{$dashboard},
             { src => $c->uri_for('faculty'), text => 'Manage Students' }
         );
     }
-    $c->stash->{dashboard} = $dashboard;
+	
+	if( grep /(g_admin)/, @roles )
+	{
+   		 push(
+            @{$dashboard},
+            { src => $c->uri_for('techadmin'), text => 'Manage Users' }
+        ); 	
+	}
+	$c->stash->{dashboard} = $dashboard;
 
 }
 

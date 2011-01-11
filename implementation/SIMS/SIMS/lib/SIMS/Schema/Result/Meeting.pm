@@ -115,6 +115,7 @@ __PACKAGE__->has_many(
 # Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-11 00:04:40
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:lwOwy86CffeOfu7/AwXvtg
 
+__PACKAGE__->many_to_many( advisors => 'meeting_advisors', 'advisor' );
 
 # You can replace this text with custom content, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;

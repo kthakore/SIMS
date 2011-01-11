@@ -1,5 +1,6 @@
 package SIMS::Controller::Student;
 use Moose;
+use Try::Tiny;
 use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
@@ -30,6 +31,14 @@ sub base : Chained('/') PathPart('student') CaptureArgs(0) {
 
     $c->log->debug( "Looking at $id found " . $c->stash->{student} );
 
+    $c->stash( edit_student_url => $c->uri_for('edit'),
+			   add_meeting_url => $c->uri_for('add_meeting'),
+			 );
+
+	# Get all meetings 
+
+	$c->stash->{meetings} = $c->stash->{student}->meetings;
+	
 }
 
 sub index : Chained('base') PathPart('') Args(0) {
@@ -39,7 +48,6 @@ sub index : Chained('base') PathPart('') Args(0) {
 sub edit : Chained('base') PathPart('edit') Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->stash( edit_student_url => $c->uri_for('edit') );
 
     if ( $c->req->param('submit') ) {
         $c->stash->{student}->update(
@@ -58,6 +66,28 @@ sub edit : Chained('base') PathPart('edit') Args(0) {
 
         $c->stash( message => "Updated user!" );
     }
+}
+
+sub meeting_widget  : Chained('base') PathPart('meeting_widget') Args(0) {
+
+}
+
+sub add_meeting : Chained('base') PathPart('add_meeting') Args(0) {
+	my ($self, $c) = @_;
+
+
+		try{
+		
+		my $meeting = $c->model('DB::Meeting')->create(
+			{ student_id => $c->stash->{student}->id() }
+		);
+			$c->response->redirect( $c->uri_for('/meeting/'.$meeting->id)) 
+		}
+		catch
+		{
+			$c->response->body( "Failed to make meeting $_ ");
+		};
+
 }
 
 =head1 AUTHOR

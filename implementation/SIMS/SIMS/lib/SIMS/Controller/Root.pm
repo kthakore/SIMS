@@ -48,6 +48,16 @@ sub index : Path : Args(0) {
             { src => $c->uri_for('techadmin'), text => 'Manage Users' }
         ); 	
 	}
+
+	if( grep /(student)/, @roles )
+	{
+	
+	    push(
+            @{$dashboard},
+            { src => $c->uri_for('/student/meeting_widget'), text => 'Manage Meetings' }
+        );
+
+	}
 	$c->stash->{dashboard} = $dashboard;
 
 }

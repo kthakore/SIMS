@@ -137,7 +137,6 @@ CREATE TABLE Report (
 		id INTEGER PRIMARY KEY,
 		name TEXT,
 		query TEXT
-
 	);
 
 ---
@@ -171,4 +170,10 @@ CREATE TABLE Report (
 
 	INSERT INTO "Student" VALUES ("1", "4", "Kartik Thakore","New Student","123 Numbers blvd","--","London","ON","L2T2W1","123456789","123@email.com","MSC");
 
+---
+--- Initial Meeting Data
+---
+	
+	INSERT INTO "Meeting" VALUES ( 0, 1, '10-24-2010', "Foo" );
 
+	INSERT INTO "MeetingAdvisor" VALUES( 0, 2 );

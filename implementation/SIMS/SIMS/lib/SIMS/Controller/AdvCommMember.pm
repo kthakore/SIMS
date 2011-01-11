@@ -31,6 +31,13 @@ sub index : Chained('base') : PathPart('') : Args(0) {
 
 }
 
+sub adv_meeting  : Chained('base') : PathPart('meeting') : Args(0) {
+    my ( $self, $c ) = @_;
+
+	$c->stash( template => 'student/meeting.tt' );
+}
+
+
 =head1 AUTHOR
 
 Kartik Thakore,,,

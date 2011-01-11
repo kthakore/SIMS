@@ -4,23 +4,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>[% title %] - The University of Western Ontario (Graduate Program Administration) </title>
 
-<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/com.atlassian.auiplugin-ajs.css" media="all">
+<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]com.atlassian.auiplugin-ajs.css" media="all">
 <!--[if IE]>
-<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/com.atlassian.auiplugin:ajs/com.atlassian.auiplugin:ajs.css?ieonly=true" media="all">
+<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]com.atlassian.auiplugin:ajs/com.atlassian.auiplugin:ajs.css?ieonly=true" media="all">
 <![endif]-->
-<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/com.atlassian.gadgets.dashboard-dashboard.css" media="all">
+<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]com.atlassian.gadgets.dashboard-dashboard.css" media="all">
 <!--[if IE]>
-<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/com.atlassian.gadgets.dashboard:dashboard/com.atlassian.gadgets.dashboard:dashboard.css?ieonly=true" media="all">
+<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]com.atlassian.gadgets.dashboard:dashboard/com.atlassian.gadgets.dashboard:dashboard.css?ieonly=true" media="all">
 <![endif]-->
-<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/com.atlassian.gadgets.dashboard-gadget-dashboard-resources.css" media="all">
-<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/jira.webresources-global-static.css" media="all">
+<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]com.atlassian.gadgets.dashboard-gadget-dashboard-resources.css" media="all">
+<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]jira.webresources-global-static.css" media="all">
 <!--[if IE]>
-<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/jira.webresources:global-static/jira.webresources:global-static.css?ieonly=true" media="all">
+<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]jira.webresources:global-static/jira.webresources:global-static.css?ieonly=true" media="all">
 <![endif]-->
-<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/jira.webresources-global-static(1).css" media="print">
-<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]/global.css" media="all">
-<script type="text/javascript" src="[% c.uri_for('/static/') %]scripts/jquery-1.4.4.min.js"></script>
+<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]jira.webresources-global-static(1).css" media="print">
+<link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/') %]global.css" media="all">
+<!--<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/') %]scripts/signature/assets/jquery.signaturepad.css">-->
+	<!--[if gte IE 7]><script type="text/javascript" src="[% c.uri_for('/static/') %]scripts/signature/assets/excanvas-r71.min.js"></script><![endif]-->
+	<!--[if IE 6]><script type="text/javascript" src="[% c.uri_for('/static/') %]scripts/signatureassets/excanvas-r3.min.js"></script><![endif]-->
 
+<script type="text/javascript" src="[% c.uri_for('/static/') %]scripts/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" > 
+		var api;	
+	</script>
 
 
 </head>

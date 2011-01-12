@@ -1,6 +1,8 @@
 package SIMS::Controller::Meeting;
 use Moose;
+use Try::Tiny;
 use namespace::autoclean;
+use DateTime::Format::DateParse;
 
 BEGIN {extends 'Catalyst::Controller'; }
 
@@ -50,6 +52,25 @@ sub cancel : Chained('base') :PathPart('cancel') :Args(0) {
 
 	$c->stash->{meeting}->delete();	
 	$c->response->redirect( '/' );
+}
+
+sub update : Chained('base') :PathPart('update') :Args(0) {
+
+my( $self, $c ) = @_;
+
+	if( $c->req->param('meeting_up_submit') )
+	{
+
+		my $date = DateTime::Format::DateParse->parse_datetime( $c->req->param('meeting_date') );
+
+		$c->stash->{meeting}->update(
+		{
+		datetime => $date,
+		description => $c->req->param('meeting_desc'),
+		}
+		);
+	}
+	$c->stash( template => 'meeting/index.tt' );
 }
 
 sub index : Chained('base') :PathPart('') :Args(0) {

@@ -115,7 +115,7 @@ CREATE TABLE UserRole (
 CREATE TABLE Meeting (
 		id INTEGER PRIMARY KEY,
 		student_id INTEGER REFERENCES Student,
-		datetime DATE,
+		datetime DATETIME,
 		description TEXT
 	);
 
@@ -173,7 +173,4 @@ CREATE TABLE Report (
 ---
 --- Initial Meeting Data
 ---
-	
-	INSERT INTO "Meeting" VALUES ( 0, 1, '10-24-2010', "Foo" );
 
-	INSERT INTO "MeetingAdvisor" VALUES( 0, 2 );

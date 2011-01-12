@@ -37,7 +37,7 @@ __PACKAGE__->table("Meeting");
 
 =head2 datetime
 
-  data_type: 'date'
+  data_type: 'datetime'
   is_nullable: 1
 
 =head2 description
@@ -53,7 +53,7 @@ __PACKAGE__->add_columns(
   "student_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "datetime",
-  { data_type => "date", is_nullable => 1 },
+  { data_type => "datetime", is_nullable => 1 },
   "description",
   { data_type => "text", is_nullable => 1 },
 );
@@ -112,8 +112,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-11 00:04:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:lwOwy86CffeOfu7/AwXvtg
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-12 10:25:22
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:l2mKzhsWzNxs+8Hw1Mvg1g
 
 __PACKAGE__->many_to_many( advisors => 'meeting_advisors', 'advisor' );
 

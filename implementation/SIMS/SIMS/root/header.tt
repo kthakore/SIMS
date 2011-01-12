@@ -43,6 +43,15 @@
 			});
 
 </script>
+<script type="text/javascript" src="[% c.uri_for('/static/') %]scripts/jquery-ui-timepicker-addon.js"></script>
+
+<style type="text/css"
+.ui-timepicker-div .ui-widget-header{ margin-bottom: 8px; }
+.ui-timepicker-div dl{ text-align: left; }
+.ui-timepicker-div dl dt{ height: 25px; }
+.ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+</style>
 
 </head>
 <body>

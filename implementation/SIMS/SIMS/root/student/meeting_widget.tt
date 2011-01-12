@@ -1,0 +1,25 @@
+[% PROCESS header.tt %]
+<div id="content">
+
+<h2> Meetings </h2>
+
+<table>
+<tr>
+<th>Date</th><th>Description</th><th></th>
+</tr>
+[% FOREACH meet IN student.meetings %]
+<tr>
+<th>[% meet.datetime %]</th><th>[% meet.description %]</th><th>
+<a href="[% c.uri_for('/meeting') %]/[% meet.id %]/update" > Update </a>
+<a href="[% c.uri_for('/meeting') %]/[% meet.id %]/cancel" > Cancel </a>
+</th>
+</tr>
+
+
+[% END %]
+</table>
+
+<a href="[% c.uri_for('add_meeting') %]" >Add a new meeting </a>
+</div>
+[% PROCESS footer.tt %]
+

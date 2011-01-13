@@ -1,0 +1,10 @@
+	
+	<script type="text/javascript" src="[% c.uri_for('/static/') %]scripts/signature/assets/jquery.signaturepad.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			api = $('.sigPad').signaturePad({drawOnly:true});
+		});
+	</script>
+	<script type="text/javascript" src="[% c.uri_for('/static/') %]scripts/signature/assets/json2.min.js"></script>
+
+

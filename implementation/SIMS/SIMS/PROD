@@ -1,0 +1,9 @@
+run as non exec user:
+
+perl script/sims_fastcgi.pl -l /tmp/sims.socket -n 3 -p /tmp/sims.pid -e
+
+httpd.conf:
+<VirtualHost *:80>
+FastCgiExternalServer /tmp/sims.fcgi -socket /tmp/sims.socket
+Alias / /tmp/sims.fcgi/
+</VirtualHost>

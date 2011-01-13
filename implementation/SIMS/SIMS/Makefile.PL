@@ -28,9 +28,13 @@ requires 'Email::Sender::Simple';
 requires 'Email::Sender::Transport::SMTP::TLS';
 requires 'Try::Tiny';
 requires 'Moose';
+requires 'MooseX::NonMoose';
 requires 'namespace::autoclean';
 requires 'Class::Method::Modifiers';
 requires 'DateTime::Format::DateParse';
+requires 'Catalyst::View::TT';
+requires 'FCGI';
+requires 'FCGI::ProcManager';
 requires
   'Config::General';  # This should reflect the config file format you've chosen
 
@@ -41,4 +45,5 @@ catalyst;
 install_script glob('script/*.pl');
 auto_install;
 WriteAll;
+
 

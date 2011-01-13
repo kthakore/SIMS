@@ -82,8 +82,8 @@ Name: <input type="text" name="plan_name"/>
 	<form action="[% add_funding_url %]/[% term.id %]" method="POST" >
 		 Type: <input name="f_type" type="text" /> 
 		 Value: <input name="f_value" type="text" /> 
-		 Start: <input name="start" type="text" /> 
-		 End: <input name="end" type="text" /> 
+		 Start: <input name="start" class="datepicker" type="text" /> 
+		 End: <input name="end" class="datepicker" type="text" /> 
 		 <input name="submit_funding" type="submit" value="Add Funding to Term" />
 	</form>
 	[% END %]
@@ -96,7 +96,7 @@ Name: <input type="text" name="plan_name"/>
 [% IF add_term_url %]
 <h2> Add a term </h2>
 <form action="[% add_term_url %]" method="POST" >
-Start Date: <input type="text" name="termdate"/> 
+Start Date: <input type="text" class="datepicker" name="termdate"/> 
 Length: <input type="text" name="termlength"/> 
 <input type="submit" name="submit_term" value="Add a Term" />
 </form>
@@ -104,18 +104,30 @@ Length: <input type="text" name="termlength"/>
 [% END %]
 
 
-<h1> Pick Advisor </h1>
+<h1> Assign Supervisor </h1>
 <form action=[% search_faculty_url %]" method="POST"> 
 <input type="text" name="search_faculty" />
 <input type="submit" name="search_fac" value="Search Advisors" /> 
 </form>
 
-<h2> Add Advisory Committee Member </h2>
+<h2> Supervisors </h2>
+
+<table>
+[% FOREACH super IN student.supervisors %]
+<tr> <th> [% super.id %] [% super.user_id %] </th></tr>
+[% END %]
+</table>
+<h3> Add Supervisor </h3>
 [% FOREACH sup IN supervisors %]
 
-[% sup.username %] <br />
+[% sup.username %] <a href=" [% assign_super_url %]/[% sup.id %] ">Assign Supervisor </a> 
+<br />
 
 [% END %] 
 
 </div>
+<script type="text/javascript">
+		$('.datepicker').datepicker();
+	</script>
+
 [% PROCESS footer.tt %]

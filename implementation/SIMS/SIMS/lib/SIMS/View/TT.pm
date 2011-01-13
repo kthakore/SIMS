@@ -2,12 +2,13 @@ package SIMS::View::TT;
 
 use strict;
 use warnings;
-
 use base 'Catalyst::View::TT';
 
+use Template::Stash::AutoEscaping;
 __PACKAGE__->config(
     TEMPLATE_EXTENSION => '.tt',
     render_die         => 1,
+	STASH			   => Template::Stash::AutoEscaping->new()
 );
 
 =head1 NAME

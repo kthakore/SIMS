@@ -12,7 +12,7 @@
 [% c.flash.search_message %] 
 [% END %]
 [% FOREACH student IN search_result %]
-<label>[% student.name %] </labe> <a href="[% c.uri_for('view_student') %]/[% student.id%]" >View</a> 
+<label>[% student.name %] </label> <a href="[% c.uri_for('view_student') %]/[% student.id%]" >View</a> 
 [% IF edit_student_url %]
 <a href="[% edit_student_url %]/[% student.id%]" >Edit</a> 
 [% END %]

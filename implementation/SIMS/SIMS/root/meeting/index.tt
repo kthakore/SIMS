@@ -2,11 +2,11 @@
 <div id="content">
 
 <h1>Update Meeting Settings </h1>
-	<form method="post" action="[%c.uri_for('/meeting/') %][% meeting.id %]/update" class="sigPad">
+	<form method="post" action="[%c.uri_for('/meeting/') %][% meeting.id %]/update" >
 		<label>Meeting Date</label>
 		<input type="text" name="meeting_date" class="datetimeinput" value="[% meeting.datetime %]"><br />
 		<label>Description</label>
-		<textarea type="textfield" name="meeting_desc">[%meeting.description%] </textarea>
+		<textarea type="textfield" name="meeting_desc">[%meeting.description |html %] </textarea>
 		<input name="meeting_up_submit" type="submit" value="Update Meeting" />
 	</form>	
 
@@ -29,25 +29,16 @@
 
 			<div class="typed"></div>
 			<canvas class="pad" width="198" height="55"></canvas>
-			<input type="hidden" id="signature_out" name="signature_out" class="output">
-			</div>
+			<input type="hidden" id="output" name="output" class="output">
+		</div>
 				
 		<a href="#clear">Clear Signature</a>		
 		<br />
 		<button type="submit">Attach Signature</button>
 	</form>
 	
-	<script type="text/javascript" src="[% c.uri_for('/static/') %]scripts/signature/assets/jquery.signaturepad.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			api = $('.sigPad').signaturePad({drawOnly:true});
-		});
-	</script>
-	<script type="text/javascript" src="[% c.uri_for('/static/') %]scripts/signature/assets/json2.min.js"></script>
-
-	<script type="text/javascript">
-		$('.datetimeinput').datetimepicker();
-	</script>
 	<a href="[% c.uri_for('/meeting') %]/[% meeting.id %]/cancel" > Cancel Meeting </a>
 </div>
+[% PROCESS signature_footer.tt %]
+[% PROCESS datetime_footer.tt %]
 [% PROCESS footer.tt %]

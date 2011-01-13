@@ -139,30 +139,70 @@ sub add_funding : Chained('base') PathPart('add_funding') Args(2) {
 
 }
 
-sub assign_student_terms : Chained('/') : PathPart('assign_student') : Args(0) {
+sub assign_supervisor : Chained('base') : PathPart('assign_supervisor') : Args(2) {
+	my($self, $c, $id, $sup_id) = @_;
+	 _handle_edit_stash(@_);
 
+	try{
+	
+	# Check if a supervisor already exists
+	my $supervisor = $c->model('DB::Supervisor')->search( { user_id => $sup_id} )->single();
+
+	# If not make the supervisor row for this user_id
+	unless(  $supervisor )
+	{
+		$supervisor = $c->model('DB::Supervisor')->create( { user_id => $sup_id } ); 
+		$c->stash( message => "Made new supervisor".$supervisor->id );
+	}
+
+    # Check if the student already has this supervisor.
+
+	my @super_ids = $c->stash->{student}->supervisors();
+	my $has_super = 0;
+	foreach(@super_ids) { $has_super = 1 if $_->id() == $supervisor->id }
+	
+	unless( $has_super )
+	{
+		$c->stash->{student}->create_related('student_supervisors', { supervisor_id => $supervisor->id } );
+	}
+	}
+	catch
+	{
+		     $c->stash( message => "Problem $_" );
+
+	};
 }
 
-sub assign_supervisor : Chained('/') : PathPart('assign_supervisor') : Args(0) {
+sub supervisors : Chained('base') : PathPart('supervisors') : Args(0) {
+	my ( $self, $c ) = @_;
+
+	my @sup  = $c->model('DB::Supervisor')->all(); 
+
+	$c->stash->{supervisors} = \@sup;
 
 }
 
 sub _handle_edit_stash {
 
     my ( $self, $c, $id ) = @_;
-	
-	my @users = $c->model('DB::UserRole')->search([{role_id => 1 }, {role_id => 2}, {role_id => 5}]); 
-	my $search = [];
-	push( @$search, {id=> $_->user_id() } ) foreach( @users );
-	my @faculty = $c->model('DB::User')->search($search);
+
     $c->stash(
         edit_student_url => $c->uri_for('edit_student') . "/$id",
         add_plan_url     => $c->uri_for('add_plan') . "/$id",
 		add_funding_url  => $c->uri_for('add_funding')."/$id",
         add_term_url     => $c->uri_for('add_term') . "/$id",
-		supervisors			 => \@faculty, 
+		assign_super_url => $c->uri_for('assign_supervisor')."/$id",
         template         => 'student/edit.tt'
     );
+
+	unless( $c->stash->{supervisors} )
+	{	
+		my @users = $c->model('DB::UserRole')->search([{role_id => 1 }, {role_id => 2}, {role_id => 5}]); 
+		my $search = [];
+		push( @$search, {id=> $_->user_id() } ) foreach( @users );
+		my @faculty = $c->model('DB::User')->search($search);
+		 $c->stash->{supervisors} = \@faculty;
+	}
 
     $c->stash( student => $c->model('DB::Student')->find($id), )
       unless $c->stash->{student} && $c->stash->{student}->id == $id;

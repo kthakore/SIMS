@@ -1,0 +1,9 @@
+[% PROCESS header.tt %]
+
+[% FOREACH s IN supervisors %]
+
+[% s.id %] <br />
+
+[% END %]
+
+[% PROCESS footer.tt %]

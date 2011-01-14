@@ -47,7 +47,7 @@ function Timepicker() {
 		showSecond: false,
 		showTime: true,
 		stepHour: 0.05,
-		stepMinute: 0.05,
+		stepMinute: 30,
 		stepSecond: 0.05,
 		hour: 0,
 		minute: 0,

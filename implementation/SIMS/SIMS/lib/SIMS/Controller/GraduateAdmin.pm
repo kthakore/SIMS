@@ -187,12 +187,13 @@ sub supervisors : Chained('base') : PathPart('supervisors') : Args(0) {
 
 }
 
-sub edit_supervisor : Chained('base') : PathPart('edit_supervisor') : Args(1) {
-	my ($self, $c, $id) = @_;
+sub edit_supervisor : Chained('base') : PathPart('edit_supervisor') : Args(0) {
+	my ($self, $c) = @_;
 
 	
 	try{
-		if( $c->request->param('submit_edit_super') )
+		my $id = $c->request->param('submit_edit_super');
+		if( $id )
 		{
 			my $super = $c->model('DB::Supervisor')->find($id);
 
@@ -208,11 +209,14 @@ sub edit_supervisor : Chained('base') : PathPart('edit_supervisor') : Args(1) {
 	}
 	catch{
 
-		$c->stash->(message => "Failed: $_" );	
+		$c->stash->{message} = "Failed: $_" ;	
 
 	};
 
+#	$c->stash->{template} = 'graduateadmin/supervisors.tt';
+	$c->response->redirect( $c->uri_for('supervisors') );
 }
+
 
 sub _handle_edit_stash {
 

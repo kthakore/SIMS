@@ -1,23 +1,58 @@
 [% PROCESS header.tt %]
+<form id="send_form" action="[% c.uri_for('edit_supervisor') %]" method="POST">
+<input id="name_to_send" type="hidden" name="name" value=""/>
+<input id="sc_to_send" type="hidden" name="speedcode" value=""/>
+<input id="sub_to_send" type="hidden" name="submit_edit_super" value=""/>
+</form>
+<script>
+function replace_html (id, name, input)
+{
+
+	input.html('<input id="'+name+id+'" name="'+name+'" value="'+input.html()+'" />');
+
+}
+
+function post_super_edit( id, form_post )
+{
+
+$('#name_to_send').val( $("#name"+id).val() );
+$('#sc_to_send').val( $("#speedcode"+id).val() );
+$('#sub_to_send').val( id );
+$('#send_form').submit();
+
+}
+
+function edit_super( id, name_input, speedcode_input, submit_input, form_post )
+{
+	replace_html( id, 'name', name_input );
+	replace_html( id, 'speedcode', speedcode_input );
+	submit_input.html( '<input type="button" name="submit_edit_super" value="Save Changes" onclick="post_super_edit('+id+', \''+form_post+'\' )"/> ');
+}
+</script>
+
 
 <table>
 <tr><th>Name</th><th>Speed Code</th><th>Students</th><th>Options</th> </tr>
+
 [% FOREACH s IN supervisors %]
 <tr>
-<th> [% s.name %] </th><th> [% s.speedcode %] </th><th>
-	<table>
-	[% FOREACH student IN s.students %]
-	<tr>
-		[% student.name %] 
-		<a href="[% c.uri_for('remove_supervisor') %]/[% s.id %]/[% student.id %]">Remove</a>
-	</tr>
-	[% END %]
-	</table>
- </th>
-<th>
- 	<a href="[% c.uri_for('edit_supervisor') %]/[% s.id %]">Edit</a>
-</th>
-<tr/>
+	<th id="sup_name_[%s.id%]"> [% s.name %] </th>
+	<th id="sup_speedcode_[%s.id%]"> [% s.speedcode %] </th>
+	<th>
+		<table>
+		[% FOREACH student IN s.students %]
+		<tr>
+			[% student.name %] 
+			<a href="[% c.uri_for('remove_supervisor') %]/[% s.id %]/[% student.id %]">Remove</a>
+		</tr>
+		[% END %]
+		</table>
+	 </th>
+	<th  id="sub_submit_[%s.id%]">
+		<a href="#" onclick="edit_super([%s.id%], $('#sup_name_[%s.id%]'), $('#sup_speedcode_[%s.id%]'), $('#sub_submit_[%s.id%]'),'[% c.uri_for('edit_supervisor') %]/[%s.id%]')">Edit</a>
+	</th>
+</tr>
+
 [% END %]
 </table>
 <script>$("th").css("border","1px solid black");</script>

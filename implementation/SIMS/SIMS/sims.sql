@@ -12,9 +12,7 @@ CREATE TABLE Student (
 		postalcode TEXT,
 		phone	 TEXT,
 		email	 TEXT,
-		location TEXT,
-		maiden_name TEXT
-
+		location TEXT
 		);
 
 

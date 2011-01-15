@@ -114,7 +114,7 @@ Length: <input type="text" name="termlength"/>
 
 <table>
 [% FOREACH super IN student.supervisors %]
-<tr> <th> [% super.id %] [% super.user_id %] </th></tr>
+<tr> <th> [% super.name %]</th><th> [% super.speedcode %] </th><th><a href="#" >Edit</a> </th></tr>
 [% END %]
 </table>
 <h3> Add Supervisor </h3>

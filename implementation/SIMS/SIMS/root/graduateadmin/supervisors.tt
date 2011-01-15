@@ -36,8 +36,8 @@ function edit_super( id, name_input, speedcode_input, submit_input, form_post )
 
 [% FOREACH s IN supervisors %]
 <tr>
-	<th id="sup_name_[%s.id%]"> [% s.name %] </th>
-	<th id="sup_speedcode_[%s.id%]"> [% s.speedcode %] </th>
+	<th id="sup_name_[%s.id%]">[% s.name %]</th>
+	<th id="sup_speedcode_[%s.id%]">[% s.speedcode %]</th>
 	<th>
 		<table>
 		[% FOREACH student IN s.students %]

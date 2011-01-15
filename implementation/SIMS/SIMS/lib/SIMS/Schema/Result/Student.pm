@@ -198,8 +198,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-11 00:04:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:VC4MsoBbiIvwMBI4Zwsrww
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-14 22:37:13
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:F+lvIquYeCAXME4GrRsDqw
 
 
 

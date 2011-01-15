@@ -121,7 +121,17 @@ CREATE TABLE Meeting (
 CREATE TABLE MeetingAdvisor (
 		meeting_id INTEGER REFERENCES Meeting,
 		advisor_id INTEGER REFERENCES User,
+		confirmation INTEGER REFERENCES MeetingConfirmation,
 		PRIMARY KEY (meeting_id, advisor_id)
+	);
+
+CREATE TABLE MeetingConfirmation (
+		id INTEGER PRIMARY KEY,
+		meeting_id INTEGER REFERENCES Meeting,
+		advisor_id INTEGER REFERENCES User,
+		key TEXT,
+		status TEXT,
+		details TEXT
 	);
 
 CREATE TABLE MeetingComments (

@@ -213,7 +213,6 @@ sub edit_supervisor : Chained('base') : PathPart('edit_supervisor') : Args(0) {
 
 	};
 
-#	$c->stash->{template} = 'graduateadmin/supervisors.tt';
 	$c->response->redirect( $c->uri_for('supervisors') );
 }
 

@@ -35,6 +35,12 @@ __PACKAGE__->table("MeetingAdvisor");
   is_foreign_key: 1
   is_nullable: 0
 
+=head2 confirmation
+
+  data_type: 'integer'
+  is_foreign_key: 1
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -42,10 +48,32 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "advisor_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
+  "confirmation",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
 );
 __PACKAGE__->set_primary_key("meeting_id", "advisor_id");
 
 =head1 RELATIONS
+
+=head2 confirmation
+
+Type: belongs_to
+
+Related object: L<SIMS::Schema::Result::MeetingConfirmation>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "confirmation",
+  "SIMS::Schema::Result::MeetingConfirmation",
+  { id => "confirmation" },
+  {
+    is_deferrable => 1,
+    join_type     => "LEFT",
+    on_delete     => "CASCADE",
+    on_update     => "CASCADE",
+  },
+);
 
 =head2 advisor
 
@@ -78,8 +106,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-11 00:04:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:nfFFjfxx4sglcpCBiXTfnw
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-15 16:45:30
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NbR5p8o/aM/94fndbizGZw
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

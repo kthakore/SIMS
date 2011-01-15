@@ -122,6 +122,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 meeting_confirmations
+
+Type: has_many
+
+Related object: L<SIMS::Schema::Result::MeetingConfirmation>
+
+=cut
+
+__PACKAGE__->has_many(
+  "meeting_confirmations",
+  "SIMS::Schema::Result::MeetingConfirmation",
+  { "foreign.advisor_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 meeting_comments
 
 Type: has_many
@@ -138,8 +153,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-11 00:04:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:v+NKg/CdKAB7BeoTVCxcNg
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-15 16:45:30
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6K4xOwYXm/zR4Y8br9RdEg
 
 __PACKAGE__->add_columns(
         '+password' => {

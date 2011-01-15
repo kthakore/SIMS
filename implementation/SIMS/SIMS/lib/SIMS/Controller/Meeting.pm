@@ -54,6 +54,24 @@ sub cancel : Chained('base') :PathPart('cancel') :Args(0) {
 	$c->response->redirect( '/' );
 }
 
+sub assign_advisor : Chained('base') :PartPart('assign_advisor') :Args(1) {
+	my( $self, $c, $id ) = 0;
+
+	try 
+	{
+		my $user = $c->model('DB::User')->find($id);
+		$c->stash->{meeting}->create_related( 'meeting_advisor', {advisors_id => $user->id()} );
+		$c->stash->{message} = "Added Advisor" ;
+
+		# Make a confirmation and send an email
+
+	}
+	catch
+	{
+		$c->stash->{message} = "Problem: $_" ;
+	};
+}
+
 sub update : Chained('base') :PathPart('update') :Args(0) {
 
 my( $self, $c ) = @_;
@@ -71,6 +89,12 @@ my( $self, $c ) = @_;
 		);
 	}
 	$c->stash( template => 'meeting/index.tt' );
+}
+
+sub confim : Chained('base') :PathPart('') :Args(1) {
+	my ( $self, $c, $id) = @_;
+	
+	
 }
 
 sub index : Chained('base') :PathPart('') :Args(0) {

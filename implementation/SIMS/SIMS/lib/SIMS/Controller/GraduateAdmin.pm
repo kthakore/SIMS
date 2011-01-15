@@ -151,8 +151,13 @@ sub assign_supervisor : Chained('base') : PathPart('assign_supervisor') : Args(2
 	# If not make the supervisor row for this user_id
 	unless(  $supervisor )
 	{
-		$supervisor = $c->model('DB::Supervisor')->create( { user_id => $sup_id } ); 
-		$c->stash( message => "Made new supervisor".$supervisor->id );
+		# Check that the user for the supervisor actually exists
+		my $s_user = $c->model('DB::User')->find($sup_id);
+	
+		die "Invalid user id for supervisor" unless $s_user;
+
+		$supervisor = $c->model('DB::Supervisor')->create( { user_id => $sup_id, name => $s_user->username } );
+		$c->stash( message => "Made new supervisor ".$supervisor->id );
 	}
 
     # Check if the student already has this supervisor.
@@ -179,6 +184,33 @@ sub supervisors : Chained('base') : PathPart('supervisors') : Args(0) {
 	my @sup  = $c->model('DB::Supervisor')->all(); 
 
 	$c->stash->{supervisors} = \@sup;
+
+}
+
+sub edit_supervisor : Chained('base') : PathPart('edit_supervisor') : Args(1) {
+	my ($self, $c, $id) = @_;
+
+	
+	try{
+		if( $c->request->param('submit_edit_super') )
+		{
+			my $super = $c->model('DB::Supervisor')->find($id);
+
+			$super->update( 
+			{
+				name => $c->request->param('name'),
+				speedcode => $c->request->param('speedcode'),
+			} 
+			);
+
+		}
+			
+	}
+	catch{
+
+		$c->stash->(message => "Failed: $_" );	
+
+	};
 
 }
 

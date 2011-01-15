@@ -1,9 +1,24 @@
 [% PROCESS header.tt %]
 
+<table>
+<tr><th>Name</th><th>Speed Code</th><th>Students</th><th>Options</th> </tr>
 [% FOREACH s IN supervisors %]
-
-[% s.id %] <br />
-
+<tr>
+<th> [% s.name %] </th><th> [% s.speedcode %] </th><th>
+	<table>
+	[% FOREACH student IN s.students %]
+	<tr>
+		[% student.name %] 
+		<a href="[% c.uri_for('remove_supervisor') %]/[% s.id %]/[% student.id %]">Remove</a>
+	</tr>
+	[% END %]
+	</table>
+ </th>
+<th>
+ 	<a href="[% c.uri_for('edit_supervisor') %]/[% s.id %]">Edit</a>
+</th>
+<tr/>
 [% END %]
-
+</table>
+<script>$("th").css("border","1px solid black");</script>
 [% PROCESS footer.tt %]

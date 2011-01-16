@@ -8,7 +8,6 @@ use namespace::autoclean;
 use base 'DBIx::Class::ResultSet';
 
 use DateTime;
-use Data::Dumper;
 use SIMS::Schema;
 
 after 'create' => sub {

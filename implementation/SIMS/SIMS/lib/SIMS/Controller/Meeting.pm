@@ -100,6 +100,12 @@ sub confim : Chained('base') :PathPart('') :Args(1) {
 sub index : Chained('base') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
 
+	unless( $c->stash->{advisors} )
+	{
+		my $adv = $c->model('DB::User')->faculty_users();
+		$c->stash->{advisors} = $adv;
+	}
+
 }
 
 

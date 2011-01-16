@@ -232,11 +232,8 @@ sub _handle_edit_stash {
 
 	unless( $c->stash->{supervisors} )
 	{	
-		my @users = $c->model('DB::UserRole')->search([{role_id => 1 }, {role_id => 2}, {role_id => 5}]); 
-		my $search = [];
-		push( @$search, {id=> $_->user_id() } ) foreach( @users );
-		my @faculty = $c->model('DB::User')->search($search);
-		 $c->stash->{supervisors} = \@faculty;
+		my $faculty = $c->model('DB::User')->faculty_users();
+		 $c->stash->{supervisors} = $faculty;
 	}
 
     $c->stash( student => $c->model('DB::Student')->find($id), )

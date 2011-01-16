@@ -11,8 +11,14 @@
 	</form>	
 
 <h1> Advisors </h1>
-
 <h2> Add Advisor </h2>
+
+[% FOREACH adv IN advisors %]
+
+[% adv.id %] <br />
+
+[% END %]
+
 
 <h1> Comments </h1>
 

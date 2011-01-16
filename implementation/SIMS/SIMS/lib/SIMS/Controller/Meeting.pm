@@ -70,10 +70,17 @@ sub assign_advisor : Chained('base') :PartPart('assign_advisor') :Args(1) {
 
 	try 
 	{
-		my $user = $c->model('DB::User')->find($id);
-		$c->stash->{meeting}->create_related( 'meeting_advisors', {advisor_id => $user->id()} );
-		$c->stash->{message} = "Added Advisor" ;
-
+		my $user_m = $c->model('DB::MeetingAdvisor')->find( $c->stash->{meeting}->id(), $id );
+		unless( $user_m )
+		{
+			my $user = $c->model('DB::User')->find($id);
+			$c->stash->{meeting}->create_related( 'meeting_advisors', {advisor_id => $user->id()} );
+			$c->stash->{message} = "Added Advisor" ;
+		}
+		else	
+		{
+			$c->stash->{message} = "Advisor already added";
+		}
 		# Make a confirmation and send an email
 
 	}

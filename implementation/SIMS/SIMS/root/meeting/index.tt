@@ -8,7 +8,7 @@
 		<label>Meeting Date</label>
 		<input type="text" name="meeting_date" class="datetimeinput" value="[% meeting.datetime %]"><br />
 		<label>Description</label>
-		<textarea type="textfield" name="meeting_desc">[%meeting.description |html %] </textarea>
+		<textarea type="textfield" name="meeting_desc">[%meeting.description%] </textarea>
 		<input name="meeting_up_submit" type="submit" value="Update Meeting" />
 	</form>	
 

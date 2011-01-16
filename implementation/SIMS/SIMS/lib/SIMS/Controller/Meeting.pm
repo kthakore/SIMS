@@ -130,15 +130,30 @@ my( $self, $c ) = @_;
 sub confirm : Chained('base') :PathPart('confirm') :Args(1) {
 	my ( $self, $c, $id) = @_;
 
-	my $con = $c->model('DB::MeetingConfirmation')->search( {key=> $id} )->single(); 
-
-	my $advisor = $con->meeting_advisors()->single();
+	$c->stash->{confirmation}  = $c->model('DB::MeetingConfirmation')->search( {key=> $id} )->single();
+	my $advisor =$c->stash->{confirmation}->meeting_advisors()->single();
 
 	 $c->response->redirect( $c->uri_for('/unauthorized') )
       unless ( $c->user->id ==  $advisor->advisor_id() );
 
+	$c->stash->{confirm_url} = $c->uri_for('/').'meeting/'
+								.$c->stash->{meeting}->id().
+								'/confirm/'.$c->stash->{confirmation}->key();
 
-	$c->response->body( "Got confirmation correctly at ".$con->id().".</ br> and user is". $c->user->id().". And ".	$advisor->advisor_id() );
+	if( $c->req->param('submit_confirm') )
+	{
+	
+		$c->stash->{confirmation}->update
+		(
+			{ status => $c->req->param('status'),
+			  details => $c->req->param('details')
+			}
+
+		)
+
+
+	}
+
 	
 }
 

@@ -34,9 +34,9 @@ sub base : Chained('/') PathPart('meeting') CaptureArgs(1) {
    	}
 	else
 	{
-	my @advisors = $meeting->advisors();
+	my @advisors = $meeting->meeting_advisors();
 	my @advisors_id;
-	push( @advisors_id, $_->id)  foreach( @advisors );
+	push( @advisors_id, $_->advisor_id())  foreach( @advisors );
 
 	$c->log->debug("Student id is ".$meeting->student_id(). "and user id". $id);
     $c->response->redirect( $c->uri_for('/unauthorized') )
@@ -68,14 +68,20 @@ sub cancel : Chained('base') :PathPart('cancel') :Args(0) {
 sub assign_advisor : Chained('base') :PartPart('assign_advisor') :Args(1) {
 	my( $self, $c, $id ) = @_;
 
+	my $new_meeting_adv;
+	my $new_meeting_confirm;
 	try 
 	{
 		my $user_m = $c->model('DB::MeetingAdvisor')->find( $c->stash->{meeting}->id(), $id );
 		unless( $user_m )
 		{
 			my $user = $c->model('DB::User')->find($id);
-			$c->stash->{meeting}->create_related( 'meeting_advisors', {advisor_id => $user->id()} );
+			my $new_meeting_adv = $c->stash->{meeting}->create_related( 'meeting_advisors', {advisor_id => $user->id()} );
 			$c->stash->{message} = "Added Advisor" ;
+
+			#making a confirmation record
+			$new_meeting_confirm = $c->model('DB::MeetingConfirmation')->create( { key => 'foo', status => 'Just added', details => '' } ); 
+			$new_meeting_adv->update( { confirmation => $new_meeting_confirm->id() } );
 		}
 		else	
 		{
@@ -86,6 +92,10 @@ sub assign_advisor : Chained('base') :PartPart('assign_advisor') :Args(1) {
 	}
 	catch
 	{
+		if( $new_meeting_adv )
+		{
+			$new_meeting_adv->delete();
+		}
 		$c->stash->{message} = "Problem: $_" ;
 	};
 

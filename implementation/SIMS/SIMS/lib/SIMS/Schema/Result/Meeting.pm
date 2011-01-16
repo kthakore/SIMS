@@ -96,21 +96,6 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 meeting_confirmations
-
-Type: has_many
-
-Related object: L<SIMS::Schema::Result::MeetingConfirmation>
-
-=cut
-
-__PACKAGE__->has_many(
-  "meeting_confirmations",
-  "SIMS::Schema::Result::MeetingConfirmation",
-  { "foreign.meeting_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
-
 =head2 meeting_comments
 
 Type: has_many
@@ -127,8 +112,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-15 16:45:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:36CZBObqZpgGRSmBCmDCAQ
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-16 12:52:52
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yxZijAVCpRfHtM+6ZmB4Hw
 
 __PACKAGE__->many_to_many( advisors => 'meeting_advisors', 'advisor' );
 

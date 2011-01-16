@@ -16,7 +16,8 @@
 <table>
 <tr><th>Name</th><th>Contact</th><th>Confirmation Status</th></tr>
 [% FOREACH adv IN advisors %]
-<tr><th>[% adv.username %]</th><th></th><th></th></tr>
+<tr><th>[% adv.advisor.username %]</th><th>[% adv.advisor.email_address %]
+</th><th>[% adv.confirmation.status %] </th></tr>
 [% END %]
 </table>
 

@@ -149,8 +149,9 @@ sub confirm : Chained('base') :PathPart('confirm') :Args(1) {
 			  details => $c->req->param('details')
 			}
 
-		)
+		);
 
+#	 $c->response->redirect( $c->uri_for('/').'meeting/'.$c->stash->{meeting}->id() )
 
 	}
 

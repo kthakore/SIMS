@@ -1,6 +1,8 @@
 [% PROCESS header.tt %]
 <div id="content">
 
+[% message  %]
+
 <h1>Update Meeting Settings </h1>
 	<form method="post" action="[%c.uri_for('/meeting/') %][% meeting.id %]/update" >
 		<label>Meeting Date</label>
@@ -11,14 +13,26 @@
 	</form>	
 
 <h1> Advisors </h1>
+<table>
+<tr><th>Name</th><th>Contact</th><th></th></tr>
+[% FOREACH adv IN advisors %]
+[% adv.id %]<br />
+[% END %]
+</table>
+
 <h2> Add Advisor </h2>
 
-[% FOREACH adv IN advisors %]
+<table>
+<tr><th>Name</th><th>Contact</th><th></th></tr>
+[% FOREACH adv IN possible_advisors %]
+<tr>
+<th>[%adv.username%]</th>
+<th>[%adv.email_address%]</th>
+<th><a href="[% assign_advisor_url %]/[%adv.id%]">Add Advisor</a></th></tr>
 
-[% adv.id %] <br />
 
 [% END %]
-
+</table>
 
 <h1> Comments </h1>
 

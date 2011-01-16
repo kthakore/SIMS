@@ -45,6 +45,15 @@ sub base : Chained('/') PathPart('meeting') CaptureArgs(1) {
 
 	$c->stash( meeting => $meeting );
 
+	unless( $c->stash->{possible_advisors} )
+	{
+		my $adv = $c->model('DB::User')->faculty_users();
+		$c->stash->{possible_advisors} = $adv;
+	}
+
+	$c->stash->{assign_advisor_url} = $c->uri_for('/meeting')."/$m_id/assign_advisor";
+
+
 }
 
 sub cancel : Chained('base') :PathPart('cancel') :Args(0) {
@@ -55,12 +64,12 @@ sub cancel : Chained('base') :PathPart('cancel') :Args(0) {
 }
 
 sub assign_advisor : Chained('base') :PartPart('assign_advisor') :Args(1) {
-	my( $self, $c, $id ) = 0;
+	my( $self, $c, $id ) = @_;
 
 	try 
 	{
 		my $user = $c->model('DB::User')->find($id);
-		$c->stash->{meeting}->create_related( 'meeting_advisor', {advisors_id => $user->id()} );
+		$c->stash->{meeting}->create_related( 'meeting_advisors', {advisor_id => $user->id()} );
 		$c->stash->{message} = "Added Advisor" ;
 
 		# Make a confirmation and send an email
@@ -70,6 +79,8 @@ sub assign_advisor : Chained('base') :PartPart('assign_advisor') :Args(1) {
 	{
 		$c->stash->{message} = "Problem: $_" ;
 	};
+
+	$c->stash->{template} = 'meeting/index.tt';
 }
 
 sub update : Chained('base') :PathPart('update') :Args(0) {
@@ -99,12 +110,6 @@ sub confim : Chained('base') :PathPart('') :Args(1) {
 
 sub index : Chained('base') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
-
-	unless( $c->stash->{advisors} )
-	{
-		my $adv = $c->model('DB::User')->faculty_users();
-		$c->stash->{advisors} = $adv;
-	}
 
 }
 

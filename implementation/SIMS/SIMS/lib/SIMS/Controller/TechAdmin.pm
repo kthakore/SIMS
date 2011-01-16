@@ -4,6 +4,7 @@ use Try::Tiny;
 use Email::Simple::Creator;
 use Email::Sender::Simple qw(sendmail);
 use Email::Sender::Transport::SMTP::TLS;
+use SIMS::Controller::Helper;
 use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
@@ -99,36 +100,18 @@ sub update_pass : Chained('base') PathPart('update_pass') Args(0) {
 sub _create_send_password {
     my ( $self, $c, $user_id ) = @_;
 
-    my @password_set = ( ( "a" ... "z" ), ( "A" ... "Z" ), ( 0 ... 9 ) );
-
-    #Generate a random password
-    my $password = '';
-    $password .= $password_set[ rand() * $#password_set ] foreach ( 0 ... 8 );
-
+	my $password = SIMS::Controller::Helper::random_password();
+	
     #Update the field on the user's account
     my $user = $c->model('DB::User')->find($user_id);
 
-    #Email it to the user's email
-    my $transport = Email::Sender::Transport::SMTP::TLS->new(
-        host     => 'smtp.gmail.com',
-        port     => 587,
-        username => 'western.graduate.sims@gmail.com',
-        password => 'graduateSIMS',
-        helo     => 'SIMSdb'
-    );
+    #Email it to the user's email    
+	try {
 
-    my $message = Email::Simple->create(
-        header => [
-            From    => 'western.graduate.sims@gmail.com',
-            To      => $user->email_address,
-            Subject => 'Email has been changed'
-        ],
-        body => "Your new password is $password, for the account "
-          . $user->username() . "."
-    );
+		SIMS::Controller::Helper::send_email( $user->email_address(), 'Email has been changed',   "Your new password is $password, for the account "
+          . $user->username() . "." );
 
-    try {
-        sendmail( $message, { transport => $transport } );
+
         $c->log->debug("***User setting pasword $password ");
         $user->update( { password => $password } );
         $c->flash( message => "User $user_id password  updated successfully!" );

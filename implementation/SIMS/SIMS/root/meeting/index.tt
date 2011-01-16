@@ -14,9 +14,9 @@
 
 <h1> Advisors </h1>
 <table>
-<tr><th>Name</th><th>Contact</th><th></th></tr>
+<tr><th>Name</th><th>Contact</th><th>Confirmation Status</th></tr>
 [% FOREACH adv IN advisors %]
-[% adv.id %]<br />
+<tr><th>[% adv.username %]</th><th></th><th></th></tr>
 [% END %]
 </table>
 

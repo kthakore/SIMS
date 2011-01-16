@@ -41,6 +41,8 @@ sub base : Chained('/') PathPart('meeting') CaptureArgs(1) {
 	$c->log->debug("Student id is ".$meeting->student_id(). "and user id". $id);
     $c->response->redirect( $c->uri_for('/unauthorized') )
       unless ( $meeting->student() && $meeting->student()->user_id() == $id || grep /$id/, @advisors_id  );
+
+	$c->stash( advisors => \@advisors );
 	}
 
 	$c->stash( meeting => $meeting );

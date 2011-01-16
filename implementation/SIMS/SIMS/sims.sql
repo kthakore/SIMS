@@ -115,7 +115,9 @@ CREATE TABLE Meeting (
 		id INTEGER PRIMARY KEY,
 		student_id INTEGER REFERENCES Student,
 		datetime DATETIME,
-		description TEXT
+		description TEXT,
+		status TEXT,
+		locked INTEGER 
 	);
 
 CREATE TABLE MeetingAdvisor (
@@ -135,8 +137,8 @@ CREATE TABLE MeetingConfirmation (
 CREATE TABLE MeetingComments (
 		id INTEGER PRIMARY KEY,
 		meeting_id INTEGER REFERENCES Meeting,
-		advisor_id INTEGER REFERENCES User,
-		advisor_sign TEXT,
+		commenter_id INTEGER REFERENCES User,
+		comment_sign TEXT,
 		comment TEXT
 	);
 

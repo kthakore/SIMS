@@ -35,13 +35,13 @@ __PACKAGE__->table("MeetingComments");
   is_foreign_key: 1
   is_nullable: 1
 
-=head2 advisor_id
+=head2 commenter_id
 
   data_type: 'integer'
   is_foreign_key: 1
   is_nullable: 1
 
-=head2 advisor_sign
+=head2 comment_sign
 
   data_type: 'text'
   is_nullable: 1
@@ -58,9 +58,9 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "meeting_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
-  "advisor_id",
+  "commenter_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
-  "advisor_sign",
+  "comment_sign",
   { data_type => "text", is_nullable => 1 },
   "comment",
   { data_type => "text", is_nullable => 1 },
@@ -69,7 +69,7 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
-=head2 advisor
+=head2 commenter
 
 Type: belongs_to
 
@@ -78,9 +78,9 @@ Related object: L<SIMS::Schema::Result::User>
 =cut
 
 __PACKAGE__->belongs_to(
-  "advisor",
+  "commenter",
   "SIMS::Schema::Result::User",
-  { id => "advisor_id" },
+  { id => "commenter_id" },
   {
     is_deferrable => 1,
     join_type     => "LEFT",
@@ -110,8 +110,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-11 00:04:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3GC/b+btgw/zKdDW86GliQ
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-16 18:19:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Xv4q76rr9pAP4z3WpcHGlA
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

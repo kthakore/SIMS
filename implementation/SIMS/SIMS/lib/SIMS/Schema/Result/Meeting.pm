@@ -45,6 +45,16 @@ __PACKAGE__->table("Meeting");
   data_type: 'text'
   is_nullable: 1
 
+=head2 status
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 locked
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -56,6 +66,10 @@ __PACKAGE__->add_columns(
   { data_type => "datetime", is_nullable => 1 },
   "description",
   { data_type => "text", is_nullable => 1 },
+  "status",
+  { data_type => "text", is_nullable => 1 },
+  "locked",
+  { data_type => "integer", is_nullable => 1 },
 );
 __PACKAGE__->set_primary_key("id");
 
@@ -112,8 +126,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-16 12:52:52
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yxZijAVCpRfHtM+6ZmB4Hw
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-16 18:19:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hDU09JlSntEpDSnxk5mNNg
 
 __PACKAGE__->many_to_many( advisors => 'meeting_advisors', 'advisor' );
 

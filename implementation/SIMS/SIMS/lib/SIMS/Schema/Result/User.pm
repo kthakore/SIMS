@@ -133,13 +133,13 @@ Related object: L<SIMS::Schema::Result::MeetingComment>
 __PACKAGE__->has_many(
   "meeting_comments",
   "SIMS::Schema::Result::MeetingComment",
-  { "foreign.advisor_id" => "self.id" },
+  { "foreign.commenter_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-16 12:52:52
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:DJYai93WGTE0YfSwdM/NkA
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-16 18:19:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yJW8e8MdqcTbFTkkcMXXsA
 
 __PACKAGE__->add_columns(
         '+password' => {

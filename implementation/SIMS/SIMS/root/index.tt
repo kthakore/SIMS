@@ -4,6 +4,14 @@
 <h1> Dashboard </h1>
 <p>Hello [% c.user.username %]!</p>
 [% PROCESS dashboard.tt %]
+[% IF meetings %]
+<h1> Meetings </h2>
+<ul>
+[% FOREACH meet IN meetings %]
+<li> <a href="[%c.uri_for('/meeting/')%][% meet.id %]/update" >[% meet.datetime %]</a> </li>
+[% END %]
+</ul>
+[% END %]
 </div>
 [% PROCESS footer.tt %]
 

@@ -60,8 +60,14 @@ sub index : Path : Args(0) {
         );
 
 	}
-	$c->stash->{dashboard} = $dashboard;
 
+	$c->stash->{dashboard} = $dashboard;
+	my @meet_adv = $c->user->meeting_advisors();
+	my @meet;
+
+	push( @meet, $_->meeting) foreach @meet_adv;
+
+	$c->stash->{meetings} = \@meet; 
 }
 
 =head2 default

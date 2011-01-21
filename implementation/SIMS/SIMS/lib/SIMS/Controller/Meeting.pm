@@ -158,6 +158,51 @@ sub confirm : Chained('base') :PathPart('confirm') :Args(1) {
 	
 }
 
+
+sub add_comment: Chained('base') :PathPart('add_comment') :Args(0) {
+    my ( $self, $c ) = @_;
+
+	if( $c->req->param('submit_comment') )
+	{
+
+		try {
+
+
+		my $comment = $c->model('DB::MeetingComment')->create(
+		{
+			meeting_id => $c->stash->{meeting}->id(),	
+			commenter_id => $c->user->id(),
+			comment_sign => $c->req->param('output'),
+			comment => $c->req->param('comment')
+		}
+		);
+		
+		$c->stash(
+		message  => 'Added comment '.$comment->id()
+		);
+		}
+		catch
+		{
+			$c->stash( message => "Problem $_");
+		};
+
+	}
+
+	$c->stash( template => 'meeting/index.tt' );
+
+}
+
+sub delete_comment: Chained('base') :PathPart('delete_comment') :Args(1) {
+    my ( $self, $c, $id ) = @_;
+	$c->response->body('Deleting Comments');
+
+}
+
+sub edit_comment: Chained('base') :PathPart('edit_comment') :Args(1) {
+    my ( $self, $c, $id ) = @_;
+	$c->response->body('Editing Comments');
+
+}
 sub index : Chained('base') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
 

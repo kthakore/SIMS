@@ -1,4 +1,32 @@
 [% PROCESS header.tt %]
+<form id="send_form" action="[% c.uri_for('/') %]/meeting/[%meeting.id%]/edit_comment" method="POST">
+<input id="comment_to_send" type="hidden" name="comment" value=""/>
+<input id="sub_to_send" type="hidden" name="submit_comment" value=""/>
+</form>
+<script>
+
+function post_comment_edit( id)
+{
+
+$('#comment_to_send').val( $("#comment"+id).val() );
+$('#sub_to_send').val( id );
+$('#send_form').submit();
+
+}
+function replace_html(id, name, input)
+{
+	input.html('<textarea id="'+name+id+'" name="'+name+'">'+input.html()+'</textarea>');
+
+}
+
+function edit_comment( id, comment_input, submit_input)
+{
+
+	replace_html(id, 'comment', comment_input);
+	submit_input.html('<input type="button" value="Save Changes" onclick="post_comment_edit('+id+')" /> '); 
+
+}
+</script>
 <div id="content">
 
 [% message %]
@@ -39,10 +67,10 @@
 <table>
 <tr><th>Comment</th><th>Commenter</th><th>Option</th></tr>
 [% FOREACH com IN meeting.meeting_comments %]
-<tr><th>[% com.comment %]</th><th>[% com.commenter.username %] </th>
-<th> 
+<tr><th id="edit_comment_[%com.id%]">[% com.comment %]</th><th>[% com.commenter.username %] </th>
+<th id="sub_submit_[%com.id%]"> 
 [% IF c.user.id == com.commenter_id %]
-<a href="[% c.uri_for('/') %]/meeting/[% meeting.id %]/edit_comment/[% com.id %]">Edit Comment</a>
+<a href="#" onclick="edit_comment([%com.id%], $('#edit_comment_[%com.id%]'), $('#sub_submit_[%com.id%]') )">Edit Comment</a>
 [% END %]
 </th>
 </tr>

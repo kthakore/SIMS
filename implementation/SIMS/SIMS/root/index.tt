@@ -6,11 +6,16 @@
 [% PROCESS dashboard.tt %]
 [% IF meetings %]
 <h1> Meetings </h2>
-<ul>
+<table>
+<tr><th>Student</th><th>Time</th><th>Description</th></tr>
 [% FOREACH meet IN meetings %]
-<li> <a href="[%c.uri_for('/meeting/')%][% meet.id %]/update" >[% meet.datetime %]</a> </li>
+<tr>
+<th> [% meet.student.name %] ( [% meet.student.id %] ) </th>
+<th> <a href="[%c.uri_for('/meeting/')%][% meet.id %]/update" >[% meet.datetime.dmy %] @ [% meet.datetime.hms %]</a></th>
+<th> [% meet.description %] </th>
+</tr>
 [% END %]
-</ul>
+</table>
 [% END %]
 </div>
 [% PROCESS footer.tt %]

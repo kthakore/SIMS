@@ -201,23 +201,23 @@ sub delete_comment: Chained('base') :PathPart('delete_comment') :Args(1) {
 sub edit_comment: Chained('base') :PathPart('edit_comment') :Args(0) {
     my ( $self, $c, $id ) = @_;
 
-	my $id = $c->req->param('submit_comment');
+	$id = $c->req->param('submit_comment');
 	if( $id  )
 	{
 
 		try {
 				my $comment = $c->model('DB::MeetingComment')->find($id);
 				die "No such comment" unless $comment; 
-				die "Cannot edit comment not years" unless $comment->commenter_id() == $c->user->id();
+				die "Cannot edit comment that is not made by you!" unless $comment->commenter_id() == $c->user->id();
 				
 				$comment->update( {
 					comment => $c->req->param('comment')
 					});
-				$c->stash( meeting => 'Comment Updated');		
+				$c->stash( message => 'Comment Updated');		
 			}
 		catch 
 			{
-
+				$c->stash( message => "Problem $_" );
 			};
 	}
 	$c->stash( template => 'meeting/index.tt' );

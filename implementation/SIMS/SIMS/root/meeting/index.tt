@@ -34,7 +34,7 @@ function edit_comment( id, comment_input, submit_input)
 <h1>Update Meeting Settings </h1>
 	<form method="post" action="[%c.uri_for('/meeting/') %][% meeting.id %]/update" >
 		<label>Meeting Date</label>
-		<input type="text" name="meeting_date" class="datetimeinput" value="[% meeting.datetime %]"><br />
+		<input type="text" name="meeting_date" class="datetimeinput" value="[% meeting.datetime.dmy('/') %] [% meeting.datetime.hms() %]"><br />
 		<label>Description</label>
 		<textarea type="textfield" name="meeting_desc">[%meeting.description%] </textarea>
 		<input name="meeting_up_submit" type="submit" value="Update Meeting" />
@@ -42,10 +42,16 @@ function edit_comment( id, comment_input, submit_input)
 
 <h1> Advisors </h1>
 <table>
-<tr><th>Name</th><th>Contact</th><th>Confirmation Status</th></tr>
+<tr><th>Name</th><th>Contact</th><th>Confirmation Status</th><th>Details</th><th>Option</th></tr>
 [% FOREACH adv IN advisors %]
-<tr><th>[% adv.advisor.username %]</th><th>[% adv.advisor.email_address %]
-</th><th>[% adv.confirmation.status %] </th></tr>
+<tr><th>[% adv.advisor.username %]</th><th>[% adv.advisor.email_address %]</th>
+<th>[% adv.confirmation.status %] </th>
+<th>[% adv.confirmation.details %] </th>
+<th> 
+[% IF adv.advisor_id == c.user.id %]
+<a href="[%c.uri_for('/')%]meeting/[% meeting.id %]/confirm/[% adv.confirmation.key %]"> Confirm </a> 
+[% END %]
+</th></tr>
 [% END %]
 </table>
 
@@ -70,7 +76,7 @@ function edit_comment( id, comment_input, submit_input)
 <tr><th id="edit_comment_[%com.id%]">[% com.comment %]</th><th>[% com.commenter.username %] </th>
 <th id="sub_submit_[%com.id%]"> 
 [% IF c.user.id == com.commenter_id %]
-<a href="#" onclick="edit_comment([%com.id%], $('#edit_comment_[%com.id%]'), $('#sub_submit_[%com.id%]') )">Edit Comment</a>
+<input type="button" onclick="edit_comment([%com.id%], $('#edit_comment_[%com.id%]'), $('#sub_submit_[%com.id%]') )" value="Edit Comment"/>
 [% END %]
 </th>
 </tr>

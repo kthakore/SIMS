@@ -71,7 +71,7 @@ sub index : Path : Args(0) {
 	else
 	{
 		my $student = $c->user->students->single();
-		@meet = $c->model('DB::Meeting')->search({ student_id => $student->id()});
+		@meet = $c->model('DB::Meeting')->search({ student_id => $student->id()}) if $student;
 	}
 
 	$c->stash->{meetings} = \@meet; 

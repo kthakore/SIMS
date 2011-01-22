@@ -1,0 +1,34 @@
+[% PROCESS header.tt %]
+<div id="content">
+<h1>Manage Confirmation</h1>
+<form action="[% confirm_url %]" method="POST">
+
+<h2>Meeting Details:</h2>
+<h3>Date and Time: </h3>
+<p>[% meeting.datetime %]</p>
+<h3>Description: </h3>
+<p>[% meeting.description %]</p>
+
+<h2> Your Current Status </h2>
+
+<h3>Current Status: [% confirmation.status %] </h3>
+Update Status: 
+<select name="status" >
+<option value="Attending">Attending</option>
+<option value="Reschedule">Reschedule</option>
+<option value="Not Attending">Not Attending</option>
+<option value="More Information">More Information Required</option>
+</select>
+<br />
+Additional Details:
+<textarea type="textfield" name="details" >[% confirmation.details %]</textarea>
+<input name="submit_confirm" type="submit" value="Update Confirmation" />
+</form>
+
+<h3>
+<a href="[%c.uri_for('/')%]meeting/[% meeting.id %]">Go to Meeting Details</a>
+</h3>
+</div>
+[% PROCESS signature_footer.tt %]
+[% PROCESS datetime_footer.tt %]
+[% PROCESS footer.tt %]

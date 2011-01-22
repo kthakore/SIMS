@@ -66,7 +66,7 @@ Name: <input type="text" name="plan_name"/>
 
 <h1> Terms </h1>
 
-<table border="1">
+<table>
 <tr><th>Term Start Date</th><th>Term Length (Semester)</th><th>Funding</th> </tr>
 [% FOREACH term IN student.terms %]
 	<tr>

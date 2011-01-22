@@ -64,8 +64,15 @@ sub index : Path : Args(0) {
 	$c->stash->{dashboard} = $dashboard;
 	my @meet_adv = $c->user->meeting_advisors();
 	my @meet;
-
+	if( $#meet_adv >= 0)
+	{
 	push( @meet, $_->meeting) foreach @meet_adv;
+	}
+	else
+	{
+		my $student = $c->user->students->single();
+		@meet = $c->model('DB::Meeting')->search({ student_id => $student->id()});
+	}
 
 	$c->stash->{meetings} = \@meet; 
 }

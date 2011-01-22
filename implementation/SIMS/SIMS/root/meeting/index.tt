@@ -32,6 +32,7 @@ function edit_comment( id, comment_input, submit_input)
 [% message %]
 
 <h1>Update Meeting Settings </h1>
+<h3><a href="[% c.uri_for('/meeting') %]/[% meeting.id %]/cancel" > Cancel Meeting </a></h3>
 	<form method="post" action="[%c.uri_for('/meeting/') %][% meeting.id %]/update" >
 		<label>Meeting Date</label>
 		<input type="text" name="meeting_date" class="datetimeinput" value="[% meeting.datetime.dmy('/') %] [% meeting.datetime.hms() %]"><br />
@@ -39,6 +40,7 @@ function edit_comment( id, comment_input, submit_input)
 		<textarea type="textfield" name="meeting_desc">[%meeting.description%] </textarea>
 		<input name="meeting_up_submit" type="submit" value="Update Meeting" />
 	</form>	
+
 
 <h1> Advisors </h1>
 <table>
@@ -99,7 +101,6 @@ function edit_comment( id, comment_input, submit_input)
 		<input type="submit" name="submit_comment" value="Attach Signature"/>
 	</form>
 	
-	<a href="[% c.uri_for('/meeting') %]/[% meeting.id %]/cancel" > Cancel Meeting </a>
 </div>
 [% PROCESS signature_footer.tt %]
 [% PROCESS datetime_footer.tt %]

@@ -49,11 +49,10 @@ function edit_super( id, name_input, speedcode_input, submit_input, form_post )
 		</table>
 	 </th>
 	<th  id="sub_submit_[%s.id%]">
-		<a href="#" onclick="edit_super([%s.id%], $('#sup_name_[%s.id%]'), $('#sup_speedcode_[%s.id%]'), $('#sub_submit_[%s.id%]'),'[% c.uri_for('edit_supervisor') %]/[%s.id%]')">Edit</a>
+		<input type="button" onclick="edit_super([%s.id%], $('#sup_name_[%s.id%]'), $('#sup_speedcode_[%s.id%]'), $('#sub_submit_[%s.id%]'),'[% c.uri_for('edit_supervisor') %]/[%s.id%]')" value="Edit" />
 	</th>
 </tr>
 
 [% END %]
 </table>
-<script>$("th").css("border","1px solid black");</script>
 [% PROCESS footer.tt %]

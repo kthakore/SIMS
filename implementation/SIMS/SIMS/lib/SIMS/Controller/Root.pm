@@ -46,7 +46,8 @@ sub index : Path : Args(0) {
    		 push(
             @{$dashboard},
             { src => $c->uri_for('techadmin'), text => 'Manage Users' },
-			{ src => $c->uri_for('graduateadmin/supervisors'), text => 'Manage Supervisors' }
+			{ src => $c->uri_for('graduateadmin/supervisors'), text => 'Manage Supervisors' },
+			{ src => $c->uri_for('report'), text => 'Manage Report' }
 
         ); 	
 	}

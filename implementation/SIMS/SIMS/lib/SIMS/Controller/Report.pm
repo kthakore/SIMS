@@ -1,7 +1,7 @@
 package SIMS::Controller::Report;
 use Moose;
 use namespace::autoclean;
-
+use Data::Dumper;
 BEGIN {extends 'Catalyst::Controller'; }
 
 =head1 NAME
@@ -20,13 +20,28 @@ Catalyst Controller.
 =head2 index
 
 =cut
-
-sub index :Path :Args(0) {
+sub base : Chained('/') PathPart('report') CaptureArgs(0) {
     my ( $self, $c ) = @_;
 
-    $c->response->body('Matched SIMS::Controller::Report in Report.');
+    $c->session->{original_URI} = $c->request->uri;
+    my @roles = $c->user->roles();
+
+    $c->response->redirect( $c->uri_for('/unauthorized') )
+      unless ( grep /(g_admin)/, @roles );
 }
 
+sub index : Chained('base') : PathPart('') : Args(0) {
+    my ( $self, $c ) = @_;
+
+}
+
+sub add_query : Chained('base') : PathPart('add_query') : Args(0) {
+	my ( $self, $c ) = @_;
+
+	$c->response->body( Dumper $c->request->params() );
+
+
+}
 
 =head1 AUTHOR
 

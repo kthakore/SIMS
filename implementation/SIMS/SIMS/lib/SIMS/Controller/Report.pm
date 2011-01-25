@@ -28,6 +28,25 @@ sub base : Chained('/') PathPart('report') CaptureArgs(0) {
 
     $c->response->redirect( $c->uri_for('/unauthorized') )
       unless ( grep /(g_admin)/, @roles );
+
+	unless( $c->stash->{student_cols} )
+	{
+	my @stu_cols = $c->model('DB::Student')->result_source()->_columns();
+
+	my $student_cols;
+
+	foreach(@stu_cols)
+		{
+			my @key = keys(%$_);
+			foreach( sort(@key ))
+			{
+				push( @$student_cols, { value => $_, text => $_ } );
+			}
+		}
+		 $c->stash->{student_cols}= $student_cols;
+	}
+
+
 }
 
 sub index : Chained('base') : PathPart('') : Args(0) {
@@ -38,8 +57,7 @@ sub index : Chained('base') : PathPart('') : Args(0) {
 sub add_query : Chained('base') : PathPart('add_query') : Args(0) {
 	my ( $self, $c ) = @_;
 
-	$c->response->body( Dumper $c->request->params() );
-
+	$c->stash(template => 'report/index.tt' );
 
 }
 

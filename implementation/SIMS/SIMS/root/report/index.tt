@@ -1,0 +1,117 @@
+[% PROCESS header.tt %]
+
+<script>
+var condition = 0;
+var datum = '';
+function select_data( data, table)
+{
+
+	var row;
+
+	if( data == 'student')
+	{
+		row = $('<tr> </th>');
+		row.append('<tr><th>Columns To Show</th>');
+
+			row.append('<th><select multiple="multiple" name="columns" size="4">'+
+
+			[% FOREACH cols IN student_cols %]
+				'<option value="[%cols.value%]"> [%cols.text%] </option>'+	
+			[% END %]
+
+				'</select></th>'
+				)		
+			table.append(row);
+
+		datum = data;
+		add_condition( table, '');
+	}
+
+
+}
+
+function options()
+{
+
+	var obj = $('<select name="column_'+condition+'"  id="column_'+condition+'" >'+
+			'<option value="student"> Student </option>'+
+			'</select>');
+	if( datum == 'student' )
+	{
+
+		obj = $('<th><select name="column_'+condition+'"  id="column_'+condition+'" >'+
+				[% FOREACH cols IN student_cols %]
+				'<option value="[%cols.value%]"> [%cols.text%] </option>'+
+				[% END %]
+				'</select></th>');
+
+	}
+
+	return obj;
+
+}
+
+function add_condition( table,op)
+{
+
+	var row = $('<tr></tr>');
+
+	if( op != '')
+	{
+		row.append('<th>'+op+'</th>');
+	}
+	row.append( options() );
+	row.append('<th>'+
+			'<select name="condition_'+condition+'" id="condition_'+condition+'" >'+
+			'<option value="=">=</option><option value="!=">!=</option> <option value=">=">>=</option><option value="<="><=</option><option value=">">></option><option value="<"><</option><option value="like">like</option>'+
+			'</select> '+
+			'</th><th>'+
+			'<input name="text_'+condition+'" id="text_'+condition+'"></th>');
+	table.append(row);
+
+	condition++;
+}
+</script>
+<div id="content">
+
+<form id="make_query" action="[%c.uri_for('add_query')%]" method="POST">
+
+
+<table id="query_table">
+<tr>
+<th>
+Data Type: <select id="datum" name="datum">
+<option value="" >----</option>
+<option value="student">Student</option>
+<option value="supervisor">Supervisor</option>
+<option value="advisor">Advisor</option>
+</select>
+</th>
+</tr>
+
+<tr> 
+<th>Add More Options:</th>
+<th><input class="cond_but" disabled="true" type="button" value="And" onclick="add_condition($('#query_table'), 'and')"/></th>
+<th><input class="cond_but" disabled="true" type="button" value="OR" onclick="add_condition($('#query_table'), 'or')"/></th>
+</tr>
+</table>
+<script>
+$('#datum').change( function(){ 
+		var value = $('#datum').val();
+
+		if( value != '' )
+		{
+		select_data( value, $('#query_table')); 
+		$('.cond_but').removeAttr('disabled');
+		$('#datum').attr('disabled', true);
+		}
+		else
+		{
+		$('.cond_but').attr('disabled', true);
+		}
+		});
+</script>
+<input type="submit" value="save query" />
+</form>
+</div>
+[% PROCESS footer.tt %]

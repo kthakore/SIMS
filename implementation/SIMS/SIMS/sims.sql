@@ -117,12 +117,16 @@ CREATE TABLE Meeting (
 		datetime DATETIME,
 		description TEXT,
 		status TEXT,
+		progress TEXT,
+		agreement TEXT,
+		student_sign TEXT,
 		locked INTEGER 
 	);
 
 CREATE TABLE MeetingAdvisor (
 		meeting_id INTEGER REFERENCES Meeting,
 		advisor_id INTEGER REFERENCES User,
+		signature TEXT,
 		confirmation INTEGER REFERENCES MeetingConfirmation,
 		PRIMARY KEY( meeting_id, advisor_id)
 	);
@@ -138,8 +142,8 @@ CREATE TABLE MeetingComments (
 		id INTEGER PRIMARY KEY,
 		meeting_id INTEGER REFERENCES Meeting,
 		commenter_id INTEGER REFERENCES User,
-		comment_sign TEXT,
-		comment TEXT
+		comment TEXT,
+		type TEXT
 	);
 
 CREATE TABLE Report (

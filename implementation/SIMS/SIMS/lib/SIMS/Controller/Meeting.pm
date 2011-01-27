@@ -28,7 +28,6 @@ sub base : Chained('/') PathPart('meeting') CaptureArgs(1) {
 
 	$c->log->debug("Searching for $m_id");
 	my $meeting = $c->model('DB::Meeting')->find($m_id);
-
 	unless( defined $meeting )
 	{
    		 $c->response->redirect( $c->uri_for('/default') )
@@ -43,7 +42,24 @@ sub base : Chained('/') PathPart('meeting') CaptureArgs(1) {
     $c->response->redirect( $c->uri_for('/unauthorized') )
       unless ( $meeting->student() && $meeting->student()->user_id() == $id || grep /$id/, @advisors_id  );
 
+	my @c = $meeting->meeting_comments();
+	my @comments; my @recommendations;
+
+	foreach(@c){
+	if($_->type() eq 'comment')
+	{
+		push @comments, $_;
+	}
+	else
+	{
+		push @recommendations, $_;
+	}
+	}
+	
 	$c->stash( advisors => \@advisors );
+	$c->stash( comments => \@comments );
+	$c->stash( recommendations => \@recommendations );
+
 	}
 
 	$c->stash( meeting => $meeting );
@@ -121,6 +137,7 @@ my( $self, $c ) = @_;
 		{
 		datetime => $date,
 		description => $c->req->param('meeting_desc'),
+		progress => $c->req->param('progress')
 		}
 		);
 	}
@@ -172,8 +189,8 @@ sub add_comment: Chained('base') :PathPart('add_comment') :Args(0) {
 		{
 			meeting_id => $c->stash->{meeting}->id(),	
 			commenter_id => $c->user->id(),
-			comment_sign => $c->req->param('output'),
-			comment => $c->req->param('comment')
+			comment => $c->req->param('comment'),
+			type => $c->req->param('type')
 		}
 		);
 		
@@ -195,6 +212,23 @@ sub add_comment: Chained('base') :PathPart('add_comment') :Args(0) {
 sub delete_comment: Chained('base') :PathPart('delete_comment') :Args(1) {
     my ( $self, $c, $id ) = @_;
 	$c->response->body('Deleting Comments');
+
+}
+
+sub advisor_sign: Chained('base') :PathPart('advisor_sign') :Args(1) {
+    my ( $self, $c, $id ) = @_;
+
+	my $meeting_advisor = $c->model('DB::MeetingAdvisor')->find($c->stash->{meeting}->id(), $id);
+	if( $meeting_advisor && $meeting_advisor->advisor_id() == $c->user->id() )
+	{
+		$c->stash(message => "Signed" );
+	}  
+	else
+	{
+		$c->stash(message => "Advisor doesn't exist or unauthorized access");
+	}
+	$c->stash( template => 'meeting/index.tt' );
+
 
 }
 

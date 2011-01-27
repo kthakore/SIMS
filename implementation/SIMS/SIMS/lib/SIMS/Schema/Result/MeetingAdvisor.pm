@@ -35,6 +35,11 @@ __PACKAGE__->table("MeetingAdvisor");
   is_foreign_key: 1
   is_nullable: 0
 
+=head2 signature
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 confirmation
 
   data_type: 'integer'
@@ -48,6 +53,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "advisor_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
+  "signature",
+  { data_type => "text", is_nullable => 1 },
   "confirmation",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
 );
@@ -106,8 +113,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-16 13:11:56
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ewPfmwtchNKA6H5eDPbi6Q
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-26 18:14:15
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:RAjO9H7jy3BPLzMZYXiOJQ
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

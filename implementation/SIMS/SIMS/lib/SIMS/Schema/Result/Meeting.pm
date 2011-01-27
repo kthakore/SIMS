@@ -50,6 +50,21 @@ __PACKAGE__->table("Meeting");
   data_type: 'text'
   is_nullable: 1
 
+=head2 progress
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 agreement
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 student_sign
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 locked
 
   data_type: 'integer'
@@ -67,6 +82,12 @@ __PACKAGE__->add_columns(
   "description",
   { data_type => "text", is_nullable => 1 },
   "status",
+  { data_type => "text", is_nullable => 1 },
+  "progress",
+  { data_type => "text", is_nullable => 1 },
+  "agreement",
+  { data_type => "text", is_nullable => 1 },
+  "student_sign",
   { data_type => "text", is_nullable => 1 },
   "locked",
   { data_type => "integer", is_nullable => 1 },
@@ -126,11 +147,17 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-16 18:19:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hDU09JlSntEpDSnxk5mNNg
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-25 22:37:17
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:N8/1nzM9uyCi4vEvnHpiWg
 
 __PACKAGE__->many_to_many( advisors => 'meeting_advisors', 'advisor' );
 
+__PACKAGE__->has_many(
+  "comments",
+  "SIMS::Schema::Result::MeetingComment",
+  { "foreign.meeting_id" => "self.id", "foreign.type" => "'comment'" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
 # You can replace this text with custom content, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
 1;

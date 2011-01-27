@@ -41,12 +41,12 @@ __PACKAGE__->table("MeetingComments");
   is_foreign_key: 1
   is_nullable: 1
 
-=head2 comment_sign
+=head2 comment
 
   data_type: 'text'
   is_nullable: 1
 
-=head2 comment
+=head2 type
 
   data_type: 'text'
   is_nullable: 1
@@ -60,9 +60,9 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "commenter_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
-  "comment_sign",
-  { data_type => "text", is_nullable => 1 },
   "comment",
+  { data_type => "text", is_nullable => 1 },
+  "type",
   { data_type => "text", is_nullable => 1 },
 );
 __PACKAGE__->set_primary_key("id");
@@ -110,8 +110,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-16 18:19:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Xv4q76rr9pAP4z3WpcHGlA
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-01-25 22:37:17
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4wLK0LsOjJzr/l0efqTOuA
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

@@ -133,6 +133,8 @@ my( $self, $c ) = @_;
 
 		my $date = DateTime::Format::DateParse->parse_datetime( $c->req->param('meeting_date') );
 
+		try{
+
 		$c->stash->{meeting}->update(
 		{
 		datetime => $date,
@@ -140,6 +142,16 @@ my( $self, $c ) = @_;
 		progress => $c->req->param('progress')
 		}
 		);
+
+	 $c->response->redirect( $c->uri_for('/').'meeting/'.$c->stash->{meeting}->id() );
+
+
+	
+		}
+		catch
+		{
+			$c->stash->{message} = "problem $_";
+		};
 	}
 	$c->stash( template => 'meeting/index.tt' );
 }
@@ -168,8 +180,6 @@ sub confirm : Chained('base') :PathPart('confirm') :Args(1) {
 
 		);
 
-#	 $c->response->redirect( $c->uri_for('/').'meeting/'.$c->stash->{meeting}->id() )
-
 	}
 
 	
@@ -197,6 +207,10 @@ sub add_comment: Chained('base') :PathPart('add_comment') :Args(0) {
 		$c->stash(
 		message  => 'Added comment '.$comment->id()
 		);
+
+	 $c->response->redirect( $c->uri_for('/').'meeting/'.$c->stash->{meeting}->id() );
+
+
 		}
 		catch
 		{
@@ -221,17 +235,40 @@ sub advisor_sign: Chained('base') :PathPart('advisor_sign') :Args(1) {
 	my $meeting_advisor = $c->model('DB::MeetingAdvisor')->find($c->stash->{meeting}->id(), $id);
 	if( $meeting_advisor && $meeting_advisor->advisor_id() == $c->user->id() )
 	{
-		$c->stash(message => "Signed" );
-	}  
-	else
+		try{
+		$meeting_advisor->update( {signature => $c->req->param('output') } ); 
+	 $c->response->redirect( $c->uri_for('/').'meeting/'.$c->stash->{meeting}->id() );
+
+		}
+		catch{
+
+		$c->stash(message => "Problem $_" );
+		};
+	} 
+	$c->stash( template => 'meeting/index.tt' );
+}
+
+sub advisor_unsign: Chained('base') :PathPart('advisor_unsign') :Args(1) {
+    my ( $self, $c, $id ) = @_;
+
+	my $meeting_advisor = $c->model('DB::MeetingAdvisor')->find($c->stash->{meeting}->id(), $id);
+	if( $meeting_advisor && $meeting_advisor->advisor_id() == $c->user->id() )
 	{
-		$c->stash(message => "Advisor doesn't exist or unauthorized access");
-	}
+		try{
+		$meeting_advisor->update( {signature => '' } ); 
+
+		 $c->response->redirect( $c->uri_for('/').'meeting/'.$c->stash->{meeting}->id() );
+
+		}
+		catch{
+
+		$c->stash(message => "Problem $_" );
+		};
+	} 
 	$c->stash( template => 'meeting/index.tt' );
 
 
 }
-
 sub edit_comment: Chained('base') :PathPart('edit_comment') :Args(0) {
     my ( $self, $c, $id ) = @_;
 
@@ -247,7 +284,9 @@ sub edit_comment: Chained('base') :PathPart('edit_comment') :Args(0) {
 				$comment->update( {
 					comment => $c->req->param('comment')
 					});
-				$c->stash( message => 'Comment Updated');		
+
+	 $c->response->redirect( $c->uri_for('/').'meeting/'.$c->stash->{meeting}->id() )
+
 			}
 		catch 
 			{

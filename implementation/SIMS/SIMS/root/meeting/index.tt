@@ -29,7 +29,9 @@ function edit_comment( id, comment_input, submit_input)
 </script>
 <div id="content">
 
+[% IF message %]
 [% message %]
+[% END %]
 
 <h1>Update Meeting Settings </h1>
 <h3><a href="[% c.uri_for('/meeting') %]/[% meeting.id %]/cancel" > Cancel Meeting </a></h3>
@@ -67,10 +69,33 @@ function edit_comment( id, comment_input, submit_input)
 	</form>
 	
 		[% ELSE %]
-		<a href="#" >New Signature</a>
-		[% END %]
+	<div class="sigPad[%adv.advisor_id%] signed">
+		<div class="sigWrapper">
+			<div class="typed">[%adv.advisor.username%]</div>
+			<canvas class="pad" width="198" height="55"></canvas>
+		</div>
+	</div>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			var sig = $("<div/>").html('[% adv.signature %]').text();
+			$('.sigPad[%adv.advisor_id%]').signaturePad({displayOnly:true}).regenerate(sig);});
+		</script>
+		<a href="[% c.uri_for('/') %]/meeting/[%meeting.id%]/advisor_unsign/[%adv.advisor_id%]" >New Signature</a>
+
+			[% END %]
 	[% ELSE %]
-	[% adv.signature %] 
+	<div class="sigPad[%adv.advisor_id%] signed">
+		<div class="sigWrapper">
+			<div class="typed">[%adv.advisor.username%]</div>
+			<canvas class="pad" width="198" height="55"></canvas>
+		</div>
+	</div>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			var sig = $("<div/>").html('[% adv.signature %]').text();
+			$('.sigPad[%adv.advisor_id%]').signaturePad({displayOnly:true}).regenerate(sig);});
+		</script>
+
 	[% END %]
 </th>
 <th> 

@@ -8,9 +8,9 @@
 function post_comment_edit( id)
 {
 
-$('#comment_to_send').val( $("#comment"+id).val() );
-$('#sub_to_send').val( id );
-$('#send_form').submit();
+	$('#comment_to_send').val( $("#comment"+id).val() );
+	$('#sub_to_send').val( id );
+	$('#send_form').submit();
 
 }
 function replace_html(id, name, input)
@@ -35,38 +35,67 @@ function edit_comment( id, comment_input, submit_input)
 
 <h1>Update Meeting Settings </h1>
 <h3><a href="[% c.uri_for('/meeting') %]/[% meeting.id %]/cancel" > Cancel Meeting </a></h3>
-	<form method="post" action="[%c.uri_for('/meeting/') %][% meeting.id %]/update" >
-		<label>Meeting Date</label>
-		<input type="text" name="meeting_date" class="datetimeinput" value="[% meeting.datetime.mdy('/') %] [% meeting.datetime.hms() %]"><br />
-		<label>Description</label>
-		<textarea type="textfield" name="meeting_desc">[%meeting.description%]</textarea>
-		<br/>
-		<label>Evaluation of Progress</label>
-		<input type="radio" name="progress" value="S" [% IF meeting.progress == 'S'%] checked [%END%]> Satisfactory 
-		<input type="radio" name="progress" value="NS"  [% IF meeting.progress == 'NS'%] checked [%END%]> Non-satisfactory <br />
-<h2>Student Signature</h2>
-[% IF meeting.student.user_id == c.user.id %] 
-[% ELSE %]
-[% IF meeting.student_signature %]
-	<div class="sigPadstudent signed">
-		<div class="sigWrapper">
-			<div class="typed">[%meeting.student_signature%]</div>
-			<canvas class="pad" width="198" height="55"></canvas>
-		</div>
-	</div>
-		<script type="text/javascript">
-		$(document).ready(function(){
-			var sig = $("<div/>").html('[% adv.signature %]').text();
-			$('.sigPadstudent').signaturePad({displayOnly:true}).regenerate(sig);});
-		</script>
-[% ELSE %]
-Not Signed
-[% END %]
-[% END %]
+<form method="post" action="[%c.uri_for('/meeting/') %][% meeting.id %]/update" >
+<label>Meeting Date</label>
+<input type="text" name="meeting_date" class="datetimeinput" value="[% meeting.datetime.mdy('/') %] [% meeting.datetime.hms() %]"><br />
+<label>Description</label>
+<textarea type="textfield" name="meeting_desc">[%meeting.description%]</textarea>
+<br/>
+<label>Evaluation of Progress</label>
+<input type="radio" name="progress" value="S" [% IF meeting.progress == 'S'%] checked [%END%]> Satisfactory 
+<input type="radio" name="progress" value="NS"  [% IF meeting.progress == 'NS'%] checked [%END%]> Non-satisfactory <br />
 <br />
 <input name="meeting_up_submit" type="submit" value="Update Meeting" />
 </form>	
 
+
+<h2>Student Signature</h2>
+[% IF meeting.student.user_id == c.user.id %] 
+	[% IF !meeting.student_sign %]
+	<form method="post" action="[% c.uri_for('/') %]/meeting/[%meeting.id%]/student_sign" class="sigPad">
+		<div class="clearButton"><a href="#clear">Clear Signature</a></div>
+
+		<div class="sig sigWrapper">
+		<div class="typed"></div>
+		<canvas class="pad" width="198" height="55"></canvas>
+		<input type="hidden" name="output" class="output">
+		</div>
+		<button type="submit">Sign</button>
+	</form>
+
+	[% ELSE %]
+<a href="[% c.uri_for('/') %]/meeting/[%meeting.id%]/student_unsign/" >Undo Signature</a>
+
+		<div class="sigPadstudent signed">
+		<div class="sigWrapper">
+		<div class="typed">[%meeting.student_signature%]</div>
+		<canvas class="pad" width="198" height="55"></canvas>
+		</div>
+		</div>
+		<script type="text/javascript">
+		$(document).ready(function(){
+				var sig = $("<div/>").html('[% meeting.student_sign %]').text();
+				$('.sigPadstudent').signaturePad({displayOnly:true}).regenerate(sig);});
+		</script>
+
+	[% END %]
+[% ELSE %]
+	[% IF meeting.student_signature %]
+		<div class="sigPadstudent signed">
+		<div class="sigWrapper">
+		<div class="typed">[%meeting.student_signature%]</div>
+		<canvas class="pad" width="198" height="55"></canvas>
+		</div>
+		</div>
+		<script type="text/javascript">
+		$(document).ready(function(){
+				var sig = $("<div/>").html('[% meeting.student_sign %]').text();
+				$('.sigPadstudent').signaturePad({displayOnly:true}).regenerate(sig);});
+		</script>
+	[% ELSE %]
+		Not Signed
+	[% END %]
+[% END %]
 <h1> Advisors </h1>
 <table>
 <tr><th>Name</th><th>Contact</th><th>Confirmation Status</th><th>Details</th><th>Signature</th><th>Option</th></tr>
@@ -75,50 +104,50 @@ Not Signed
 <th>[% adv.confirmation.status %] </th>
 <th>[% adv.confirmation.details %] </th>
 <th>[% IF adv.advisor_id == c.user.id %] 
-		[% IF !adv.signature %]
-		<form method="post" action="[% c.uri_for('/') %]/meeting/[%meeting.id%]/advisor_sign/[%adv.advisor_id%]" class="sigPad">
-				<div class="clearButton"><a href="#clear">Clear Signature</a></div>
+[% IF !adv.signature %]
+<form method="post" action="[% c.uri_for('/') %]/meeting/[%meeting.id%]/advisor_sign/[%adv.advisor_id%]" class="sigPad">
+<div class="clearButton"><a href="#clear">Clear Signature</a></div>
 
-		<div class="sig sigWrapper">
-			<div class="typed"></div>
-			<canvas class="pad" width="198" height="55"></canvas>
-			<input type="hidden" name="output" class="output">
-		</div>
-		<button type="submit">Sign</button>
-	</form>
-	
-		[% ELSE %]
-	<div class="sigPad[%adv.advisor_id%] signed">
-		<div class="sigWrapper">
-			<div class="typed">[%adv.advisor.username%]</div>
-			<canvas class="pad" width="198" height="55"></canvas>
-		</div>
-	</div>
-		<script type="text/javascript">
-		$(document).ready(function(){
-			var sig = $("<div/>").html('[% adv.signature %]').text();
-			$('.sigPad[%adv.advisor_id%]').signaturePad({displayOnly:true}).regenerate(sig);});
-		</script>
-		<a href="[% c.uri_for('/') %]/meeting/[%meeting.id%]/advisor_unsign/[%adv.advisor_id%]" >New Signature</a>
+<div class="sig sigWrapper">
+<div class="typed"></div>
+<canvas class="pad" width="198" height="55"></canvas>
+<input type="hidden" name="output" class="output">
+</div>
+<button type="submit">Sign</button>
+</form>
 
-			[% END %]
-	[% ELSE %]
-	[% IF  adv.signature %]
-	<div class="sigPad[%adv.advisor_id%] signed">
-		<div class="sigWrapper">
-			<div class="typed">[%adv.advisor.username%]</div>
-			<canvas class="pad" width="198" height="55"></canvas>
-		</div>
-	</div>
-		<script type="text/javascript">
-		$(document).ready(function(){
-			var sig = $("<div/>").html('[% adv.signature %]').text();
-			$('.sigPad[%adv.advisor_id%]').signaturePad({displayOnly:true}).regenerate(sig);});
-		</script>
-	[% ELSE %]
-	 Not Signed
-	[% END %]
-	[% END %]
+[% ELSE %]
+<div class="sigPad[%adv.advisor_id%] signed">
+<div class="sigWrapper">
+<div class="typed">[%adv.advisor.username%]</div>
+<canvas class="pad" width="198" height="55"></canvas>
+</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+		var sig = $("<div/>").html('[% adv.signature %]').text();
+		$('.sigPad[%adv.advisor_id%]').signaturePad({displayOnly:true}).regenerate(sig);});
+</script>
+<a href="[% c.uri_for('/') %]/meeting/[%meeting.id%]/advisor_unsign/[%adv.advisor_id%]" >Undo Signature</a>
+
+[% END %]
+[% ELSE %]
+[% IF  adv.signature %]
+<div class="sigPad[%adv.advisor_id%] signed">
+<div class="sigWrapper">
+<div class="typed">[%adv.advisor.username%]</div>
+<canvas class="pad" width="198" height="55"></canvas>
+</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+		var sig = $("<div/>").html('[% adv.signature %]').text();
+		$('.sigPad[%adv.advisor_id%]').signaturePad({displayOnly:true}).regenerate(sig);});
+</script>
+[% ELSE %]
+Not Signed
+[% END %]
+[% END %]
 </th>
 <th> 
 [% IF adv.advisor_id == c.user.id %]
@@ -137,8 +166,6 @@ Not Signed
 <th>[%adv.username%]</th>
 <th>[%adv.email_address%]</th>
 <th><a href="[% assign_advisor_url %]/[%adv.id%]">Add Advisor</a></th></tr>
-
-
 [% END %]
 </table>
 
@@ -157,13 +184,13 @@ Not Signed
 </table>
 <h2> Add Comment </h2>
 
-	<form method="post" action="[% c.uri_for('/meeting/') %][%meeting.id%]/add_comment" class="sigPad">
-		<label>Comment</label>
-		<br />
-		<textarea name="comment"></textarea><br />
-		<input type="hidden" name="type" value="comment" />
-		<input type="submit" name="submit_comment" value="Add Comment"/>
-	</form>
+<form method="post" action="[% c.uri_for('/meeting/') %][%meeting.id%]/add_comment" class="sigPad">
+<label>Comment</label>
+<br />
+<textarea name="comment"></textarea><br />
+<input type="hidden" name="type" value="comment" />
+<input type="submit" name="submit_comment" value="Add Comment"/>
+</form>
 
 <h1> Recommendations </h1>
 <table>
@@ -180,14 +207,14 @@ Not Signed
 </table>
 <h2> Add Recommendation </h2>
 
-	<form method="post" action="[% c.uri_for('/meeting/') %][%meeting.id%]/add_comment" class="sigPad">
-		<label>Comment</label>
-		<br />
-		<textarea name="comment"></textarea><br />
-		<br />
-		<input type="hidden" name="type" value="recommendation" />
-		<input type="submit" name="submit_comment" value="Add Recommendation"/>
-	</form>
+<form method="post" action="[% c.uri_for('/meeting/') %][%meeting.id%]/add_comment" class="sigPad">
+<label>Comment</label>
+<br />
+<textarea name="comment"></textarea><br />
+<br />
+<input type="hidden" name="type" value="recommendation" />
+<input type="submit" name="submit_comment" value="Add Recommendation"/>
+</form>
 </div>
 [% PROCESS signature_footer.tt %]
 [% PROCESS datetime_footer.tt %]

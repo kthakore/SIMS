@@ -229,6 +229,46 @@ sub delete_comment: Chained('base') :PathPart('delete_comment') :Args(1) {
 
 }
 
+sub student_sign: Chained('base') PathPart('student_sign') Args(0) {
+	my ( $self, $c ) = @_;
+	
+	if( $c->stash->{meeting}->student->user_id() == $c->user->id() )
+	{
+		try{
+		$c->stash->{meeting}->update( {student_sign => $c->req->param('output') } ); 
+	 $c->response->redirect( $c->uri_for('/').'meeting/'.$c->stash->{meeting}->id() );
+
+		}
+		catch{
+
+		$c->stash(message => "Problem $_" );
+		};
+	} 
+	$c->stash( template => 'meeting/index.tt' );
+
+
+}
+
+sub student_unsign: Chained('base') PathPart('student_unsign') Args(0) {
+	my ( $self, $c ) = @_;
+	
+	if( $c->stash->{meeting}->student->user_id() == $c->user->id() )
+	{
+		try{
+		$c->stash->{meeting}->update( {student_sign => '' } ); 
+	 	$c->response->redirect( $c->uri_for('/').'meeting/'.$c->stash->{meeting}->id() );
+
+		}
+		catch{
+
+		$c->stash(message => "Problem $_" );
+		};
+	} 
+	$c->stash( template => 'meeting/index.tt' );
+
+
+}
+
 sub advisor_sign: Chained('base') :PathPart('advisor_sign') :Args(1) {
     my ( $self, $c, $id ) = @_;
 
@@ -247,6 +287,7 @@ sub advisor_sign: Chained('base') :PathPart('advisor_sign') :Args(1) {
 	} 
 	$c->stash( template => 'meeting/index.tt' );
 }
+
 
 sub advisor_unsign: Chained('base') :PathPart('advisor_unsign') :Args(1) {
     my ( $self, $c, $id ) = @_;

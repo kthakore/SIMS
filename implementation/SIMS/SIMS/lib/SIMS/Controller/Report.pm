@@ -52,7 +52,7 @@ sub test_query : Chained('base') : PathPart('test_query') : Args(0) {
 	my ( $self, $c ) = @_;
 
 		my $query = {};
-	foreach(0..$c->req->param('count'))
+	foreach(0..($c->req->param('count')-1))
 	{
 		$query->{$c->req->{parameters}->{"column_$_"}} = 
 		{ $c->req->{parameters}->{"condition_$_"} =>  $c->req->{parameters}->{"text_$_"} };
@@ -60,7 +60,7 @@ sub test_query : Chained('base') : PathPart('test_query') : Args(0) {
 
 	my @foo =$c->model('DB::Student')->search( $query );
 
-	$c->res->body( Dumper(\@foo) );
+	$c->res->body( Dumper \@foo);
 	
 	$c->stash(template => 'report/index.tt' );
 

@@ -1,4 +1,32 @@
 [% PROCESS header.tt %]
+[% BLOCK data_col %]
+		row = $('<tr> </th>');
+		row.append('<tr><th>Columns To Show</th>');
+
+			row.append('<th><select multiple="multiple" name="columns" size="4">'+
+
+			[% FOREACH cols IN total_cols %]
+				'<option value="[%cols.value%]"> [%cols.text%] </option>'+	
+			[% END %]
+
+				'</select></th>'
+				)		
+			table.append(row);
+
+		datum = data;
+		add_condition( table, '');
+
+[% END %]
+
+[% BLOCK data_opt %]
+
+obj = $('<th><select name="column_'+condition+'"  id="column_'+condition+'" >'+
+				[% FOREACH cols IN total_cols %]
+				'<option value="[%cols.value%]"> [%cols.text%] </option>'+
+				[% END %]
+				'</select></th>');
+
+[% END %]
 
 <script>
 var condition = 0;
@@ -10,21 +38,15 @@ function select_data( data, table)
 
 	if( data == 'student')
 	{
-		row = $('<tr> </th>');
-		row.append('<tr><th>Columns To Show</th>');
-
-			row.append('<th><select multiple="multiple" name="columns" size="4">'+
-
-			[% FOREACH cols IN student_cols %]
-				'<option value="[%cols.value%]"> [%cols.text%] </option>'+	
-			[% END %]
-
-				'</select></th>'
-				)		
-			table.append(row);
-
-		datum = data;
-		add_condition( table, '');
+		[% PROCESS data_col total_cols=student_cols %]
+	}
+	else if( data == 'supervisor')
+	{
+		[% PROCESS data_col total_cols=supervisor_cols %]
+	}
+	else if (data == 'advisor')
+	{
+		[% PROCESS data_col total_cols=advisor_cols %]
 	}
 
 
@@ -38,14 +60,17 @@ function options()
 			'</select>');
 	if( datum == 'student' )
 	{
-
-		obj = $('<th><select name="column_'+condition+'"  id="column_'+condition+'" >'+
-				[% FOREACH cols IN student_cols %]
-				'<option value="[%cols.value%]"> [%cols.text%] </option>'+
-				[% END %]
-				'</select></th>');
-
+		[% PROCESS data_opt total_cols=student_cols %]
 	}
+	else if( datum == 'supervisor')
+	{
+		[% PROCESS data_opt total_cols=supervisor_cols %]
+	}
+	else if (datum == 'advisor')
+	{
+		[% PROCESS data_opt total_cols=advisor_cols %]
+	}
+
 
 	return obj;
 
@@ -68,7 +93,6 @@ function add_condition( table,op)
 			'</th><th>'+
 			'<input name="text_'+condition+'" id="text_'+condition+'"></th>');
 	table.append(row);
-
 	condition++;
 }
 </script>
@@ -76,7 +100,7 @@ function add_condition( table,op)
 
 <form id="make_query" action="[%c.uri_for('add_query')%]" method="POST">
 
-
+<input type="hidden" id="count" />
 <table id="query_table">
 <tr>
 <th>
@@ -103,7 +127,6 @@ $('#datum').change( function(){
 		{
 		select_data( value, $('#query_table')); 
 		$('.cond_but').removeAttr('disabled');
-		$('#datum').attr('disabled', true);
 		}
 		else
 		{
@@ -112,6 +135,17 @@ $('#datum').change( function(){
 		});
 </script>
 <input type="submit" value="save query" />
+<input type="button" value="try query" onclick=" var form = $('#make_query').attr('action', '[%c.uri_for('test_query') %] '); $('<input>').attr({ type: 'hidden', name: 'count', value: condition }).appendTo(form); form.submit()" />
 </form>
+[% IF result_data %]
+<table class="flexme">
+</table>
+<script>
+$('.flexme').flexigrid();
+</script>
+
+[% END %]
+
 </div>
 [% PROCESS footer.tt %]
+

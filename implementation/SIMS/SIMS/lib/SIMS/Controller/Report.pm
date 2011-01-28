@@ -28,26 +28,13 @@ sub base : Chained('/') PathPart('report') CaptureArgs(0) {
 
     $c->response->redirect( $c->uri_for('/unauthorized') )
       unless ( grep /(g_admin)/, @roles );
-
-	unless( $c->stash->{student_cols} )
-	{
-	my @stu_cols = $c->model('DB::Student')->result_source()->_columns();
-
-	my $student_cols;
-
-	foreach(@stu_cols)
-		{
-			my @key = keys(%$_);
-			foreach( sort(@key ))
-			{
-				push( @$student_cols, { value => $_, text => $_ } );
-			}
-		}
-		 $c->stash->{student_cols}= $student_cols;
-	}
-
+	
+	$c->stash->{student_cols}= $self->_prepare_columns($c, 'DB::Student') unless $c->stash->{student_cols};
+	$c->stash->{supervisor_cols}= $self->_prepare_columns($c, 'DB::Supervisor') unless $c->stash->{supervisor_cols};
+	$c->stash->{advisor_cols}= $self->_prepare_columns($c, 'DB::MeetingAdvisor') unless $c->stash->{advisor_cols};
 
 }
+
 
 sub index : Chained('base') : PathPart('') : Args(0) {
     my ( $self, $c ) = @_;
@@ -59,6 +46,43 @@ sub add_query : Chained('base') : PathPart('add_query') : Args(0) {
 
 	$c->stash(template => 'report/index.tt' );
 
+}
+
+sub test_query : Chained('base') : PathPart('test_query') : Args(0) {
+	my ( $self, $c ) = @_;
+
+		my $query = {};
+	foreach(0..$c->req->param('count'))
+	{
+		$query->{$c->req->{parameters}->{"column_$_"}} = 
+		{ $c->req->{parameters}->{"condition_$_"} =>  $c->req->{parameters}->{"text_$_"} };
+	}
+
+	my @foo =$c->model('DB::Student')->search( $query );
+
+	$c->res->body( Dumper(\@foo) );
+	
+	$c->stash(template => 'report/index.tt' );
+
+}
+
+sub _prepare_columns
+{
+	my ($self, $c , $db ) = @_;
+
+	my @stu_cols = $c->model($db)->result_source()->_columns();
+
+	my $student_cols;
+
+	foreach(@stu_cols)
+		{
+			my @key = keys(%$_);
+			foreach( sort(@key ))
+			{
+				push( @$student_cols, { value => $_, text => $_ } );
+			}
+		}
+	return $student_cols;
 }
 
 =head1 AUTHOR

@@ -42,7 +42,24 @@
 			});
 
 </script>
+<style>
+	body
+		{
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		}
+	.flexigrid div.fbutton .add
+		{
+			background: url(css/images/add.png) no-repeat center left;
+		}	
+	.flexigrid div.fbutton .delete
+		{
+			background: url(css/images/close.png) no-repeat center left;
+		}	
+</style>
 <script type="text/javascript" src="[% c.uri_for('/static/') %]scripts/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="[% c.uri_for('/static/') %]scripts/flexigrid/flexigrid.pack.js"></script>
+<link type="text/css" href="[% c.uri_for('/static/') %]scripts/css/flexigrid/flexigrid.css" rel="stylesheet" />
 
 <style type="text/css">
 .ui-timepicker-div .ui-widget-header{ margin-bottom: 8px; }

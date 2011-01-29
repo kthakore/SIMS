@@ -58,10 +58,10 @@ sub test_query : Chained('base') : PathPart('test_query') : Args(0) {
 		{ $c->req->{parameters}->{"condition_$_"} =>  $c->req->{parameters}->{"text_$_"} };
 	}
 
-	my @foo =$c->model('DB::Student')->search( $query );
+	my @foo =$c->model('DB::Student')->search( $query )->all();
 
-	$c->res->body( Dumper \@foo);
-	
+	$c->stash( result_col => $self->_prepare_columns($c, 'DB::Student')); 
+	$c->stash( result_record => \@foo );
 	$c->stash(template => 'report/index.tt' );
 
 }

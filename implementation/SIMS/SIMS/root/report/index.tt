@@ -137,12 +137,29 @@ $('#datum').change( function(){
 <input type="submit" value="save query" />
 <input type="button" value="try query" onclick=" var form = $('#make_query').attr('action', '[%c.uri_for('test_query') %] '); $('<input>').attr({ type: 'hidden', name: 'count', value: condition }).appendTo(form); form.submit()" />
 </form>
-[% IF result_data %]
-<table class="flexme">
-</table>
-<script>
-$('.flexme').flexigrid();
-</script>
+[% IF result_col %]
+	
+	<table class="flexme">
+	<thead>
+		<tr>
+		[% FOREACH h IN result_col %]
+			<th>[% h.text %]</th>
+		[% END %]
+		</tr>
+	</thead>
+	<tbody>
+		[% FOREACH record IN result_record %]
+		<tr>
+			[% FOREACH r IN record %]
+			<th>[% result_record.user_id() %]</th>
+			[% END %]
+		</tr>
+		[% END %]
+	</tbody>
+	</table>
+	<script>
+	$('.flexme').flexigrid();
+	</script>
 
 [% END %]
 

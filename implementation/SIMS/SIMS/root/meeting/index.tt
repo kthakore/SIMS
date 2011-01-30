@@ -51,50 +51,51 @@ function edit_comment( id, comment_input, submit_input)
 
 <h2>Student Signature</h2>
 [% IF meeting.student.user_id == c.user.id %] 
-[% IF !meeting.student_sign %]
-<form method="post" action="[% c.uri_for('/') %]/meeting/[%meeting.id%]/student_sign" class="sigPad">
-<div class="clearButton"><a href="#clear">Clear Signature</a></div>
+	[% IF !meeting.student_sign %]
+		<form method="post" action="[% c.uri_for('/') %]/meeting/[%meeting.id%]/student_sign" class="sigPad">
+		<div class="clearButton"><a href="#clear">Clear Signature</a></div>
 
-<div class="sig sigWrapper">
-<div class="typed"></div>
-<canvas class="pad" width="198" height="55"></canvas>
-<input type="hidden" name="output" class="output">
-</div>
-<button type="submit">Sign</button>
-</form>
+		<div class="sig sigWrapper">
+		<div class="typed"></div>
+		<canvas class="pad" width="198" height="55"></canvas>
+		<input type="hidden" name="output" class="output">
+		</div>
+		<button type="submit">Sign</button>
+		</form>
 
+	[% ELSE %]
+		<a href="[% c.uri_for('/') %]/meeting/[%meeting.id%]/student_unsign/" >Undo Signature</a>
+
+		<div class="sigPadstudent signed">
+		<div class="sigWrapper">
+		<div class="typed">[%meeting.student_signature%]</div>
+		<canvas class="pad" width="198" height="55"></canvas>
+		</div>
+		</div>
+		<script type="text/javascript">
+		$(document).ready(function(){
+				var sig = $("<div/>").html('[% meeting.student_sign %]').text();
+				$('.sigPadstudent').signaturePad({displayOnly:true}).regenerate(sig);});
+		</script>
+
+	[% END %]
 [% ELSE %]
-<a href="[% c.uri_for('/') %]/meeting/[%meeting.id%]/student_unsign/" >Undo Signature</a>
-
-<div class="sigPadstudent signed">
-<div class="sigWrapper">
-<div class="typed">[%meeting.student_signature%]</div>
-<canvas class="pad" width="198" height="55"></canvas>
-</div>
-</div>
-<script type="text/javascript">
-$(document).ready(function(){
-		var sig = $("<div/>").html('[% meeting.student_sign %]').text();
-		$('.sigPadstudent').signaturePad({displayOnly:true}).regenerate(sig);});
-</script>
-
-[% END %]
-[% ELSE %]
-[% IF meeting.student_signature %]
-<div class="sigPadstudent signed">
-<div class="sigWrapper">
-<div class="typed">[%meeting.student_signature%]</div>
-<canvas class="pad" width="198" height="55"></canvas>
-</div>
-</div>
-<script type="text/javascript">
-$(document).ready(function(){
-		var sig = $("<div/>").html('[% meeting.student_sign %]').text();
-		$('.sigPadstudent').signaturePad({displayOnly:true}).regenerate(sig);});
-</script>
-[% ELSE %]
-Not Signed
-[% END %]
+	[% IF meeting.student_sign %]
+		<div class="sigPadstudent signed">
+		<div class="sigWrapper">
+		<div class="typed">[%meeting.student_signature%]</div>
+		<canvas class="pad" width="198" height="55"></canvas>
+		</div>
+		</div>
+		<script type="text/javascript">
+		$(document).ready(function(){
+				var sig = $("<div/>").html('[% meeting.student_sign %]').text();
+				$('.sigPadstudent').signaturePad({displayOnly:true}).regenerate(sig);});
+		</script>
+	[% ELSE %]
+		Not Signed. Meeting
+		[% meeting.id %]
+	[% END %]
 [% END %]
 <h1> Advisors </h1>
 <table>

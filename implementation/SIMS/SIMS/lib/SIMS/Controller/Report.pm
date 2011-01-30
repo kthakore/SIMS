@@ -28,11 +28,8 @@ sub base : Chained('/') PathPart('report') CaptureArgs(0) {
 
     $c->response->redirect( $c->uri_for('/unauthorized') )
       unless ( grep /(g_admin)/, @roles );
-	
-	$c->stash->{student_cols}= $self->_prepare_columns($c, 'DB::Student') unless $c->stash->{student_cols};
-	$c->stash->{supervisor_cols}= $self->_prepare_columns($c, 'DB::Supervisor') unless $c->stash->{supervisor_cols};
-	$c->stash->{advisor_cols}= $self->_prepare_columns($c, 'DB::MeetingAdvisor') unless $c->stash->{advisor_cols};
 
+	$c->stash->{datums} = _get_datums($c) unless $c->stash->{datums};
 }
 
 
@@ -87,7 +84,7 @@ sub test_query : Chained('base') : PathPart('test_query') : Args(0) {
 
 sub _prepare_columns
 {
-	my ($self, $c , $db ) = @_;
+	my ($c , $db ) = @_;
 
 	my @stu_cols = $c->model($db)->result_source()->_columns();
 
@@ -102,6 +99,26 @@ sub _prepare_columns
 			}
 		}
 	return $student_cols;
+}
+
+sub _get_datums
+{
+	my ($c) = shift;
+
+	my $class_mappings = $c->user->result_source->{schema}->{class_mappings};
+
+	my @db = keys %{$class_mappings};
+
+	my @datums;
+	foreach( @db )
+	{
+		next if $_ =~ /SIMS::Schema/;
+		my $cm = $_;
+		$_ =~ s/SIMS::Model:://g;
+		push (@datums, { value => $_, text => $class_mappings->{$cm}, cols => _prepare_columns($c, $_) });
+	}
+
+	return \@datums;
 }
 
 =head1 AUTHOR

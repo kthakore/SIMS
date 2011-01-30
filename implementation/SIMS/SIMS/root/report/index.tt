@@ -1,11 +1,22 @@
 [% PROCESS header.tt %]
-[% BLOCK data_col %]
-		row = $('<tr> </th>');
+
+<script>
+var condition = 0;
+var datum = '';
+function select_data( data, table)
+{
+
+	var row;
+
+	[% FOREACH datum IN datums %]
+	if( data == '[%datum.value%]' )
+	{
+			row = $('<tr> </th>');
 		row.append('<tr><th>Columns To Show</th>');
 
 			row.append('<th><select multiple="multiple" name="columns" size="4">'+
 
-			[% FOREACH cols IN total_cols %]
+			[% FOREACH cols IN datum.cols %]
 				'<option value="[%cols.value%]"> [%cols.text%] </option>'+	
 			[% END %]
 
@@ -16,39 +27,8 @@
 		datum = data;
 		add_condition( table, '');
 
-[% END %]
-
-[% BLOCK data_opt %]
-
-obj = $('<th><select name="column_'+condition+'"  id="column_'+condition+'" >'+
-				[% FOREACH cols IN total_cols %]
-				'<option value="[%cols.value%]"> [%cols.text%] </option>'+
-				[% END %]
-				'</select></th>');
-
-[% END %]
-
-<script>
-var condition = 0;
-var datum = '';
-function select_data( data, table)
-{
-
-	var row;
-
-	if( data == 'student')
-	{
-		[% PROCESS data_col total_cols=student_cols %]
 	}
-	else if( data == 'supervisor')
-	{
-		[% PROCESS data_col total_cols=supervisor_cols %]
-	}
-	else if (data == 'advisor')
-	{
-		[% PROCESS data_col total_cols=advisor_cols %]
-	}
-
+	[% END %]
 
 }
 
@@ -58,20 +38,21 @@ function options()
 	var obj = $('<select name="column_'+condition+'"  id="column_'+condition+'" >'+
 			'<option value="student"> Student </option>'+
 			'</select>');
-	if( datum == 'student' )
+
+	[% FOREACH datum IN datums %]
+	if( datum == '[%datum.value%]' )
 	{
-		[% PROCESS data_opt total_cols=student_cols %]
-	}
-	else if( datum == 'supervisor')
-	{
-		[% PROCESS data_opt total_cols=supervisor_cols %]
-	}
-	else if (datum == 'advisor')
-	{
-		[% PROCESS data_opt total_cols=advisor_cols %]
-	}
+
+		obj = $('<th><select name="column_'+condition+'"  id="column_'+condition+'" >'+
+				[% FOREACH cols IN datum.cols %]
+				'<option value="[%cols.value%]"> [%cols.text%] </option>'+
+				[% END %]
+				'</select></th>');
 
 
+
+	}
+	[% END %]
 	return obj;
 
 }
@@ -106,9 +87,9 @@ function add_condition( table,op)
 <th>
 Data Type: <select id="datum" name="datum">
 <option value="" >----</option>
-<option value="student">Student</option>
-<option value="supervisor">Supervisor</option>
-<option value="advisor">Advisor</option>
+[% FOREACH datum IN datums %]
+<option value="[%datum.value%]">[%datum.text%]</option>
+[% END %]
 </select>
 </th>
 </tr>

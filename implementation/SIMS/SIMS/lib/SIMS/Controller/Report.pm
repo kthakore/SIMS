@@ -58,10 +58,29 @@ sub test_query : Chained('base') : PathPart('test_query') : Args(0) {
 		{ $c->req->{parameters}->{"condition_$_"} =>  $c->req->{parameters}->{"text_$_"} };
 	}
 
-	my @foo =$c->model('DB::Student')->search( $query )->all();
+	my @cols = $c->req->param('columns'); 
+	my @foo = $c->model('DB::Student')->search( $query );
 
-	$c->stash( result_col => $self->_prepare_columns($c, 'DB::Student')); 
-	$c->stash( result_record => \@foo );
+	my @records; 
+	foreach(@foo )
+	{
+		my $res = $_;
+		my @record; 
+
+		$res->id();
+	
+		
+		foreach( @cols)
+		{
+			push @record, ( $res->{_column_data}->{$_});
+		}
+
+			push @records, \@record; 
+
+	}
+
+	$c->stash( result_col => \@cols); 
+	$c->stash( result_record => \@records );
 	$c->stash(template => 'report/index.tt' );
 
 }

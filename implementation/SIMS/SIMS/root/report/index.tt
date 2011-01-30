@@ -143,7 +143,7 @@ $('#datum').change( function(){
 	<thead>
 		<tr>
 		[% FOREACH h IN result_col %]
-			<th>[% h.text %]</th>
+			<th>[% h %]</th>
 		[% END %]
 		</tr>
 	</thead>
@@ -151,15 +151,12 @@ $('#datum').change( function(){
 		[% FOREACH record IN result_record %]
 		<tr>
 			[% FOREACH r IN record %]
-			<th>[% result_record.user_id() %]</th>
+			<th>[% r %]</th>
 			[% END %]
 		</tr>
 		[% END %]
 	</tbody>
 	</table>
-	<script>
-	$('.flexme').flexigrid();
-	</script>
 
 [% END %]
 

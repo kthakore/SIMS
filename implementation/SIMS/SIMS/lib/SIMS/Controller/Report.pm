@@ -2,6 +2,7 @@ package SIMS::Controller::Report;
 use Moose;
 use namespace::autoclean;
 use Data::Dumper;
+use Try::Tiny;
 BEGIN {extends 'Catalyst::Controller'; }
 
 =head1 NAME
@@ -48,36 +49,47 @@ sub add_query : Chained('base') : PathPart('add_query') : Args(0) {
 sub test_query : Chained('base') : PathPart('test_query') : Args(0) {
 	my ( $self, $c ) = @_;
 
-		my $query = {};
-	foreach(0..($c->req->param('count')-1))
+	if( $c->req->param('datum') )
 	{
-		$query->{$c->req->{parameters}->{"column_$_"}} = 
-		{ $c->req->{parameters}->{"condition_$_"} =>  $c->req->{parameters}->{"text_$_"} };
-	}
+		try{
+			my $query = {};
+			foreach(0..($c->req->param('count')-1))
+			{
+				$query->{$c->req->{parameters}->{"column_$_"}} = 
+				{ $c->req->{parameters}->{"condition_$_"} =>  $c->req->{parameters}->{"text_$_"} };
+			}
 
-	my @cols = $c->req->param('columns'); 
-	my @foo = $c->model('DB::Student')->search( $query );
+			my @cols = $c->req->param('columns'); 
+			$c->log->debug( $c->req->param('datum'). " and ". Dumper ($query )) ;
+			my @foo = $c->model($c->req->param('datum'))->search( $query );
 
-	my @records; 
-	foreach(@foo )
-	{
-		my $res = $_;
-		my @record; 
+			my @records; 
+			foreach(@foo )
+			{
+				my $res = $_;
+				my @record; 
 
-		$res->id();
-	
-		
-		foreach( @cols)
-		{
-			push @record, ( $res->{_column_data}->{$_});
+				$res->id();
+			
+				
+				foreach( @cols)
+				{
+					push @record, ( $res->{_column_data}->{$_});
+				}
+
+					push @records, \@record; 
+
+			}
+
+			$c->stash( result_col => \@cols); 
+			$c->stash( result_record => \@records );
 		}
+		catch
+		{
+			$c->stash( message => "Problem $_");
 
-			push @records, \@record; 
-
+		};
 	}
-
-	$c->stash( result_col => \@cols); 
-	$c->stash( result_record => \@records );
 	$c->stash(template => 'report/index.tt' );
 
 }

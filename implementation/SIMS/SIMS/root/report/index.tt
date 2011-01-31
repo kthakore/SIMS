@@ -3,6 +3,12 @@
 <script>
 var condition = 0;
 var datum = '';
+function reset( table )
+{
+	condition = 0;
+	datum = '';
+	table.html('');
+}
 function select_data( data, table)
 {
 
@@ -12,7 +18,7 @@ function select_data( data, table)
 	if( data == '[%datum.value%]' )
 	{
 			row = $('<tr> </th>');
-		row.append('<tr><th>Columns To Show</th>');
+			row.append('<tr><th>Columns To Show</th>');
 
 			row.append('<th><select multiple="multiple" name="columns" size="4">'+
 
@@ -64,7 +70,11 @@ function add_condition( table,op)
 
 	if( op != '')
 	{
-		row.append('<th>'+op+'</th>');
+		row.append('<th>'+op+'<input type="hidden" value="'+op+'" name="op_'+condition+'" /></th>');
+	}
+	else
+	{
+		row.append('<th />');
 	}
 	row.append( options() );
 	row.append('<th>'+
@@ -82,10 +92,11 @@ function add_condition( table,op)
 <form id="make_query" action="[%c.uri_for('add_query')%]" method="POST">
 
 <input type="hidden" id="count" />
-<table id="query_table">
+<table id="con">
 <tr>
 <th>
-Data Type: <select id="datum" name="datum">
+Data Type: 
+</th><th><select id="datum" name="datum">
 <option value="" >----</option>
 [% FOREACH datum IN datums %]
 <option value="[%datum.value%]">[%datum.text%]</option>
@@ -93,17 +104,19 @@ Data Type: <select id="datum" name="datum">
 </select>
 </th>
 </tr>
-
 <tr> 
 <th>Add More Options:</th>
-<th><input class="cond_but" disabled="true" type="button" value="And" onclick="add_condition($('#query_table'), 'and')"/></th>
-<th><input class="cond_but" disabled="true" type="button" value="OR" onclick="add_condition($('#query_table'), 'or')"/></th>
+<th><input class="cond_but" disabled="true" type="button" value="And" onclick="add_condition($('#query_table'), 'and')"/><input class="cond_but" disabled="true" type="button" value="OR" onclick="add_condition($('#query_table'), 'or')"/></th>
 </tr>
+
+
+</table>
+<table id="query_table">
 </table>
 <script>
 $('#datum').change( function(){ 
 		var value = $('#datum').val();
-
+		reset($('#query_table'));
 		if( value != '' )
 		{
 		select_data( value, $('#query_table')); 
@@ -115,8 +128,19 @@ $('#datum').change( function(){
 		}
 		});
 </script>
-<input type="submit" value="save query" />
+<table>
+<tr>
+<th>
+Query Name: <input name="query_name" value="Query Name" /> 
+</th>
+<th>
+<input type="button" value="save query" onclick=" var form = $('#make_query').attr('action', '[%c.uri_for('add_query') %] '); form.submit();" /> 
+</th>
+<th>
 <input type="button" value="try query" onclick=" var form = $('#make_query').attr('action', '[%c.uri_for('test_query') %] '); $('<input>').attr({ type: 'hidden', name: 'count', value: condition }).appendTo(form); form.submit()" />
+</th>
+</tr>
+</table>
 </form>
 [% IF result_col %]
 	

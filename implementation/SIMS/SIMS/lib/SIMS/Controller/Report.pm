@@ -42,6 +42,27 @@ sub index : Chained('base') : PathPart('') : Args(0) {
 sub add_query : Chained('base') : PathPart('add_query') : Args(0) {
 	my ( $self, $c ) = @_;
 
+	if( $c->req->param('datum') )
+	{
+		try{
+
+			my $query = _generate_query($c);
+			my $report = $c->model('DB::Report')->create(
+			{
+				name => $c->req->param('query_name'),
+				query => Dumper ($query)
+			}
+			);
+			$c->stash(message => "Created ".$report->id() );	
+		}
+		catch
+		{
+		$c->stash( message => "Problem $_");
+
+		};
+
+	}
+
 	$c->stash(template => 'report/index.tt' );
 
 }
@@ -49,16 +70,13 @@ sub add_query : Chained('base') : PathPart('add_query') : Args(0) {
 sub test_query : Chained('base') : PathPart('test_query') : Args(0) {
 	my ( $self, $c ) = @_;
 
+	
+
 	if( $c->req->param('datum') )
 	{
 		try{
-			my $query = {};
-			foreach(0..($c->req->param('count')-1))
-			{
-				$query->{$c->req->{parameters}->{"column_$_"}} = 
-				{ $c->req->{parameters}->{"condition_$_"} =>  $c->req->{parameters}->{"text_$_"} };
-			}
 
+			my $query = _generate_query($c);
 			my @cols = $c->req->param('columns'); 
 			$c->log->debug( $c->req->param('datum'). " and ". Dumper ($query )) ;
 			my @foo = $c->model($c->req->param('datum'))->search( $query );
@@ -111,6 +129,33 @@ sub _prepare_columns
 			}
 		}
 	return $student_cols;
+}
+
+sub _generate_query
+{
+	my $c = shift; 
+			my $query = {};
+
+
+			foreach(0..($c->req->param('count')-1))
+			{
+				my $prev_query = $query;
+				my $cur_col = $c->req->{parameters}->{"column_$_"};
+				my $cur_query = { $c->req->{parameters}->{"condition_$_"} =>  $c->req->{parameters}->{"text_$_"} };
+				my $cur_op = $c->req->{parameters}->{"op_$_"};
+				if( $cur_op =~ /and|or/ )
+				{
+					$query = {"-$cur_op" =>  [$prev_query , {$cur_col  => $cur_query}] }
+
+				}
+				else
+				{
+					$query->{$cur_col} = $cur_query;
+				}
+				
+			}
+
+	return $query;
 }
 
 sub _get_datums

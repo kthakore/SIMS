@@ -88,7 +88,9 @@ function add_condition( table,op)
 }
 </script>
 <div id="content">
-
+[% message %]
+<div id="left" style="float:left; width:60%">
+<h1>Make Report</h1>
 <form id="make_query" action="[%c.uri_for('add_query')%]" method="POST">
 
 <input type="hidden" id="count" />
@@ -134,7 +136,7 @@ $('#datum').change( function(){
 Query Name: <input name="query_name" value="Query Name" /> 
 </th>
 <th>
-<input type="button" value="save query" onclick=" var form = $('#make_query').attr('action', '[%c.uri_for('add_query') %] '); form.submit();" /> 
+<input type="button" value="save query" onclick=" var form = $('#make_query').attr('action', '[%c.uri_for('add_query') %] '); $('<input>').attr({ type: 'hidden', name: 'count', value: condition }).appendTo(form); form.submit();" /> 
 </th>
 <th>
 <input type="button" value="try query" onclick=" var form = $('#make_query').attr('action', '[%c.uri_for('test_query') %] '); $('<input>').attr({ type: 'hidden', name: 'count', value: condition }).appendTo(form); form.submit()" />
@@ -164,7 +166,19 @@ Query Name: <input name="query_name" value="Query Name" />
 	</table>
 
 [% END %]
-
+</div>
+<div id="right" style="float:right; width:40%">
+<h1>Reports</h1>
+<table>
+	[% FOREACH report IN reports %]
+		<tr bgcolor="8349AC"><th> </th> <th></th></tr>
+		<tr> <th> Name: </th> <th> [% report.name %] </th></tr>
+		<tr> <th> Query: </th> <th> <a href="[%c.uri_for('show_query') %]/[%report.id%]" >Show Query Result</a> </th></tr>
+		<tr> <th> Datum: </th> <th> [% report.datum %] </th></tr>
+		<tr> <th> Show Columns: </th> <th> [% report.cols %] </th></tr>
+	[% END %]
+</table> 
+</div>
 </div>
 [% PROCESS footer.tt %]
 

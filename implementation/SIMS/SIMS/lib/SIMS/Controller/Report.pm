@@ -2,6 +2,7 @@ package SIMS::Controller::Report;
 use Moose;
 use namespace::autoclean;
 use Data::Dumper;
+use JSON;
 use Try::Tiny;
 BEGIN {extends 'Catalyst::Controller'; }
 
@@ -30,7 +31,12 @@ sub base : Chained('/') PathPart('report') CaptureArgs(0) {
     $c->response->redirect( $c->uri_for('/unauthorized') )
       unless ( grep /(g_admin)/, @roles );
 
+	my @reports =  $c->model('DB::Report')->all();
+
+	$c->stash->{reports} = \@reports;
+
 	$c->stash->{datums} = _get_datums($c) unless $c->stash->{datums};
+	$c->stash->{eval_arr} = sub { my $foo = decode_json( $_ ); return join( ',', @$foo) };
 }
 
 
@@ -47,13 +53,18 @@ sub add_query : Chained('base') : PathPart('add_query') : Args(0) {
 		try{
 
 			my $query = _generate_query($c);
+			my $e_query = encode_json $query;
+			my @cols = $c->req->param('columns');
+			my $e_cols = encode_json \@cols;
 			my $report = $c->model('DB::Report')->create(
 			{
 				name => $c->req->param('query_name'),
-				query => Dumper ($query)
+				query => $e_query,
+				datum => $c->req->param('datum'),
+				cols => $e_cols
 			}
 			);
-			$c->stash(message => "Created ".$report->id() );	
+			$c->response->redirect( $c->uri_for('/report') );
 		}
 		catch
 		{
@@ -67,6 +78,27 @@ sub add_query : Chained('base') : PathPart('add_query') : Args(0) {
 
 }
 
+sub show_query : Chained('base') : PathPart('show_query') : Args(1) {
+	my ( $self, $c, $id ) = @_;
+
+	try{
+		 	my $report = $c->model('DB::Report')->find( $id );
+			my $datum = $report->datum();
+			my $cols = decode_json $report->cols();
+			my $query = decode_json $report->query();	
+
+			my @results = $c->model( $datum )->search($query);
+		
+			_show_records( $c, \@results, $cols);
+	}
+	catch	
+	{
+			$c->stash( message => "Problem $_");
+	};
+
+	$c->stash(template => 'report/index.tt' );
+}
+
 sub test_query : Chained('base') : PathPart('test_query') : Args(0) {
 	my ( $self, $c ) = @_;
 
@@ -77,30 +109,12 @@ sub test_query : Chained('base') : PathPart('test_query') : Args(0) {
 		try{
 
 			my $query = _generate_query($c);
-			my @cols = $c->req->param('columns'); 
+			my @columns = $c->req->param('columns'); 
 			$c->log->debug( $c->req->param('datum'). " and ". Dumper ($query )) ;
-			my @foo = $c->model($c->req->param('datum'))->search( $query );
-
-			my @records; 
-			foreach(@foo )
-			{
-				my $res = $_;
-				my @record; 
-
-				$res->id();
-			
-				
-				foreach( @cols)
-				{
-					push @record, ( $res->{_column_data}->{$_});
-				}
-
-					push @records, \@record; 
-
-			}
-
-			$c->stash( result_col => \@cols); 
-			$c->stash( result_record => \@records );
+			my @results = $c->model($c->req->param('datum'))->search( $query );
+			my $cols = \@columns;
+			my $datum_search = \@results;
+			_show_records( $c, $datum_search, $cols );
 		}
 		catch
 		{
@@ -110,6 +124,32 @@ sub test_query : Chained('base') : PathPart('test_query') : Args(0) {
 	}
 	$c->stash(template => 'report/index.tt' );
 
+}
+
+sub _show_records
+{
+	my ($c, $datum_search, $cols) = @_;
+
+			my @records; 
+			foreach( @$datum_search )
+			{
+				my $res = $_;
+				my @record; 
+
+				$res->id();
+			
+				
+				foreach( @$cols)
+				{
+					push @record, ( $res->{_column_data}->{$_});
+				}
+
+					push @records, \@record; 
+
+			}
+
+			$c->stash( result_col => $cols); 
+			$c->stash( result_record => \@records );
 }
 
 sub _prepare_columns
@@ -143,7 +183,7 @@ sub _generate_query
 				my $cur_col = $c->req->{parameters}->{"column_$_"};
 				my $cur_query = { $c->req->{parameters}->{"condition_$_"} =>  $c->req->{parameters}->{"text_$_"} };
 				my $cur_op = $c->req->{parameters}->{"op_$_"};
-				if( $cur_op =~ /and|or/ )
+				if( $cur_op && $cur_op =~ /and|or/ )
 				{
 					$query = {"-$cur_op" =>  [$prev_query , {$cur_col  => $cur_query}] }
 

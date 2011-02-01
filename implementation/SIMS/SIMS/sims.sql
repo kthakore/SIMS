@@ -149,7 +149,9 @@ CREATE TABLE MeetingComments (
 CREATE TABLE Report (
 		id INTEGER PRIMARY KEY,
 		name TEXT,
-		query TEXT
+		query TEXT,
+		datum TEXT,
+		cols TEXT
 	);
 
 ---

@@ -81,5 +81,6 @@
 <span style="float: right" />
 [% PROCESS navigation.tt %]
 </span>
+<div id="header-bottom" > </div>
 </div>
 

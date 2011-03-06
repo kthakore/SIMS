@@ -1,0 +1,15 @@
+ [% pdf.prFont('Helvetica-Bold') %]
+ [% pdf.prFontSize(20) %]
+ [% pdf.prText(100,1010,'Meeting Report') %]
+ [% pdf.prFont('Helvetica') %]
+ [% pdf.prFontSize(10) %]
+ [% pdf.prText(100,1020,'Meeting Description') %]
+
+         [% y = 500 %]
+        [% FOREACH item IN advisors %]
+          [% pdf.prText(100,y,'test') %]
+          [% y = y - 13 %]
+        [% END %]
+
+
+ [% pdf.prEnd() %]

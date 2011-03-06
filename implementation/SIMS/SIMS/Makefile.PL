@@ -35,6 +35,7 @@ requires 'DateTime::Format::DateParse';
 requires 'Catalyst::View::TT';
 requires 'FCGI';
 requires 'FCGI::ProcManager';
+requires 'Catalyst::Helper::View::PDF::Reuse';
 requires
   'Config::General';  # This should reflect the config file format you've chosen
 

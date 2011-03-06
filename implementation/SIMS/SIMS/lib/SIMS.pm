@@ -54,6 +54,11 @@ __PACKAGE__->config->{'Plugin::Authentication'} = {
     },
 };
 
+# Configure the PDF::Reuse 
+__PACKAGE__->config('View::PDF::Reuse' => { 
+	INCLUDE_PATH => __PACKAGE__->path_to('root', 'templates') 
+});
+
 # Start the application
 __PACKAGE__->setup();
 

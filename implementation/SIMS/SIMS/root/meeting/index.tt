@@ -35,6 +35,7 @@ function edit_comment( id, comment_input, submit_input)
 
 <h1>Update Meeting Settings </h1>
 <h3><a href="[% c.uri_for('/meeting') %]/[% meeting.id %]/cancel" > Cancel Meeting </a></h3>
+<h4><a href="[% c.uri_for('/meeting') %]/[% meeting.id %]/pdf" > Print PDF Copy of Meeting </a></h4>
 <form method="post" action="[%c.uri_for('/meeting/') %][% meeting.id %]/update" >
 <label>Meeting Date</label>
 <input type="text" name="meeting_date" class="datetimeinput" value="[% meeting.datetime.mdy('/') %] [% meeting.datetime.hms() %]"><br />

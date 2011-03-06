@@ -75,6 +75,14 @@ sub base : Chained('/') PathPart('meeting') CaptureArgs(1) {
 
 }
 
+sub pdf : Chained('base') :PathPart('pdf') :Args(0) {
+	my( $self, $c ) = @_;
+
+	$c->stash->{pdf_template} = 'hello_pdf.tt';
+	$c->forward('View::PDF::Reuse');
+
+}
+
 sub cancel : Chained('base') :PathPart('cancel') :Args(0) {
 	my( $self, $c ) = @_;
 

@@ -1,15 +1,10 @@
  [% pdf.prFont('Helvetica-Bold') %]
  [% pdf.prFontSize(20) %]
- [% pdf.prText(100,1010,'Meeting Report') %]
- [% pdf.prFont('Helvetica') %]
- [% pdf.prFontSize(10) %]
- [% pdf.prText(100,1020,'Meeting Description') %]
-
-         [% y = 500 %]
-        [% FOREACH item IN advisors %]
-          [% pdf.prText(100,y,'test') %]
-          [% y = y - 13 %]
-        [% END %]
-
+ [% img = pdf.prJpeg(student_sign_jpeg, 200, 50) %]
+ [% str = "q\n200 0 0 50 10 10 cm\n/" %]
+ [% str2 = str _ img %]
+ [% str3 = " Do\nQ\n" %]
+ [% final = str2 _ str3 %]
+ [%  pdf.prAdd(final) %]
 
  [% pdf.prEnd() %]

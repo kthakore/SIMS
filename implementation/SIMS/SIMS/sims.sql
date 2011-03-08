@@ -1,8 +1,15 @@
 
+CREATE TABLE User (
+        id       INTEGER PRIMARY KEY,
+        username TEXT NOT NULL UNIQUE,
+        password  TEXT NOT NULL,
+        email_address TEXT NOT NULL UNIQUE 
+        );
+
 CREATE TABLE Student (
 
 		id INTEGER PRIMARY KEY,
-		user_id INTEGER REFERENCES User,
+		user_id INTEGER REFERENCES User(id),
 		name TEXT,
 		type TEXT,
 		address TEXT,
@@ -19,7 +26,7 @@ CREATE TABLE Student (
 CREATE TABLE Supervisor (
 
 		id INTEGER PRIMARY KEY,
-		user_id INTEGER REFERENCES User,
+		user_id INTEGER REFERENCES User(id),
 		name TEXT,
 		speedCode TEXT
 
@@ -52,52 +59,39 @@ CREATE TABLE Term (
 CREATE TABLE Event (
 
 		id INTEGER PRIMARY KEY,
-		ref_id INT NULL UNIQUE,
+		ref_id INT NOT NULL UNIQUE,
 		refers_to TEXT, 
 		type TEXT,
 		timestamp DATETIME NOT NULL,
 		description TEXT
 	);
 
---
---  Sample Events
---
-
-INSERT INTO "Event" VALUES ( 0, 1, "Student", "Added", datetime('now'), "Added new student." );
-
 CREATE TABLE TermFunding (
-		term_id INTEGER REFERENCES Term,
-		fund_id INTEGER REFERENCES Fund,
+		term_id INTEGER REFERENCES Term(id),
+		fund_id INTEGER REFERENCES Fund(id),
 		PRIMARY KEY(term_id, fund_id)
 		);
 
 
 CREATE TABLE TermStudent (
-		term_id INTEGER REFERENCES Term,
-		student_id INTEGER REFERENCES Student,
+		term_id INTEGER REFERENCES Term(id),
+		student_id INTEGER REFERENCES Student(id),
 		PRIMARY KEY(term_id, student_id)
 		);
 
 CREATE TABLE PlanStudent (
-		plan_id INTEGER REFERENCES PLAN,
-		student_id INTEGER REFERENCES Student,
+		plan_id INTEGER REFERENCES Plan(id),
+		student_id INTEGER REFERENCES Student(id),
 		PRIMARY KEY( plan_id, student_id)
 	
 		);
 
 CREATE TABLE StudentSupervisor (
 
-		student_id INTEGER REFERENCES Student,
-		supervisor_id INTEGER REFERENCES Supervisor,
+		student_id INTEGER REFERENCES Student(id),
+		supervisor_id INTEGER REFERENCES Supervisor(id),
 		PRIMARY KEY( student_id, supervisor_id)
 		);
-
-CREATE TABLE User (
-        id       INTEGER PRIMARY KEY,
-        username TEXT NOT NULL UNIQUE,
-        password  TEXT NOT NULL,
-        email_address TEXT NOT NULL UNIQUE 
-        );
 
 CREATE TABLE Role (
 		id   INTEGER PRIMARY KEY,
@@ -106,14 +100,14 @@ CREATE TABLE Role (
 		);
 
 CREATE TABLE UserRole (
-		user_id INTEGER REFERENCES User,
-		role_id INTEGER REFERENCES Role,
+		user_id INTEGER REFERENCES User(id),
+		role_id INTEGER REFERENCES Role(id),
 		PRIMARY KEY (user_id, role_id)
 		);
 
 CREATE TABLE Meeting (
 		id INTEGER PRIMARY KEY,
-		student_id INTEGER REFERENCES Student,
+		student_id INTEGER REFERENCES Student(id),
 		datetime DATETIME,
 		description TEXT,
 		status TEXT,
@@ -123,14 +117,6 @@ CREATE TABLE Meeting (
 		locked INTEGER 
 	);
 
-CREATE TABLE MeetingAdvisor (
-		meeting_id INTEGER REFERENCES Meeting,
-		advisor_id INTEGER REFERENCES User,
-		signature TEXT,
-		confirmation INTEGER REFERENCES MeetingConfirmation,
-		PRIMARY KEY( meeting_id, advisor_id)
-	);
-
 CREATE TABLE MeetingConfirmation (
 		id INTEGER PRIMARY KEY,
 		key TEXT,
@@ -138,10 +124,18 @@ CREATE TABLE MeetingConfirmation (
 		details TEXT
 	);
 
+CREATE TABLE MeetingAdvisor (
+		meeting_id INTEGER REFERENCES Meeting(id),
+		advisor_id INTEGER REFERENCES User(id),
+		signature TEXT,
+		confirmation INTEGER REFERENCES MeetingConfirmation(id),
+		PRIMARY KEY( meeting_id, advisor_id)
+	);
+
 CREATE TABLE MeetingComments (
 		id INTEGER PRIMARY KEY,
-		meeting_id INTEGER REFERENCES Meeting,
-		commenter_id INTEGER REFERENCES User,
+		meeting_id INTEGER REFERENCES Meeting(id),
+		commenter_id INTEGER REFERENCES User(id),
 		comment TEXT,
 		type TEXT
 	);
@@ -153,39 +147,4 @@ CREATE TABLE Report (
 		datum TEXT,
 		cols TEXT
 	);
-
----
---- Initial Role Data
----
-
-    INSERT INTO User VALUES (1, 'user', 'mypass', 'user@mailinator.com');
-    INSERT INTO User VALUES (2, 'gradadmin', 'mypass', 'gradadmin@mailinator.com');
-    INSERT INTO User VALUES (3, 'gradexec', 'mypass', 'gradexec@mailinator.com');
-    INSERT INTO User VALUES (4, 'student', 'mypass', 'student@mailinator.com');
-    INSERT INTO User VALUES (5, 'techadmin', 'mypass', 'techadmin5@mailinator.com');
-    INSERT INTO User VALUES (6, 'advcom', 'mypass', 'adv@mailinator.com');
- 
-    INSERT INTO Role VALUES (0, 'user', 'user');
-    INSERT INTO Role VALUES (1, 'g_admin', 'graduateadmin');
-    INSERT INTO Role VALUES (2, 'g_exec', 'graduateexec');
-    INSERT INTO Role VALUES (3, 'student','student');
-    INSERT INTO Role VALUES (4, 't_admin', 'techadmin');
-    INSERT INTO Role VALUES (5, 'adv_com', 'advcommmember');
-
-    INSERT INTO UserRole VALUES (1, 0);
-    INSERT INTO UserRole VALUES (2, 1);
-    INSERT INTO UserRole VALUES (3, 2);
-    INSERT INTO UserRole VALUES (4, 3);
-    INSERT INTO UserRole VALUES (5, 4);
-    INSERT INTO UserRole VALUES (6, 5);
-
----
---- Initial Student Data
----
-
-	INSERT INTO "Student" VALUES ("1", "4", "Kartik Thakore","New Student","123 Numbers blvd","--","London","ON","L2T2W1","123456789","123@email.com","MSC");
-
----
---- Initial Meeting Data
----
 

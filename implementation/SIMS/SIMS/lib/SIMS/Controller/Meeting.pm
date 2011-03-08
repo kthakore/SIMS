@@ -83,13 +83,9 @@ sub base : Chained('/') PathPart('meeting') CaptureArgs(1) {
 sub pdf : Chained('base') : PathPart('pdf') : Args(0) {
     my ( $self, $c ) = @_;
 
-    if ( $c->stash->{meeting}->student_sign() ) {
-
-       my  $uri_img = _create_jpeg_sign( $c->stash->{meeting}->student_sign() );
-        $c->stash->{student_sign_jpeg} = $uri_img;
-        $c->log->debug( "Made " . $uri_img );
-
-    }
+    my $uri_img = _create_jpeg_sign( $c->stash->{meeting}->student_sign() );
+    $c->stash->{student_sign_jpeg} = $uri_img;
+    $c->log->debug( "Made " . $uri_img );
     $c->stash->{pdf_template} = 'hello_pdf.tt';
     $c->forward('View::PDF::Reuse');
 
@@ -373,11 +369,11 @@ sub index : Chained('base') : PathPart('') : Args(0) {
 }
 
 sub _create_jpeg_sign {
-    my $json_string = shift;
+    my $json_string = shift || '[{"lx":0,"ly":10,"mx":200,"my":10}]';
     my $videodriver = $ENV{SDL_VIDEODRIVER};
     $ENV{SDL_VIDEODRIVER} = 'dummy' unless $ENV{SDL_RELEASE_TESTING};
 
-    my $app = SDLx::App->new( width => 200, height => 50 );
+    my $app = SDLx::App->new( width => 200, height => 50, init => SDL_INIT_VIDEO);
     $app->draw_rect( [ 0, 0, $app->w, $app->h ], 0xFFFFFFFF );
     my $sign = decode_json($json_string);
 
@@ -406,7 +402,7 @@ sub _create_jpeg_sign {
         delete $ENV{SDL_VIDEODRIVER};
     }
 
-    return abs_path($dir. $rand_pic . '.jpg');
+    return abs_path( $dir . $rand_pic . '.jpg' );
 
 }
 

@@ -14,16 +14,6 @@ __PACKAGE__->config( namespace => '' );
 
 SIMS::Controller::Root - Root Controller for SIMS
 
-=head1 DESCRIPTION
-
-[enter your description here]
-
-=head1 METHODS
-
-=head2 index
-
-The root page (/)
-
 =cut
 
 sub index : Path : Args(0) {

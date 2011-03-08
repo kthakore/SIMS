@@ -2,9 +2,16 @@
 -- Created by SQL::Translator::Producer::PostgreSQL
 -- Created on Mon Mar  7 23:28:38 2011
 -- 
+
+CREATE TABLE "DBHealthCheck" (
+  "id" serial,
+);
+
+
 --
 -- Table: User
 --
+
 CREATE TABLE "User" (
   "id" serial,
   "username" text NOT NULL,
@@ -12,6 +19,7 @@ CREATE TABLE "User" (
   "email_address" text NOT NULL,
   PRIMARY KEY ("id")
 );
+
 
 --
 -- Table: Student
@@ -39,7 +47,7 @@ CREATE TABLE "Supervisor" (
   "id" serial,
   "user_id" integer,
   "name" text,
-  "speedCode" text,
+  "speedcode" text,
   PRIMARY KEY ("id")
 );
 
@@ -69,7 +77,7 @@ CREATE TABLE "Fund" (
 --
 CREATE TABLE "Term" (
   "id" serial,
-  "termDate" date,
+  "termdate" date,
   "length" numeric,
   PRIMARY KEY ("id")
 );

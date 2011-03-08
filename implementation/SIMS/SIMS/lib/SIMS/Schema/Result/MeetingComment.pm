@@ -26,6 +26,7 @@ __PACKAGE__->table("MeetingComments");
 =head2 id
 
   data_type: 'integer'
+  default_value: nextval('"MeetingComments_id_seq"'::regclass)
   is_nullable: 0
 
 =head2 meeting_id
@@ -54,7 +55,11 @@ __PACKAGE__->table("MeetingComments");
 
 __PACKAGE__->add_columns(
   "id",
-  { data_type => "integer", is_nullable => 0 },
+  {
+    data_type     => "integer",
+    default_value => \"nextval('\"MeetingComments_id_seq\"'::regclass)",
+    is_nullable   => 0,
+  },
   "meeting_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "commenter_id",
@@ -109,8 +114,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-03-07 23:32:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:411xKMsDdUoReVMPTJmahQ
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-03-08 01:01:26
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gdmJ0dQV9kUZY0X0UJJ/ZA
 # These lines were loaded from '/home/kthakore/.perl5/perls/perl-5.12.2/lib/site_perl/5.12.2/SIMS/Schema/Result/MeetingComment.pm' found in @INC.
 # They are now part of the custom portion of this file
 # for you to hand-edit.  If you do not either delete

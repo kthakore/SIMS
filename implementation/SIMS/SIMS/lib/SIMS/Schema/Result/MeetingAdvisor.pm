@@ -113,8 +113,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-03-07 23:32:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3uoEcERB6uyFrAVLrb6xZw
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-03-08 01:01:26
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Iyui1VMq31pm4z5B6p4ZFg
 # These lines were loaded from '/home/kthakore/.perl5/perls/perl-5.12.2/lib/site_perl/5.12.2/SIMS/Schema/Result/MeetingAdvisor.pm' found in @INC.
 # They are now part of the custom portion of this file
 # for you to hand-edit.  If you do not either delete

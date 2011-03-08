@@ -26,6 +26,7 @@ __PACKAGE__->table("Meeting");
 =head2 id
 
   data_type: 'integer'
+  default_value: nextval('"Meeting_id_seq"'::regclass)
   is_nullable: 0
 
 =head2 student_id
@@ -73,7 +74,11 @@ __PACKAGE__->table("Meeting");
 
 __PACKAGE__->add_columns(
   "id",
-  { data_type => "integer", is_nullable => 0 },
+  {
+    data_type     => "integer",
+    default_value => \"nextval('\"Meeting_id_seq\"'::regclass)",
+    is_nullable   => 0,
+  },
   "student_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "datetime",
@@ -146,8 +151,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-03-07 23:32:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CzG9lGJ8hcwWJEWyWNtd9Q
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2011-03-08 01:01:26
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:IFjT/ssQ99dkwW/RHtTGLw
 # These lines were loaded from '/home/kthakore/.perl5/perls/perl-5.12.2/lib/site_perl/5.12.2/SIMS/Schema/Result/Meeting.pm' found in @INC.
 # They are now part of the custom portion of this file
 # for you to hand-edit.  If you do not either delete

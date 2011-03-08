@@ -142,6 +142,7 @@ sub assign_advisor : Chained('base') : PartPart('assign_advisor') : Args(1) {
         }
 
         # Make a confirmation and send an email
+        $c->response->redirect( $c->uri_for('/')."meeting/".$c->stash->{meeting}->id() )
 
     }
     catch {

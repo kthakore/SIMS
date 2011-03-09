@@ -18,7 +18,7 @@ requires 'Catalyst::Plugin::Authentication';
 requires 'Catalyst::Plugin::Authorization::Roles';
 requires 'Catalyst::Plugin::StackTrace';
 requires 'Catalyst::Plugin::Session';
-requires 'Catalyst::Plugin::Session::Store::File';
+requires 'Catalyst::Plugin::Session::Store::Memcached';
 requires 'Catalyst::Plugin::Session::State::Cookie';
 requires 'Catalyst::Authentication::Store::DBIx::Class';
 requires 'DBIx::Class::TimeStamp';

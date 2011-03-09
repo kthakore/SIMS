@@ -15,11 +15,10 @@ use Catalyst::Runtime 5.80;
 use Catalyst qw/
   ConfigLoader
   Static::Simple
-  StackTrace
   Authentication
   Authorization::Roles
   Session
-  Session::Store::File
+  Session::Store::Memcached
   Session::State::Cookie
   /;
 
@@ -39,7 +38,7 @@ $VERSION = eval $VERSION;
 
 __PACKAGE__->config(
     name => 'SIMS',
-
+	default_view => 'TT',
     # Disable deprecated behavior needed by old applications
     disable_component_resolution_regex_fallback => 1,
 );

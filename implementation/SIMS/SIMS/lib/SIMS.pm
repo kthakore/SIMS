@@ -13,14 +13,13 @@ use Catalyst::Runtime 5.80;
 #                 directory
 
 use Catalyst qw/
-  -Debug
   ConfigLoader
   Static::Simple
   StackTrace
   Authentication
   Authorization::Roles
   Session
-  Session::Store::FastMmap
+  Session::Store::File
   Session::State::Cookie
   /;
 

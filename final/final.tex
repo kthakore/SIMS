@@ -43,19 +43,9 @@ with a possibility to expand to other faculties at Western. Overall, we are very
 initiative and are looking forward to enhance the graduate student experience within various
 faculties at Western.
 \Keywords{ SSL, Perl, REST, HTTP, Services, Education, ERP, Modular, Flexible}
-\end{abstract}\newpage
+\end{abstract}
 
-\tableofcontents 
-
-\newpage 
-
-\listoffigures
-
-\newpage
-
-\listoftables
-
-\newpage 
+\tableofcontents
 
 \section{Introduction}
 The SIMS core is a secure application that aims to be flexible to handle business rules of varying graduate
@@ -229,7 +219,7 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 \item Response Sequence: In order to access the login page, user will have to type the system URL in a supported browser, which will direct them to this log in page. 
 \item Associated Functional Requirements: 
 \begin {itemize} 
-\item Introduction widget: This widget will provide a short introduction to the purpose of the management system. It will also feature an Important Links section with a link to the website of The Department of Medical BioPhysics. Furthermore, a link to a technical troubleshooting page will be created.
+\item Introduction widget: This widget will provide a short introduction to the purpose of the management system. It will also feature an Important Links section with a link to the website of The Department of Medical Biophysics. Furthermore, a link to a technical troubleshooting page will be created.
 \item Login window: This is the actual login page where the user will enter their credentials to login. Users cannot sign up for the system individually. The Graduate Administrator facilitates the sign up process and a direct link to request the login credentials will be set up.
 \end{itemize}
 \end{itemize}
@@ -275,7 +265,7 @@ SIMS will acquire signatures from client side wacom tablets from a USB 2.0 proto
 \item Associated Functional Requirements:
 \begin{itemize}
 \item Information Tab Section: The profile page will feature information tabs with centralized information about their Personal Information, Program Information, Supervisor Information and Advisory Committee Meeting Information. 
-\item Supervisor Information: This tab contains information regarding a students' direct Supervisor Name and information about the supervisors minimum student contribution along with other logistical information. This information is created with the sample medical biophysics excel sheet provided by the Graduate Administrator user at the Department of Medical BioPhysics.	
+\item Supervisor Information: This tab contains information regarding a students' direct Supervisor Name and information about the supervisors minimum student contribution along with other logistical information. This information is created with the sample Medical Biophysics excel sheet provided by the Graduate Administrator user at the Department of Medical Biophysics.	
 
 \item Expansion: Each section can be clicked on to show summary of additional information
 \item Link:  Each information tab will link to another section pages (if applicable)
@@ -424,7 +414,7 @@ Figure \ref{fig:Dashboard} defines the use cases on the Dashboard features for e
 \label{fig:UserAdmin}
 \end{figure}
 
-Figure \ref{fig:UserAdmin} defines te use cases to do user administrator. 
+Figure \ref{fig:UserAdmin} defines the use cases to do user administrator. 
 
 \subsubsection{Student Data Access}
 \begin{figure}[htp]
@@ -520,270 +510,57 @@ Finally for the preliminary requirements of report generation a PDF generator pl
 \subsection{User Interface}
 Since most of the system will be accessed through the web browser a feasible technology that can be used is Javascript/HTML.  
 
-\section{Implementation}
-Based on the design decisions taken the following implementation was carried out. 
+\subsection{Class Design}
 
-\subsection{Server Setup}
+Classes are seperated in 3 categories: Model, View, and Controller. Classes can be initiated as runtime instances as needed by a request. 
 
-\begin{tabular}{| l | l |}
+\begin{tabular}{| l | p{7cm} |}
 \hline
-Server & Implementation \\
+ Class                                                           & Purpose and URL \\
 \hline
-SSL/HTTP & Nginx \\
-Application & Catalyst Framework \& Starman/PSGI \\
-Database & PostgreSQL \\
-Cache & Memcached \\
-\hline 
-
+\hline
+ SIMS::Controller::AdvCommMember                                 &  Handles specific urls (actions) for advisory committee members. (\verb+\advcommember+) \\ \hline
+ SIMS::Controller::Faculty                                       &  Handles specific urls for all faculty members. (\verb+\faculty+) \\ \hline
+ SIMS::Controller::GraduateAdmin                                 &  Handles specific urls for the graduate admin (\verb+\gradadmin+) \\ \hline
+ SIMS::Controller::GraduateExec                                  &  Handles specific urls for the graduate executive user (\verb+\gradeexec+) \\ \hline
+ SIMS::Controller::Helper                                        &  A helper class for sending email confirmation and other static methods \\ \hline
+ SIMS::Controller::Login                                         &  Handles the login form (\verb+\login+) \\ \hline
+ SIMS::Controller::Logout                                        &  Handles user session destruction (\verb+\logout+) \\ \hline
+ SIMS::Controller::Meeting                                       &  Handles meeting urls for authorized users (\verb+\meeting+) \\ \hline
+ SIMS::Controller::Report                                        &  Handles report generation for grad admin (\verb+\report+) \\ \hline
+ SIMS::Controller::Root                                          &  The base class that checks for user sessions on and provides the user dashboard feature (\verb+\+) \\ \hline
+ SIMS::Controller::Student                                       &  Handles specific urls for the student user (\verb+\student+) \\ \hline
+ SIMS::Controller::TechAdmin                                     &  Handles sepcific urls for the technical admin user (\verb+\techadmin+) \\ \hline
+ SIMS::Model::DB                                                 &  Connects to the database server \\ \hline
+ SIMS::Model::DB::Event                                          &  Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::Fund                                           & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::Meeting                                        & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::MeetingAdvisor                                 & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::MeetingComment                                 & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::MeetingConfirmation                            & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::Plan                                           & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::PlanStudent                                    & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::Report                                         & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::Role                                           & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::Student                                        & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::StudentSupervisor                              & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::Supervisor                                     & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::Term                                           & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::TermFunding                                    & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::TermStudent                                    & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::User                                           & Model abstraction for respective table\\ \hline
+ SIMS::Model::DB::UserRole                                       & Model abstraction for respective table\\ \hline
+ SIMS::View::PDF::Reuse                                          & Generates PDF forms\\ \hline
+ SIMS::View::TT                                                  & Convert stash data and template to HTML and JS\\ \hline
+\hline
 \end{tabular}
 
-
-\subsubsection{Nginx Implementation}
-Nginx was selected because it meets the design issues discussed about. The following is the truncated configuration implementation:
-
-\begin{verbatim}
-
-...
-
-http {
-	...
-	server {
-		listen 80;
-		server_name doodles.ath.cx;
-			location / { #force ssl communications 
-				   rewrite ^/(.*)$ https://doodles.ath.cx/$1 permanent;
-				   }
-			}
-
-	server {
-		listen        443 default ssl;
-		server_name   doodles.ath.cx;
-		gzip on;
-		ssl on;
-		ssl_certificate /etc/nginx/conf/myssl.crt;
-		ssl_certificate_key /etc/nginx/conf/myssl.key;
-
-	location / {
-		proxy_set_header Host $http_host;
-		proxy_set_header X-Forwarded-Host $http_host;
-		proxy_set_header X-Real-IP $remote_addr;
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-		proxy_set_header X-Forwarded-Port 443; #this is important for Catalyst Apps!
-		proxy_pass http://localhost:5000; 
-		}	
-
-	}
-}
-
-\end{verbatim}
-
-Nginx handles mutilple worker connections and accepts mutiple requests. Additionally with this configuration it forces http communication on the 443 port with a self generated ssl certificate for now. This ssl certificate will 
-be the thwate cert after accpetance from ITS \cite{ITS}. Additionally the Nginx server will force a proxy header to the application server via \verb http://localhost:5000. Where the application server is running. This implementation seperates
-the Nginx from the application server. If this proxy header is missing the application server will not process any requests. 
-
-\subsubsection{Application Implementation}
-The Catalyst implementation is a REST framework which runs as a single process per thread. However by using a PSGI/Starman server stack multiple process can be sustained and synchronized. 
-The following is the configuration employed to start a reverse proxy enabled application.
-
-\begin{verbatim}
-#!/usr/bin/env perl
-use strict;
-use warnings;
-
-use Plack::Builder;
-use SIMS;
-
-SIMS->setup_engine('PSGI');
-my $app = sub { SIMS->run(@_) };
-
-builder {
- enable_if { $_[0]->{REMOTE_ADDR} eq '127.0.0.1' }
-        "Plack::Middleware::ReverseProxy";
- $app;
-};
-\end{verbatim}
-
-This psgi script tells the application to be built in a proxy environment and to run the SIMS application. 
-
-\subsection{PostgreSQL, Memcache and PDF views}
-
-The SIMS application directly configured to use other components through a plugin interface and
-package configurations.
-
-\begin{verbatim}
-pacakge SIMS;
-...
-use Catalyst qw/
-  ConfigLoader
-  Static::Simple
-  Authentication
-  Authorization::Roles
-  Session
-  Session::Store::Memcached
-  Session::State::Cookie
-  /;
-...
-
-# Configure the PDF::Reuse 
-__PACKAGE__->config('View::PDF::Reuse' => { 
-	INCLUDE_PATH => __PACKAGE__->path_to('root', 'templates') 
-});
-...
-\end{verbatim}
-
-The \verb SIMS::Model::DB 
-class describes the database connection.
-
-\begin{verbatim}
-package SIMS::Model::DB;
-
-use strict;
-use base 'Catalyst::Model::DBIC::Schema';
-
-__PACKAGE__->config(
-    schema_class => 'SIMS::Schema',
-    
-    connect_info => {
-        dsn => 'dbi:Pg:dbname=SIMS;host=127.0.0.1;',
-        user => 'SIMS',
-        password => 'SIMS',
-        quote_char => q{"},
-    }
-);
-
-\end{verbatim}
-
-With this relatively simple setup the configuration for the server is prepared.
-
-\subsection{Classes}
-\begin{verbatim}
-.-----------------------------------------------------------------+----------.
-| Class                                                           | Type     |
-+-----------------------------------------------------------------+----------+
-| SIMS::Controller::AdvCommMember                                 | instance |
-| SIMS::Controller::Faculty                                       | instance |
-| SIMS::Controller::GraduateAdmin                                 | instance |
-| SIMS::Controller::GraduateExec                                  | instance |
-| SIMS::Controller::Helper                                        | class    |
-| SIMS::Controller::Login                                         | instance |
-| SIMS::Controller::Logout                                        | instance |
-| SIMS::Controller::Meeting                                       | instance |
-| SIMS::Controller::Report                                        | instance |
-| SIMS::Controller::Root                                          | instance |
-| SIMS::Controller::Student                                       | instance |
-| SIMS::Controller::TechAdmin                                     | instance |
-| SIMS::Model::DB                                                 | instance |
-| SIMS::Model::DB::Event                                          | class    |
-| SIMS::Model::DB::Fund                                           | class    |
-| SIMS::Model::DB::Meeting                                        | class    |
-| SIMS::Model::DB::MeetingAdvisor                                 | class    |
-| SIMS::Model::DB::MeetingComment                                 | class    |
-| SIMS::Model::DB::MeetingConfirmation                            | class    |
-| SIMS::Model::DB::Plan                                           | class    |
-| SIMS::Model::DB::PlanStudent                                    | class    |
-| SIMS::Model::DB::Report                                         | class    |
-| SIMS::Model::DB::Role                                           | class    |
-| SIMS::Model::DB::Student                                        | class    |
-| SIMS::Model::DB::StudentSupervisor                              | class    |
-| SIMS::Model::DB::Supervisor                                     | class    |
-| SIMS::Model::DB::Term                                           | class    |
-| SIMS::Model::DB::TermFunding                                    | class    |
-| SIMS::Model::DB::TermStudent                                    | class    |
-| SIMS::Model::DB::User                                           | class    |
-| SIMS::Model::DB::UserRole                                       | class    |
-| SIMS::View::PDF::Reuse                                          | instance |
-| SIMS::View::TT                                                  | instance |
-'-----------------------------------------------------------------+----------'
-\end{verbatim}
-
-\subsection{Actions}
-
-\begin{verbatim}
-.----------------------+--------------------------------------+--------------.
-| Private              | Class                                | Method       |
-+----------------------+--------------------------------------+--------------+
-| /base                | SIMS::Controller::Root               | base         |
-| /unauthorized        | SIMS::Controller::Root               | unauthorized |
-| /default             | SIMS::Controller::Root               | default      |
-| /end                 | SIMS::Controller::Root               | end          |
-| /index               | SIMS::Controller::Root               | index        |
-| /auto                | SIMS::Controller::Root               | auto         |
-| /report/base         | SIMS::Controller::Report             | base         |
-| /report/show_query   | SIMS::Controller::Report             | show_query   |
-| /report/add_query    | SIMS::Controller::Report             | add_query    |
-| /report/index        | SIMS::Controller::Report             | index        |
-| /report/test_query   | SIMS::Controller::Report             | test_query   |
-| /techadmin/create    | SIMS::Controller::TechAdmin          | create       |
-| /techadmin/base      | SIMS::Controller::TechAdmin          | base         |
-| /techadmin/update_p- | SIMS::Controller::TechAdmin          | update_pass  |
-| ass                  |                                      |              |
-| /techadmin/index     | SIMS::Controller::TechAdmin          | index        |
-| /login/index         | SIMS::Controller::Login              | index        |
-| /faculty/base        | SIMS::Controller::Faculty            | base         |
-| /faculty/search_stu- | SIMS::Controller::Faculty            | search_stud- |
-| dent                 |                                      | ent          |
-| /faculty/view_stude- | SIMS::Controller::Faculty            | view_student |
-| nt                   |                                      |              |
-| /faculty/view_report | SIMS::Controller::Faculty            | view_report  |
-| /faculty/index       | SIMS::Controller::Faculty            | index        |
-| /advcommmember/adv_- | SIMS::Controller::AdvCommMember      | adv_meeting  |
-| meeting              |                                      |              |
-| /advcommmember/base  | SIMS::Controller::AdvCommMember      | base         |
-| /advcommmember/index | SIMS::Controller::AdvCommMember      | index        |
-| /meeting/advisor_si- | SIMS::Controller::Meeting            | advisor_sign |
-| gn                   |                                      |              |
-| /meeting/delete_com- | SIMS::Controller::Meeting            | delete_comm- |
-| ment                 |                                      | ent          |
-| /meeting/confirm     | SIMS::Controller::Meeting            | confirm      |
-| /meeting/edit_comme- | SIMS::Controller::Meeting            | edit_comment |
-| nt                   |                                      |              |
-| /meeting/add_comment | SIMS::Controller::Meeting            | add_comment  |
-| /meeting/base        | SIMS::Controller::Meeting            | base         |
-| /meeting/pdf         | SIMS::Controller::Meeting            | pdf          |
-| /meeting/student_si- | SIMS::Controller::Meeting            | student_sign |
-| gn                   |                                      |              |
-| /meeting/index       | SIMS::Controller::Meeting            | index        |
-| /meeting/advisor_un- | SIMS::Controller::Meeting            | advisor_uns- |
-| sign                 |                                      | ign          |
-| /meeting/cancel      | SIMS::Controller::Meeting            | cancel       |
-| /meeting/update      | SIMS::Controller::Meeting            | update       |
-| /meeting/assign_adv- | SIMS::Controller::Meeting            | assign_advi- |
-| isor                 |                                      | sor          |
-| /meeting/student_un- | SIMS::Controller::Meeting            | student_uns- |
-| sign                 |                                      | ign          |
-| /graduateadmin/edit- | SIMS::Controller::GraduateAdmin      | edit_student |
-| _student             |                                      |              |
-| /graduateadmin/base  | SIMS::Controller::GraduateAdmin      | base         |
-| /graduateadmin/add_- | SIMS::Controller::GraduateAdmin      | add_term     |
-| term                 |                                      |              |
-| /graduateadmin/add_- | SIMS::Controller::GraduateAdmin      | add_funding  |
-| funding              |                                      |              |
-| /graduateadmin/supe- | SIMS::Controller::GraduateAdmin      | supervisors  |
-| rvisors              |                                      |              |
-| /graduateadmin/edit- | SIMS::Controller::GraduateAdmin      | edit_superv- |
-| _supervisor          |                                      | isor         |
-| /graduateadmin/index | SIMS::Controller::GraduateAdmin      | index        |
-| /graduateadmin/assi- | SIMS::Controller::GraduateAdmin      | assign_supe- |
-| gn_supervisor        |                                      | rvisor       |
-| /graduateadmin/add_- | SIMS::Controller::GraduateAdmin      | add_plan     |
-| plan                 |                                      |              |
-| /student/base        | SIMS::Controller::Student            | base         |
-| /student/meeting_wi- | SIMS::Controller::Student            | meeting_wid- |
-| dget                 |                                      | get          |
-| /student/add_meeting | SIMS::Controller::Student            | add_meeting  |
-| /student/edit        | SIMS::Controller::Student            | edit         |
-| /student/index       | SIMS::Controller::Student            | index        |
-| /graduateexec/index  | SIMS::Controller::GraduateExec       | index        |
-| /logout/index        | SIMS::Controller::Logout             | index        |
-'----------------------+--------------------------------------+--------------'
-\end{verbatim}
-
-
-\subsubsection{Chained Action}
+\subsubsection{Actions}
+Each of the controller classes have chained actions that map to specific URL ( Path Spec ) types. 
 
 \begin{verbatim}
 .-------------------------------------+--------------------------------------.
-| Path Spec                           | Private                              |
+| Path Spec                           | Action                               |
 +-------------------------------------+--------------------------------------+
 | /advcommmember/meeting              | /advcommmember/base (0)              |
 |                                     | => /advcommmember/adv_meeting        |
@@ -868,60 +645,256 @@ With this relatively simple setup the configuration for the server is prepared.
 
 \end{verbatim}
 
-\subsection{Psuedo Code}
-blurb
-\subsection{Algorithms}
-blurb 
+\section{Implementation}
+Based on the design decisions taken the following implementation was carried out. 
+
+\subsection{Server Setup}
+
+\begin{tabular}{| l | l |}
+\hline
+Server & Implementation \\
+\hline
+SSL/HTTP & Nginx \\
+Application & Catalyst Framework and Starman/PSGI \\
+Database & PostgreSQL \\
+Cache & Memcached \\
+\hline 
+
+\end{tabular}
+
+
+\subsubsection{Nginx Implementation}
+Nginx was selected because it meets the design issues discussed about. The following is the truncated configuration implementation:
+
+\begin{verbatim}
+
+...
+
+http {
+	...
+	server {
+		listen 80;
+		server_name doodles.ath.cx;
+			location / { #force ssl communications 
+				   rewrite ^/(.*)$ https://doodles.ath.cx/$1 permanent;
+				   }
+			}
+
+	server {
+		listen        443 default ssl;
+		server_name   doodles.ath.cx;
+		gzip on;
+		ssl on;
+		ssl_certificate /etc/nginx/conf/myssl.crt;
+		ssl_certificate_key /etc/nginx/conf/myssl.key;
+
+	location / {
+		proxy_set_header Host $http_host;
+		proxy_set_header X-Forwarded-Host $http_host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Port 443; #this is important for Catalyst Apps!
+		proxy_pass http://localhost:5000; 
+		}	
+
+	}
+}
+
+\end{verbatim}
+
+Nginx handles mutilple worker connections and accepts mutiple requests. Additionally with this configuration it forces http communication on the 443 port with a self generated ssl certificate for now. This ssl certificate will 
+be the thwate cert after accpetance from ITS \cite{ITS}. Additionally the Nginx server will force a proxy header to the application server via \verb http://localhost:5000. Where the application server is running. This implementation seperates
+the Nginx from the application server. If this proxy header is missing the application server will not process any requests. 
+
+\subsubsection{Application Implementation}
+The Catalyst implementation is a REST framework which runs as a single process per thread. However by using a PSGI/Starman server stack multiple process can be sustained and synchronized. 
+The following is the configuration employed to start a reverse proxy enabled application.
+
+\begin{verbatim}
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+use Plack::Builder;
+use SIMS;
+
+SIMS->setup_engine('PSGI');
+my $app = sub { SIMS->run(@_) };
+
+builder {
+ enable_if { $_[0]->{REMOTE_ADDR} eq '127.0.0.1' }
+        "Plack::Middleware::ReverseProxy";
+ $app;
+};
+\end{verbatim}
+
+This psgi (high level server implementation language) script tells the application to be built in a proxy environment and to run the SIMS application. 
+
+\subsection{PostgreSQL, Memcache and PDF views}
+
+The SIMS application directly configured to use other components through a plugin interface and
+package configurations.
+
+\begin{verbatim}
+pacakge SIMS;
+...
+use Catalyst qw/
+  ConfigLoader
+  Static::Simple
+  Authentication
+  Authorization::Roles
+  Session
+  Session::Store::Memcached
+  Session::State::Cookie
+  /;
+...
+
+# Configure the PDF::Reuse 
+__PACKAGE__->config('View::PDF::Reuse' => { 
+	INCLUDE_PATH => __PACKAGE__->path_to('root', 'templates') 
+});
+...
+\end{verbatim}
+
+The \verb+SIMS::Model::DB+ class describes the database connection.
+
+\begin{verbatim}
+package SIMS::Model::DB;
+
+use strict;
+use base 'Catalyst::Model::DBIC::Schema';
+
+__PACKAGE__->config(
+    schema_class => 'SIMS::Schema',
+    
+    connect_info => {
+        dsn => 'dbi:Pg:dbname=SIMS;host=127.0.0.1;',
+        user => 'SIMS',
+        password => 'SIMS',
+        quote_char => q{"},
+    }
+);
+
+\end{verbatim}
+
+With this relatively simple setup the configuration for the server is prepared.
 \section{Test Plan}
+ 
+\subsection{Features to be tested}
 
-\subsection{Unit Tests}
+The major features to be tested are 
+\begin{itemize}
+\item Creating, Managing and Updating Meetings 
+\item Generating Reports 
+\item Manging update Student/Advisory Committee Member data 
+\item Email triggers 
+\end{itemize}
 
-\subsection{Integration Tests}
+\subsection{Features not to be tested}
 
+Currently system tests are not scheduled, as UWO ITS performs as a criteria for acceptance. 
 
-\section{Conclusions}
-blurb 
-\subsection{Recommendation}
-blurb 
+\subsection{Approach}
+The approach to testing is three tier. First unit tests are created and confirmed with \verb+Devel::Cover+ reports which check that each condition, and line of code are covered. Second 
+integration test cases are prepared such that regular tasks are used to link several units. Finally test scenarios are generated and given to a third party to test.
+
+\subsubsection{Unit Tests}
+Currently there are several simple unit test cases that check that each URL and class are responding to server requests. Catalyst provides a robust testing platform which has yet to be utilized \cite{CatTest}. 
+More requests and queries can be automated using \verb+Test::WWW::Mechanize::Catalyst+ to cover all needed branches and statements in the code according to \verb+Devel::Cover+ . By accessing each action in each
+Class (described in the Design Section), unit tests can be considered complete.  
+
+\subsubsection{Integration Tests}
+The SIMS application can have many integration combinations between components in this application, and covering all of them is unfeasible. Therefore integration tests will be prepared by working with Ms. Wendy Hough ( the graduate admin ) and making test scripts. 
+The focus will be on testing regular actions and sequences, which is acceptable due to the small list of features being done. 
+
+\subsubsection{Acceptance Tests}
+Finally a third party student or user (Student Tester)  will be given several tasks to perform on the system (such as create a meeting). Based on discussions and feedback acceptance will be procured. 
+
+\subsection{Schedule}
+The current schedule for this depends on the slowest times for Ms. Wendy Hough in the upcoming summer months.  
+
+\subsection{Acceptance Criteria}
+This system will be considered accepted when Ms. Wendy Hough and the Student Tester accepts it and it is deployed on the UWO ITS servers.
+
+\subsection{Roles and Responsibilities}
+
+\begin{tabular}{ | l | p{7cm} |}
+\hline 
+Role & Responsibilities \\
+\hline
+ Test Analyst & Finish writing unit tests and integration testing \\
+ Graduate Admin & Help to generate integration testing \\
+ Student Tester & Perform Acceptance Testing \\
+\hline
+\end{tabular}
+
+\section{Conclusions and Recommendations}
+
+This project is now complete within the scope that was defined in the proposal as a pilot project. With regular meetings with the client a robust set of SRS and Design issues have been gathered. Additionally the client is on board to continue with migrating to the new system. The proper design done to ensure that University and FIPPA standards are met will ensure the feasibility of the project. Although the focus for this implementation has been on the server framework and the application design, adding new features will be trivial due to this work. Continuing on the Agile Development cycle the next step would be to use regular acceptance tests to drive the next stage of development. With both Ms. Hough and Dr. Ladak satisfied with the progress, more work can be continued. With continuing work required it is my recommendation that the developer be given at least part time during the summer to work on this application. 
 
 \newpage
-\subsection{References}
 
-\bibliography{ref}
-
-\newpage 
-
-\subsection{Appendices}
-blurb
-\subsubsection{Code}
-blurb 
-\subsubsection{Test Results}
-
- 
 \section{User Manual}
 
 \subsection{Deployment}
 
-\subsection{Managing Users}
+\subsubsection{Preparing the Operating System}
 
-\subsection{Managing Students}
+The SIMS application runs on Linux OS and the Ubuntu/Debian distributions. A system with internet connection is required to download needed packages. Request the system administrator to 
+have the following packages installed. 
 
-\subsection{Managing Meetings}
+\begin{verbatim}
+perl 5.12+
+postgresql 8.2+
+nginx 2+
+memcached 
+build-essential
+\end{verbatim}
 
-\subsection{Creating Reports}
+Additionally root access will be required to install additional Perl packages.
 
+\subsubsection{Preparing SIMS}
 
+In the webserver user's terminal simply extract the SIMS 0.1 version archive.
+\begin{verbatim}
+tar xvf SIMS-0.01.tar.gz
+cd SIMS-0.01/
+\end{verbatim}
 
-\newglossaryentry{computer}
-{
-  description={is a programmable machine that receives input,
-               stores and manipulates data, and provides
-               output in a useful format}
-}
+Traverse into the SIM-0.01 directory and run
+\begin{verbatim}
+perl Makefile.PL
+make 
+make installdeps
+make intall
+\end{verbatim}
+
+At this point all dependencies should be installed, and you can continue deployment. 
+First request the system administrator to create a PostgreSQL user and database called SIMS, with the password 'SIMS'. This can be changed later.
+
+Copy the nginx configuration file to the correct place as root, at this point the system administrator will need to provide you with a SSL certificate and a correct domain. Then launch nginx.
+\begin{verbatim}
+cp nginx.conf /etc/nginx/
+sudo /etc/init.d/nginx restart
+\end{verbatim}
+
+Next launch the starman/psgi servers
+\begin{verbatim}
+starman script/sims.PSGI
+\end{verbatim}
+
+The server should be up and running at \verb+https://domain+
+
+\subsection{Other Features}
+
+At this time more time is required to complete the rest of the features to meet specifications.  
+
+\newpage
+
+\bibliography{ref}
+
 \newpage 
-\section{Glossary}
-\printglossaries
-\section{Index}
-\section{Vitae}
+ 
+
 \end{document}
 

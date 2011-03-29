@@ -27,6 +27,8 @@ requires 'Email::Simple::Creator';
 requires 'Email::Sender::Simple';
 requires 'Email::Sender::Transport::SMTP::TLS';
 requires 'Try::Tiny';
+requires 'SDL';
+requites 'DBD::Pg';
 requires 'Moose';
 requires 'MooseX::NonMoose';
 requires 'namespace::autoclean';

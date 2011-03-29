@@ -530,11 +530,129 @@ Based on the design decisions taken the following implementation was carried out
 Server & Implementation \\
 \hline
 SSL/HTTP & Nginx \\
-Application & Catalyst Framework \\
+Application & Catalyst Framework \& Starman/PSGI \\
 Database & PostgreSQL \\
 Cache & Memcached \\
 \hline 
+
 \end{tabular}
+
+
+\subsubsection{Nginx Implementation}
+Nginx was selected because it meets the design issues discussed about. The following is the truncated configuration implementation:
+
+\begin{verbatim}
+
+...
+
+http {
+	...
+	server {
+		listen 80;
+		server_name doodles.ath.cx;
+			location / { #force ssl communications 
+				   rewrite ^/(.*)$ https://doodles.ath.cx/$1 permanent;
+				   }
+			}
+
+	server {
+		listen        443 default ssl;
+		server_name   doodles.ath.cx;
+		gzip on;
+		ssl on;
+		ssl_certificate /etc/nginx/conf/myssl.crt;
+		ssl_certificate_key /etc/nginx/conf/myssl.key;
+
+	location / {
+		proxy_set_header Host $http_host;
+		proxy_set_header X-Forwarded-Host $http_host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Port 443; #this is important for Catalyst Apps!
+		proxy_pass http://localhost:5000; 
+		}	
+
+	}
+}
+
+\end{verbatim}
+
+Nginx handles mutilple worker connections and accepts mutiple requests. Additionally with this configuration it forces http communication on the 443 port with a self generated ssl certificate for now. This ssl certificate will 
+be the thwate cert after accpetance from ITS \cite{ITS}. Additionally the Nginx server will force a proxy header to the application server via \verb http://localhost:5000. Where the application server is running. This implementation seperates
+the Nginx from the application server. If this proxy header is missing the application server will not process any requests. 
+
+\subsubsection{Application Implementation}
+The Catalyst implementation is a REST framework which runs as a single process per thread. However by using a PSGI/Starman server stack multiple process can be sustained and synchronized. 
+The following is the configuration employed to start a reverse proxy enabled application.
+
+\begin{verbatim}
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+use Plack::Builder;
+use SIMS;
+
+SIMS->setup_engine('PSGI');
+my $app = sub { SIMS->run(@_) };
+
+builder {
+ enable_if { $_[0]->{REMOTE_ADDR} eq '127.0.0.1' }
+        "Plack::Middleware::ReverseProxy";
+ $app;
+};
+\end{verbatim}
+
+This psgi script tells the application to be built in a proxy environment and to run the SIMS application. 
+
+\subsection{PostgreSQL, Memcache and PDF views}
+
+The SIMS application directly configured to use other components through a plugin interface and
+package configurations.
+
+\begin{verbatim}
+pacakge SIMS;
+...
+use Catalyst qw/
+  ConfigLoader
+  Static::Simple
+  Authentication
+  Authorization::Roles
+  Session
+  Session::Store::Memcached
+  Session::State::Cookie
+  /;
+...
+
+# Configure the PDF::Reuse 
+__PACKAGE__->config('View::PDF::Reuse' => { 
+	INCLUDE_PATH => __PACKAGE__->path_to('root', 'templates') 
+});
+...
+\end{verbatim}
+
+The \verb SIMS::Model::DB class describes the database connection.
+
+\begin{verbatim}
+package SIMS::Model::DB;
+
+use strict;
+use base 'Catalyst::Model::DBIC::Schema';
+
+__PACKAGE__->config(
+    schema_class => 'SIMS::Schema',
+    
+    connect_info => {
+        dsn => 'dbi:Pg:dbname=SIMS;host=127.0.0.1;',
+        user => 'SIMS',
+        password => 'SIMS',
+        quote_char => q{"},
+    }
+);
+
+\end{verbatim}
+
+With this relatively simple setup the configuration for the server is prepared.
 
 \subsection{Classes}
 \begin{verbatim}

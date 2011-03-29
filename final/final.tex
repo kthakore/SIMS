@@ -479,24 +479,276 @@ Figure \ref{fig:Transitions} describe the generic user transitions through the s
 \section{Software Design Specification}
 
 \subsection{Server Analysis and Design}
+One of the critical requirements of the system is to meet FIPPA standards. 
 \subsubsection{SSL HTTP Server}
+
+The server architecture would require a HTTP/SSL server to provide the standard security protocol with a signed Thawte SSL certificate expected from UWO ITS standards \cite{ITS}.
 
 \subsubsection{Application Server}
 
+The application server would run as a separate user ( Unix User ) then the HTTP/SSL Server. Additionally to provide access to the application, it will be proxied to the HTTP/SSL Server. 
+Finally the Application Server directly would need to communicate with a Database Server and the Cache Server, therefore it will be place on the same machine.
+
 \subsubsection{Database Server}
+
+According to FIPPA:
+\begin{quote}
+Public bodies have certain obligations and duties under FIPPA.  Broadly speaking, these duties relate to responding to access requests, protecting personal information ... \cite{FIPPA}
+\end{quote}
+Therefore the Database Server selected must be able to handle requests reasonably and scaled well for future needs. Additionally for security considerations the Database Server would just be able to 
+communicate locally with the application server. Lastly a Relational Database is required so as to meet the considerations of the business rules employed in Graduate Programs. 
 
 \subsubsection{Cache Server}
 
-\subsection{REST Application}
+The Cache server is responsible of holding user session data securely and separately from the Database server. This meets the requirements of FIPPA mentioned above because user session data is volatile and doesn't scale well in a Relational Database. The extra load from user sessions could lead to Denial of Service attacks, which would be in violation of FIPPA. 
 
-\subsubsection{User Authentication and User Session}
+\subsection{Application Framework}
+
+To meet the requirements of being flexible and powerful enough to handle various business requirements, a REST application framework is selected. A REST application provides a consistent server state by providing chained actions. A user can traverse through links to perform several actions. This model works well with the requirements of a student tracking software, as the graduate assistant performs actions on student profiles, meetings, reports etc. REST is based on the messaging design pattern which allows the design of each URL to act as clear messages indicating the server state. This design makes testing easier and debugging simpler. In addition it forces code to be decoupled, reusable and encapsulated from the start \cite{REST}. Applying this system in the real world would thus ensure some code quality. Finally the REST framework also separates 
+
+\subsubsection{User Session}
+
+Based on the User Hierarchy and it Use Cases there is a direct need for the application to handle user authentication and authorization per response done. This is handled simply by a REST message design pattern. Before each response is handled it is 'chained' to a root method that checks for the user session data and confirms authorization and authentication.  
 
 \subsubsection{Data Abstraction Schema}
 
-\subsubsection{PDF Report Generation}
+The framework should also abstract the database tables due to reporting requirements and being able to apply new business rules quickly. By abstracting the database tables into a high level code and interface, very simple code can be written to CRUD ( CREATE, READ, UPDATE, DELETE ) any data in the system. 
+
+\subsubsection{Report Generation}
+Finally for the preliminary requirements of report generation a PDF generator plug-in is required from the framework. More format should be available and easily implementable. 
+
+\subsection{User Interface}
+Since most of the system will be accessed through the web browser a feasible technology that can be used is Javascript/HTML.  
 
 \section{Implementation}
-blurb 
+Based on the design decisions taken the following implementation was carried out. 
+
+\subsection{Server Setup}
+
+\begin{tabular}{| l | l |}
+\hline
+Server & Implementation \\
+\hline
+SSL/HTTP & Nginx \\
+Application & Catalyst Framework \\
+Database & PostgreSQL \\
+Cache & Memcached \\
+\hline 
+\end{tabular}
+
+\subsection{Classes}
+\begin{verbatim}
+.-----------------------------------------------------------------+----------.
+| Class                                                           | Type     |
++-----------------------------------------------------------------+----------+
+| SIMS::Controller::AdvCommMember                                 | instance |
+| SIMS::Controller::Faculty                                       | instance |
+| SIMS::Controller::GraduateAdmin                                 | instance |
+| SIMS::Controller::GraduateExec                                  | instance |
+| SIMS::Controller::Helper                                        | class    |
+| SIMS::Controller::Login                                         | instance |
+| SIMS::Controller::Logout                                        | instance |
+| SIMS::Controller::Meeting                                       | instance |
+| SIMS::Controller::Report                                        | instance |
+| SIMS::Controller::Root                                          | instance |
+| SIMS::Controller::Student                                       | instance |
+| SIMS::Controller::TechAdmin                                     | instance |
+| SIMS::Model::DB                                                 | instance |
+| SIMS::Model::DB::Event                                          | class    |
+| SIMS::Model::DB::Fund                                           | class    |
+| SIMS::Model::DB::Meeting                                        | class    |
+| SIMS::Model::DB::MeetingAdvisor                                 | class    |
+| SIMS::Model::DB::MeetingComment                                 | class    |
+| SIMS::Model::DB::MeetingConfirmation                            | class    |
+| SIMS::Model::DB::Plan                                           | class    |
+| SIMS::Model::DB::PlanStudent                                    | class    |
+| SIMS::Model::DB::Report                                         | class    |
+| SIMS::Model::DB::Role                                           | class    |
+| SIMS::Model::DB::Student                                        | class    |
+| SIMS::Model::DB::StudentSupervisor                              | class    |
+| SIMS::Model::DB::Supervisor                                     | class    |
+| SIMS::Model::DB::Term                                           | class    |
+| SIMS::Model::DB::TermFunding                                    | class    |
+| SIMS::Model::DB::TermStudent                                    | class    |
+| SIMS::Model::DB::User                                           | class    |
+| SIMS::Model::DB::UserRole                                       | class    |
+| SIMS::View::PDF::Reuse                                          | instance |
+| SIMS::View::TT                                                  | instance |
+'-----------------------------------------------------------------+----------'
+\end{verbatim}
+
+\subsection{Actions}
+
+\begin{verbatim}
+.----------------------+--------------------------------------+--------------.
+| Private              | Class                                | Method       |
++----------------------+--------------------------------------+--------------+
+| /base                | SIMS::Controller::Root               | base         |
+| /unauthorized        | SIMS::Controller::Root               | unauthorized |
+| /default             | SIMS::Controller::Root               | default      |
+| /end                 | SIMS::Controller::Root               | end          |
+| /index               | SIMS::Controller::Root               | index        |
+| /auto                | SIMS::Controller::Root               | auto         |
+| /report/base         | SIMS::Controller::Report             | base         |
+| /report/show_query   | SIMS::Controller::Report             | show_query   |
+| /report/add_query    | SIMS::Controller::Report             | add_query    |
+| /report/index        | SIMS::Controller::Report             | index        |
+| /report/test_query   | SIMS::Controller::Report             | test_query   |
+| /techadmin/create    | SIMS::Controller::TechAdmin          | create       |
+| /techadmin/base      | SIMS::Controller::TechAdmin          | base         |
+| /techadmin/update_p- | SIMS::Controller::TechAdmin          | update_pass  |
+| ass                  |                                      |              |
+| /techadmin/index     | SIMS::Controller::TechAdmin          | index        |
+| /login/index         | SIMS::Controller::Login              | index        |
+| /faculty/base        | SIMS::Controller::Faculty            | base         |
+| /faculty/search_stu- | SIMS::Controller::Faculty            | search_stud- |
+| dent                 |                                      | ent          |
+| /faculty/view_stude- | SIMS::Controller::Faculty            | view_student |
+| nt                   |                                      |              |
+| /faculty/view_report | SIMS::Controller::Faculty            | view_report  |
+| /faculty/index       | SIMS::Controller::Faculty            | index        |
+| /advcommmember/adv_- | SIMS::Controller::AdvCommMember      | adv_meeting  |
+| meeting              |                                      |              |
+| /advcommmember/base  | SIMS::Controller::AdvCommMember      | base         |
+| /advcommmember/index | SIMS::Controller::AdvCommMember      | index        |
+| /meeting/advisor_si- | SIMS::Controller::Meeting            | advisor_sign |
+| gn                   |                                      |              |
+| /meeting/delete_com- | SIMS::Controller::Meeting            | delete_comm- |
+| ment                 |                                      | ent          |
+| /meeting/confirm     | SIMS::Controller::Meeting            | confirm      |
+| /meeting/edit_comme- | SIMS::Controller::Meeting            | edit_comment |
+| nt                   |                                      |              |
+| /meeting/add_comment | SIMS::Controller::Meeting            | add_comment  |
+| /meeting/base        | SIMS::Controller::Meeting            | base         |
+| /meeting/pdf         | SIMS::Controller::Meeting            | pdf          |
+| /meeting/student_si- | SIMS::Controller::Meeting            | student_sign |
+| gn                   |                                      |              |
+| /meeting/index       | SIMS::Controller::Meeting            | index        |
+| /meeting/advisor_un- | SIMS::Controller::Meeting            | advisor_uns- |
+| sign                 |                                      | ign          |
+| /meeting/cancel      | SIMS::Controller::Meeting            | cancel       |
+| /meeting/update      | SIMS::Controller::Meeting            | update       |
+| /meeting/assign_adv- | SIMS::Controller::Meeting            | assign_advi- |
+| isor                 |                                      | sor          |
+| /meeting/student_un- | SIMS::Controller::Meeting            | student_uns- |
+| sign                 |                                      | ign          |
+| /graduateadmin/edit- | SIMS::Controller::GraduateAdmin      | edit_student |
+| _student             |                                      |              |
+| /graduateadmin/base  | SIMS::Controller::GraduateAdmin      | base         |
+| /graduateadmin/add_- | SIMS::Controller::GraduateAdmin      | add_term     |
+| term                 |                                      |              |
+| /graduateadmin/add_- | SIMS::Controller::GraduateAdmin      | add_funding  |
+| funding              |                                      |              |
+| /graduateadmin/supe- | SIMS::Controller::GraduateAdmin      | supervisors  |
+| rvisors              |                                      |              |
+| /graduateadmin/edit- | SIMS::Controller::GraduateAdmin      | edit_superv- |
+| _supervisor          |                                      | isor         |
+| /graduateadmin/index | SIMS::Controller::GraduateAdmin      | index        |
+| /graduateadmin/assi- | SIMS::Controller::GraduateAdmin      | assign_supe- |
+| gn_supervisor        |                                      | rvisor       |
+| /graduateadmin/add_- | SIMS::Controller::GraduateAdmin      | add_plan     |
+| plan                 |                                      |              |
+| /student/base        | SIMS::Controller::Student            | base         |
+| /student/meeting_wi- | SIMS::Controller::Student            | meeting_wid- |
+| dget                 |                                      | get          |
+| /student/add_meeting | SIMS::Controller::Student            | add_meeting  |
+| /student/edit        | SIMS::Controller::Student            | edit         |
+| /student/index       | SIMS::Controller::Student            | index        |
+| /graduateexec/index  | SIMS::Controller::GraduateExec       | index        |
+| /logout/index        | SIMS::Controller::Logout             | index        |
+'----------------------+--------------------------------------+--------------'
+\end{verbatim}
+
+
+\subsubsection{Chained Action}
+
+\begin{verbatim}
+.-------------------------------------+--------------------------------------.
+| Path Spec                           | Private                              |
++-------------------------------------+--------------------------------------+
+| /advcommmember/meeting              | /advcommmember/base (0)              |
+|                                     | => /advcommmember/adv_meeting        |
+| /advcommmember                      | /advcommmember/base (0)              |
+|                                     | => /advcommmember/index              |
+| /faculty                            | /faculty/base (0)                    |
+|                                     | => /faculty/index                    |
+| /faculty/search_student             | /faculty/base (0)                    |
+|                                     | => /faculty/search_student           |
+| /faculty/view_report                | /faculty/base (0)                    |
+|                                     | => /faculty/view_report              |
+| /faculty/view_student/*             | /faculty/base (0)                    |
+|                                     | => /faculty/view_student             |
+| /graduateadmin/add_funding/*/*      | /graduateadmin/base (0)              |
+|                                     | => /graduateadmin/add_funding        |
+| /graduateadmin/add_plan/*           | /graduateadmin/base (0)              |
+|                                     | => /graduateadmin/add_plan           |
+| /graduateadmin/add_term/*           | /graduateadmin/base (0)              |
+|                                     | => /graduateadmin/add_term           |
+| /graduateadmin/assign_supervisor/*- | /graduateadmin/base (0)              |
+| /*                                  |                                      |
+|                                     | => /graduateadmin/assign_supervisor  |
+| /graduateadmin/edit_student/*       | /graduateadmin/base (0)              |
+|                                     | => /graduateadmin/edit_student       |
+| /graduateadmin/edit_supervisor      | /graduateadmin/base (0)              |
+|                                     | => /graduateadmin/edit_supervisor    |
+| /graduateadmin                      | /graduateadmin/base (0)              |
+|                                     | => /graduateadmin/index              |
+| /graduateadmin/supervisors          | /graduateadmin/base (0)              |
+|                                     | => /graduateadmin/supervisors        |
+| /meeting/*/add_comment              | /meeting/base (1)                    |
+|                                     | => /meeting/add_comment              |
+| /meeting/*/advisor_sign/*           | /meeting/base (1)                    |
+|                                     | => /meeting/advisor_sign             |
+| /meeting/*/advisor_unsign/*         | /meeting/base (1)                    |
+|                                     | => /meeting/advisor_unsign           |
+| /meeting/*/assign_advisor/*         | /meeting/base (1)                    |
+|                                     | => /meeting/assign_advisor           |
+| /meeting/*/cancel                   | /meeting/base (1)                    |
+|                                     | => /meeting/cancel                   |
+| /meeting/*/confirm/*                | /meeting/base (1)                    |
+|                                     | => /meeting/confirm                  |
+| /meeting/*/delete_comment/*         | /meeting/base (1)                    |
+|                                     | => /meeting/delete_comment           |
+| /meeting/*/edit_comment             | /meeting/base (1)                    |
+|                                     | => /meeting/edit_comment             |
+| /meeting/*                          | /meeting/base (1)                    |
+|                                     | => /meeting/index                    |
+| /meeting/*/pdf                      | /meeting/base (1)                    |
+|                                     | => /meeting/pdf                      |
+| /meeting/*/student_sign             | /meeting/base (1)                    |
+|                                     | => /meeting/student_sign             |
+| /meeting/*/student_unsign           | /meeting/base (1)                    |
+|                                     | => /meeting/student_unsign           |
+| /meeting/*/update                   | /meeting/base (1)                    |
+|                                     | => /meeting/update                   |
+| /report/add_query                   | /report/base (0)                     |
+|                                     | => /report/add_query                 |
+| /report                             | /report/base (0)                     |
+|                                     | => /report/index                     |
+| /report/show_query/*                | /report/base (0)                     |
+|                                     | => /report/show_query                |
+| /report/test_query                  | /report/base (0)                     |
+|                                     | => /report/test_query                |
+| /student/add_meeting                | /student/base (0)                    |
+|                                     | => /student/add_meeting              |
+| /student/edit                       | /student/base (0)                    |
+|                                     | => /student/edit                     |
+| /student                            | /student/base (0)                    |
+|                                     | => /student/index                    |
+| /student/meeting_widget             | /student/base (0)                    |
+|                                     | => /student/meeting_widget           |
+| /techadmin/create                   | /techadmin/base (0)                  |
+|                                     | => /techadmin/create                 |
+| /techadmin                          | /techadmin/base (0)                  |
+|                                     | => /techadmin/index                  |
+| /techadmin/update_pass              | /techadmin/base (0)                  |
+|                                     | => /techadmin/update_pass            |
+| /unauthorized                       | /unauthorized                        |
+'-------------------------------------+--------------------------------------'
+
+
+\end{verbatim}
+
 \subsection{Psuedo Code}
 blurb
 \subsection{Algorithms}

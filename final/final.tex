@@ -1,0 +1,554 @@
+\documentclass{journal}
+\usepackage{graphics,graphicx}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{pdflscape}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage[xindy]{glossaries}
+\makeglossaries 
+
+
+\newcommand{\Keywords}[1]{\par\noindent
+{\small{\em Keywords\/}: #1}}
+
+\begin{document}
+\bibliographystyle{IEEE}
+\nocite{*}
+\title{SIMS: Graduate Student Information Systems}
+\author{Kartik Thakore (250313003)\\kthakore@uwo.ca}
+\maketitle
+
+\begin{abstract}
+With the Ontario government taking notable steps to increase
+graduate enrolment through various initiatives, it is imperative that there exists an efficient
+solution to track program milestones of graduate students and streamline the administrative
+process to support the increased enrolment. More importantly, various privacy and security constraints
+mandated by the University and Federal statutes also require consideration. Our project aims to meet the policies
+mandated by FIPPA and UWO IT. Currently, developing customized Enterprise resource planning (ERP) can be expensive both in cost 
+and time. This can be a problem if a department wishes to have complete control in their ERP option. Our prototype is a flexible web application 
+system designed for the department of Medical Biophysics (MSc). The ERP was made
+to track important dates from inception to completion of the program lifecycle and help manage
+student information on an efficient basis. Due to the modular nature of the system, it can be
+customized to suit other graduate programs at Western with minimal downtime. The main progression
+requirements for the MSc program include successful completion of Advisory Committee
+meetings and Low-Level exams. The application was implemented over 3 servers: a web, an application and a database server.
+The web service is only responsible for establishing an SSL HTTP connection with a client and expose the application service.  
+Additionally, the web server is based on a Representational State Transfer (REST) that provides additional security at the application level in terms of authentication and authorization. 
+The technology is based on the Perl server stack, which makes the application high level and abstract. The abstraction in the application code
+allows quick modifications to be done, allowing the application to be re-deployed for various other educational software problems. 
+After receiving very positive feedback from the client, we are considering taking on this project full
+time after graduation and implement this system within the Department of Medical Biophysics
+with a possibility to expand to other faculties at Western. Overall, we are very excited about this
+initiative and are looking forward to enhance the graduate student experience within various
+faculties at Western.
+\Keywords{ SSL, Perl, REST, HTTP, Services, Education, ERP, Modular, Flexible}
+\end{abstract}\newpage
+
+\tableofcontents 
+
+\newpage 
+
+\listoffigures
+
+\newpage
+
+\listoftables
+
+\newpage 
+
+\section{Introduction}
+The SIMS core is a secure application that aims to be flexible to handle business rules of varying graduate
+student programs. In the scope of this project however, focus will be placed on the Graduate Student
+Program for BioMedical Physics Program at University of Western Ontario. At the very least SIMS
+will hold graduate student, funding and advisory meeting data. Additionally SIMS will allow the program
+administrator to organize collected data into reports and to send automatic request for data to students.
+Also advisors and other faculty users will be able to see student data, progress and any advisory meetings
+they have attended. SIMS will also place an emphasis on providing security of student personal data and
+faculty identifications. Overall SIMS, will be replacing the current manual system of tracking students and
+their progress through graduate programs.
+Figure \ref{fig:New_Sys} shows the overview of the required system. The user will access the system via the Client and
+Tablet devices. The data from the tablet will be processed in the client and sent via the TCP/IP protocol
+to the Application Server (AppServer). The responsibility of the AppServer is to provide secure access, and
+host the application. The AppServer will communicate with the Services Server to add triggers and use the
+database. The AppServer and the ServicesServer will be located on a local network which is accessed via
+a Virtual Private Network (VPN). Figure 3 models the users of the SIMS system. The user groups can be
+broken down into 3 categories, the Student, the Faculty and the Technical Administrator. The technical
+administrator will have access only to the authentication data. While the student and the faculty will have
+access only to the tracked data. Additionally the faculty will have more access over the student. The role
+and operations requirements will be covered more in-depth in the system features.
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.25]{diagrams/Current_System.png}
+\caption{Current System}
+\label{fig:Curr_Sys}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.40]{diagrams/SystemOverview.png}
+\caption{Proposed System}
+\label{fig:New_Sys}
+\end{figure}
+
+\section{Software Requirements Specification}
+
+\subsection{Product perspective}
+The product will be self contained as it is responsible for the User Interface, Application and Data Storage.
+Figure \ref{fig:New_Sys} again describes the perspective of the system.
+The product will have the following constraints:
+\begin{itemize}
+\item User Interface: The specifications of each view of the user interface will be provided for this project.
+\item Hardware Interface: The system will be using a Wacom tablet as a hardware to acquire signatures.
+\item Software interfaces: The system will have to employ several software interfaces.
+\begin{itemize}
+\item Application Server: Apache 2.0 will be used to deploy the system with SSL security.
+\item VPN Provider: OpenVPN will be used to deploy the system as a self contained virtual private
+network.
+\item Database Software: A PostgreSQL RDBMS server will be used to run the Data Storage Component of the Software.
+\end{itemize}
+\end{itemize}
+\subsection{Product Function}
+\subsection{User Characteristics}
+Figure \ref{fig:users} describes the relation between the users of the systems, for further clarification:
+\begin{itemize}
+\item General User: Any user of the system, can login into the system 
+\begin{itemize}
+\item Faculty: Members of the faculty that can see data of several students who are not student themselves
+\begin{itemize}
+\item Graduate Administrator: Essentially the super user of the system, can access and modify all data 
+\item Advisory Committee Member: Can view attached student data and advisory meeting documents
+\item Graduate Faculty Executives: Can view all student data and view publish reports 	
+\end{itemize}
+\item Technical Administrator: A user that cannot access any data but can manage users 
+\item Graduate Student: A student that can only view their own information and update it
+\end{itemize}
+\end{itemize}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.40]{diagrams/use_cases/UserHeirachy_uc.png}
+\caption{Users of the System}
+\label{fig:users}
+\end{figure}
+
+\subsection{Constraints}
+
+\subsubsection{Technical Environment}
+SIMS will be built on the Linux Server platform for the Database and Application Server. The client will be limited to a Linux Operating System with the Firefox 3.6 web browser.  
+\subsubsection{Security}
+UWO has strict guidelines (FIPPA) to handling signatures and student data. For this purpose proven technologies will be used, such as HTTP secure and VPN.
+\subsubsection{Reliability of Data}
+Data in SIMS is critical and needs to be protected from data losses. A regular backup of the database will help to accomplish this. 
+
+\subsection{Assumptions and dependencies}
+\subsubsection{Student Data v.s User Data}
+Student Data is separate from the system, and will not be removed from the system after they graduate. However a user can still be expired from the system. Since archival is needed for a period of atleast 7 years SIMS will need to separate user access and student data. 
+\subsubsection{Intrinsic Student Data}
+Another assumption required by SIMS's requirement is that Student can only be stored in the system if they have a funded term attached to them. This implies that funding is tied on a term basis, which can help to simply futher calculations. 
+
+\section{Specific Requirements}
+\subsection{External interface requirements}
+\subsubsection{Graphical User Interface}
+A set of graphical user interfaces defined in HTML will be provided for the system to template. SIMS will show the interfaces as is and add dynamic data to them. 
+\subsubsection{Hardware Interface}
+SIMS will acquire signatures from client side wacom tablets from a USB 2.0 protocol. Data will be outputted in a BMP file format. 
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.75]{diagrams/HTMLTemplating/Figure6.png}
+\caption{Signature Interface View}
+\label{fig:signature}
+\end{figure}
+
+\begin{itemize}
+\item Purpose: To provide an interface for recording advisory committee member signatures.
+\item Response Sequence: When the e-signature pad is connected to the device, it will automatically start the e-signature interface which records an individual signature.
+\item Associated Functional Requirements:
+\begin{itemize}
+\item Clear: Ability to clear the signature if the signer does not accept the signature
+\item Sign: Once the output on the screen is satisfactory, the user can "Sign" the document which will save the image into the document and link it to the current document.
+\end{itemize}
+\end{itemize}
+\subsection{Functional requirements}
+\subsubsection{User Administration}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure7.png}
+\caption{User Browser}
+\label{fig:UserBrowser}
+\end{figure}
+
+
+\begin{itemize}
+\item Purpose: The user browser lists all the users in the system for technical administration. 
+\item Response Sequence: Login and click on User Browser from the administration Dashboard. From this page, the administrator can perform the following functions:
+\item Associated Functional Requirements:
+\begin{itemize}
+\item Create new users: Adding a new user to the system can only be accomplished by the Technical Administrator after an approval from the Graduate Administrator. 
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure8.png}
+\caption{New Users}
+\label{fig:NewUser}
+\end{figure}
+\item Adding new user roles: User roles are primary stakeholder groups for the system. Currently, our primary stakeholders are Advisory Committee Members, Graduate Administrators, Graduate Executives, and Graduate Students.
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure9.png}
+\caption{New Users Roles}
+\label{fig:NewUserRoles}
+\end{figure}
+
+\item Adding Operation to roles: Permissions can be added to the user permission list by clicking on the Add New permission button under User Administration. This can be done by the Technical Administrator.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure9.png}
+\caption{New Operations}
+\label{fig:NewPermission}
+\end{figure}
+
+
+\end{itemize}
+\end{itemize}
+
+\subsubsection{System Wide Login Page}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure1.jpg}
+\caption{System Wide Login Page}
+\label{fig:SystemWideLogin}
+\end{figure}
+
+
+\begin{itemize}
+\item Purpose: Provide a universal log-in page to provide access to the end users of the system
+\item Response Sequence: In order to access the login page, user will have to type the system URL in a supported browser, which will direct them to this log in page. 
+\item Associated Functional Requirements: 
+\begin {itemize} 
+\item Introduction widget: This widget will provide a short introduction to the purpose of the management system. It will also feature an Important Links section with a link to the website of The Department of Medical BioPhysics. Furthermore, a link to a technical troubleshooting page will be created.
+\item Login window: This is the actual login page where the user will enter their credentials to login. Users cannot sign up for the system individually. The Graduate Administrator facilitates the sign up process and a direct link to request the login credentials will be set up.
+\end{itemize}
+\end{itemize}
+
+
+\subsubsection{System Dashboard}
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure2.jpg}
+\caption{System Dashboard Page}
+\label{fig:SystemDashBoard}
+\end{figure}
+
+\begin{itemize}
+\item Purpose: Provide a centralized location of all system functions while preserving ease of use and accessibility.
+\item Response sequence: The user will be directed to this page after login.
+\item Associated Functional Requirements:
+\begin{itemize}
+\item Provide various plugins on the Dashboard based on different user roles and operation for access to student profiles and various system features. 
+\item Search: Be able to search a students profile from the Dashboard.
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Student Profile}
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure3.png}
+\caption{Student Profile Page}
+\label{fig:StudentProfile}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/Figure4.png}
+\caption{Supervisor Information Page}
+\label{fig:SuperInfo}
+\end{figure}
+
+
+\begin{itemize}
+\item Purpose: Provide an intuitive dossier format interface for users to see the student profile in a centralized location. The key goal is to ensure that all the important system functionality is in a centralized location. Note the attached sample HTML page.
+\item Response sequence: In order to access the GUI, the user will be required to login and will be taken to a Dashboard which will have options to generate reports and search a student by their assigned id. Once selected the user will be able to see a student profile and be able to perform various functions based on their authentication scope as defined in the access control list.
+\item Associated Functional Requirements:
+\begin{itemize}
+\item Information Tab Section: The profile page will feature information tabs with centralized information about their Personal Information, Program Information, Supervisor Information and Advisory Committee Meeting Information. 
+\item Supervisor Information: This tab contains information regarding a students' direct Supervisor Name and information about the supervisors minimum student contribution along with other logistical information. This information is created with the sample medical biophysics excel sheet provided by the Graduate Administrator user at the Department of Medical BioPhysics.	
+
+\item Expansion: Each section can be clicked on to show summary of additional information
+\item Link:  Each information tab will link to another section pages (if applicable)
+\item Grouping: Group Dates and people in the same window area for better accessibility
+Export Options: There should be an export option to ensure that a user can export their entire student profile in Word, PDF and a printable HTML.
+\item Attachment Options: The dossier should feature an attachment tab that includes all relevant attachments/forms for that student profile.
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Graduate Student's Personal Information}
+\begin{itemize}
+\item Graduate Student's Personal Information:
+Contains data regarding the students contact information including their UWO e-mail address and their current location. This system feature is to document how personal information is stored and accessed via different user roles. 
+\item Graduate Students: Graduate Students can view their entire profile which includes information on their program, supervisor, advisory committee, as well as any personal records. Data access is restricted only to their personal profile.
+\item Graduate Administrator: Ability to edit all fields.
+\item Graduate Executives and Advisory Committee members: Read only access.
+\item Update Personal information
+\begin{itemize}
+\item Visibility: Graduate students only
+\item Restrictions: Only allowed to update contact information and address. 
+\item Usability: Graduate administrator is responsible for inputting student data.
+\end{itemize}
+\end{itemize}
+\subsubsection{Graduate Students’ Program Information}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/UpdatePersonalInfoStudent.png}
+\caption{Update Personal Information Student}
+\label{fig:UpdatePIS}
+\end{figure}
+
+\begin{itemize}
+
+\item Contains information related directly to the students program enrollment. Information includes Admission Term and Year, Thesis information, Publications (if any) and a custom field that records if the student has indicated MSc to PhD reclassification.
+\item Update Program Information
+\begin{itemize}
+\item Visibility: Graduate students only
+\item Restrictions: Allowed to update Publications, Thesis (if applicable) and Low-Level exam date if known. 
+\end {itemize} 
+\end {itemize} 
+
+\subsubsection{Graduate Students' Advisory Committee}
+\begin{itemize}
+\item Advisory Committee Information tab is a centralized location for all advisory committee information which has taken place for a student. Under this tab, pertaining information such as the list of all advisory meetings, evaluation of a particular advisory meeting whether it was satisfactory or unsatisfactory and any supervisor/member recommendations after the meeting. Advisory committee is a progression requirement which happens for each student atleast once a year. Scheduling is usually done by the student or by the graduate administrator. One of the key requirements is to track and remind students of their advisory meeting output and ensure that a post-meeting report is generated to satisfy their progression requirements.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/UpdateStudentProfileAdmin.png}
+\caption{Update Advisory Committee Information}
+\label{fig:UpdateACI}
+\end{figure}
+
+\item Update Advisory Committee Information
+\begin{itemize}
+\item Visibility: Graduate students and Graduate Administrator
+\item Restrictions: Allowed to update names of supervisor and advisors after a date for the meeting has been formed.
+\end{itemize}
+\item Comment on Advisory Committee Meeting:
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/CommentAdvisory.png}
+\caption{Adding Comments to Advisory meetings}
+\label{fig:UpdateCAM}
+\end{figure}
+
+\begin{itemize}
+\item Visibility: Advisory Committee Members
+\item Restrictions: Cannot access any other data. Members can update progress and output of the meeting. Can also provide recommendations and comments.
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Data Reporting}
+\begin{itemize}
+\item Queries: Reports can be generated by filtering via various fields or by entering customized queries in the reporting interface.
+\item Queries can be run by the administrator, advisory members and graduate executives.
+\item Sample Student Profile Report (Word): Users can export student profile in a Word document which contains all the information regarding the selected student. The scope of the document generated will be restricted to the roles and permission of the user.
+\item Sample Graduate Student Output Report (SOR) - Excel: Users can export a SOR based on custom queries which are either preset or custom created.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/SOR_Excel.png}
+\caption{Excel Graduate SOR Report}
+\label{fig:ExcelSOR}
+\end{figure}
+
+\item Custom Pie Charts: Pie charts and trend charts can be generated based on the SOR or a custom query.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1]{diagrams/HTMLTemplating/PieChart.png}
+\caption{Excel Graduate SOR Pie Chart}
+\label{fig:PieSOR}
+\end{figure}
+
+:\end{itemize}
+
+\chapter{Design}
+\section{Iteration 1}
+
+The first iteration focused on completing the analysis of the user use cases, understanding the data flow of the system. Finally based on the analysis a MVC architecture was designed and implementation. The implementation focused on :
+
+\begin{itemize}
+\item Student Data Representation 
+\item Framework to display HTML templates
+\item Authentication Data Representation 
+\end{itemize}
+
+\section{Analysis}
+
+\subsection{User Hierarchy}
+As specified in the SRS the user hierarchy is well defined in Figure \ref{fig:users}. Looking at the user interface provided the following use cases can be 
+defined.
+
+\subsection{Use Cases}
+
+\subsubsection{Generic User}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.25]{diagrams/use_cases/User_uc.png}
+\caption{Generic User Use Case}
+\label{fig:UserLog}
+\end{figure}
+
+Figure \ref{fig:UserLog} defines the use cases of any user of the system. The user will be able to login and logut.
+
+\subsubsection{Dashboard}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.25]{diagrams/use_cases/Dashboard_uc.png}
+\caption{Dashboard Use Case}
+\label{fig:Dashboard}
+\end{figure}
+
+Figure \ref{fig:Dashboard} defines the use cases on the Dashboard features for each user.
+
+\subsubsection{User Administration}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.25]{diagrams/use_cases/TechAdmin_uc.png}
+\caption{User Administration Use Case}
+\label{fig:UserAdmin}
+\end{figure}
+
+Figure \ref{fig:UserAdmin} defines te use cases to do user administrator. 
+
+\subsubsection{Student Data Access}
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.5]{diagrams/use_cases/access_uc.png}
+\caption{Data Access Use Case}
+\label{fig:UserAccess}
+\end{figure}
+
+Figure \ref{fig:UserAccess} defines the use cases that determines the access level on the student data.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.25]{diagrams/use_cases/system_data_uc.png}
+\caption{System Data Use Case}
+\label{fig:SystemData}
+\end{figure}
+
+Figure \ref{fig:SystemData} defines modifications that can be done by the Graduate Administrator. 
+
+\subsubsection{Triggers and Reporting}
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.5]{diagrams/use_cases/triggers_uc.png}
+\caption{Triggers and Reporting Use Case}
+\label{fig:Triggers}
+\end{figure}
+
+Figure \ref{fig:Triggers} describe the functionality access for providing triggers and reporting. 
+
+\subsection{ Data Flow Considerations }
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.5]{diagrams/data_flow/dataflowdiagram.png}
+\caption{Data Flow of the System}
+\label{fig:DataFlow}
+\end{figure}
+
+Figure \ref{fig:DataFlow} describes the data flow analysis of the system. 
+
+\begin{figure}[htp]                                                             
+\centering                                                                      
+\includegraphics[scale=0.25]{diagrams/statechart_uc.png}
+\caption{Transitions through the System Interface}                              
+\label{fig:Transitions}   
+\end{figure}                                                                    
+             
+Figure \ref{fig:Transitions} describe the generic user transitions through the systems. 
+
+
+\section{Software Design Specification}
+
+\subsection{Server Analysis and Design}
+\subsubsection{SSL HTTP Server}
+
+\subsubsection{Application Server}
+
+\subsubsection{Database Server}
+
+\subsubsection{Cache Server}
+
+\subsection{REST Application}
+
+\subsubsection{User Authentication and User Session}
+
+\subsubsection{Data Abstraction Schema}
+
+\subsubsection{PDF Report Generation}
+
+\section{Implementation}
+blurb 
+\subsection{Psuedo Code}
+blurb
+\subsection{Algorithms}
+blurb 
+\section{Test Plan}
+
+\subsection{Unit Tests}
+
+\subsection{Integration Tests}
+\section{Conclusions}
+blurb 
+\subsection{Recommendation}
+blurb 
+
+\newpage
+\subsection{References}
+
+\bibliography{ref}
+
+\newpage 
+
+\subsection{Appendices}
+blurb
+\subsubsection{Code}
+blurb 
+\subsubsection{Test Results}
+
+ 
+\section{User Manual}
+
+\subsection{Deployment}
+
+\subsection{Managing Users}
+
+\subsection{Managing Students}
+
+\subsection{Managing Meetings}
+
+\subsection{Creating Reports}
+
+
+
+\newglossaryentry{computer}
+{
+  description={is a programmable machine that receives input,
+               stores and manipulates data, and provides
+               output in a useful format}
+}
+\newpage 
+\section{Glossary}
+\printglossaries
+\section{Index}
+\section{Vitae}
+\end{document}
+

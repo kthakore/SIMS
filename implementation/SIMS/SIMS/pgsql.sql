@@ -1,7 +1,3 @@
-﻿-- 
--- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Mon Mar  7 23:28:38 2011
--- 
 
 CREATE TABLE "DBHealthCheck" (
   "id" serial,
